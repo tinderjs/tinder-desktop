@@ -54,7 +54,11 @@
             confirmButtonText: 'Got it'
           });
         } else {
-          callbackFn(res.results);
+          if (res && res.results) {
+            callbackFn(res.results);
+          } else {
+            callbackFn([]);
+          }
         }
       });
     };
