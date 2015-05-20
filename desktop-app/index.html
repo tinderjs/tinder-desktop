@@ -24,6 +24,7 @@
   </script>
   <script src="js/angular.min.js"></script>
   <script src="js/ngAutocomplete.js"></script>
+  <script src="js/angular-route.min.js"></script>
   <script src="js/jquery.min.js"></script>
   <script src="js/mousetrap.min.js"></script>
   <script src="js/swing.js"></script>
@@ -34,7 +35,10 @@
 </head>
 <body ng-app="tinder++">
 <!--<div class="title-bar"><i class="fa fa-times" onclick="window.close()"></i>Tinder++</div>-->
-<div ng-controller="TinderController">
+
+<div ng-view></div>
+
+<script type=text/ng-template id=swipe.html>
   <div class="user">
     <div class="left" ng-show="apiQueue.length > 0">
       <a href="" ng-click="undo()">
@@ -90,13 +94,16 @@
       </div>
     </div>
   </div>
-</div>
-<div ng-controller="LoginController" ng-show="!hasValidToken()" class="fb-login">
-  <div class="login-container">
-    <img src="img/icon.png" alt="Tinder++" class="icon" />
-    <a id="sign_in" href="" ng-click="startLogin()"></a>
+</script>
+
+<script type=text/ng-template id=login.html>
+  <div class="fb-login">
+    <div class="login-container">
+      <img src="img/icon.png" alt="Tinder++" class="icon" />
+      <a id="sign_in" href="" ng-click="startLogin()"></a>
+    </div>
   </div>
-</div>
+</script>
 
 <script type="text/javascript">
   var _gauges = _gauges || [];

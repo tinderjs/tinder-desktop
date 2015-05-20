@@ -14,10 +14,24 @@
     win.menu = nativeMenuBar;
   }
 
-  var app = angular.module('tinder++', ['ngAutocomplete']);
+  var app = angular.module('tinder++', ['ngAutocomplete', 'ngRoute']);
   var tinder = require('tinderjs');
   var client = new tinder.TinderClient();
   if (localStorage.tinderToken) { client.setAuthToken(localStorage.tinderToken); }
+
+  app.config(function($routeProvider) {
+    ['login', 'swipe'].forEach(function(route) {
+        $routeProvider.when('/' + route, {
+            templateUrl: route + '.html',
+            controller: capitalize(route) + 'Controller'
+        });
+    });
+  });
+
+  app.run(function($location) {
+      var firstPage = (localStorage.tinderToken ? '/swipe' : '/login');
+      $location.path(firstPage);
+  });
 
   app.factory('API', function API() {
     var apiObj = {};
@@ -98,7 +112,7 @@
     return apiObj;
   });
 
-  app.controller('TinderController', function TinderController($scope, $http, $timeout, $window, API) {
+  app.controller('SwipeController', function SwipeController($scope, $http, $timeout, $window, API) {
     $scope.allPeople = [];
     $scope.peopleIndex = 0;
     $scope.showLocation = false;
@@ -361,10 +375,6 @@
     $scope.loginUrl = 'https://m.facebook.com/dialog/oauth?client_id=464891386855067&redirect_uri=https://www.facebook.com/connect/login_success.html&scope=basic_info,email,public_profile,user_about_me,user_activities,user_birthday,user_education_history,user_friends,user_interests,user_likes,user_location,user_photos,user_relationship_details&response_type=token';
     $scope.fbAuthData = {};
 
-    $scope.hasValidToken = function() {
-      return !!localStorage.tinderToken;
-    };
-
     $scope.startLogin = function() {
       window.loginWindow = gui.Window.open($scope.loginUrl, {
         title: 'Login to Facebook',
@@ -534,6 +544,10 @@
   }
 
   // helpers
+  capitalize = function (s)
+  {
+    return s[0].toUpperCase() + s.slice(1);
+  }
 
   var debounce = function(func, wait, immediate) {
     var timeout;
