@@ -7,7 +7,7 @@
   <title>Tinder⁺⁺</title>
   <meta name="description" content="Desktop optimized Tinder, plus all the features of Tinder Plus for free!">
 
-  <link rel="stylesheet" href="normalize.min.css"/>
+  <link rel="stylesheet" href="css/normalize.min.css"/>
   <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -33,6 +33,7 @@
   <script src="js/tinder++.api.js"></script>
   <script src="js/tinder++.login.js"></script>
   <script src="js/tinder++.swipe.js"></script>
+  <script src="js/tinder++.messages.js"></script>
   <script src="js/tinder++.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 </head>
@@ -49,6 +50,9 @@
         <img src="{{apiQueue[0].user.photos[0].processedFiles[3].url}}" />
       </a>
     </div>
+    <a ng-href="#/messages">
+      <i class="fa fa-envelope fa-3x top-icon"></i>
+    </a>
     <div class="right">
       <p>
         {{getCookie('name')}}
@@ -105,6 +109,25 @@
       <img src="img/icon.png" alt="Tinder++" class="icon" />
       <a id="sign_in" href="" ng-click="startLogin()"></a>
     </div>
+  </div>
+</script>
+
+<script type=text/ng-template id=messages.html>
+  <div id="match-list">
+    <a ng-href="#/swipe"><i id="back-arrow" class="fa fa-arrow-left fa-2x"></i></a>
+    <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true"
+         ng-click="open(match.matchId)" class="match">
+      <img ng-src="{{match.thumbnail}}" class="thumbnail"/>
+      <p class="name">{{match.name}}</p>
+    </div>
+  </div>
+  <div id="conversation" ng-show="conversation">
+    <div ng-repeat-start="message in conversation.messages"
+         class="{{message.fromMe ? 'from-me' : 'from-them'}}">
+      <p ng-if="message.text">{{message.text}}</p>
+    </div>
+    <div ng-repeat-end class="clear"></div>
+    <textarea ng-keypress="keypress($event)" ng-model="message" rows="4">
   </div>
 </script>
 

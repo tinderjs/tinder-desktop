@@ -3,7 +3,7 @@
   var client = new tinder.TinderClient();
   if (localStorage.tinderToken) { client.setAuthToken(localStorage.tinderToken); }
 
-  angular.module('tinder++.api', []).factory('API', function() {
+  angular.module('tinder++.api', []).factory('API', function($interval) {
     var apiObj = {};
 
     apiObj.login = function(id, token) {
@@ -13,6 +13,7 @@
         localStorage.tinderToken = client.getAuthToken();
         localStorage.name = res.user.full_name;
         localStorage.smallPhoto = res.user.photos[0].processedFiles[3].url;
+        localStorage.userId = res.user._id;
         if (window.loginWindow) {
           window.loginWindow.close(true);
         }
@@ -74,6 +75,55 @@
         console.log(res);
       });
     };
+
+    var createConversation = function(match) {
+      apiObj.conversations[match._id] = {
+        matchId: match._id,
+        userId: match.person._id,
+        name: match.person.name,
+        thumbnail: match.person.photos[0].processedFiles[3].url,
+        messages: [],
+        lastActive: match.created_date
+      };
+    };
+
+    var addMessage = function(message) {
+      apiObj.conversations[message.match_id].lastActive = message.sent_date;
+      apiObj.conversations[message.match_id].messages.push({
+        text: message.message,
+        fromMe: (message.from == localStorage.userId)
+      })
+    };
+
+    var update = function(_, data) {
+      data.matches.forEach(function(match) {
+        if( (! apiObj.conversations[match._id]) && (!(match.pending || match.dead)) )
+          createConversation(match);
+
+        match.messages.forEach(addMessage);
+      });
+
+      data.blocks.forEach(function(blockedMatchId) {
+        delete apiObj.conversations[blockedMatchId];
+      });
+
+      localStorage.conversations = JSON.stringify(apiObj.conversations);
+      localStorage.lastActivity = client.lastActivity.toISOString();
+    };
+
+    if(localStorage.tinderToken) {
+      if(localStorage.conversations) {
+        apiObj.conversations = JSON.parse(localStorage.conversations);
+        client.lastActivity = new Date(localStorage.lastActivity);
+      } else {
+        apiObj.conversations = {}
+        client.getHistory(update);
+      }
+
+      $interval(function() { client.getUpdates(update); }, 4000);
+    }
+
+    apiObj.sendMessage = client.sendMessage;
 
     return apiObj;
   });
