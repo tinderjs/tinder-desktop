@@ -2,7 +2,7 @@
   var gui = require('nw.gui')
   var module = angular.module('tinder++.swipe', ['ngAutocomplete', 'tinder++.api']);
 
-  module.controller('SwipeController', function SwipeController($scope, $http, $timeout, API) {
+  module.controller('SwipeController', function SwipeController($scope, $http, $timeout, $interval, API) {
     $scope.allPeople = [];
     $scope.peopleIndex = 0;
     $scope.showLocation = false;
@@ -12,6 +12,9 @@
     $scope.autocompleteOptions = {
       types: '(cities)'
     };
+
+    $scope.likesRemaining = null;
+    $interval(function() { $scope.likesRemaining = API.getLikesRemaining(); }, 1000);
 
     $scope.logout = function() {
       localStorage.clear();

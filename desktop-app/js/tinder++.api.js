@@ -4,6 +4,7 @@
   if (localStorage.tinderToken) { client.setAuthToken(localStorage.tinderToken); }
 
   angular.module('tinder++.api', []).factory('API', function($interval) {
+    var likesRemaining = null;
     var apiObj = {};
 
     apiObj.login = function(id, token) {
@@ -30,7 +31,7 @@
       limit = limit || 10;
       client.getRecommendations(limit, function(err, res, data) {
         if ((res && res.message && (res.message === 'recs timeout' || res.message === 'recs exhausted')) || !res) {
-          //FIXIT: I think alerts belong to controller
+          // TODO: I think alerts belong to controller
           swal({
             title: 'Out of people for now',
             text: 'This can happen if you change location too much. Try quitting, opening phone app, ' +
@@ -67,6 +68,22 @@
               imageUrl: user.photos[0].processedFiles[3].url
             });
           });
+        } else if (res && res.rate_limited_until) {
+          var rate_limited_until = moment.unix(res.rate_limited_until / 1000);
+          var now = moment();
+          // TODO: I think alerts belong to controller
+          swal({
+            title: 'Out of Swipes',
+            text: 'Sorry, Tinder doesn\'t like your business. Try again at ' + rate_limited_until.format('dddd, h:mma') + 
+                  ' (' + now.to(rate_limited_until) + ')',
+            type: 'error',
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: 'WTF Tinder, fine'
+          });
+        }
+
+        if (res && typeof res.likes_remaining != 'undefined') {
+          likesRemaining = res.likes_remaining;
         }
       });
     };
@@ -124,6 +141,10 @@
     }
 
     apiObj.sendMessage = client.sendMessage;
+
+    apiObj.getLikesRemaining = function() {
+      return likesRemaining;
+    };
 
     return apiObj;
   });

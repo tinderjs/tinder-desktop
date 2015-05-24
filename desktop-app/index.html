@@ -53,9 +53,12 @@
     <div class="right">
       <p>
         {{getCookie('name')}}
+        <span ng-show="(likesRemaining !== null)">
+          <br>
+          Likes Remaining: {{likesRemaining}}
+        </span>
         <br>
-        <a href="" ng-click="toggleLocation()" >({{getCookie('currentCity') ? getCookie('currentCity') : 'set location'}})</a>
-        <br>
+        <a href="" ng-click="toggleLocation()" >({{getCookie('currentCity') ? getCookie('currentCity') : 'set location'}})</a> | 
         <a href="" ng-click="logout()">Logout</a>
       </p>
       <img src="{{getCookie('smallPhoto')}}" />
