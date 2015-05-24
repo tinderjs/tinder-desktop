@@ -8,11 +8,11 @@
     };
     var ENTER = 13;
     $scope.keypress = function(event) {
-      if(event.which == ENTER) {
+      if (event.which == ENTER) {
         event.preventDefault();
-        if($scope.message.length > 0) {
-            API.sendMessage($scope.conversation.matchId, $scope.message);
-            $scope.message = '';
+        if ($scope.message.length > 0) {
+          API.sendMessage($scope.conversation.matchId, $scope.message);
+          $scope.message = '';
         }
       }
     };
@@ -27,7 +27,7 @@
       filtered.sort(function (a, b) {
         return (a[field] > b[field] ? 1 : -1);
       });
-      if(reverse) filtered.reverse();
+      if (reverse) { filtered.reverse(); }
       return filtered;
     };
   });
