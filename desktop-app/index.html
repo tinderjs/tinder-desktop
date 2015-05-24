@@ -34,6 +34,7 @@
   <script src="js/tinder++.login.js"></script>
   <script src="js/tinder++.swipe.js"></script>
   <script src="js/tinder++.messages.js"></script>
+  <script src="js/tinder++.profile.js"></script>
   <script src="js/tinder++.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 </head>
@@ -126,7 +127,7 @@
   </div>
   <div id="conversation" ng-show="conversation">
     <h2 class="message-header">
-      Chat with {{conversation.name}}
+      Chat with <a ng-href="#/profile/{{conversation.userId}}">{{conversation.name}}</a>
     </h2>
     <div ng-show="conversation.messages.length == 0">
       No messages yet. Write something!
@@ -137,6 +138,35 @@
     </div>
     <div ng-repeat-end class="clear"></div>
     <textarea ng-keypress="keypress($event)" ng-model="message" rows="4" placeholder="Insert something witty here...">
+  </div>
+</script>
+
+<script type="text/ng-template" id="profile.html">
+  <a ng-href="#/messages">
+    <i class="fa fa-arrow-left fa-3x top-icon"></i>
+  </a>
+  <div class="container" ng-show="user">
+    <h1 class="fader" style="display: inline;">{{user.name}}, {{user.birth_date | bdayToAge}}&nbsp;</h1>
+    <h3 class="fader" style="display: inline;">({{user.distance_mi}} miles away)</h3>
+
+    <div class="main-photo-container">
+      <div class="main-photo tinder-card"
+           style="background-image: url({{user.photos[photoIndex].processedFiles[1].url}});">
+      </div>
+    </div>
+
+    <p class="fader bio">
+      <span dd-text-collapse dd-text-collapse-max-length="48"
+            dd-text-collapse-text="{{user.bio || 'No Bio' | emoji}}">
+      </span>
+    </p>
+
+    <div class="small-photos fader">
+      <div ng-repeat="photo in user.photos">
+        <img ng-src="{{photo.processedFiles[2].url}}" ng-click="swapPhoto($index)" data-photo-index="{{$index}}"
+             ng-class="{'selected': $index === photoIndex}" />
+      </div>
+    </div>
   </div>
 </script>
 
