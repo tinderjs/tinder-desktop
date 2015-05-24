@@ -5,6 +5,7 @@
     $scope.conversations = API.conversations;
     $scope.open = function(matchId) {
       $scope.conversation = $scope.conversations[matchId];
+      ga_storage._trackEvent('Messages', 'opened thread');
     };
     var ENTER = 13;
     $scope.keypress = function(event) {
@@ -13,6 +14,7 @@
         if ($scope.message.length > 0) {
           API.sendMessage($scope.conversation.matchId, $scope.message);
           $scope.message = '';
+          ga_storage._trackEvent('Messages', 'sent message');
         }
       }
     };
