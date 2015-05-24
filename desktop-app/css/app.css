@@ -77,10 +77,6 @@ a {
     position: relative;
 }
 
-.user .right img {
-    top: -9px;
-}
-
 .user .left img {
     left: 11px;
     display: block;
@@ -91,7 +87,7 @@ a {
     font-size: 12px;
     position: relative;
     text-align: right;
-    margin: 10px 5px 20px;
+    margin: 8px 5px 18px;
 }
 
 .top-button {
