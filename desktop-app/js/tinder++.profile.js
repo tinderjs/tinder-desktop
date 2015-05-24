@@ -4,6 +4,7 @@
   module.controller('ProfileController', function($scope, $routeParams, API) {
     API.userInfo($routeParams.userId, function(_, data) {
       $scope.user = data.results;
+      ga_storage._trackEvent('Messages', 'viewed profile');
     });
 
     $scope.photoIndex = 0;
