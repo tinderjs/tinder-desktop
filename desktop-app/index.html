@@ -122,12 +122,18 @@
     </div>
   </div>
   <div id="conversation" ng-show="conversation">
+    <h2 class="message-header">
+      Chat with {{conversation.name}}
+    </h2>
+    <div ng-show="conversation.messages.length == 0">
+      No messages yet. Write something!
+    </div>
     <div ng-repeat-start="message in conversation.messages"
          class="{{message.fromMe ? 'from-me' : 'from-them'}}">
       <p ng-if="message.text">{{message.text}}</p>
     </div>
     <div ng-repeat-end class="clear"></div>
-    <textarea ng-keypress="keypress($event)" ng-model="message" rows="4">
+    <textarea ng-keypress="keypress($event)" ng-model="message" rows="4" placeholder="Insert something witty here...">
   </div>
 </script>
 

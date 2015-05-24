@@ -321,7 +321,8 @@ a {
     font-weight: normal;
     padding: 3px 14px;
 }
-#conversation div {
+#conversation div.from-me,
+#conversation div.from-them {
     max-width: 51%;
     word-wrap: break-word;
     margin-bottom: 10px;
@@ -333,6 +334,8 @@ a {
     border: 1px solid #ccc;
     border-radius: 9px;
     width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .clear {
