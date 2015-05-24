@@ -15,15 +15,16 @@
   }
 
 
-  var app = angular.module('tinder++', ['tinder++.login', 'tinder++.swipe', 'tinder++.messages', 'ngRoute']);
+  var app = angular.module('tinder++', ['tinder++.login', 'tinder++.swipe', 'tinder++.messages', 'tinder++.profile', 'ngRoute']);
 
   app.config(function($routeProvider) {
     var capitalize = function (s) { return s[0].toUpperCase() + s.slice(1); };
 
-    ['login', 'swipe', 'messages'].forEach(function(route) {
-      $routeProvider.when('/' + route, {
-        templateUrl: route + '.html',
-        controller: capitalize(route) + 'Controller'
+    ['/login', '/swipe/', '/messages', '/profile/:userId'].forEach(function(route) {
+      var name = route.split('/')[1];
+      $routeProvider.when(route, {
+        templateUrl: name + '.html',
+        controller: capitalize(name) + 'Controller'
       });
     });
   });
