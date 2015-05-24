@@ -26,8 +26,9 @@ a {
 }
 
 .top-icon {
-    margin: 0 calc(50% - 1.5em);
-    position: absolute;
+    position: relative;
+    top: 13px;
+    padding: 0 5px;
 }
 
 .left {
