@@ -27,7 +27,7 @@ a {
 
 .top-icon {
     position: relative;
-    top: 13px;
+    top: -13px;
     padding: 0 5px;
 }
 
