@@ -1,6 +1,6 @@
 (function() {
-  gui = require('nw.gui')
-  module = angular.module('tinder++.swipe', ['ngAutocomplete', 'tinder++.api']);
+  var gui = require('nw.gui')
+  var module = angular.module('tinder++.swipe', ['ngAutocomplete', 'tinder++.api']);
 
   module.controller('SwipeController', function SwipeController($scope, $http, $timeout, API) {
     $scope.allPeople = [];
