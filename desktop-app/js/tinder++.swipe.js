@@ -142,6 +142,7 @@
         var card = window.stack.getCard(cardEl);
         card.throwIn(0, 0);
       });
+      $scope.$apply();
       ga_storage._trackEvent('Undo', 'Clicked Undo');
     };
 
@@ -240,9 +241,10 @@
           ga_storage._trackEvent('Keyboard', 'right');
         });
 
-        Mousetrap.bind('backspace', function() {
+        Mousetrap.bind('backspace', function(evt) {
           $scope.undo();
           ga_storage._trackEvent('Keyboard', 'backspace');
+          evt.preventDefault();
         });
       }
 
