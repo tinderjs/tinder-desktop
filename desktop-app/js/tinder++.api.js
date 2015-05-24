@@ -79,9 +79,9 @@
     var createConversation = function(match) {
       apiObj.conversations[match._id] = {
         matchId: match._id,
-        userId: match.person._id,
-        name: match.person.name,
-        thumbnail: match.person.photos[0].processedFiles[3].url,
+        userId: (match.person ? match.person._id : null),
+        name: (match.person ? match.person.name : null),
+        thumbnail: (match.person ? match.person.photos[0].processedFiles[3].url : null),
         messages: [],
         lastActive: match.created_date
       };

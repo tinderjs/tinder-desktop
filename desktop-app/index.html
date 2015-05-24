@@ -103,7 +103,7 @@
   </div>
 </script>
 
-<script type=text/ng-template id=login.html>
+<script type=t"ext/ng-template" id="login.html">
   <div class="fb-login">
     <div class="login-container">
       <img src="img/icon.png" alt="Tinder++" class="icon" />
@@ -112,13 +112,13 @@
   </div>
 </script>
 
-<script type=text/ng-template id=messages.html>
+<script type="text/ng-template" id="messages.html">
   <div id="match-list">
     <a ng-href="#/swipe"><i id="back-arrow" class="fa fa-arrow-left fa-2x"></i></a>
     <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true"
          ng-click="open(match.matchId)" class="match">
-      <img ng-src="{{match.thumbnail}}" class="thumbnail"/>
-      <p class="name">{{match.name}}</p>
+      <img ng-src="{{match.thumbnail || 'img/anonymous.png'}}" class="thumbnail"/>
+      <p class="name">{{match.name || 'Unknown'}}</p>
     </div>
   </div>
   <div id="conversation" ng-show="conversation">

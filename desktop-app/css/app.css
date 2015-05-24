@@ -307,6 +307,8 @@ a {
     text-align: center;
     line-height: 42px;
     font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 /* from http://codepen.io/samuelkraft/pen/Farhl */
 #conversation {
