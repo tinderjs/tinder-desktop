@@ -49,7 +49,7 @@
     <div class="left" ng-show="apiQueue.length > 0">
       <a href="" ng-click="undo()">
         Undo <i class="fa fa-undo"></i>
-        <img src="{{apiQueue[0].user.photos[0].processedFiles[3].url}}" />
+        <img ng-src="{{apiQueue[0].user.photos[0].processedFiles[3].url}}" />
       </a>
     </div>
     <div class="right">
@@ -63,7 +63,7 @@
         <a href="" ng-click="toggleLocation()" >({{getCookie('currentCity') ? getCookie('currentCity') : 'set location'}})</a> | 
         <a href="" ng-click="logout()">Logout</a>
       </p>
-      <img src="{{getCookie('smallPhoto')}}" />
+      <img ng-src="{{getCookie('smallPhoto')}}" />
       <a ng-href="#/messages">
         <i class="fa fa-envelope fa-3x top-icon"></i>
       </a>

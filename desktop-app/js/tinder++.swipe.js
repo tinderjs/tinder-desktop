@@ -59,8 +59,8 @@
           closeOnConfirm: true
         }, function() {
           $scope.showLocation = true;
-          $scope.$apply();
           $timeout(function() {
+            $scope.$apply();
             $('#autocompleteLocation').focus();
           }, 0, false);
         });
@@ -82,7 +82,9 @@
         $scope.peopleIndex = 0;
         $scope.allPeople = people;
         $.map($scope.allPeople, function(person) { person.photoIndex = 0; });
-        $scope.$apply();
+        $timeout(function() {
+          $scope.$apply();
+        });
       }
     };
 
@@ -97,7 +99,9 @@
         }
       }
       $scope.apiQueue.push(data);
-      $scope.$apply();
+      $timeout(function() {
+        $scope.$apply();
+      });
       queueTimer = $timeout(function() {
         flushApiQueue();
       }, 10000, false);
@@ -110,7 +114,9 @@
           API[oldData.method](oldData.user._id);
         }
       }
-      $scope.$apply();
+      $timeout(function() {
+        $scope.$apply();
+      });
     };
 
     $scope.undo = function() {
@@ -121,7 +127,9 @@
         var card = window.stack.getCard(cardEl);
         card.throwIn(0, 0);
       });
-      $scope.$apply();
+      $timeout(function() {
+        $scope.$apply();
+      });
       ga_storage._trackEvent('Undo', 'Clicked Undo');
     };
 
@@ -149,7 +157,9 @@
           user: user
         });
         $scope.peopleIndex++;
-        $scope.$apply();
+        $timeout(function() {
+          $scope.$apply();
+        });
         $(e.target).fadeOut(500);
         if ($scope.peopleIndex >= $scope.allPeople.length) {
           getPeople();
@@ -325,6 +335,9 @@
             }
           }
 
+          // outer wrapper element
+          var outerSpan = angular.element('<span class="outerSpan"></span>');
+
           if (splitIdx && text.length > splitIdx) {
             // split the text in two parts, the first always showing
             var firstPart = String(text).substring(0, splitIdx);
@@ -336,19 +349,20 @@
             var moreIndicatorSpan = $compile('<span ng-if="!collapsed">&#8230; </span>')(scope);
             var lineBreak = $compile('<br ng-if="collapsed">')(scope);
             var toggleButton = $compile('<span class="collapse-text-toggle" ng-click="toggle()">{{collapsed ? "less" : "more"}}</span>')(scope);
-
-            // remove the current contents of the element
-            // and add the new ones we created
-            element.empty();
-            element.append(firstSpan);
-            element.append(secondSpan);
-            element.append(moreIndicatorSpan);
-            element.append(lineBreak);
-            element.append(toggleButton);
+            
+            outerSpan.append(firstSpan);
+            outerSpan.append(secondSpan);
+            outerSpan.append(moreIndicatorSpan);
+            outerSpan.append(lineBreak);
+            outerSpan.append(toggleButton);
           } else {
-            element.empty();
-            element.append(text);
+            outerSpan.append(text);
           }
+
+          // remove the current contents of the element
+          // and add the new ones we created
+          element.empty();
+          element.append(outerSpan);
         });
       }
     };

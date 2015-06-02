@@ -176,25 +176,28 @@
     };
 
     var update = function(err, data) {
-      console.log(err);
-      console.log(data);
       if (!!err) { 
         handleError(err);
         return;
       }
-      data.matches.forEach(function(match) {
-        if( (! apiObj.conversations[match._id]) && (!(match.pending || match.dead)) )
-          createConversation(match);
+      if (data) {
+        data.matches.forEach(function(match) {
+          if( (! apiObj.conversations[match._id]) && (!(match.pending || match.dead)) )
+            createConversation(match);
 
-        match.messages.forEach(addMessage);
-      });
+          match.messages.forEach(addMessage);
+        });
 
-      data.blocks.forEach(function(blockedMatchId) {
-        delete apiObj.conversations[blockedMatchId];
-      });
+        data.blocks.forEach(function(blockedMatchId) {
+          delete apiObj.conversations[blockedMatchId];
+        });
 
-      localStorage.conversations = JSON.stringify(apiObj.conversations);
-      localStorage.lastActivity = client.lastActivity.toISOString();
+        localStorage.conversations = JSON.stringify(apiObj.conversations);
+        localStorage.lastActivity = client.lastActivity.toISOString();
+      } else {
+        console.log('error: data is null');
+      }
+      
     };
 
     if (localStorage.tinderToken) {
