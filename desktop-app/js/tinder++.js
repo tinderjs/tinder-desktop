@@ -14,6 +14,12 @@
     win.menu = nativeMenuBar;
   }
 
+  // track the current app version in GA
+  ga_storage._setCustomVar(
+    1,                        // This custom var is set to slot #1.  Required parameter.
+    'App Version',            // The name acts as a kind of category for the user activity.  Required parameter.
+    gui.App.manifest.version  // This value of the custom variable.  Required parameter.
+  );
 
   var app = angular.module('tinder++', ['tinder++.login', 'tinder++.swipe', 'tinder++.messages', 'tinder++.profile', 'ngRoute']);
 
