@@ -1,5 +1,5 @@
 (function() {
-  var gui = require('nw.gui')
+  var gui = require('nw.gui');
   var module = angular.module('tinder++.swipe', ['ngAutocomplete', 'tinder++.api']);
 
   module.controller('SwipeController', function SwipeController($scope, $http, $timeout, $interval, API) {
@@ -17,31 +17,7 @@
     $interval(function() { $scope.likesRemaining = API.getLikesRemaining(); }, 1000);
 
     $scope.logout = function() {
-      localStorage.clear();
-      // clear the cache
-      gui.App.clearCache();
-      var nwWin = gui.Window.get();
-
-      function removeCookie(cookie) {
-        var lurl = "http" + (cookie.secure ? "s" : "") + "://" + cookie.domain + cookie.path;
-        nwWin.cookies.remove({ url: lurl, name: cookie.name },
-        function(result) {
-          if (result) {
-            if (!result.name) { result = result[0]; }
-            console.log('cookie remove callback: ' + result.name + ' ' + result.url);
-          } else {
-            console.log('cookie removal failed');
-          }
-        });
-      }
-
-      nwWin.cookies.getAll({}, function(cookies) {
-        console.log('Attempting to remove '+cookies.length+' cookies...');
-        for (var i=0; i<cookies.length; i++) {
-          removeCookie(cookies[i]);
-        }
-      });
-      gui.Window.get().reloadIgnoringCache();
+      API.logout();
     };
 
     $scope.swapPhoto = function(index) {

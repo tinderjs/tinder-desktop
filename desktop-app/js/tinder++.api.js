@@ -1,4 +1,5 @@
 (function() {
+  var gui = require('nw.gui');
   var tinder = require('tinderjs');
   var client = new tinder.TinderClient();
   if (localStorage.tinderToken) { client.setAuthToken(localStorage.tinderToken); }
@@ -7,9 +8,51 @@
     var likesRemaining = null;
     var apiObj = {};
 
+    var handleError = function(err) {
+      console.log('ERROR!!!!');
+      console.log(err);
+
+      // api token invalid, logout and refresh
+      if (err.status === 401) {
+        apiObj.logout();
+      }
+    };
+
+    apiObj.logout = function() {
+      localStorage.clear();
+      // clear the cache
+      gui.App.clearCache();
+      var nwWin = gui.Window.get();
+
+      function removeCookie(cookie) {
+        var lurl = "http" + (cookie.secure ? "s" : "") + "://" + cookie.domain + cookie.path;
+        nwWin.cookies.remove({ url: lurl, name: cookie.name },
+        function(result) {
+          if (result) {
+            if (!result.name) { result = result[0]; }
+            console.log('cookie remove callback: ' + result.name + ' ' + result.url);
+          } else {
+            console.log('cookie removal failed');
+          }
+        });
+      }
+
+      nwWin.cookies.getAll({}, function(cookies) {
+        console.log('Attempting to remove '+cookies.length+' cookies...');
+        for (var i=0; i<cookies.length; i++) {
+          removeCookie(cookies[i]);
+        }
+      });
+      gui.Window.get().reloadIgnoringCache();
+    };
+
     apiObj.login = function(id, token) {
       ga_storage._trackEvent('Login', 'Facebook Login Successful');
       client.authorize(token, id, function(err, res, data) {
+        if (!!err) { 
+          handleError(err);
+          return;
+        }
         console.log(res);
         localStorage.tinderToken = client.getAuthToken();
         localStorage.name = res.user.full_name;
@@ -23,6 +66,10 @@
     };
     apiObj.updateLocation = function(lng, lat, callback) {
       client.updatePosition(lng, lat, function(err, res, data) {
+        if (!!err) { 
+          handleError(err);
+          return;
+        }
         console.log(res);
         callback();
       });
@@ -30,6 +77,10 @@
     apiObj.people = function(callbackFn, limit) {
       limit = limit || 10;
       client.getRecommendations(limit, function(err, res, data) {
+        if (!!err) { 
+          handleError(err);
+          return;
+        }
         if ((res && res.message && (res.message === 'recs timeout' || res.message === 'recs exhausted')) || !res) {
           // TODO: I think alerts belong to controller
           swal({
@@ -51,12 +102,20 @@
     };
     apiObj.userInfo = function(userId, callbackFn) {
       client.getUser(userId, function(err, res, data) {
+        if (!!err) { 
+          handleError(err);
+          return;
+        }
         console.log(res);
         callbackFn(err, res, data);
       });
     };
     apiObj.like = function(userId) {
       client.like(userId, function(err, res, data) {
+        if (!!err) { 
+          handleError(err);
+          return;
+        }
         console.log(res);
         if (res && res.match) {
           apiObj.userInfo(res.match.participants[1], function(err2, res2, data2) {
@@ -89,6 +148,10 @@
     };
     apiObj.pass = function(userId) {
       client.pass(userId, function(err, res, data) {
+        if (!!err) { 
+          handleError(err);
+          return;
+        }
         console.log(res);
       });
     };
@@ -112,7 +175,13 @@
       })
     };
 
-    var update = function(_, data) {
+    var update = function(err, data) {
+      console.log(err);
+      console.log(data);
+      if (!!err) { 
+        handleError(err);
+        return;
+      }
       data.matches.forEach(function(match) {
         if( (! apiObj.conversations[match._id]) && (!(match.pending || match.dead)) )
           createConversation(match);
@@ -128,8 +197,8 @@
       localStorage.lastActivity = client.lastActivity.toISOString();
     };
 
-    if(localStorage.tinderToken) {
-      if(localStorage.conversations) {
+    if (localStorage.tinderToken) {
+      if (localStorage.conversations) {
         apiObj.conversations = JSON.parse(localStorage.conversations);
         client.lastActivity = new Date(localStorage.lastActivity);
       } else {
