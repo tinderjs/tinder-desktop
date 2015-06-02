@@ -7,8 +7,9 @@ You'll need to run `npm install` in both the main directory, and inside of deskt
 
 To compile your changes and test:
 
-First, download node-webkit: https://github.com/nwjs/nw.js
-Currently using v0.11.6, can be found here: https://github.com/nwjs/nw.js/wiki/Downloads-of-old-versions#v0116-jan-21-2015
+First, download node-webkit (currently using [v0.11.6](https://github.com/nwjs/nw.js/wiki/Downloads-of-old-versions#v0116-jan-21-2015))
+
+To start the app:
 
 ```
 cd desktop-app
@@ -16,6 +17,10 @@ cd desktop-app
 ```
 
 Note: if you don't have Wine installed and want to run the build script (`node build.js`), just delete the `winIco` field from build.js
+
+#### Contributors ####
+
+- [@tomlandia](https://github.com/tomlandia) ([http://thomasschneider.com/](http://thomasschneider.com/))
 
 ### ISC License ###
 
