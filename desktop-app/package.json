@@ -4,7 +4,7 @@
   "main": "index.html",
   "window": {
     "title": "TinderPlusPlus",
-    "toolbar": false,
+    "toolbar": true,
     "resizable": true,
     "fullscreen": false,
     "width": 560,
@@ -16,8 +16,9 @@
   },
   "user-agent": "Mozilla/5.0 (Linux; U; en-gb; KFTHWI Build/JDQ39) AppleWebKit/535.19 (KHTML, like Gecko) Silk/3.16 Safari/535.19",
   "no-edit-menu": true,
-  "devDependencies": {
+  "dependencies": {
     "moment": "^2.8.4",
-    "tinderjs": "git://github.com/mfkp/tinderjs"
+    "tinderjs": "git://github.com/mfkp/tinderjs",
+    "nw-updater": "git://github.com/mfkp/nw-updater"
   }
 }

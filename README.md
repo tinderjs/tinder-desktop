@@ -1,18 +1,18 @@
 Tinder++
 ========
 
-It's a node-webkit app.
+It's a node-webkit (now nw.js) app.
 
 You'll need to run `npm install` in both the main directory, and inside of desktop-app before starting.
 
 To compile your changes and test:
 
-First, download node-webkit: https://github.com/rogerwang/node-webkit
+First, download node-webkit: https://github.com/nwjs/nw.js
+Currently using v0.11.6, can be found here: https://github.com/nwjs/nw.js/wiki/Downloads-of-old-versions#v0116-jan-21-2015
 
 ```
 cd desktop-app
-zip -r tinder.nw *
-/path/to/your/node-webkit tinder.nw
+/path/to/your/nwjs .
 ```
 
 Note: if you don't have Wine installed and want to run the build script (`node build.js`), just delete the `winIco` field from build.js
