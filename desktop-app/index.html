@@ -22,6 +22,8 @@
     ga_storage._setAccount('UA-57228925-3');
     ga_storage._trackPageview('/index.html');
   </script>
+  <script src="js/error_handler.js"></script>
+  
   <script src="js/vendor/angular.min.js"></script>
   <script src="js/vendor/ngAutocomplete.js"></script>
   <script src="js/vendor/angular-route.min.js"></script>
@@ -183,6 +185,13 @@
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(t, s);
   })();
+</script>
+
+<script type="text/javascript">
+  window.addEventListener('error', function(e) {
+    console.log(e);
+    ga_storage._trackEvent('JS Error', e.message, e.filename + ':  ' + e.lineno);
+  });
 </script>
 
 </body>
