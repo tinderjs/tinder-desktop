@@ -16,6 +16,7 @@
       if (err.status === 401) {
         apiObj.logout();
       }
+      ga_storage._trackEvent('API Error', err.toString());
     };
 
     apiObj.logout = function() {
@@ -91,6 +92,7 @@
             confirmButtonColor: "#DD6B55",
             confirmButtonText: 'Got it'
           });
+          ga_storage._trackEvent('Events', 'Out of people');
         } else {
           if (res && res.results) {
             callbackFn(res.results);
@@ -126,6 +128,7 @@
               confirmButtonText: 'Nice!',
               imageUrl: user.photos[0].processedFiles[3].url
             });
+            ga_storage._trackEvent('Events', 'Match');
           });
         } else if (res && res.rate_limited_until) {
           var rate_limited_until = moment.unix(res.rate_limited_until / 1000);
@@ -139,6 +142,7 @@
             confirmButtonColor: "#DD6B55",
             confirmButtonText: 'WTF Tinder, fine'
           });
+          ga_storage._trackEvent('Events', 'Rate Limited');
         }
 
         if (res && typeof res.likes_remaining != 'undefined') {
