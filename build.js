@@ -55,7 +55,7 @@ function createDMG() {
   var appdmg = require('appdmg');
   var ee = appdmg({
     source: './dmg.json',
-    target: './build/' + appName + '/' + appName + '.dmg'
+    target: './build/' + appName + '/Tinder++.dmg'
   });
    
   ee.on('progress', function (info) {
