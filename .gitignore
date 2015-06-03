@@ -2,5 +2,4 @@
 *.log
 node_modules
 cache/
-build/**/osx*
-build/**/win*
+build/Tinder⁺⁺/*
