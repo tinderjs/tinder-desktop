@@ -67,7 +67,9 @@
         <a href="" ng-click="toggleLocation()" >({{getCookie('currentCity') ? getCookie('currentCity') : 'set location'}})</a> | 
         <a href="" ng-click="logout()">Logout</a>
       </p>
-      <img ng-src="{{getCookie('smallPhoto')}}" />
+      <a ng-href="#/profile/{{getCookie('userId')}}">
+        <img ng-src="{{getCookie('smallPhoto')}}" />
+      </a>
       <a ng-href="#/messages">
         <i class="fa fa-envelope fa-3x top-icon"></i>
       </a>
