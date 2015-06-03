@@ -1,6 +1,6 @@
 .idea/
 *.log
 node_modules
-*.nw
 cache/
-build/
+build/**/osx*
+build/**/win*
