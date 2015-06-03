@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Tinder++"
-#define MyAppVersion "1.1.0"
+#define MyAppVersion "1.1.1"
 #define MyAppPublisher "VibraMedia, LLC"
 #define MyAppURL "http://www.tinderplusplus.com/"
 #define MyAppExeName "Tinder⁺⁺.exe"
