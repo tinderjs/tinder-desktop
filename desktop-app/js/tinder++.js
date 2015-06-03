@@ -14,9 +14,6 @@
     win.menu = nativeMenuBar;
   }
 
-  // clear out the stored city because we don't know if their phone changed it
-  localStorage.removeItem('currentCity');
-
   // track the current app version in GA
   ga_storage._setCustomVar(
     1,                        // This custom var is set to slot #1.  Required parameter.
