@@ -153,9 +153,8 @@
     <i class="fa fa-arrow-left fa-3x top-icon"></i>
   </a>
   <div class="container" ng-show="user">
-    <h1 class="fader" style="display: inline;">{{user.name}}, {{user.birth_date | bdayToAge}}&nbsp;</h1>
-    <h3 class="fader" style="display: inline;">({{user.distance_mi}} miles away)</h3>
-    <h3 class="fader" style="display: inline;">(Active {{user.ping_time | pingToAgo}})</h3>
+    <h1 class="fader">{{user.name}}, {{user.birth_date | bdayToAge}}</h1>
+    <h3 class="fader" style="display: inline;">{{user.distance_mi}} miles away, Active {{user.ping_time | pingToAgo}}</h3>
 
     <div class="main-photo-container">
       <div class="main-photo tinder-card"
