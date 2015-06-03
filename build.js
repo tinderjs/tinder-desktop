@@ -1,3 +1,6 @@
+// TODO: automate updating desktop-app/package.json version
+console.log('Before running, make sure versions are updated in both package.json and desktop-app/package.json');
+
 var NwBuilder = require('node-webkit-builder');
 var appPkg = require('./desktop-app/package.json');
 
@@ -9,7 +12,8 @@ var nw = new NwBuilder({
   appVersion: appPkg.version,
   winIco: 'icons/win.ico',
   macIcns: 'icons/mac.icns',
-  buildType: 'versioned'
+  buildType: 'versioned',
+  mergeZip: false
 });
 
 nw.on('log', console.log);
@@ -21,6 +25,7 @@ nw.build().then(function () {
 });
 
 // create the regular .nw file for updates
+console.log('creating regular tinder.nw for updates...');
 var fs = require('fs');
 var archiver = require('archiver');
 var archive = archiver('zip');
@@ -32,14 +37,15 @@ if (!fs.existsSync(updatesDir)){
 
 var output = fs.createWriteStream(updatesDir + '/tinder-' + appPkg.version + '.nw');
 output.on('close', function () {
-	console.log((archive.pointer() / 1000000).toFixed(2) + 'mb compressed');
+  console.log((archive.pointer() / 1000000).toFixed(2) + 'mb compressed');
 });
 
 archive.pipe(output);
 archive.bulk([
-  { expand: true, cwd: 'desktop-app', src: ['**'], dest: 'desktop-app' }
+  { expand: true, cwd: 'desktop-app', src: ['**'], dest: '.' }
 ]);
 archive.finalize();
+
 
 // INSTRUCTIONS FOR BUILDING INSTALLER:
 // MAC

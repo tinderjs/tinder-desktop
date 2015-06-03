@@ -4,6 +4,7 @@
   "main": "index.html",
   "window": {
     "title": "TinderPlusPlus",
+    "icon": "img/icon.png",
     "toolbar": false,
     "resizable": true,
     "fullscreen": false,
