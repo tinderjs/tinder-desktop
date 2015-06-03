@@ -72,6 +72,18 @@
           return;
         }
         console.log(res);
+        if (res && res.error && res.error == 'major position change not significant') {
+          // clear out the stored city because we don't know where they are anymore
+          localStorage.removeItem('currentCity');
+          swal({
+            title: 'Location not updated',
+            text: 'You probably tried moving too far from your last location. Cool your jets ' +
+                  'and you\'ll be able to switch again in a while (you can still use your last location).',
+            type: 'error',
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: 'Got it'
+          });
+        }
         callback();
       });
     };
