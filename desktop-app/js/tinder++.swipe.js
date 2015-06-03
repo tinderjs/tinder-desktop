@@ -282,6 +282,12 @@
     };
   });
 
+  module.filter('pingToAgo', function() {
+    return function(ping) {
+      return moment(ping).fromNow();
+    };
+  });
+
   module.filter('emoji', function() {
     return function(string) {
       return twemoji.parse(string);
