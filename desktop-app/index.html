@@ -126,7 +126,7 @@
 <script type="text/ng-template" id="messages.html">
   <div id="match-list">
     <a ng-href="#/swipe"><i id="back-arrow" class="fa fa-arrow-left fa-2x"></i></a>
-    <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true"
+    <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true track by match.matchId"
          ng-click="open(match.matchId)" class="match">
       <img ng-src="{{match.thumbnail || 'img/anonymous.png'}}" class="thumbnail"/>
       <p class="name">{{match.name || 'Unknown'}}</p>
