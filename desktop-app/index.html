@@ -61,7 +61,7 @@
         {{getCookie('name')}}
         <span ng-show="(likesRemaining !== null)">
           <br>
-          Likes Remaining: {{likesRemaining}}
+          Likes Remaining: {{likesRemaining ? '<' + likesRemaining : likesRemaining}}
         </span>
         <br>
         <a href="" ng-click="toggleLocation()" >({{getCookie('currentCity') ? getCookie('currentCity') : 'set location'}})</a> | 
