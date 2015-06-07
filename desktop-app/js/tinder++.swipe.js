@@ -213,7 +213,9 @@
         Mousetrap.bind('left', function () {
           var cardEl = $scope.cards[$scope.cards.length - $scope.peopleIndex - 1];
           var card = window.stack.getCard(cardEl);
-          card.throwOut(-100, -50);
+          if (!!card) {
+            card.throwOut(-100, -50);
+          }
           $passOverlay = $(cardEl).children('.pass-overlay');
           $likeOverlay = $(cardEl).children('.like-overlay');
           pass(1);
@@ -223,7 +225,9 @@
         Mousetrap.bind('right', function () {
           var cardEl = $scope.cards[$scope.cards.length - $scope.peopleIndex - 1];
           var card = window.stack.getCard(cardEl);
-          card.throwOut(100, -50);
+          if (!!card) {
+            card.throwOut(100, -50);
+          }
           $passOverlay = $(cardEl).children('.pass-overlay');
           $likeOverlay = $(cardEl).children('.like-overlay');
           like(1);
