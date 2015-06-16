@@ -35,8 +35,8 @@
     });
   });
 
-  app.run(function($location) {
-    var firstPage = (localStorage.tinderToken ? '/swipe' : '/login');
+  app.run(function($location, Settings) {
+    var firstPage = (localStorage.tinderToken ? (Settings.get('homepage') || '/swipe') : '/login');
     $location.path(firstPage);
   });
 })();

@@ -11,7 +11,7 @@
     var data = {};
 
     if (localStorage.tinderToken && localStorage.settings) {
-      data = JSON.parse(localStorage.settings);
+      angular.extend(data, JSON.parse(localStorage.settings));
     }
 
     return settings;
@@ -19,8 +19,10 @@
     ///////////////////////////
 
     function setSetting (key, value) {
-      data[key] = value;
-      syncSettings();
+      if (data[key] !== value) {
+        data[key] = value;
+        syncSettings();
+      }
     }
 
     function getSetting (key) {
@@ -37,7 +39,9 @@
     }
   });
 
-  module.controller('SettingsController', function() {});
+  module.controller('SettingsController', function($scope, Settings) {
+    $scope.homepage = Settings.get('homepage') || '/swipe';
+  });
 
   module.directive('tppSettingSync', function(Settings) {
     return {
@@ -48,13 +52,12 @@
 
     function linkFn(scope, elem, attrs, modelCtrl) {
       var watchFn;
-      attrs.$observe('ngModel', function(settingKey) { // Got ng-model bind path here
+      attrs.$observe('ngModel', function(settingKey) {
         (watchFn || angular.noop)();
-        watchFn = scope.$watch(settingKey, function(settingValue) { // Watch given path for changes
-          console.log(settingKey);  
-          console.log(settingValue);  
-          if (modelCtrl.$valid) 
+        watchFn = scope.$watch(settingKey, function(settingValue) {
+          if (modelCtrl.$valid) {
             Settings.set(settingKey, settingValue);
+          }
         });
       });
     }
