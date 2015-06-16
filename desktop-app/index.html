@@ -38,6 +38,7 @@
   <script src="js/tinder++.swipe.js"></script>
   <script src="js/tinder++.messages.js"></script>
   <script src="js/tinder++.profile.js"></script>
+  <script src="js/tinder++.settings.js"></script>
   <script src="js/tinder++.js"></script>
   <script src="js/tinder++.updater.js"></script>
 
@@ -65,7 +66,8 @@
         </span>
         <br>
         <a href="" ng-click="toggleLocation()" >({{getCookie('currentCity') ? getCookie('currentCity') : 'set location'}})</a> | 
-        <a href="" ng-click="logout()">Logout</a>
+        <a href="" ng-click="logout()">Logout</a> |
+        <a href="#/settings">Settings</a>
       </p>
       <a ng-href="#/profile/{{getCookie('userId')}}">
         <img ng-src="{{getCookie('smallPhoto')}}" />
@@ -174,6 +176,29 @@
              ng-class="{'selected': $index === photoIndex}" />
       </div>
     </div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="settings.html">
+  <a ng-href="#/swipe">
+    <i class="fa fa-arrow-left fa-3x top-icon"></i>
+  </a>
+  <div class="container">
+    <h1 class="fader">Settings</h1>
+    <form name="tppSettings">
+      <fieldset>
+        <legend>Homepage</legend>
+        <p>
+          <input type="radio" name="homepage" id="homepage_1" value="/swipe" ng-model="homepage" tpp-setting-sync/>
+          <label for="size_1">Swipe</label>
+        </p>
+        <p>
+          <input type="radio" name="homepage" id="homepage_2" value="/messages" ng-model="homepage" tpp-setting-sync/>
+          <label for="size_2">Messages</label>
+        </p>
+      </fieldset>
+    </form>
+
   </div>
 </script>
 
