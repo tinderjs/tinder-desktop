@@ -21,6 +21,7 @@ Note: if you don't have Wine installed and want to run the build script (`node b
 #### Contributors ####
 
 - [@tomlandia](https://github.com/tomlandia) ([http://thomasschneider.com/](http://thomasschneider.com/))
+- [@wbyoko](https://github.com/wbyoko) ([http://wbyoko.co/](http://wbyoko.co/))
 
 ### ISC License ###
 

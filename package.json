@@ -11,10 +11,16 @@
     "url": "https://github.com/mfkp/tinderplusplus.git"
   },
   "author": "@mfkp",
-  "contributors": [{
-    "name": "Thomas Schneider",
-    "url": "http://thomasschneider.com"
-  }],
+  "contributors": [
+    {
+      "name": "Thomas Schneider",
+      "url": "http://thomasschneider.com"
+    },
+    {
+      "name": "wbyoko",
+      "url": "https://github.com/wbyoko"
+    },
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mfkp/tinderplusplus/issues"
