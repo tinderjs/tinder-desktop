@@ -35,7 +35,7 @@
         var fuzzAmount = +(Math.random() * (0.0000009 - 0.0000001) + 0.0000001);
         var lng = (parseFloat(details.geometry.location.lng()) + fuzzAmount).toFixed(7);
         var lat = (parseFloat(details.geometry.location.lat()) + fuzzAmount).toFixed(7);
-        API.updateLocation(lng.toString(), lat.toString(), function() {
+        API.updateLocation(lng.toString(), lat.toString()).then(function() {
           ga_storage._trackEvent('Location', 'Location Updated');
           getPeople();
         });
@@ -73,7 +73,7 @@
 
     var getPeople = function() {
       flushApiQueue();
-      API.people(setPeople);
+      API.people().then(setPeople);
       ga_storage._trackEvent('People', 'Loading more people');
     };
 

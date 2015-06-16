@@ -4,11 +4,11 @@
   var client = new tinder.TinderClient();
   if (localStorage.tinderToken) { client.setAuthToken(localStorage.tinderToken); }
 
-  angular.module('tinder++.api', []).factory('API', function($interval) {
+  angular.module('tinder++.api', []).factory('API', function($interval, $q) {
     var likesRemaining = null;
     var apiObj = {};
 
-    var handleError = function(err) {
+    var handleError = function(err, callbackFn) {
       console.log('ERROR!!!!');
       console.log(err);
 
@@ -16,6 +16,7 @@
       if (err.status === 401) {
         apiObj.logout();
       }
+      (callbackFn || angular.noop)(err);
       ga_storage._trackEvent('API Error', err.toString());
     };
 
@@ -65,10 +66,12 @@
         window.location.reload();
       });
     };
-    apiObj.updateLocation = function(lng, lat, callback) {
+
+    apiObj.updateLocation = function(lng, lat) {
+      return $q(function (resolve, reject) {
       client.updatePosition(lng, lat, function(err, res, data) {
         if (!!err) { 
-          handleError(err);
+          handleError(err, reject);
           return;
         }
         console.log(res);
@@ -84,14 +87,17 @@
             confirmButtonText: 'Got it'
           });
         }
-        callback();
+        resolve(res);
+      });
       });
     };
-    apiObj.people = function(callbackFn, limit) {
+
+    apiObj.people = function(limit) {
+      return $q(function (resolve, reject) {
       limit = limit || 10;
       client.getRecommendations(limit, function(err, res, data) {
         if (!!err) { 
-          handleError(err);
+          handleError(err, reject);
           return;
         }
         if ((res && res.message && (res.message === 'recs timeout' || res.message === 'recs exhausted')) || !res) {
@@ -105,29 +111,30 @@
             confirmButtonText: 'Got it'
           });
           ga_storage._trackEvent('Events', 'Out of people');
-        } else {
-          if (res && res.results) {
-            callbackFn(res.results);
-          } else {
-            callbackFn([]);
-          }
         }
+        resolve(res && res.results || []);
+      });
       });
     };
-    apiObj.userInfo = function(userId, callbackFn) {
+
+    apiObj.userInfo = function(userId) {
+      return $q(function (resolve, reject) {
       client.getUser(userId, function(err, res, data) {
         if (!!err) { 
-          handleError(err);
+          handleError(err, reject);
           return;
         }
         console.log(res);
-        callbackFn(err, res, data);
+        resolve(res.results);
+      });
       });
     };
+
     apiObj.like = function(userId) {
+      return $q(function (resolve, reject) {
       client.like(userId, function(err, res, data) {
         if (!!err) { 
-          handleError(err);
+          handleError(err, reject);
           return;
         }
         console.log(res);
@@ -156,20 +163,42 @@
           });
           ga_storage._trackEvent('Events', 'Rate Limited');
         }
-
         if (res && typeof res.likes_remaining != 'undefined') {
           likesRemaining = res.likes_remaining;
         }
+        resolve(res);
+      });        
       });
     };
+
     apiObj.pass = function(userId) {
+      return $q(function (resolve, reject) {
       client.pass(userId, function(err, res, data) {
         if (!!err) { 
-          handleError(err);
+          handleError(err, reject);
           return;
         }
         console.log(res);
+        resolve(res);
+      });        
       });
+    };
+
+    apiObj.sendMessage = function(matchId, message) {
+      return $q(function (resolve, reject) {
+      client.sendMessage(matchId, message, function(err, res, data) {
+        if (!!err) { 
+          handleError(err, reject);
+          return;
+        }
+        console.log(res);
+        resolve(res);
+      });        
+      });
+    };
+
+    apiObj.getLikesRemaining = function() {
+      return likesRemaining;
     };
 
     var createConversation = function(match) {
@@ -213,7 +242,6 @@
       } else {
         console.log('error: data is null');
       }
-      
     };
 
     if (localStorage.tinderToken) {
@@ -227,12 +255,6 @@
 
       $interval(function() { client.getUpdates(update); }, 4000);
     }
-
-    apiObj.sendMessage = client.sendMessage;
-
-    apiObj.getLikesRemaining = function() {
-      return likesRemaining;
-    };
 
     return apiObj;
   });
