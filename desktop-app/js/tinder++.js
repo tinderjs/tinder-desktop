@@ -36,7 +36,7 @@
   });
 
   app.run(function($location, Settings) {
-    var firstPage = (localStorage.tinderToken ? Settings.get('homepage') : '/login');
+    var firstPage = (localStorage.tinderToken ? Settings.get('landingPage') : '/login');
     $location.path(firstPage);
   });
 })();

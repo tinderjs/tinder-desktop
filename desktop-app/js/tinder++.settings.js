@@ -9,7 +9,7 @@
       sync : syncSettings,
       settings : {
         // set defaults here
-        homepage : '/swipe'
+        landingPage : '/swipe'
       }
     };
 
