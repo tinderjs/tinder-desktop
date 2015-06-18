@@ -7,6 +7,7 @@
       ga_storage._trackEvent('Messages', 'viewed profile');
     });
 
+    $scope.backLink = (localStorage.userId === $routeParams.userId) ? '#/swipe' : '#/messages';
     $scope.photoIndex = 0;
     $scope.swapPhoto = function(index) {
       $scope.photoIndex = index;
