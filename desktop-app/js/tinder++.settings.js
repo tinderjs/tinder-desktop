@@ -43,8 +43,12 @@
     }
   });
 
-  module.controller('SettingsController', function($scope, Settings) {
+  module.controller('SettingsController', function($scope, Settings, API) {
     $scope.settings = Settings.settings;
     $scope.syncSettings = Settings.sync;
+
+    $scope.logout = function() {
+      API.logout();
+    };
   });
 })();

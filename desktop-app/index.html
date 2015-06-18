@@ -65,8 +65,7 @@
           Likes Remaining: {{likesRemaining ? '<' + likesRemaining : likesRemaining}}
         </span>
         <br>
-        <a href="" ng-click="toggleLocation()" >({{getCookie('currentCity') ? getCookie('currentCity') : 'set location'}})</a> | 
-        <a href="" ng-click="logout()">Logout</a> |
+        <a href="" ng-click="toggleLocation()" >({{getCookie('currentCity') ? getCookie('currentCity') : 'set location'}})</a> |
         <a href="#/settings">Settings</a>
       </p>
       <a ng-href="#/profile/{{getCookie('userId')}}">
@@ -192,11 +191,18 @@
           <input type="radio" name="homepage" id="homepage_1" value="/swipe" ng-model="settings.homepage" ng-change="syncSettings()"/>
           Swipe
         </label>
-        
+        <br/>
         <label for="homepage_2">
           <input type="radio" name="homepage" id="homepage_2" value="/messages" ng-model="settings.homepage" ng-change="syncSettings()"/>
           Messages
         </label>
+      </fieldset>
+
+      <br/>
+
+      <fieldset>
+        <legend>Logout</legend>
+        <a href="" ng-click="logout()">Click to Logout</a>
       </fieldset>
     </form>
 
