@@ -16,10 +16,6 @@
     $scope.likesRemaining = null;
     $interval(function() { $scope.likesRemaining = API.getLikesRemaining(); }, 1000);
 
-    $scope.logout = function() {
-      API.logout();
-    };
-
     $scope.swapPhoto = function(index) {
       $scope.allPeople[$scope.peopleIndex].photoIndex = index;
     };

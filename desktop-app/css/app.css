@@ -105,7 +105,7 @@ a {
     position: relative;
 }
 
-.container {
+.container, .settings fieldset {
     max-width: 500px;
     margin: 0 auto 5px;
     text-align: center;
@@ -400,4 +400,8 @@ a {
     background: white;
     border-bottom-right-radius: 10px;
     -webkit-transform: translate(-30px, -2px);
+}
+
+.settings h1 {
+    text-align: center;
 }

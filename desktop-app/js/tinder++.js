@@ -21,12 +21,12 @@
     gui.App.manifest.version  // This value of the custom variable.  Required parameter.
   );
 
-  var app = angular.module('tinder++', ['tinder++.login', 'tinder++.swipe', 'tinder++.messages', 'tinder++.profile', 'ngRoute']);
+  var app = angular.module('tinder++', ['tinder++.login', 'tinder++.swipe', 'tinder++.messages', 'tinder++.profile', 'ngRoute', 'tinder++.settings']);
 
   app.config(function($routeProvider) {
     var capitalize = function (s) { return s[0].toUpperCase() + s.slice(1); };
 
-    ['/login', '/swipe/', '/messages', '/profile/:userId'].forEach(function(route) {
+    ['/login', '/swipe/', '/messages', '/profile/:userId', '/settings'].forEach(function(route) {
       var name = route.split('/')[1];
       $routeProvider.when(route, {
         templateUrl: name + '.html',
@@ -35,8 +35,8 @@
     });
   });
 
-  app.run(function($location) {
-    var firstPage = (localStorage.tinderToken ? '/swipe' : '/login');
+  app.run(function($location, Settings) {
+    var firstPage = (localStorage.tinderToken ? Settings.get('landingPage') : '/login');
     $location.path(firstPage);
   });
 })();
