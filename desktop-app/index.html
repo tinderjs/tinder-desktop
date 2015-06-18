@@ -183,19 +183,20 @@
   <a ng-href="#/swipe">
     <i class="fa fa-arrow-left fa-3x top-icon"></i>
   </a>
-  <div class="container">
-    <h1 class="fader">Settings</h1>
+  <div class="settings">
+    <h1>Settings</h1>
     <form name="tppSettings">
       <fieldset>
         <legend>Homepage</legend>
-        <p>
-          <input type="radio" name="homepage" id="homepage_1" value="/swipe" ng-model="homepage" tpp-setting-sync/>
-          <label for="size_1">Swipe</label>
-        </p>
-        <p>
-          <input type="radio" name="homepage" id="homepage_2" value="/messages" ng-model="homepage" tpp-setting-sync/>
-          <label for="size_2">Messages</label>
-        </p>
+        <label for="homepage_1">
+          <input type="radio" name="homepage" id="homepage_1" value="/swipe" ng-model="settings.homepage" ng-change="syncSettings()"/>
+          Swipe
+        </label>
+        
+        <label for="homepage_2">
+          <input type="radio" name="homepage" id="homepage_2" value="/messages" ng-model="settings.homepage" ng-change="syncSettings()"/>
+          Messages
+        </label>
       </fieldset>
     </form>
 

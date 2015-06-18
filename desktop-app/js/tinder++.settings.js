@@ -2,64 +2,49 @@
   module = angular.module('tinder++.settings', []);
 
   module.service('Settings', function() {
-    var settings = {
+    var settingsObj = {
       set : setSetting,
       get : getSetting,
-      clear : clearSetting
+      clear : clearSetting,
+      sync : syncSettings,
+      settings : {
+        // set defaults here
+        homepage : '/swipe'
+      }
     };
 
-    var data = {};
-
-    if (localStorage.tinderToken && localStorage.settings) {
-      angular.extend(data, JSON.parse(localStorage.settings));
+    if (localStorage.settings) {
+      angular.extend(settingsObj.settings, JSON.parse(localStorage.settings));
     }
 
-    return settings;
+    return settingsObj;
 
     ///////////////////////////
 
     function setSetting (key, value) {
-      if (data[key] !== value) {
-        data[key] = value;
+      if (settingsObj.settings[key] !== value) {
+        settingsObj.settings[key] = value;
         syncSettings();
       }
     }
 
     function getSetting (key) {
-      return data[key];
+      return settingsObj.settings[key];
     }
 
     function clearSetting (key) {
-      delete data[key];
+      delete settingsObj.settings[key];
       syncSettings();
     }
 
     function syncSettings() {
-      localStorage.settings = JSON.stringify(data);
+      var settingString = localStorage.settings = JSON.stringify(settingsObj.settings);
+      console.log(settingString);
     }
   });
 
   module.controller('SettingsController', function($scope, Settings) {
-    $scope.homepage = Settings.get('homepage') || '/swipe';
-  });
-
-  module.directive('tppSettingSync', function(Settings) {
-    return {
-      restrict: 'A',
-      require: 'ngModel',
-      link: linkFn
-    };
-
-    function linkFn(scope, elem, attrs, modelCtrl) {
-      var watchFn;
-      attrs.$observe('ngModel', function(settingKey) {
-        (watchFn || angular.noop)();
-        watchFn = scope.$watch(settingKey, function(settingValue) {
-          if (modelCtrl.$valid) {
-            Settings.set(settingKey, settingValue);
-          }
-        });
-      });
-    }
+    $scope.settings = Settings.settings;
+    $scope.syncSettings = Settings.sync;
   });
 })();
