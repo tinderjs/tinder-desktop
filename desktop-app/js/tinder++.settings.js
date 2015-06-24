@@ -9,7 +9,8 @@
       sync : syncSettings,
       settings : {
         // set defaults here
-        landingPage : '/swipe'
+        landingPage : '/swipe',
+        messageListExtraInfo : 'no'
       }
     };
 

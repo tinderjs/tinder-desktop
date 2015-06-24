@@ -273,7 +273,7 @@ a {
 
 /* Chat */
 #match-list {
-    width: 150px;
+    width: 185px;
     height: 100%;
     position: fixed;
     overflow-x: hidden;
@@ -306,9 +306,23 @@ a {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.match.more-info {
+    height: 64px;
+    padding: 5px;
+}
+
+.match .info {
+    margin: 0;
+    padding-top: 5px;
+    text-align: left;
+    font-weight: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* from http://codepen.io/samuelkraft/pen/Farhl */
 #conversation {
-    width: calc(100% - 170px);
+    width: calc(100% - 205px);
     height: 100%;
     float: right;
     font-family: "Helvetica Neue", sans-serif;
@@ -404,4 +418,16 @@ a {
 
 .settings h1 {
     text-align: center;
+}
+
+.info .last-them {
+    color: #007a00;
+}
+
+.info .last-me-rest {
+    color: #0000CC;
+}
+
+.info .last-me-pass {
+    color: #cc00cc;
 }
