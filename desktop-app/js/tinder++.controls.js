@@ -1,7 +1,7 @@
 (function() {
   module = angular.module('tinder++.controls', ['tinder++.api']);
 
-  module.service('Controls', function(API, $interval, $q) {
+  module.service('Controls', function(API, $interval, $q, orderByFilter) {
 
     var controls = {
       'init': init
@@ -73,8 +73,10 @@
       }
 
       // update match conversations with match profile info
-      Object.keys(API.conversations).reverse().forEach(function(matchId) {
-        var conversation = API.conversations[matchId];
+      orderByFilter(Object.keys(API.conversations).map(function (matchId) {
+        return API.conversations[matchId];
+      }), 'lastActive', true).forEach(function(conversation) {
+        var matchId = conversation.matchId;
         var updateTime = !conversation.infoUpdateTime || moment().isAfter(conversation.infoUpdateTime);
 
         if (updateTime && !pendingInfoRequests[matchId]) {
@@ -135,8 +137,6 @@
       return function () {
         delete pendingInfoRequests[matchId];
         var left = Object.keys(pendingInfoRequests).length;
-        console.log('cleaup for ' + matchId);
-        console.log('requests remaining: ' + left);
         if (!left) resetInfoQueue();
       };
     }
@@ -149,7 +149,7 @@
     function calcUserUpdateTimeISOString(user) {
       var updateMinutes = user.distance_mi;
       if (updateMinutes < 5) 
-        updateMinutes = Math.floor((Math.random() * 5));
+        updateMinutes = Math.ceil((Math.random() * 5));
       if (updateMinutes > 30) 
         updateMinutes = Math.floor((Math.random() * 30) + 30);
       return moment().add(updateMinutes, 'minutes').toISOString();
