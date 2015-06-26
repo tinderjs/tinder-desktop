@@ -1,7 +1,7 @@
 (function() {
   module = angular.module('tinder++.controls', ['tinder++.api']);
 
-  module.service('Controls', function(API, $interval, $q, orderByFilter) {
+  module.service('Controls', function(API, $interval, $q, orderByFilter, $timeout) {
 
     var controls = {
       'init': init
@@ -110,8 +110,14 @@
       var matchUserId = conversation.userId;
       pendingInfoRequests[matchId] = true;
 
-      infoQueue = infoQueue.then(getMatchInfo(matchUserId)).finally(cleanUpInfoRequest(matchId));
+      infoQueue = infoQueue.then(pauseQueue(100)).then(getMatchInfo(matchUserId)).finally(cleanUpInfoRequest(matchId));
       // piggybacking off conversation localstorage sync
+    }
+
+    function pauseQueue(timeMs) {
+      return function () {
+        return $timeout(angular.noop, timeMs);
+      };
     }
 
     function getMatchInfo(matchUserId) {
