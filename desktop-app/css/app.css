@@ -314,10 +314,11 @@ a {
 .match .info {
     margin: 0;
     padding-top: 5px;
-    text-align: left;
+    text-align: center;
     font-weight: normal;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: 13px;
 }
 
 /* from http://codepen.io/samuelkraft/pen/Farhl */
