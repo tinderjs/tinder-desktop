@@ -14,8 +14,12 @@
     API.conversations = {};
 
     // Decorate userInfo to update conversation after request
-    API.userInfo = (function (API_userInfo) { 
+    API.userInfo = (function (API_userInfo) {
       return function (userId) {
+
+        if (!userId) {
+          return angular.noop;
+        }
 
         var userIdToMatchId = {};
         Object.keys(API.conversations).forEach(function(matchId) {
@@ -24,7 +28,16 @@
         });
 
         var promise = API_userInfo(userId);
-        promise.then(updateMatchInfo(userIdToMatchId[userId]));
+        promise.then(function(uId) {
+          updateMatchInfo(userIdToMatchId[userId])(uId);
+        }, function(err) {
+          console.log('woah, user must be gone #botnet');
+          console.log(err);
+          if (err && err.status && err.status === 'not found') {
+            console.log('deleting convo');
+            delete API.conversations[userId];
+          }
+        });
         return promise;
       };
     })(API.userInfo);
@@ -48,7 +61,8 @@
           API.getHistory().then(update);
         }
 
-        $interval(function() { API.getUpdates().then(update); }, 4000);
+        $interval(function() { API.getUpdates().then(update); }, 10000);
+        API.getUpdates().then(update); // call right away for good measure
       }
     }
 
@@ -110,7 +124,14 @@
       var matchUserId = conversation.userId;
       pendingInfoRequests[matchId] = true;
 
-      infoQueue = infoQueue.then(pauseQueue(100)).then(getMatchInfo(matchUserId)).finally(cleanUpInfoRequest(matchId));
+      if (matchUserId) {
+        infoQueue = infoQueue.then(pauseQueue(100)).then(getMatchInfo(matchUserId)).finally(cleanUpInfoRequest(matchId));
+      } else {
+        console.log('deleting conversation');
+        delete API.conversations[matchId];
+        cleanUpInfoRequest(matchId);
+      }
+      
       // piggybacking off conversation localstorage sync
     }
 
