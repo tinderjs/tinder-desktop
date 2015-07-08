@@ -71,6 +71,16 @@
         data.matches.forEach(function(match) {
           if( (! API.conversations[match._id]) && (!(match.pending || match.dead)) ) {
             createConversation(match);
+            if (match.person) {
+              var user = match.person;
+              swal({
+                title: 'It\'s a match!',
+                text: 'Go send a message to ' + user.name,
+                confirmButtonText: 'Nice!',
+                imageUrl: user.photos[0].processedFiles[3].url
+              });
+              ga_storage._trackEvent('Events', 'Match');
+            } 
           }
 
           match.messages.forEach(addMessage);
