@@ -80,6 +80,7 @@
                 imageUrl: user.photos[0].processedFiles[3].url
               });
               ga_storage._trackEvent('Events', 'Match');
+              window._rg.record('controls', 'match', { origin: 'tinderplusplus' });
             } 
           }
 

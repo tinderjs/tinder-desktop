@@ -7,6 +7,7 @@
     $scope.open = function(matchId) {
       $scope.conversation = $scope.conversations[matchId];
       ga_storage._trackEvent('Messages', 'opened thread');
+      window._rg.record('messages', 'opened thread', { origin: 'tinderplusplus' });
     };
     var ENTER = 13;
 
@@ -33,6 +34,7 @@
           API.sendMessage($scope.conversation.matchId, $scope.message);
           $scope.message = '';
           ga_storage._trackEvent('Messages', 'sent message');
+          window._rg.record('messages', 'sent message', { origin: 'tinderplusplus' });
         }
       }
     };

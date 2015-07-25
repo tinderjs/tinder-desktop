@@ -18,6 +18,7 @@
       }
       (callbackFn || angular.noop)(err);
       ga_storage._trackEvent('API Error', err.toString());
+      window._rg.record('error', 'api error', { origin: 'tinderplusplus', error : err.toString() });
     };
 
     apiObj.logout = function() {
@@ -50,6 +51,7 @@
 
     apiObj.login = function(id, token) {
       ga_storage._trackEvent('Login', 'Facebook Login Successful');
+      window._rg.record('api', 'facebook login successful', { origin: 'tinderplusplus' });
       client.authorize(token, id, function(err, res, data) {
         if (!!err) { 
           handleError(err);
@@ -111,6 +113,7 @@
               confirmButtonText: 'Got it'
             });
             ga_storage._trackEvent('Events', 'Out of people');
+            window._rg.record('api', 'tinderplusplus.api.out_of_people', { origin: 'tinderplusplus' });
           }
           resolve(res && res.results || []);
         });
@@ -148,6 +151,7 @@
                 imageUrl: user.photos[0].processedFiles[3].url
               });
               ga_storage._trackEvent('Events', 'Match');
+              window._rg.record('api', 'match', { origin: 'tinderplusplus' });
             });
           } else if (res && res.rate_limited_until) {
             var rate_limited_until = moment.unix(res.rate_limited_until / 1000);
@@ -162,6 +166,7 @@
               confirmButtonText: 'WTF Tinder, fine'
             });
             ga_storage._trackEvent('Events', 'Rate Limited');
+            window._rg.record('api', 'rate limited', { origin: 'tinderplusplus' });
           }
           if (res && typeof res.likes_remaining != 'undefined') {
             likesRemaining = res.likes_remaining;
