@@ -24,6 +24,7 @@
         window.loginWindow = null;
       });
       ga_storage._trackEvent('Login', 'Login Started');
+      window._rg.record('login', 'started', { origin: 'tinderplusplus' });
     };
 
     var tinderLogin = function() {

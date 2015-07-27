@@ -20,6 +20,7 @@ process.on('uncaughtException', function(e) {
   console.groupEnd();
 
   ga_storage._trackEvent('JS Error', e.message, e.filename + ':  ' + e.lineno);
+  window._rg.record('error', 'js_error', { origin: 'tinderplusplus', error: e.message });
 
   alert('Sorry, something went wrong, please restart the app (or try downloading latest version from tinderplusplus.com)');
   return false;
