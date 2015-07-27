@@ -17,8 +17,8 @@
         apiObj.logout();
       }
       (callbackFn || angular.noop)(err);
-      ga_storage._trackEvent('API Error', err.toString());
-      window._rg.record('error', 'api error', { origin: 'tinderplusplus', error : err.toString() });
+      ga_storage._trackEvent('API Error', JSON.stringify(err));
+      window._rg.record('error', 'api error', { origin: 'tinderplusplus', error : JSON.stringify(err) });
     };
 
     apiObj.logout = function() {
