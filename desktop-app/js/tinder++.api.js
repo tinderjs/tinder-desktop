@@ -127,6 +127,10 @@
             handleError(err, reject);
             return;
           }
+          if (res === null) {
+            handleError('userInfo result is null', reject);
+            return;
+          }
           // console.log(JSON.stringify(res));
           resolve(res.results);
         });
