@@ -154,7 +154,7 @@
     <div ng-show="conversation.messages.length == 0">
       No messages yet. Write something!
     </div>
-    <div ng-repeat-start="message in conversation.messages"
+    <div ng-repeat-start="message in conversation.messages track by $index"
          class="{{message.fromMe ? 'from-me' : 'from-them'}}">
       <p ng-if="message.text">{{message.text}}</p>
     </div>
