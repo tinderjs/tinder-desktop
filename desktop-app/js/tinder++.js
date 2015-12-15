@@ -9,7 +9,7 @@
   if (process.platform === 'darwin') {
     var nativeMenuBar = new gui.Menu({ type: 'menubar' });
     nativeMenuBar.createMacBuiltin('Tinder⁺⁺', {
-      hideEdit: true
+      hideEdit: false
     });
     win.menu = nativeMenuBar;
   }
