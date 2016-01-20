@@ -1,6 +1,6 @@
 (function() {
   var gui = require('nw.gui');
-  var module = angular.module('tinder++.swipe', ['ngAutocomplete', 'tinder++.api']);
+  var module = angular.module('tinder++.swipe', ['ngAutocomplete', 'ngSanitize', 'emoji', 'tinder++.api']);
 
   module.controller('SwipeController', function SwipeController($scope, $http, $timeout, $interval, API) {
     $scope.allPeople = [];
@@ -300,92 +300,6 @@
       return moment(ping).fromNow();
     };
   });
-
-  module.filter('emoji', function() {
-    return function(string) {
-      return twemoji.parse(string);
-    };
-  });
-
-  // based off https://github.com/doukasd/AngularJS-Components
-  // a directive to auto-collapse long text
-  // in elements with the "dd-text-collapse" attribute
-  module.directive('ddTextCollapse', ['$compile', function($compile) {
-
-    return {
-      restrict: 'A',
-      scope: true,
-      link: function(scope, element, attrs) {
-
-        // start collapsed
-        scope.collapsed = false;
-
-        // create the function to toggle the collapse
-        scope.toggle = function() {
-          scope.collapsed = !scope.collapsed;
-        };
-
-        // wait for changes on the text
-        attrs.$observe('ddTextCollapseText', function(text) {
-
-          scope.collapsed = false;
-
-          // get the length from the attributes
-          var maxLength = scope.$eval(attrs.ddTextCollapseMaxLength);
-
-          var countedChars = 0;
-          var isInHtmlTag = false;
-          var splitIdx = null;
-          // this is only for not breaking the twemoji links
-          // don't trust it for anything else
-          for (var i = 0; i < text.length; i++) {
-            if (countedChars > maxLength) {
-              splitIdx = i;
-              break;
-            }
-            if (text[i] === '<') {
-              isInHtmlTag = true;
-            }
-            if (text[i] === '>') {
-              isInHtmlTag = false;
-            }
-            if (!isInHtmlTag) {
-              countedChars++;
-            }
-          }
-
-          // outer wrapper element
-          var outerSpan = angular.element('<span class="outerSpan"></span>');
-
-          if (splitIdx && text.length > splitIdx) {
-            // split the text in two parts, the first always showing
-            var firstPart = String(text).substring(0, splitIdx);
-            var secondPart = String(text).substring(splitIdx, text.length);
-
-            // create some new html elements to hold the separate info
-            var firstSpan = $compile('<span>' + firstPart + '</span>')(scope);
-            var secondSpan = $compile('<span ng-if="collapsed">' + secondPart + '</span>')(scope);
-            var moreIndicatorSpan = $compile('<span ng-if="!collapsed">&#8230; </span>')(scope);
-            var lineBreak = $compile('<br ng-if="collapsed">')(scope);
-            var toggleButton = $compile('<span class="collapse-text-toggle" ng-click="toggle()">{{collapsed ? "less" : "more"}}</span>')(scope);
-            
-            outerSpan.append(firstSpan);
-            outerSpan.append(secondSpan);
-            outerSpan.append(moreIndicatorSpan);
-            outerSpan.append(lineBreak);
-            outerSpan.append(toggleButton);
-          } else {
-            outerSpan.append(text);
-          }
-
-          // remove the current contents of the element
-          // and add the new ones we created
-          element.empty();
-          element.append(outerSpan);
-        });
-      }
-    };
-  }]);
 
   var $passOverlay, $likeOverlay;
 

@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/normalize.min.css"/>
   <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/app.css"/>
   <link rel="stylesheet" href="css/sweet-alert.css"/>
 
@@ -31,6 +31,7 @@
   <script src="js/error_handler.js"></script>
   
   <script src="js/vendor/angular.min.js"></script>
+  <script src="js/vendor/angular-sanitize.min.js"></script>
   <script src="js/vendor/ngAutocomplete.js"></script>
   <script src="js/vendor/angular-route.min.js"></script>
   <script src="js/vendor/jquery.min.js"></script>
@@ -48,6 +49,7 @@
   <script src="js/tinder++.settings.js"></script>
   <script src="js/tinder++.js"></script>
   <script src="js/tinder++.updater.js"></script>
+  <script src="js/emoji.js"></script>
 
   <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 </head>
@@ -108,9 +110,7 @@
           </div>
         </div>
       </div>
-      <p class="fader bio">
-        <span dd-text-collapse dd-text-collapse-max-length="48" dd-text-collapse-text="{{allPeople[peopleIndex].bio || 'No Bio' | emoji}}"></span>
-      </p>
+      <p ng-show="allPeople[peopleIndex].bio" class="fader bio" ng-bind-html="allPeople[peopleIndex].bio | emoji"></p>
 
       <div class="small-photos fader">
         <div ng-repeat="photo in allPeople[peopleIndex].photos">
@@ -156,7 +156,7 @@
     </div>
     <div ng-repeat-start="message in conversation.messages track by $index"
          class="{{message.fromMe ? 'from-me' : 'from-them'}}">
-      <p ng-if="message.text">{{message.text}}</p>
+      <p ng-if="message.text" ng-bind-html="message.text | emoji"></p>
     </div>
     <div ng-repeat-end class="clear"></div>
     <textarea ng-keypress="keypress($event)" ng-model="message" rows="4" placeholder="Insert something witty here...">
@@ -177,11 +177,7 @@
       </div>
     </div>
 
-    <p class="fader bio">
-      <span dd-text-collapse dd-text-collapse-max-length="48"
-            dd-text-collapse-text="{{user.bio || 'No Bio' | emoji}}">
-      </span>
-    </p>
+    <p ng-show="user.bio" class="fader bio" ng-bind-html="user.bio | emoji"></p>
 
     <div class="small-photos fader">
       <div ng-repeat="photo in user.photos">

@@ -353,6 +353,11 @@ a {
     clear: both;
 }
 
+#conversation img.emoji {
+  width: 1em;
+  height: 1em;
+}
+
 .from-me {
     position: relative;
     padding: 10px 15px;
