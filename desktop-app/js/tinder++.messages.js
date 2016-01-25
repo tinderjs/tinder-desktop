@@ -32,9 +32,13 @@
         event.preventDefault();
         if ($scope.message.length > 0) {
           API.sendMessage($scope.conversation.matchId, $scope.message);
-          $scope.message = '';
           ga_storage._trackEvent('Messages', 'sent message');
           window._rg.record('messages', 'sent message', { origin: 'tinderplusplus' });
+          // Show pending message
+          $scope.conversation.pending = $scope.conversation.pending || [];
+          $scope.conversation.pending.push($scope.message);
+          // Reset
+          $scope.message = '';
         }
       }
     };
