@@ -165,13 +165,13 @@
           class="{{message.fromMe ? 'from-me' : 'from-them'}}">
         <p ng-if="message.text">{{message.text}}</p>
       </div>
-      <div ng-repeat-end class="clear"></div>
+      <div ng-repeat-end class="clear" scroll-to-last></div>
       <!-- pending messages -->
       <div ng-repeat-start="message in conversation.pending track by $index"
           class="from-me">
         <p>{{message}}</p>
       </div>
-      <div ng-repeat-end class="clear"></div>
+      <div ng-repeat-end class="clear" scroll-to-last></div>
     </div>
     <textarea ng-keypress="keypress($event)" ng-model="message" rows="4" placeholder="Insert something witty here...">
   </div>
