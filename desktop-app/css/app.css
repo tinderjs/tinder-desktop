@@ -1,3 +1,4 @@
+/* General styles */
 * {
     font-family: 'Merriweather', serif;
     -webkit-touch-callout: none;
@@ -7,12 +8,6 @@
 
 h1, h2, h3, h4, h5 {
     font-family: 'Raleway', sans-serif;
-}
-
-html, body {
-    max-width: 100%;
-    max-height: 100%;
-    overflow-x: hidden;
 }
 
 a {
@@ -39,6 +34,35 @@ a {
     clear: both;
 }
 
+/* General layout */
+html, body, body > div.ng-scope {
+    max-width: 100%;
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 100%;
+}
+
+.y-scroll {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+.columns {
+    display: flex;
+    overflow: hidden;
+    height: 100%;
+}
+
+.columns > div {
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+}
+
+/* Specific */
 .title-bar {
     width: 100%;
     height: 25px;
@@ -271,24 +295,32 @@ a {
     content: ')';
 }
 
+/* Messages screen */
+#messages {
+    display: flex;
+    height: 100%;
+}
+
 /* Chat */
 #match-list {
     width: 185px;
-    height: 100%;
-    position: fixed;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    float: left;
+    border-right: 1px solid #ddd;
+    flex: initial;
+}
+#match-list.more-info {
+    width: 215px;
 }
 #back-arrow {
     margin: 3px calc(75px - 1em);
 }
 .match {
+    display: block;
     border-bottom: 1px solid #ddd;
-    padding: 0;
+    padding: 3px 0;
     margin: 0 5px;
     height: 42px; /* Thumbnail size: 84px */
     cursor: pointer;
+    color: inherit;
 }
 .match .thumbnail {
     display: inline-block;
@@ -305,10 +337,14 @@ a {
     font-weight: bold;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding-left: .5em;
 }
 .match.more-info {
-    height: 64px;
     padding: 5px;
+}
+
+.match.more-info .name {
+    line-height: 22px;
 }
 
 .match .info {
@@ -323,15 +359,30 @@ a {
 
 /* from http://codepen.io/samuelkraft/pen/Farhl */
 #conversation {
-    width: calc(100% - 205px);
-    height: 100%;
-    float: right;
     font-family: "Helvetica Neue", sans-serif;
     font-size: 1.1em;
     line-height: 20px;
     font-weight: normal;
-    padding: 3px 14px;
+    display: flex;
+    flex-direction: column;
 }
+#conversation div {
+    flex: 1;
+}
+#conversation h2 {
+    padding: 0 14px 14px 11px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 0;
+}
+#conversation .messages-list {
+    overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 14px;
+}
+#conversation .messages-list-empty {
+  padding: 14px;
+}
+
 #conversation div.from-me,
 #conversation div.from-them {
     max-width: 51%;
@@ -339,14 +390,15 @@ a {
     margin-bottom: 10px;
 }
 #conversation textarea {
-    margin-top: 5px;
     font-size: 1em;
     outline: none;
-    border: 1px solid #ccc;
-    border-radius: 9px;
+    border: solid #ccc;
+    border-width: 1px 0 0 0;
+    border-radius: 0;
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
+      margin: 0;
 }
 
 .clear {

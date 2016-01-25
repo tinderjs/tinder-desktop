@@ -57,6 +57,7 @@
 <div ng-view></div>
 
 <script type="text/ng-template" id="swipe.html">
+<div class="y-scroll">
   <div class="user">
     <div class="left" ng-show="apiQueue.length > 0">
       <a href="" ng-click="undo()">
@@ -120,6 +121,7 @@
       </div>
     </div>
   </div>
+</div>
 </script>
 
 <script type="text/ng-template" id="login.html">
@@ -132,35 +134,48 @@
 </script>
 
 <script type="text/ng-template" id="messages.html">
-  <div id="match-list">
+<div id="messages" class="columns">
+  <div id="match-list" ng-class="showExtra && 'more-info'">
     <a ng-href="#/swipe"><i id="back-arrow" class="fa fa-arrow-left fa-2x"></i></a>
     <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true track by match.matchId"
          ng-click="open(match.matchId)" 
          ng-class="showExtra && match.infoUpdateTime && 'more-info'"
          class="match">
       <img ng-src="{{match.thumbnail || 'img/anonymous.png'}}" class="thumbnail"/>
-      <p class="name">{{match.name || 'Unknown'}}</p>
-      <p class="info" ng-show="showExtra && match.infoUpdateTime">
-        <i class="fa fa-location-arrow"></i> {{match.userDistanceMi}} | 
-        <i class="fa fa-bolt"></i> <span short-time-ago="{{match.userPingTime}}"></span> | 
-        <i class="fa fa-comments" ng-class="lastMessageClass(match)"></i> <span short-time-ago="{{match.lastActive}}"></span>
-      </p>
+      <div>
+        <p class="name">{{match.name || 'Unknown'}}</p>
+        <p class="info" ng-show="showExtra && match.infoUpdateTime">
+          <i class="fa fa-location-arrow"></i> {{match.userDistanceMi}} |
+          <i class="fa fa-bolt"></i> <span short-time-ago="{{match.userPingTime}}"></span> |
+          <i class="fa fa-comments" ng-class="lastMessageClass(match)"></i> <span short-time-ago="{{match.lastActive}}"></span>
+        </p>
+      </div>
     </div>
   </div>
   <div id="conversation" ng-show="conversation">
     <h2 class="message-header">
       Chat with <a ng-href="#/profile/{{conversation.userId}}">{{conversation.name}}</a>
     </h2>
-    <div ng-show="conversation.messages.length == 0">
+    <div ng-show="conversation.messages.length == 0" class="messages-list-empty">
       No messages yet. Write something!
     </div>
-    <div ng-repeat-start="message in conversation.messages track by $index"
-         class="{{message.fromMe ? 'from-me' : 'from-them'}}">
-      <p ng-if="message.text">{{message.text}}</p>
+    <div class="messages-list">
+      <!-- normal messages -->
+      <div ng-repeat-start="message in conversation.messages track by $index"
+          class="{{message.fromMe ? 'from-me' : 'from-them'}}">
+        <p ng-if="message.text">{{message.text}}</p>
+      </div>
+      <div ng-repeat-end class="clear"></div>
+      <!-- pending messages -->
+      <div ng-repeat-start="message in conversation.pending track by $index"
+          class="from-me">
+        <p>{{message}}</p>
+      </div>
+      <div ng-repeat-end class="clear"></div>
     </div>
-    <div ng-repeat-end class="clear"></div>
     <textarea ng-keypress="keypress($event)" ng-model="message" rows="4" placeholder="Insert something witty here...">
   </div>
+</div>
 </script>
 
 <script type="text/ng-template" id="profile.html">
