@@ -117,6 +117,7 @@
         name: (match.person ? match.person.name : null),
         thumbnail: (match.person ? match.person.photos[0].processedFiles[3].url : null),
         messages: [],
+        pending: [],
         lastActive: match.created_date
       };
     }
@@ -128,6 +129,11 @@
         text: message.message,
         fromMe: (message.from == localStorage.userId)
       })
+      // Remove possibly pending messages
+      var pending = API.conversations[message.match_id].pending;
+      if(Array.isArray(pending) && pending.indexOf(message.message) >= 0) {
+        pending.splice(pending.indexOf(message.message), 1);
+      }
     }
 
     function addMatchToInfoQueue(matchId) {
