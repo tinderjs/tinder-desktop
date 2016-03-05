@@ -471,6 +471,10 @@ html, body, body > div.ng-scope {
     -webkit-transform: translate(-30px, -2px);
 }
 
+.pending-message {
+    color: #DAE3EA;
+}
+
 .settings h1 {
     text-align: center;
 }
