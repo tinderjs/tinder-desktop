@@ -1,9 +1,6 @@
 /* General styles */
 * {
     font-family: 'Merriweather', serif;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    user-select: none;
 }
 
 h1, h2, h3, h4, h5 {
@@ -405,6 +402,11 @@ html, body, body > div.ng-scope {
     clear: both;
 }
 
+#conversation img.emoji {
+  width: 1em;
+  height: 1em;
+}
+
 .from-me {
     position: relative;
     padding: 10px 15px;
@@ -467,6 +469,10 @@ html, body, body > div.ng-scope {
     background: white;
     border-bottom-right-radius: 10px;
     -webkit-transform: translate(-30px, -2px);
+}
+
+.pending-message {
+    color: #DAE3EA;
 }
 
 .settings h1 {

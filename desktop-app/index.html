@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/normalize.min.css"/>
   <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/app.css"/>
   <link rel="stylesheet" href="css/sweet-alert.css"/>
 
@@ -31,6 +31,7 @@
   <script src="js/error_handler.js"></script>
   
   <script src="js/vendor/angular.min.js"></script>
+  <script src="js/vendor/angular-sanitize.min.js"></script>
   <script src="js/vendor/ngAutocomplete.js"></script>
   <script src="js/vendor/angular-route.min.js"></script>
   <script src="js/vendor/jquery.min.js"></script>
@@ -48,6 +49,7 @@
   <script src="js/tinder++.settings.js"></script>
   <script src="js/tinder++.js"></script>
   <script src="js/tinder++.updater.js"></script>
+  <script src="js/emoji.js"></script>
 
   <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 </head>
@@ -95,7 +97,13 @@
   <div class="container">
     <div ng-show="allPeople.length === 0 || peopleIndex >= allPeople.length">Loading...</div>
     <div ng-show="allPeople.length > 0 && peopleIndex < allPeople.length">
-      <h1 class="fader">{{allPeople[peopleIndex].name}}, {{allPeople[peopleIndex].birth_date | bdayToAge}}&nbsp;</h1>
+      <h1 class="fader">
+        {{allPeople[peopleIndex].name}}
+        <a ng-show="allPeople[peopleIndex].instagram" href="https://instagram.com/{{allPeople[peopleIndex].instagram.username}}" target="_blank">
+          ({{allPeople[peopleIndex].instagram.username}})
+        </a>
+        , {{allPeople[peopleIndex].birth_date | bdayToAge}}&nbsp;
+      </h1>
       <h3 class="fader" style="display: inline;">{{allPeople[peopleIndex].distance_mi}} miles {{getCookie('currentCity') ? "from " + getCookie('currentCity') : 'away'}}, Active {{allPeople[peopleIndex].ping_time | pingToAgo}}</h3>
 
       <div class="main-photo-container">
@@ -109,9 +117,13 @@
           </div>
         </div>
       </div>
-      <p class="fader bio">
-        <span dd-text-collapse dd-text-collapse-max-length="48" dd-text-collapse-text="{{allPeople[peopleIndex].bio || 'No Bio' | emoji}}"></span>
+      <p class="fader">
+        <i ng-repeat="school in allPeople[peopleIndex].schools" class="fa fa-graduation-cap">{{school.name}}</i>
+        <i ng-repeat="job in allPeople[peopleIndex].jobs" class="fa fa-briefcase">
+          {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}
+        </i>
       </p>
+      <p ng-show="allPeople[peopleIndex].bio" class="fader bio" ng-bind-html="allPeople[peopleIndex].bio | emoji"></p>
 
       <div class="small-photos fader">
         <div ng-repeat="photo in allPeople[peopleIndex].photos">
@@ -163,13 +175,13 @@
       <!-- normal messages -->
       <div ng-repeat-start="message in conversation.messages track by $index"
           class="{{message.fromMe ? 'from-me' : 'from-them'}}">
-        <p ng-if="message.text">{{message.text}}</p>
+      <p ng-if="message.text" ng-bind-html="message.text | emoji"></p>
       </div>
       <div ng-repeat-end class="clear" scroll-to-last></div>
       <!-- pending messages -->
       <div ng-repeat-start="message in conversation.pending track by $index"
           class="from-me">
-        <p>{{message}}</p>
+        <p class="pending-message">{{message}}</p>
       </div>
       <div ng-repeat-end class="clear" scroll-to-last></div>
     </div>
@@ -183,7 +195,13 @@
     <i class="fa fa-arrow-left fa-3x top-icon"></i>
   </a>
   <div class="container" ng-show="user">
-    <h1 class="fader">{{user.name}}, {{user.birth_date | bdayToAge}}</h1>
+    <h1 class="fader">
+      {{user.name}}
+      <a ng-show="user.instagram" href="https://instagram.com/{{user.instagram.username}}" target="_blank">
+        ({{user.instagram.username}})
+      </a>
+      , {{user.birth_date | bdayToAge}}&nbsp;
+    </h1>
     <h3 class="fader" style="display: inline;">{{user.distance_mi}} miles away, Active {{user.ping_time | pingToAgo}}</h3>
 
     <div class="main-photo-container">
@@ -192,11 +210,13 @@
       </div>
     </div>
 
-    <p class="fader bio">
-      <span dd-text-collapse dd-text-collapse-max-length="48"
-            dd-text-collapse-text="{{user.bio || 'No Bio' | emoji}}">
-      </span>
+    <p class="fader">
+      <i ng-repeat="school in user.schools" class="fa fa-graduation-cap">{{school.name}}</i>
+      <i ng-repeat="job in user.jobs" class="fa fa-briefcase">
+        {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}
+      </i>
     </p>
+    <p ng-show="user.bio" class="fader bio" ng-bind-html="user.bio | emoji"></p>
 
     <div class="small-photos fader">
       <div ng-repeat="photo in user.photos">
