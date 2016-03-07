@@ -213,7 +213,7 @@
       });
 
       if (firstLoad) {
-        console.log('running firstload');
+        // console.log('running firstload');
         firstLoad = false;
 
         Mousetrap.bind('left', function () {
