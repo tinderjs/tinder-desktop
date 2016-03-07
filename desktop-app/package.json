@@ -10,7 +10,8 @@
     "fullscreen": false,
     "width": 560,
     "height": 800,
-    "position": "center"
+    "position": "center",
+    "toolbar": true
   },
   "webkit": {
     "page-cache": true

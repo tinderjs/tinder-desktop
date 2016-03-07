@@ -2,6 +2,7 @@
   module = angular.module('tinder++.messages', ['tinder++.api', 'tinder++.settings', 'ngSanitize', 'emoji']);
 
   module.controller('MessagesController', function($scope, API, Settings) {
+    // console.log(API.conversations)
     $scope.conversations = API.conversations;
     $scope.showExtra = Settings.get('messageListExtraInfo') === 'yes';
     $scope.open = function(matchId) {
