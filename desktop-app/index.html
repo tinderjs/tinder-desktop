@@ -61,38 +61,33 @@
 <script type="text/ng-template" id="swipe.html">
 <div class="y-scroll">
   <div class="user">
-    <div class="left" ng-show="apiQueue.length > 0">
-      <a href="" ng-click="undo()">
-        Undo <i class="fa fa-undo"></i>
-        <img ng-src="{{apiQueue[0].user.photos[0].processedFiles[3].url}}" />
-      </a>
-    </div>
-    <div class="right">
-      <p>
-        {{getCookie('name')}}
-        <span ng-show="(likesRemaining !== null)">
-          <br>
-          Likes Remaining: {{likesRemaining ? '<' + likesRemaining : likesRemaining}}
-        </span>
-        <br>
-        <a href="" ng-click="toggleLocation()" >({{getCookie('currentCity') ? getCookie('currentCity') : 'set location'}})</a> | 
-        <a href="#/settings">Settings</a>
-      </p>
-      <a ng-href="#/profile/{{getCookie('userId')}}">
-        <img ng-src="{{getCookie('smallPhoto')}}" />
-      </a>
+
+	<div class="left">
+	  <a href="#/settings">
+	    <i class="fa fa-cog fa-3x top-icon"></i>
+	  </a>
+	</div>
+	
+	<div class="right">
       <a ng-href="#/messages">
         <i class="fa fa-envelope fa-3x top-icon"></i>
       </a>
-      <div ng-show="showLocation">
-        <input type="text" ng-autocomplete ng-model="autocomplete" options="autocompleteOptions" details="details"
-               placeholder="Change Location" id="autocompleteLocation" />
-      </div>
     </div>
-    <div class="clear"></div>
-  </div>
-  <div class="top-button">
-    <div class="button"></div>
+	
+	<div class="center">
+      <a ng-href="#/profile/{{getCookie('userId')}}">
+        <img ng-src="{{getCookie('smallPhoto')}}" />
+      </a>
+	  <p>
+	  {{getCookie('name')}}
+        <br>
+        <a href="" ng-click="toggleLocation()" >{{getCookie('currentCity') ? getCookie('currentCity') : 'set location'}}</a>
+      </p>
+      <div ng-show="showLocation">
+        <input type="text" ng-autocomplete ng-model="autocomplete" options="autocompleteOptions" details="details" placeholder="Change Location" id="autocompleteLocation" />
+      </div>
+	</div>
+	
   </div>
   <div class="container">
     <div ng-show="allPeople.length === 0 || peopleIndex >= allPeople.length">Loading...</div>
@@ -116,8 +111,19 @@
             <i class="fa fa-thumbs-o-up"></i>
           </div>
         </div>
+	  
+		<div style="position:absolute; top:84px; left:8px;">
+			<div ng-show="apiQueue.length > 0">
+			  <a href="" ng-click="undo()">
+				<img ng-src="{{apiQueue[0].user.photos[0].processedFiles[3].url}}" /><br>
+				Undo <i class="fa fa-undo"></i>
+			  </a>
+			</div>
+		</div>
       </div>
-      <p class="fader">
+	  
+	  
+      <p class="schoolwork fader">
         <i ng-repeat="school in allPeople[peopleIndex].schools" class="fa fa-graduation-cap">{{school.name}}</i>
         <i ng-repeat="job in allPeople[peopleIndex].jobs" class="fa fa-briefcase">
           {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}
@@ -211,7 +217,7 @@
         </div>
       </div>
 
-      <p class="fader">
+      <p class="schoolwork fader">
         <i ng-repeat="school in user.schools" class="fa fa-graduation-cap">{{school.name}}</i>
         <i ng-repeat="job in user.jobs" class="fa fa-briefcase">
           {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}
