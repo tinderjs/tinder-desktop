@@ -154,6 +154,8 @@ html, body, body > div.ng-scope {
     margin: 0 0 15px 0;
 	white-space: pre-wrap;
 	text-align: left;
+	margin-left: 52px;
+	margin-right: 52px;
 }
 
 .bio img {
