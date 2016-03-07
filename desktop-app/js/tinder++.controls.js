@@ -1,4 +1,8 @@
 (function() {
+
+  var gui = require('nw.gui');
+  var win = gui.Window.get();
+
   module = angular.module('tinder++.controls', ['tinder++.api']);
 
   module.service('Controls', function(API, $interval, $q, orderByFilter, $timeout) {
@@ -70,6 +74,23 @@
       if (data) {
         data.matches.forEach(function(match) {
           if( (! API.conversations[match._id]) && (!(match.pending || match.dead)) ) {
+
+          // could add info from the match to add the name and possibly
+          // even the photo from the match as the icon
+            var options = {
+              body: "Congratulations, you've got a new match on Tinder++!"
+             };
+
+            var notification = new Notification("New Match",options);
+
+            notification.onclick = function () {
+              win.show();
+            }
+
+            notification.onshow = function () {
+              setTimeout(function() {notification.close();}, 5000);
+            }  
+
             createConversation(match);
             if (match.person) {
               var user = match.person;
