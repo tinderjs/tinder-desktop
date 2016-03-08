@@ -73,30 +73,12 @@ html, body, body > div.ng-scope {
 /* Specific */
 .title-bar {
     width: 100%;
-    height: 25px;
-    background: #f8f8f8; /* Old browsers */
-    background: -moz-linear-gradient(top,  #f8f8f8 0%, #e3e3e3 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#e3e3e3)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #f8f8f8 0%,#e3e3e3 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #f8f8f8 0%,#e3e3e3 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #f8f8f8 0%,#e3e3e3 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  #f8f8f8 0%,#e3e3e3 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f8f8', endColorstr='#e3e3e3',GradientType=0 ); /* IE6-9 */
-    z-index: 10001;
-    position: fixed;
-    -webkit-app-region: drag;
+    height: 48px;
+    
+    position: relative;
     text-align: center;
-    font-family: 'Raleway', sans-serif;
-    font-size: 16px;
-    line-height: 25px;
 }
 
-.title-bar i {
-    float: right;
-    font-size: 18px;
-    padding: 3px 7px 0 0;
-    cursor: pointer;
-}
 
 .user {
     margin: 4px auto 0;
@@ -296,67 +278,6 @@ html, body, body > div.ng-scope {
     content: ')';
 }
 
-/* Messages screen */
-#messages {
-    display: flex;
-    height: 100%;
-}
-
-/* Chat */
-#match-list {
-    width: 185px;
-    border-right: 1px solid #ddd;
-    flex: initial;
-}
-#match-list.more-info {
-    width: 215px;
-}
-#back-arrow {
-    margin: 3px calc(75px - 1em);
-}
-.match {
-    display: block;
-    border-bottom: 1px solid #ddd;
-    padding: 3px 0;
-    margin: 0 5px;
-    height: 42px; /* Thumbnail size: 84px */
-    cursor: pointer;
-    color: inherit;
-}
-.match .thumbnail {
-    display: inline-block;
-    box-sizing: border-box;
-    border-radius: 50%;
-    float: left;
-    height: 42px;
-    width: 42px;
-}
-.match .name {
-    margin: 0;
-    text-align: center;
-    line-height: 42px;
-    font-weight: bold;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding-left: .5em;
-}
-.match.more-info {
-    padding: 5px;
-}
-
-.match.more-info .name {
-    line-height: 22px;
-}
-
-.match .info {
-    margin: 0;
-    padding-top: 5px;
-    text-align: center;
-    font-weight: normal;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 13px;
-}
 
 /* from http://codepen.io/samuelkraft/pen/Farhl */
 #conversation {

@@ -54,12 +54,10 @@
   <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 </head>
 <body ng-app="tinder++">
-<!--<div class="title-bar"><i class="fa fa-times" onclick="window.close()"></i>Tinder++</div>-->
 
-<div ng-view></div>
+<script type="text/ng-template" id="index.html">
+<div class="title-bar">
 
-<script type="text/ng-template" id="swipe.html">
-<div class="y-scroll">
   <div class="user">
 
 	<div class="left">
@@ -89,6 +87,18 @@
 	</div>
 	
   </div>
+  
+</div>
+</script>
+
+
+<div ng-view></div>
+
+  
+
+<script type="text/ng-template" id="swipe.html">
+<div class="y-scroll">
+
   <div class="container">
     <div ng-show="allPeople.length === 0 || peopleIndex >= allPeople.length">Loading...</div>
     <div ng-show="allPeople.length > 0 && peopleIndex < allPeople.length">
@@ -112,7 +122,7 @@
           </div>
         </div>
 	  
-		<div style="position:absolute; top:84px; left:8px;">
+		<div style="position:absolute; top:106px; left:2px;">
 			<div ng-show="apiQueue.length > 0">
 			  <a href="" ng-click="undo()">
 				<img ng-src="{{apiQueue[0].user.photos[0].processedFiles[3].url}}" /><br>
@@ -121,8 +131,6 @@
 			</div>
 		</div>
       </div>
-	  
-	  
       <p class="schoolwork fader">
         <i ng-repeat="school in allPeople[peopleIndex].schools" class="fa fa-graduation-cap">{{school.name}}</i>
         <i ng-repeat="job in allPeople[peopleIndex].jobs" class="fa fa-briefcase">
