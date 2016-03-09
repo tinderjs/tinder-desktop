@@ -29,7 +29,7 @@
   </script>
 
   <script src="js/error_handler.js"></script>
-  
+
   <script src="js/vendor/angular.min.js"></script>
   <script src="js/vendor/angular-sanitize.min.js"></script>
   <script src="js/vendor/ngAutocomplete.js"></script>
@@ -55,7 +55,7 @@
 </head>
 <body ng-app="tinder++">
 
-<script type="text/ng-template" id="index.html">
+
 <div class="title-bar">
 
   <div class="user">
@@ -65,13 +65,13 @@
 	    <i class="fa fa-cog fa-3x top-icon"></i>
 	  </a>
 	</div>
-	
+
 	<div class="right">
       <a ng-href="#/messages">
         <i class="fa fa-envelope fa-3x top-icon"></i>
       </a>
     </div>
-	
+
 	<div class="center">
       <a ng-href="#/profile/{{getCookie('userId')}}">
         <img ng-src="{{getCookie('smallPhoto')}}" />
@@ -85,16 +85,16 @@
         <input type="text" ng-autocomplete ng-model="autocomplete" options="autocompleteOptions" details="details" placeholder="Change Location" id="autocompleteLocation" />
       </div>
 	</div>
-	
+
   </div>
-  
+
 </div>
-</script>
+
 
 
 <div ng-view></div>
 
-  
+
 
 <script type="text/ng-template" id="swipe.html">
 <div class="y-scroll">
@@ -121,7 +121,7 @@
             <i class="fa fa-thumbs-o-up"></i>
           </div>
         </div>
-	  
+
 		<div style="position:absolute; top:106px; left:2px;">
 			<div ng-show="apiQueue.length > 0">
 			  <a href="" ng-click="undo()">
@@ -162,9 +162,8 @@
 <script type="text/ng-template" id="messages.html">
 <div id="messages" class="columns">
   <div id="match-list" ng-class="showExtra && 'more-info'">
-    <a ng-href="#/swipe"><i id="back-arrow" class="fa fa-arrow-left fa-2x"></i></a>
     <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true track by match.matchId"
-         ng-click="open(match.matchId)" 
+         ng-click="open(match.matchId)"
          ng-class="showExtra && match.infoUpdateTime && 'more-info'"
          class="match">
       <img ng-src="{{match.thumbnail || 'img/anonymous.png'}}" class="thumbnail"/>
@@ -187,17 +186,15 @@
     </div>
     <div class="messages-list">
       <!-- normal messages -->
-      <div ng-repeat-start="message in conversation.messages track by $index"
-          class="{{message.fromMe ? 'from-me' : 'from-them'}}">
+      <div ng-repeat="message in conversation.messages track by $index"
+          class="{{message.fromMe ? 'from-me' : 'from-them'}} clear">
       <p ng-if="message.text" ng-bind-html="message.text | emoji"></p>
       </div>
-      <div ng-repeat-end class="clear" scroll-to-last></div>
       <!-- pending messages -->
-      <div ng-repeat-start="message in conversation.pending track by $index"
-          class="from-me">
+      <div ng-repeat="message in conversation.pending track by $index"
+          class="from-me clear">
         <p class="pending-message">{{message}}</p>
       </div>
-      <div ng-repeat-end class="clear" scroll-to-last></div>
     </div>
     <textarea ng-keypress="keypress($event)" ng-model="message" rows="4" placeholder="Insert something witty here...">
   </div>
