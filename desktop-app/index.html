@@ -57,48 +57,29 @@
 
 
 <div class="title-bar">
-
   <div class="user">
-
 	<div class="left">
 	  <a href="#/settings">
-	    <i class="fa fa-cog fa-3x top-icon"></i>
+	    <i class="fa fa-cog fa-2x top-icon"></i>
 	  </a>
 	</div>
-
 	<div class="right">
       <a ng-href="#/messages">
-        <i class="fa fa-envelope fa-3x top-icon"></i>
+        <i class="fa fa-envelope fa-2x top-icon"></i>
       </a>
     </div>
-
 	<div class="center">
-      <a ng-href="#/profile/{{getCookie('userId')}}">
-        <img ng-src="{{getCookie('smallPhoto')}}" />
+      <a href="#/swipe">
+        <i class="fa fa-arrows-h fa-2x top-icon"></i>
       </a>
-	  <p>
-	  {{getCookie('name')}}
-        <br>
-        <a href="" ng-click="toggleLocation()" >{{getCookie('currentCity') ? getCookie('currentCity') : 'set location'}}</a>
-      </p>
-      <div ng-show="showLocation">
-        <input type="text" ng-autocomplete ng-model="autocomplete" options="autocompleteOptions" details="details" placeholder="Change Location" id="autocompleteLocation" />
-      </div>
 	</div>
-
   </div>
-
 </div>
 
-
-
-<div ng-view></div>
-
-
+<div ng-view class="wrapper"></div>
 
 <script type="text/ng-template" id="swipe.html">
 <div class="y-scroll">
-
   <div class="container">
     <div ng-show="allPeople.length === 0 || peopleIndex >= allPeople.length">Loading...</div>
     <div ng-show="allPeople.length > 0 && peopleIndex < allPeople.length">
@@ -164,14 +145,13 @@
   <div id="match-list" ng-class="showExtra && 'more-info'">
     <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true track by match.matchId"
          ng-click="open(match.matchId)"
-         ng-class="showExtra && match.infoUpdateTime && 'more-info'"
-         class="match">
+         ng-class="showExtra && match.infoUpdateTime && 'more-info'"class="match">
       <img ng-src="{{match.thumbnail || 'img/anonymous.png'}}" class="thumbnail"/>
       <div>
         <p class="name">{{match.name || 'Unknown'}}</p>
         <p class="info" ng-show="showExtra && match.infoUpdateTime">
           <i class="fa fa-location-arrow"></i> {{match.userDistanceMi}} |
-          <i class="fa fa-bolt"></i> <span short-time-ago="{{match.userPingTime}}"></span> |
+          <i class="fa fa-check"></i> <span short-time-ago="{{match.userPingTime}}"></span> |
           <i class="fa fa-comments" ng-class="lastMessageClass(match)"></i> <span short-time-ago="{{match.lastActive}}"></span>
         </p>
       </div>
@@ -196,16 +176,13 @@
         <p class="pending-message">{{message}}</p>
       </div>
     </div>
-    <textarea ng-keypress="keypress($event)" ng-model="message" rows="4" placeholder="Insert something witty here...">
+    <textarea ng-keypress="keypress($event)" ng-model="message" rows="4" placeholder="Insert text here...">
   </div>
 </div>
 </script>
 
 <script type="text/ng-template" id="profile.html">
   <div class="y-scroll">
-    <a ng-href="{{backLink}}">
-      <i class="fa fa-arrow-left fa-3x top-icon"></i>
-    </a>
     <div class="container" ng-show="user">
       <h1 class="fader">
         {{user.name}}
@@ -241,12 +218,34 @@
 </script>
 
 <script type="text/ng-template" id="settings.html">
-  <a ng-href="#/swipe">
-    <i class="fa fa-arrow-left fa-3x top-icon"></i>
-  </a>
   <div class="settings">
     <h1>Settings</h1>
     <form name="tppSettings">
+	  
+	  
+		  <fieldset>
+			<legend>Profile</legend>
+			  <a ng-href="#/profile/{{getCookie('userId')}}">
+				<img ng-src="{{getCookie('smallPhoto')}}" />
+			  </a>
+		  </fieldset>
+	  
+	  <br/>
+	  
+      <fieldset>
+        <legend>Location</legend>	  
+			  <p>
+			  {{getCookie('name')}}
+				<br>
+				<a href="" ng-click="toggleLocation()" >{{getCookie('currentCity') ? getCookie('currentCity') : 'set location'}}</a>
+			  </p>
+			  <div ng-show="showLocation">
+				<input type="text" ng-autocomplete ng-model="autocomplete" options="autocompleteOptions" details="details" placeholder="Change Location" id="autocompleteLocation" />
+			  </div>
+      </fieldset>
+	  
+	  <br/>
+	  
       <fieldset>
         <legend>Landing Page</legend>
         <label for="landingPage_1">
@@ -274,13 +273,14 @@
           Hide Match/Conversation Summary
         </label>
       </fieldset>
-
+	  
       <br/>
-
+	  
       <fieldset>
         <legend>Logout</legend>
         <a href="" ng-click="logout()">Click to Logout</a>
       </fieldset>
+	  
     </form>
 
   </div>
