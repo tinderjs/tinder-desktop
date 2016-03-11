@@ -300,7 +300,7 @@ overflow: hidden;
     flex: initial;
 }
 #match-list.more-info {
-    width: 215px;
+    width: 210px;
 }
 #back-arrow {
     margin: 3px calc(75px - 1em);
@@ -347,6 +347,7 @@ overflow: hidden;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 13px;
+	letter-spacing: -0.6px;
 }
 
 /* from http://codepen.io/samuelkraft/pen/Farhl */
@@ -379,7 +380,7 @@ overflow: hidden;
 
 #conversation div.from-me,
 #conversation div.from-them {
-    max-width: 51%;
+    max-width: 60%;
     word-wrap: break-word;
     margin-bottom: 10px;
 }
