@@ -85,9 +85,7 @@
     <div ng-show="allPeople.length > 0 && peopleIndex < allPeople.length">
       <h1 class="fader">
         {{allPeople[peopleIndex].name}}
-        <a ng-show="allPeople[peopleIndex].instagram" href="https://instagram.com/{{allPeople[peopleIndex].instagram.username}}" target="_blank">
-          ({{allPeople[peopleIndex].instagram.username}})
-        </a>
+
         , {{allPeople[peopleIndex].birth_date | bdayToAge}}&nbsp;
       </h1>
       <h3 class="fader" style="display: inline;">{{allPeople[peopleIndex].distance_mi}} miles {{getCookie('currentCity') ? "from " + getCookie('currentCity') : 'away'}}, Active {{allPeople[peopleIndex].ping_time | pingToAgo}}</h3>
@@ -113,6 +111,13 @@
 		</div>
       </div>
       <p class="schoolwork fader">
+	  
+	  <div class="fa fa-instagram">
+	          <a ng-show="allPeople[peopleIndex].instagram" href="https://instagram.com/{{allPeople[peopleIndex].instagram.username}}" target="_blank">
+          ({{allPeople[peopleIndex].instagram.username}})
+        </a>
+	  </div>
+		
         <i ng-repeat="school in allPeople[peopleIndex].schools" class="fa fa-graduation-cap">{{school.name}}</i>
         <i ng-repeat="job in allPeople[peopleIndex].jobs" class="fa fa-briefcase">
           {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}
