@@ -1,4 +1,4 @@
-Tinder++
+tinder-desktop
 ========
 
 It's a node-webkit (now nw.js) app.
@@ -20,12 +20,19 @@ Note: if you don't have Wine installed and want to run the build script (`node b
 
 #### Contributors ####
 
+- [@mkfp] (https://github.com/mkfp) ([http://www.kylepowers.com/](http://www.kylepowers.com/)
 - [@tomlandia](https://github.com/tomlandia) ([http://thomasschneider.com/](http://thomasschneider.com/))
 - [@wbyoko](https://github.com/wbyoko) ([http://wbyoko.co/](http://wbyoko.co/))
+
+#### Acknowledgment ####
+
+This application was originally created by Github user [@mkfp] (https://github.com/mkfp) as [tinderplusplus](https://github.com/mkfp/tinderplusplus) and a big thank you is given to him for getting the project off the ground and running.
 
 ### ISC License ###
 
 Copyright (c) 2015, VibraMedia, LLC
+
+Copyright (c) 2016, TinderJS, Github Organization
 
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
 
