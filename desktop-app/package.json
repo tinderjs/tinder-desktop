@@ -5,11 +5,11 @@
   "window": {
     "title": "TinderPlusPlus",
     "icon": "img/icon.png",
-    "toolbar": false,
+    "toolbar": true,
     "resizable": true,
     "fullscreen": false,
     "width": 560,
-    "height": 800,
+    "height": 900,
     "position": "center"
   },
   "webkit": {
