@@ -111,17 +111,13 @@
 		</div>
       </div>
       <p class="schoolwork fader">
-	  
-	  <div class="fa fa-instagram">
-	          <a ng-show="allPeople[peopleIndex].instagram" href="https://instagram.com/{{allPeople[peopleIndex].instagram.username}}" target="_blank">
-          ({{allPeople[peopleIndex].instagram.username}})
+
+	      <a ng-show="allPeople[peopleIndex].instagram" class="fa fa-instagram" href="https://instagram.com/{{allPeople[peopleIndex].instagram.username}}" target="_blank">
+          {{allPeople[peopleIndex].instagram.username}}
         </a>
-	  </div>
-		
-        <i ng-repeat="school in allPeople[peopleIndex].schools" class="fa fa-graduation-cap">{{school.name}}</i>
-        <i ng-repeat="job in allPeople[peopleIndex].jobs" class="fa fa-briefcase">
-          {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}
-        </i>
+
+        <i ng-repeat="school in allPeople[peopleIndex].schools" class="school, fa fa-graduation-cap">{{school.name}}</i>
+        <i ng-repeat="job in allPeople[peopleIndex].jobs" class="work, fa fa-briefcase">{{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}</i>
       </p>
       <p ng-show="allPeople[peopleIndex].bio" class="fader bio" ng-bind-html="allPeople[peopleIndex].bio | emoji"></p>
 
@@ -150,7 +146,7 @@
   <div id="match-list" ng-class="showExtra && 'more-info'">
     <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true track by match.matchId"
          ng-click="open(match.matchId)"
-         ng-class="showExtra && match.infoUpdateTime && 'more-info'"class="match">
+         ng-class="showExtra && match.infoUpdateTime && 'more-info'" class="match">
       <img ng-src="{{match.thumbnail || 'img/anonymous.png'}}" class="thumbnail"/>
       <div>
         <p class="name">{{match.name || 'Unknown'}}</p>
@@ -191,9 +187,6 @@
     <div class="container" ng-show="user">
       <h1 class="fader">
         {{user.name}}
-        <a ng-show="user.instagram" href="https://instagram.com/{{user.instagram.username}}" target="_blank">
-          ({{user.instagram.username}})
-        </a>
         , {{user.birth_date | bdayToAge}}&nbsp;
       </h1>
       <h3 class="fader" style="display: inline;">{{user.distance_mi}} miles away, Active {{user.ping_time | pingToAgo}}</h3>
@@ -205,10 +198,11 @@
       </div>
 
       <p class="schoolwork fader">
-        <i ng-repeat="school in user.schools" class="fa fa-graduation-cap">{{school.name}}</i>
-        <i ng-repeat="job in user.jobs" class="fa fa-briefcase">
-          {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}
-        </i>
+      <a ng-show="user.instagram" href="https://instagram.com/{{user.instagram.username}}" target="_blank" class="fa fa-instagram">
+        {{user.instagram.username}}
+      </a>
+        <i ng-repeat="school in user.schools" class="school fa fa-graduation-cap">{{school.name}}</i>
+        <i ng-repeat="job in user.jobs" class="work fa fa-briefcase">{{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}</i>
       </p>
       <p ng-show="user.bio" class="fader bio" ng-bind-html="user.bio | emoji"></p>
 
@@ -226,19 +220,19 @@
   <div class="settings">
     <h1>Settings</h1>
     <form name="tppSettings">
-	  
-	  
+
+
 		  <fieldset>
 			<legend>Profile</legend>
 			  <a ng-href="#/profile/{{getCookie('userId')}}">
 				<img ng-src="{{getCookie('smallPhoto')}}" />
 			  </a>
 		  </fieldset>
-	  
+
 	  <br/>
-	  
+
       <fieldset>
-        <legend>Location</legend>	  
+        <legend>Location</legend>
 			  <p>
 			  {{getCookie('name')}}
 				<br>
@@ -248,9 +242,9 @@
 				<input type="text" ng-autocomplete ng-model="autocomplete" options="autocompleteOptions" details="details" placeholder="Change Location" id="autocompleteLocation" />
 			  </div>
       </fieldset>
-	  
+
 	  <br/>
-	  
+
       <fieldset>
         <legend>Landing Page</legend>
         <label for="landingPage_1">
@@ -278,14 +272,14 @@
           Hide Match/Conversation Summary
         </label>
       </fieldset>
-	  
+
       <br/>
-	  
+
       <fieldset>
         <legend>Logout</legend>
         <a href="" ng-click="logout()">Click to Logout</a>
       </fieldset>
-	  
+
     </form>
 
   </div>
