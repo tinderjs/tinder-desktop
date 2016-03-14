@@ -166,12 +166,12 @@
     <div class="messages-list">
       <!-- normal messages -->
       <div ng-repeat="message in conversation.messages track by $index"
-          class="{{message.fromMe ? 'from-me' : 'from-them'}} clear">
+          class="{{message.fromMe ? 'from-me' : 'from-them'}} clear" scroll-to-last>
       <p ng-if="message.text" ng-bind-html="message.text | emoji"></p>
       </div>
       <!-- pending messages -->
       <div ng-repeat="message in conversation.pending track by $index"
-          class="from-me clear">
+          class="from-me clear" scroll-to-last>
         <p class="pending-message">{{message}}</p>
       </div>
     </div>
