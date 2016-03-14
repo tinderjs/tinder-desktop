@@ -235,8 +235,19 @@ html, body, body > div.ng-scope {
 }
 
 .schoolwork {
-	margin-top: 2px;
-	margin-bottom: 2px;
+	display: block;
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+.school {
+	display: block;
+	clear: both;
+}
+
+.work {
+	display: block;
+	clear: both;
 }
 
 /* facebook login button */
