@@ -84,11 +84,9 @@
     <div ng-show="allPeople.length === 0 || peopleIndex >= allPeople.length">Loading...</div>
     <div ng-show="allPeople.length > 0 && peopleIndex < allPeople.length">
       <h1 class="fader">
-        {{allPeople[peopleIndex].name}}
-
-        , {{allPeople[peopleIndex].birth_date | bdayToAge}}&nbsp;
+        {{allPeople[peopleIndex].name}}, {{allPeople[peopleIndex].birth_date | bdayToAge}}
       </h1>
-      <h3 class="fader" style="display: inline;">{{allPeople[peopleIndex].distance_mi}} miles {{getCookie('currentCity') ? "from " + getCookie('currentCity') : 'away'}}, Active {{allPeople[peopleIndex].ping_time | pingToAgo}}</h3>
+      <h3 class="fader" style="display: inline;">{{allPeople[peopleIndex].distance_mi}} miles {{getCookie('currentCity') ? "from " + getCookie('currentCity') : 'away'}} | Active {{allPeople[peopleIndex].ping_time | pingToAgo}}</h3>
 
       <div class="main-photo-container">
         <div class="main-photo tinder-card" ng-repeat="user in allPeople.slice().reverse()" render-images-directive
@@ -112,9 +110,9 @@
       </div>
 	  
       <p class="schoolwork fader">
-	    <a ng-show="allPeople[peopleIndex].instagram" class="fa fa-instagram" href="https://instagram.com/{{allPeople[peopleIndex].instagram.username}}" target="_blank">{{allPeople[peopleIndex].instagram.username}}</a>
-        <i ng-repeat="school in allPeople[peopleIndex].schools" class="school fa fa-graduation-cap">{{school.name}}</i>
-        <i ng-repeat="job in allPeople[peopleIndex].jobs" class="work fa fa-briefcase">{{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}</i>
+	    <a ng-show="allPeople[peopleIndex].instagram" class="fa fa-instagram" href="https://instagram.com/{{allPeople[peopleIndex].instagram.username}}" target="_blank"> {{allPeople[peopleIndex].instagram.username}}</a>
+        <i ng-repeat="school in allPeople[peopleIndex].schools" class="school fa fa-graduation-cap"> {{school.name}}</i>
+        <i ng-repeat="job in allPeople[peopleIndex].jobs" class="work fa fa-briefcase"> {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}</i>
       </p>
 	  
       <p ng-show="allPeople[peopleIndex].bio" class="fader bio" ng-bind-html="allPeople[peopleIndex].bio | emoji"></p>
@@ -184,19 +182,18 @@
   <div class="y-scroll">
     <div class="container" ng-show="user">
       <h1 class="fader">
-        {{user.name}}
-        , {{user.birth_date | bdayToAge}}&nbsp;
+        {{user.name}}, {{user.birth_date | bdayToAge}}
       </h1>
-      <h3 class="fader" style="display: inline;">{{user.distance_mi}} miles away, Active {{user.ping_time | pingToAgo}}</h3>
+      <h3 class="fader" style="display: inline;">{{user.distance_mi}} miles away | Active {{user.ping_time | pingToAgo}}</h3>
 
       <div class="main-photo-container">
         <div class="main-photo tinder-card"style="background-image: url({{user.photos[photoIndex].processedFiles[1].url}});"></div>
       </div>
 
       <p class="schoolwork fader">
-        <a ng-show="user.instagram" href="https://instagram.com/{{user.instagram.username}}" target="_blank" class="fa fa-instagram">{{user.instagram.username}}</a>
-        <i ng-repeat="school in user.schools" class="school fa fa-graduation-cap">{{school.name}}</i>
-        <i ng-repeat="job in user.jobs" class="work fa fa-briefcase">{{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}</i>
+        <a ng-show="user.instagram" href="https://instagram.com/{{user.instagram.username}}" target="_blank" class="fa fa-instagram"> {{user.instagram.username}}</a>
+        <i ng-repeat="school in user.schools" class="school fa fa-graduation-cap"> {{school.name}}</i>
+        <i ng-repeat="job in user.jobs" class="work fa fa-briefcase"> {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}</i>
       </p>
 	  
       <p ng-show="user.bio" class="fader bio" ng-bind-html="user.bio | emoji"></p>

@@ -7,6 +7,18 @@ h1, h2, h3, h4, h5 {
     font-family: 'Raleway', sans-serif;
 }
 
+h1 {
+	font-size: 1.5em;
+}
+
+h2 {
+	font-size: 1.3em;
+}
+
+h3 {
+	font-size: 1.1em;
+}
+
 a {
     color: #db6151;
     text-decoration: none;
@@ -227,7 +239,7 @@ overflow: hidden;
 
 .schoolwork {
   display: block;
-	margin-top: 4px;
+	margin-top: 12px;
 	margin-bottom: 4px;
 }
 
@@ -374,12 +386,18 @@ overflow: hidden;
     flex: 1;
 }
 #conversation h2 {
-  padding: 4px;
-  border-bottom: 1px solid #ddd;
-  margin-top: 0;
-  margin-bottom: 0;
   text-align: center;
 }
+
+.message-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #ddd;
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+}
+
 #conversation .messages-list {
     overflow-y: auto;
   overflow-x: hidden;
@@ -393,7 +411,7 @@ overflow: hidden;
 #conversation div.from-them {
     max-width: 60%;
     word-wrap: break-word;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 #conversation textarea {
     font-size: 1em;
