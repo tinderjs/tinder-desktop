@@ -1,6 +1,6 @@
 {
   "name": "TinderPlusPlus",
-  "version": "1.2.1",
+  "version": "1.3",
   "main": "index.html",
   "window": {
     "title": "TinderPlusPlus",
@@ -10,8 +10,7 @@
     "fullscreen": false,
     "width": 560,
     "height": 800,
-    "position": "center",
-    "toolbar": true
+    "position": "center"
   },
   "webkit": {
     "page-cache": true
