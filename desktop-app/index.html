@@ -110,15 +110,13 @@
 			</div>
 		</div>
       </div>
+	  
       <p class="schoolwork fader">
-
-	      <a ng-show="allPeople[peopleIndex].instagram" class="fa fa-instagram" href="https://instagram.com/{{allPeople[peopleIndex].instagram.username}}" target="_blank">
-          {{allPeople[peopleIndex].instagram.username}}
-        </a>
-
-        <i ng-repeat="school in allPeople[peopleIndex].schools" class="school, fa fa-graduation-cap">{{school.name}}</i>
-        <i ng-repeat="job in allPeople[peopleIndex].jobs" class="work, fa fa-briefcase">{{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}</i>
+	    <a ng-show="allPeople[peopleIndex].instagram" class="fa fa-instagram" href="https://instagram.com/{{allPeople[peopleIndex].instagram.username}}" target="_blank">{{allPeople[peopleIndex].instagram.username}}</a>
+        <i ng-repeat="school in allPeople[peopleIndex].schools" class="school fa fa-graduation-cap">{{school.name}}</i>
+        <i ng-repeat="job in allPeople[peopleIndex].jobs" class="work fa fa-briefcase">{{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}</i>
       </p>
+	  
       <p ng-show="allPeople[peopleIndex].bio" class="fader bio" ng-bind-html="allPeople[peopleIndex].bio | emoji"></p>
 
       <div class="small-photos fader">
@@ -192,26 +190,23 @@
       <h3 class="fader" style="display: inline;">{{user.distance_mi}} miles away, Active {{user.ping_time | pingToAgo}}</h3>
 
       <div class="main-photo-container">
-        <div class="main-photo tinder-card"
-             style="background-image: url({{user.photos[photoIndex].processedFiles[1].url}});">
-        </div>
+        <div class="main-photo tinder-card"style="background-image: url({{user.photos[photoIndex].processedFiles[1].url}});"></div>
       </div>
 
       <p class="schoolwork fader">
-      <a ng-show="user.instagram" href="https://instagram.com/{{user.instagram.username}}" target="_blank" class="fa fa-instagram">
-        {{user.instagram.username}}
-      </a>
+        <a ng-show="user.instagram" href="https://instagram.com/{{user.instagram.username}}" target="_blank" class="fa fa-instagram">{{user.instagram.username}}</a>
         <i ng-repeat="school in user.schools" class="school fa fa-graduation-cap">{{school.name}}</i>
         <i ng-repeat="job in user.jobs" class="work fa fa-briefcase">{{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}</i>
       </p>
+	  
       <p ng-show="user.bio" class="fader bio" ng-bind-html="user.bio | emoji"></p>
 
       <div class="small-photos fader">
         <div ng-repeat="photo in user.photos">
-          <img ng-src="{{photo.processedFiles[2].url}}" ng-click="swapPhoto($index)" data-photo-index="{{$index}}"
-               ng-class="{'selected': $index === photoIndex}" />
+          <img ng-src="{{photo.processedFiles[2].url}}" ng-click="swapPhoto($index)" data-photo-index="{{$index}}" ng-class="{'selected': $index === photoIndex}" />
         </div>
       </div>
+	  
     </div>
   </div>
 </script>
@@ -220,7 +215,6 @@
   <div class="settings">
     <h1>Settings</h1>
     <form name="tppSettings">
-
 
 		  <fieldset>
 			<legend>Profile</legend>
