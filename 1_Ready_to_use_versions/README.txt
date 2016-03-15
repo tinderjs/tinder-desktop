@@ -5,7 +5,7 @@ Most likely collaborate development on tinderjs/tinder-desktop will start soon, 
 
 Files in the directory bellow contain ready to use, stable versions.
 To look up changes, please look at the commits.
-https://github.com/SaturnusDJ/tinderplusplus/tree/master/
+https://github.com/SaturnusDJ/tinderplusplus/tree/master/1_Ready_to_use_versions
 
 If you want a heavily modified version, use the link bellow, but be aware that there most likely are bugs present.
-https://github.com/SaturnusDJ/tinderplusplus/tree/unstable
+https://github.com/SaturnusDJ/tinderplusplus/tree/unstable/1_Ready_to_use_versions
