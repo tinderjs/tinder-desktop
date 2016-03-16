@@ -177,25 +177,28 @@ so far, thus this temporary 'failing' on. */
 
 .main-photo-container {
     height: 320px;
+	width: 320px;
     position: relative;
-    margin: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .main-photo-container img {
-    max-width: 400px;
+    max-width: 320px;
 }
 
 .main-photo {
     text-align: center;
     width: 320px;
     height: 320px;
-    display: inline-block;
+    display: block;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
     overflow: hidden;
-    margin-left: auto;
-	margin-right: auto;
+    position: absolute;
     background: #fff top left / contain no-repeat;
     z-index: 1000;
 }
