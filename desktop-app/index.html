@@ -110,7 +110,7 @@
       </div>
 	  
       <p class="schoolwork fader">
-	    <a ng-show="allPeople[peopleIndex].instagram" class="fa fa-instagram" href="https://instagram.com/{{allPeople[peopleIndex].instagram.username}}" target="_blank"> {{allPeople[peopleIndex].instagram.username}}</a>
+	    <a ng-show="allPeople[peopleIndex].instagram" class="instagram fa fa-instagram" href="https://instagram.com/{{allPeople[peopleIndex].instagram.username}}" target="_blank"> {{allPeople[peopleIndex].instagram.username}}</a>
         <i ng-repeat="school in allPeople[peopleIndex].schools" class="school fa fa-graduation-cap"> {{school.name}}</i>
         <i ng-repeat="job in allPeople[peopleIndex].jobs" class="work fa fa-briefcase"> {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}</i>
       </p>
@@ -191,7 +191,7 @@
       </div>
 
       <p class="schoolwork fader">
-        <a ng-show="user.instagram" href="https://instagram.com/{{user.instagram.username}}" target="_blank" class="fa fa-instagram"> {{user.instagram.username}}</a>
+        <a ng-show="user.instagram" href="https://instagram.com/{{user.instagram.username}}" target="_blank" class="instagram fa fa-instagram"> {{user.instagram.username}}</a>
         <i ng-repeat="school in user.schools" class="school fa fa-graduation-cap"> {{school.name}}</i>
         <i ng-repeat="job in user.jobs" class="work fa fa-briefcase"> {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}</i>
       </p>
