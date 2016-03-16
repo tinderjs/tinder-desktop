@@ -192,8 +192,9 @@ so far, thus this temporary 'failing' on. */
     -moz-border-radius: 10px;
     border-radius: 10px;
     overflow: hidden;
-    margin-left: auto;
-	margin-right: auto;
+    position: absolute;
+    left: 50%;
+    margin-left: -150px;
     background: #fff top left / contain no-repeat;
     z-index: 1000;
 }
