@@ -71,6 +71,19 @@ html, body, body > div.ng-scope {
 }
 
 /* Specific */
+.swipe-undo {
+	position:absolute;
+	top:84px;
+	left:8px;
+}
+/* Note: The above layout element is by all mean temporary.
+The idea here is to keep the undo area just to the left
+of the photo stack. As you see the position is absolute
+so by changing the window size, the undo area is not
+just to the left of the photo stack any more, but
+stays left. I've not came up with a working solution
+so far, thus this temporary 'failing' on. */
+
 .title-bar {
     width: 100%;
     height: 25px;
@@ -146,11 +159,13 @@ html, body, body > div.ng-scope {
 }
 
 .bio {
-    margin: 0 0 15px 0;
+	width: 320px;
+    margin-top: 6px;
+	margin-bottom: 8px;
+	margin-left: auto;
+	margin-right: auto;
 	white-space: pre-wrap;
 	text-align: left;
-	margin-left: 32px;
-	margin-right: 32px;
 }
 
 .bio img {
@@ -177,9 +192,8 @@ html, body, body > div.ng-scope {
     -moz-border-radius: 10px;
     border-radius: 10px;
     overflow: hidden;
-    position: absolute;
-    left: 50%;
-    margin-left: -150px;
+    margin-left: auto;
+	margin-right: auto;
     background: #fff top left / contain no-repeat;
     z-index: 1000;
 }
@@ -236,18 +250,22 @@ html, body, body > div.ng-scope {
 
 .schoolwork {
 	display: block;
+	margin-top: 12px;
+	margin-bottom: 8px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width: 320px;
+}
+
+.instagram, .school, .work {
+	display: block;
+	clear: both;
 	margin-top: 4px;
 	margin-bottom: 4px;
-}
-
-.school {
-	display: block;
-	clear: both;
-}
-
-.work {
-	display: block;
-	clear: both;
+	text-align: left;
+	padding-left: 2px;
+	padding-right: 2px;
 }
 
 /* facebook login button */
