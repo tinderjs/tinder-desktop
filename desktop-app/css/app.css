@@ -45,8 +45,15 @@ a {
 }
 
 .top-icon {
+	color: #AAA;
     position: relative;
     padding: 0 5px;
+}
+.top-icon:hover {
+	color: #DB6151;
+}
+.top-icon:active {
+	color: #FF0000;
 }
 
 .clear {
@@ -104,6 +111,10 @@ so by changing the window size, the undo area is not
 just to the left of the photo stack any more, but
 stays left. I've not came up with a working solution
 so far, thus this temporary 'failing' on. */
+
+/* IDEA: Move swipe into parent container that fully
+enclosures picture stack, but then move it out relatively. */
+
 .title-bar {
     width: 100%;
     height: 32px;
@@ -357,6 +368,13 @@ so far, thus this temporary 'failing' on. */
     cursor: pointer;
     color: inherit;
 }
+.match:hover {
+	color: #DB6151;
+}
+.match:active {
+	color: #FF0000;
+}
+
 .match .thumbnail {
     display: inline-block;
     box-sizing: border-box;

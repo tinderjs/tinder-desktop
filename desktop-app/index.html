@@ -187,7 +187,7 @@
       <h3 class="fader" style="display: inline;">{{user.distance_mi}} miles away | Active {{user.ping_time | pingToAgo}}</h3>
 
       <div class="main-photo-container">
-        <div class="main-photo tinder-card"style="background-image: url({{user.photos[photoIndex].processedFiles[1].url}});"></div>
+        <a href="{{user.photos[photoIndex].processedFiles[0].url}}" target="_blank"><div class="main-photo tinder-card" style="background-image: url({{user.photos[photoIndex].processedFiles[1].url}});"></div></a>
       </div>
 
       <p class="schoolwork fader">
