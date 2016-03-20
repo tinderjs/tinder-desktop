@@ -72,17 +72,10 @@ html, body, body > div.ng-scope {
 
 /* Specific */
 .swipe-undo {
-	position:absolute;
-	top:84px;
-	left:8px;
+	position: absolute;
+	top: 118px;
+	left: -96px;
 }
-/* Note: The above layout element is by all mean temporary.
-The idea here is to keep the undo area just to the left
-of the photo stack. As you see the position is absolute
-so by changing the window size, the undo area is not
-just to the left of the photo stack any more, but
-stays left. I've not came up with a working solution
-so far, thus this temporary 'failing' on. */
 
 .title-bar {
     width: 100%;
