@@ -218,6 +218,10 @@
 			  <a ng-href="#/profile/{{getCookie('userId')}}">
 				<img ng-src="{{getCookie('smallPhoto')}}" />
 				<br>
+			    {{getCookie('name')}}
+			  </a>
+			  <br>
+			  Likes Remaining: {{likesRemaining ? '<' + likesRemaining : likesRemaining}}
 		  </fieldset>
 
 	  <br/>

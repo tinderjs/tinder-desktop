@@ -148,6 +148,11 @@ overflow: hidden;
     padding: 8px;
 }
 
+legend {
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
 .container h1 {
     margin: 0;
 }
