@@ -52,7 +52,7 @@
     apiObj.login = function(id, token) {
       ga_storage._trackEvent('Login', 'Facebook Login Successful');
       window._rg.record('api', 'facebook login successful', { origin: 'tinderplusplus' });
-      client.authorize(token, id, function(err, res, data) {
+      client.authorize(token, id, function(err, res) {
         if (!!err) { 
           handleError(err);
           return;
@@ -71,7 +71,7 @@
 
     apiObj.updateLocation = function(lng, lat) {
       return $q(function (resolve, reject) {
-        client.updatePosition(lng, lat, function(err, res, data) {
+        client.updatePosition(lng, lat, function(err, res) {
           if (!!err) { 
             handleError(err, reject);
             return;
@@ -97,7 +97,7 @@
     apiObj.people = function(limit) {
       return $q(function (resolve, reject) {
         limit = limit || 10;
-        client.getRecommendations(limit, function(err, res, data) {
+        client.getRecommendations(limit, function(err, res) {
           if (!!err) { 
             handleError(err, reject);
             return;
@@ -122,7 +122,7 @@
 
     apiObj.userInfo = function(userId) {
       return $q(function (resolve, reject) {
-        client.getUser(userId, function(err, res, data) {
+        client.getUser(userId, function(err, res) {
           if (!!err) { 
             handleError(err, reject);
             return;
@@ -139,14 +139,14 @@
 
     apiObj.like = function(userId) {
       return $q(function (resolve, reject) {
-        client.like(userId, function(err, res, data) {
+        client.like(userId, function(err, res) {
           if (!!err) { 
             handleError(err, reject);
             return;
           }
           console.log(JSON.stringify(res));
           if (res && res.match) {
-            apiObj.userInfo(res.match.participants[1], function(err2, res2, data2) {
+            apiObj.userInfo(res.match.participants[1], function(err2, res2) {
               var user = res2.results;
               swal({
                 title: 'It\'s a match!',
@@ -182,7 +182,7 @@
 
     apiObj.pass = function(userId) {
       return $q(function (resolve, reject) {
-        client.pass(userId, function(err, res, data) {
+        client.pass(userId, function(err, res) {
           if (!!err) { 
             handleError(err, reject);
             return;
@@ -195,7 +195,7 @@
 
     apiObj.sendMessage = function(matchId, message) {
       return $q(function (resolve, reject) {
-        client.sendMessage(matchId, message, function(err, res, data) {
+        client.sendMessage(matchId, message, function(err, res) {
           if (!!err) { 
             handleError(err, reject);
             return;
@@ -208,7 +208,7 @@
 
     apiObj.getUpdates = function() {
       return $q(function (resolve, reject) {
-        client.getUpdates(function(err, res, data) {
+        client.getUpdates(function(err, res) {
           if (!!err) { 
             handleError(err, reject);
             return;
@@ -221,7 +221,7 @@
 
     apiObj.getHistory = function() {
       return $q(function (resolve, reject) {
-        client.getHistory(function(err, res, data) {
+        client.getHistory(function(err, res) {
           if (!!err) { 
             handleError(err, reject);
             return;

@@ -217,7 +217,7 @@
 			<legend>Profile</legend>
 			  <a ng-href="#/profile/{{getCookie('userId')}}">
 				<img ng-src="{{getCookie('smallPhoto')}}" />
-			  </a>
+				<br>
 		  </fieldset>
 
 	  <br/>
@@ -225,8 +225,6 @@
       <fieldset>
         <legend>Location</legend>
 			  <p>
-			  {{getCookie('name')}}
-				<br>
 				<a href="" ng-click="toggleLocation()" >{{getCookie('currentCity') ? getCookie('currentCity') : 'set location'}}</a>
 			  </p>
 			  <div ng-show="showLocation">
