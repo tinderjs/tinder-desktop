@@ -192,6 +192,19 @@
           ga_storage._trackEvent('Keyboard', 'right');
           window._rg.record('keyboard', 'right', { origin: 'tinderplusplus' });
         });
+		
+		Mousetrap.bind('up', function () {
+          var cardEl = $scope.cards[$scope.cards.length - $scope.peopleIndex - 1];
+          var card = window.stack.getCard(cardEl);
+          if (!!card) {
+            card.throwOut(0, -100);
+          }/* 
+          $passOverlay = $(cardEl).children('.pass-overlay');
+          $likeOverlay = $(cardEl).children('.like-overlay'); */
+          superLike(1);
+          ga_storage._trackEvent('Keyboard', 'up');
+          window._rg.record('keyboard', 'up', { origin: 'tinderplusplus' });
+        });
 
         Mousetrap.bind('backspace', function(evt) {
           $scope.undo();
