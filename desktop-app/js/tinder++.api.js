@@ -189,7 +189,7 @@
       });
     };
 
-    apiObj.superlike = function(userId) {
+    apiObj.superLike = function(userId) {
       return $q(function (resolve, reject) {
         client.superLike(userId, function(err, res, data) {
           if (!!err) { 

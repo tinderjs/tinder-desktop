@@ -1,4 +1,5 @@
 (function() {
+  var superLike;
   var gui = require('nw.gui');
   var module = angular.module('tinder++.swipe', ['ngAutocomplete', 'ngSanitize', 'emoji', 'tinder++.api']);
 
@@ -151,11 +152,20 @@
       });
 
       window.stack.on('throwout', function (e) {
+        var method;
+        if(superLike === true){
+          method = 'superLike'
+        } else {
+          method = (e.throwDirection < 0) ? 'pass' : 'like'
+        }
+
         var user = $scope.allPeople[$scope.peopleIndex];
         addToApiQueue({
-          method: (e.throwDirection < 0) ? 'pass' : 'like',
+          method: method,
           user: user
         });
+
+        superLike = false;
         $scope.peopleIndex++;
         $timeout(function() {
           $scope.$apply();
@@ -243,12 +253,18 @@
         });
 
         Mousetrap.bind('up', function () {
+          superLike = true;
           var user = $scope.allPeople[$scope.peopleIndex];
-          addToApiQueue({
-            method: 'superlike',
-            user: user
-          });
-          // console.log(user)
+
+          var cardEl = $scope.cards[$scope.cards.length - $scope.peopleIndex - 1];
+          var card = window.stack.getCard(cardEl);
+          if (!!card) {
+            card.throwOut(100, -50);
+          }
+          $passOverlay = $(cardEl).children('.pass-overlay');
+          $likeOverlay = $(cardEl).children('.like-overlay');
+          like(1);
+
           swal("Good job!", "You just superliked!", "success")
           ga_storage._trackEvent('Keyboard', 'up');
           window._rg.record('keyboard', 'up', { origin: 'tinderplusplus' });
