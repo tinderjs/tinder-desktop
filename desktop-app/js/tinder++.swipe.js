@@ -250,7 +250,6 @@
           $passOverlay = $(cardEl).children('.pass-overlay');
           $likeOverlay = $(cardEl).children('.like-overlay');
           like(1);
-          swal("Good job!", "You just superliked " + user.name + "!" , "success");
           ga_storage._trackEvent('Keyboard', 'right');
           window._rg.record('keyboard', 'right', { origin: 'tinderplusplus' });
         });
