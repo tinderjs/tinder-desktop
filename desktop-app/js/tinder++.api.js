@@ -1,7 +1,9 @@
 (function() {
   var gui = require('nw.gui');
-  var tinder = require('tinderjs');
+  var tinder = require('tinder');
   var client = new tinder.TinderClient();
+
+  // if a token returned from tinder is in localstorage, set that token and skip auth
   if (localStorage.tinderToken) { client.setAuthToken(localStorage.tinderToken); }
 
   angular.module('tinder++.api', []).factory('API', function($q) {
@@ -102,6 +104,7 @@
             handleError(err, reject);
             return;
           }
+          // console.log(res.message)
           if ((res && res.message && (res.message === 'recs timeout' || res.message === 'recs exhausted')) || !res) {
             // TODO: I think alerts belong to controller
             swal({
@@ -144,7 +147,9 @@
             handleError(err, reject);
             return;
           }
-          console.log(JSON.stringify(res));
+          // console.log(JSON.stringify(res));
+          
+          // if the liked user is a match, alert it right away
           if (res && res.match) {
             apiObj.userInfo(res.match.participants[1], function(err2, res2, data2) {
               var user = res2.results;
@@ -157,6 +162,8 @@
               ga_storage._trackEvent('Events', 'Match');
               window._rg.record('api', 'match', { origin: 'tinderplusplus' });
             });
+
+          // if you run out of likes, alert user
           } else if (res && res.rate_limited_until) {
             var rate_limited_until = moment.unix(res.rate_limited_until / 1000);
             var now = moment();
@@ -172,9 +179,24 @@
             ga_storage._trackEvent('Events', 'Rate Limited');
             window._rg.record('api', 'rate limited', { origin: 'tinderplusplus' });
           }
+
+          // otherwise, update the amount of likes remaining and resolve the promise
           if (res && typeof res.likes_remaining != 'undefined') {
             likesRemaining = res.likes_remaining;
           }
+          resolve(res);
+        });        
+      });
+    };
+
+    apiObj.superLike = function(userId) {
+      return $q(function (resolve, reject) {
+        client.superLike(userId, function(err, res, data) {
+          if (!!err) { 
+            handleError(err, reject);
+            return;
+          }
+          console.log(JSON.stringify(res, data));
           resolve(res);
         });        
       });
