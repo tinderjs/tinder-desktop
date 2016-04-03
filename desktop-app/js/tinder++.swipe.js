@@ -242,6 +242,12 @@
           window._rg.record('keyboard', 'right', { origin: 'tinderplusplus' });
         });
 
+        Mousetrap.bind('up', function () {
+          console.log('you just touched up!')
+          ga_storage._trackEvent('Keyboard', 'up');
+          window._rg.record('keyboard', 'up', { origin: 'tinderplusplus' });
+        });
+
         Mousetrap.bind('backspace', function(evt) {
           $scope.undo();
           ga_storage._trackEvent('Keyboard', 'backspace');
