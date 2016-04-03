@@ -243,7 +243,13 @@
         });
 
         Mousetrap.bind('up', function () {
-          console.log('you just touched up!')
+          var user = $scope.allPeople[$scope.peopleIndex];
+          addToApiQueue({
+            method: 'superlike',
+            user: user
+          });
+          // console.log(user)
+          swal("Good job!", "You just superliked!", "success")
           ga_storage._trackEvent('Keyboard', 'up');
           window._rg.record('keyboard', 'up', { origin: 'tinderplusplus' });
         });

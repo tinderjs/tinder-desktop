@@ -21,7 +21,7 @@
   "dependencies": {
     "moment": "^2.8.4",
     "nw-updater": "git://github.com/mfkp/nw-updater",
-    "tinder": "^1.10.0",
+    "tinder": "^1.11.0",
     "tinderjs": "git://github.com/mfkp/tinderjs"
   }
 }
