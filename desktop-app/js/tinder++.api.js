@@ -1,6 +1,6 @@
 (function() {
   var gui = require('nw.gui');
-  var tinder = require('tinderjs');
+  var tinder = require('tinder');
   var client = new tinder.TinderClient();
   if (localStorage.tinderToken) { client.setAuthToken(localStorage.tinderToken); }
 
