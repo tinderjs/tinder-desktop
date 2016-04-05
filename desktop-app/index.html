@@ -95,7 +95,7 @@
     <div class="button"></div>
   </div>
   <div class="container">
-    <div ng-show="allPeople.length === 0 || peopleIndex >= allPeople.length">Loading...</div>
+    <div ng-show="allPeople.length === 0 || peopleIndex >= allPeople.length">Loading...<div class="loader"></div></div>
     <div ng-show="allPeople.length > 0 && peopleIndex < allPeople.length">
       <h1 class="fader">
         {{allPeople[peopleIndex].name}}
