@@ -81,7 +81,7 @@
 <script type="text/ng-template" id="swipe.html">
 <div class="y-scroll">
   <div class="container">
-    <div ng-show="allPeople.length === 0 || peopleIndex >= allPeople.length">Loading...</div>
+    <div ng-show="allPeople.length === 0 || peopleIndex >= allPeople.length">Loading...<div class="loader"></div></div>
     <div ng-show="allPeople.length > 0 && peopleIndex < allPeople.length">
       <h1 class="fader">
         {{allPeople[peopleIndex].name}}, {{allPeople[peopleIndex].birth_date | bdayToAge}}
