@@ -20,13 +20,13 @@ Note: if you don't have Wine installed and want to run the build script (`node b
 
 #### Contributors ####
 
-- [@mkfp] (https://github.com/mkfp) ([http://www.kylepowers.com/](http://www.kylepowers.com/)
+- [@mfkp] (https://github.com/mfkp) ([http://www.kylepowers.com/](http://www.kylepowers.com/))
 - [@tomlandia](https://github.com/tomlandia) ([http://thomasschneider.com/](http://thomasschneider.com/))
 - [@wbyoko](https://github.com/wbyoko) ([http://wbyoko.co/](http://wbyoko.co/))
 
 #### Acknowledgment ####
 
-This application was originally created by Github user [@mkfp] (https://github.com/mkfp) as [tinderplusplus](https://github.com/mkfp/tinderplusplus) and a big thank you is given to him for getting the project off the ground and running.
+This application was originally created by Github user [@mfkp] (https://github.com/mfkp) as [tinderplusplus](https://github.com/mfkp/tinderplusplus) and a big thank you is given to him for getting the project off the ground and running.
 
 ### ISC License ###
 
