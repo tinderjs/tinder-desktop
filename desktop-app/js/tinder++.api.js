@@ -19,8 +19,6 @@
         apiObj.logout();
       }
       (callbackFn || angular.noop)(err);
-      ga_storage._trackEvent('API Error', JSON.stringify(err));
-      window._rg.record('error', 'api error', { origin: 'tinderplusplus', error : JSON.stringify(err) });
     };
 
     apiObj.logout = function() {
@@ -52,8 +50,6 @@
     };
 
     apiObj.login = function(id, token) {
-      ga_storage._trackEvent('Login', 'Facebook Login Successful');
-      window._rg.record('api', 'facebook login successful', { origin: 'tinderplusplus' });
       client.authorize(token, id, function(err, res, data) {
         if (!!err) { 
           handleError(err);
@@ -115,8 +111,6 @@
               confirmButtonColor: "#DD6B55",
               confirmButtonText: 'Got it'
             });
-            ga_storage._trackEvent('Events', 'Out of people');
-            window._rg.record('api', 'tinderplusplus.api.out_of_people', { origin: 'tinderplusplus' });
           }
           resolve(res && res.results || []);
         });
@@ -159,8 +153,6 @@
                 confirmButtonText: 'Nice!',
                 imageUrl: user.photos[0].processedFiles[3].url
               });
-              ga_storage._trackEvent('Events', 'Match');
-              window._rg.record('api', 'match', { origin: 'tinderplusplus' });
             });
 
           // if you run out of likes, alert user
@@ -176,8 +168,6 @@
               confirmButtonColor: "#DD6B55",
               confirmButtonText: 'Out of daily likes. Maybe try Tinder Plus'
             });
-            ga_storage._trackEvent('Events', 'Rate Limited');
-            window._rg.record('api', 'rate limited', { origin: 'tinderplusplus' });
           }
 
           // otherwise, update the amount of likes remaining and resolve the promise

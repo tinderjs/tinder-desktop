@@ -7,8 +7,6 @@
     $scope.showExtra = Settings.get('messageListExtraInfo') === 'yes';
     $scope.open = function(matchId) {
       $scope.conversation = $scope.conversations[matchId];
-      ga_storage._trackEvent('Messages', 'opened thread');
-      window._rg.record('messages', 'opened thread', { origin: 'tinderplusplus' });
     };
     var ENTER = 13;
 
@@ -47,8 +45,6 @@
         event.preventDefault();
         if ($scope.message.length > 0) {
           API.sendMessage($scope.conversation.matchId, $scope.message);
-          ga_storage._trackEvent('Messages', 'sent message');
-          window._rg.record('messages', 'sent message', { origin: 'tinderplusplus' });
           // Show pending message
           $scope.conversation.pending = $scope.conversation.pending || [];
           $scope.conversation.pending.push($scope.message);

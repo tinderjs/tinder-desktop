@@ -4,8 +4,6 @@
   module.controller('ProfileController', function($scope, $routeParams, API) {
     API.userInfo($routeParams.userId).then(function(user) {
       $scope.user = user;
-      ga_storage._trackEvent('Messages', 'viewed profile');
-      window._rg.record('profile', 'viewed', { origin: 'tinderplusplus' });
     });
 
     $scope.backLink = (localStorage.userId === $routeParams.userId) ? '#/swipe' : '#/messages';
