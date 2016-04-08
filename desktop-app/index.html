@@ -104,7 +104,7 @@
         </a>
         , {{allPeople[peopleIndex].birth_date | bdayToAge}}&nbsp;
       </h1>
-      <h3 class="fader" style="display: inline;">{{allPeople[peopleIndex].distance_mi}} miles {{getCookie('currentCity') ? "from " + getCookie('currentCity') : 'away'}}, Active {{allPeople[peopleIndex].ping_time | pingToAgo}}</h3>
+      <h3 class="fader" style="display: inline;">{{allPeople[peopleIndex].distance_mi | distanceToUnits}} {{getCookie('currentCity') ? "from " + getCookie('currentCity') : 'away'}}, Active {{allPeople[peopleIndex].ping_time | pingToAgo}}</h3>
 
       <div class="main-photo-container">
         <div class="main-photo tinder-card" ng-repeat="user in allPeople.slice().reverse()" render-images-directive
@@ -157,7 +157,7 @@
       <div>
         <p class="name">{{match.name || 'Unknown'}}</p>
         <p class="info" ng-show="showExtra && match.infoUpdateTime">
-          <i class="fa fa-location-arrow"></i> {{match.userDistanceMi}} |
+          <i class="fa fa-location-arrow"></i> {{match.userDistance}} |
           <i class="fa fa-bolt"></i> <span short-time-ago="{{match.userPingTime}}"></span> |
           <i class="fa fa-comments" ng-class="lastMessageClass(match)"></i> <span short-time-ago="{{match.lastActive}}"></span>
         </p>
@@ -203,7 +203,7 @@
         </a>
         , {{user.birth_date | bdayToAge}}&nbsp;
       </h1>
-      <h3 class="fader" style="display: inline;">{{user.distance_mi}} miles away, Active {{user.ping_time | pingToAgo}}</h3>
+      <h3 class="fader" style="display: inline;">{{user.distance_mi | distanceToUnits}} away, Active {{user.ping_time | pingToAgo}}</h3>
 
       <div class="main-photo-container">
         <div class="main-photo tinder-card"
@@ -261,6 +261,21 @@
         <label for="extraInfo_2">
           <input type="radio" name="extraInfo" id="extraInfo_2" value="no" ng-model="settings.messageListExtraInfo" ng-change="syncSettings()"/>
           Hide Match/Conversation Summary
+        </label>
+      </fieldset>
+
+      <br/>
+
+      <fieldset>
+        <legend>Distance Units</legend>
+        <label for="distanceUnits_1">
+          <input type="radio" name="distanceUnits" id="distanceUnits_1" value="mi" ng-model="settings.distanceUnits" ng-change="syncSettings()"/>
+          Miles
+        </label>
+        <br/>
+        <label for="distanceUnits_2">
+          <input type="radio" name="distanceUnits" id="distanceUnits_2" value="km" ng-model="settings.distanceUnits" ng-change="syncSettings()"/>
+          Kilometres
         </label>
       </fieldset>
 
