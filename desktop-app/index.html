@@ -70,7 +70,6 @@
           Superlikes Remaining: {{superLikesRemaining}}
         </span>
         <br>
-        <a href="" ng-click="toggleLocation()" >({{getCookie('currentCity') ? getCookie('currentCity') : 'set location'}})</a> | 
         <a href="#/settings">Settings</a>
       </p>
       <a ng-href="#/profile/{{getCookie('userId')}}">
@@ -236,6 +235,18 @@
   <div class="settings">
     <h1>Settings</h1>
     <form name="tppSettings">
+      <fieldset>
+        <legend>Location</legend>
+			  <p>
+				<a href="" ng-click="toggleLocation()" >{{getCookie('currentCity') ? getCookie('currentCity') : 'set location'}}</a>
+			  </p>
+			  <div ng-show="showLocation">
+				<input type="text" ng-autocomplete ng-model="autocomplete" options="autocompleteOptions" details="details" placeholder="Change Location" id="autocompleteLocation" />
+			  </div>
+      </fieldset>
+	  
+	  <br />
+	  
       <fieldset>
         <legend>Landing Page</legend>
         <label for="landingPage_1">
