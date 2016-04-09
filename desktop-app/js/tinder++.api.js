@@ -134,6 +134,23 @@
       });
     };
 
+    apiObj.getAccount = function() {
+      return $q(function (resolve, reject) {
+        client.getProfile(function(err, res, data) { // change to client.getAccount
+          if (!!err) { 
+            handleError(err, reject);
+            return;
+          }
+          if (res === null) {
+            handleError('userInfo result is null', reject);
+            return;
+          }
+          // console.log(JSON.stringify(res));
+          resolve(res);
+        });
+      });
+    };
+
     apiObj.like = function(userId) {
       return $q(function (resolve, reject) {
         client.like(userId, function(err, res, data) {
@@ -186,7 +203,7 @@
             handleError(err, reject);
             return;
           }
-          console.log(JSON.stringify(res, data));
+          console.log(JSON.stringify(res));
           resolve(res);
         });        
       });

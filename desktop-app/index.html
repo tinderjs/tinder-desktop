@@ -65,6 +65,10 @@
           <br>
           Likes Remaining: {{likesRemaining ? '<' + likesRemaining : likesRemaining}}
         </span>
+        <span ng-show="(superLikesRemaining)">
+          <br>
+          Superlikes Remaining: {{superLikesRemaining}}
+        </span>
         <br>
         <a href="" ng-click="toggleLocation()" >({{getCookie('currentCity') ? getCookie('currentCity') : 'set location'}})</a> | 
         <a href="#/settings">Settings</a>

@@ -14,6 +14,10 @@
       types: '(cities)'
     };
 
+    API.getAccount().then(function(response){
+      $scope.superLikesRemaining = '' + response.rating.super_likes.remaining;
+    })
+
     $scope.likesRemaining = null;
     $interval(function() { $scope.likesRemaining = API.getLikesRemaining(); }, 1000);
 
@@ -144,18 +148,19 @@
       });
 
       window.stack.on('throwout', function (e) {
+        var user = $scope.allPeople[$scope.peopleIndex];
         var method;
         if(superLike === true){
-          method = 'superLike'
+          API.superLike(user._id).then(function(response){
+            $scope.superLikesRemaining = '' + response.super_likes.remaining;
+          })
         } else {
           method = (e.throwDirection < 0) ? 'pass' : 'like'
+          addToApiQueue({
+            method: method,
+            user: user
+          });
         }
-
-        var user = $scope.allPeople[$scope.peopleIndex];
-        addToApiQueue({
-          method: method,
-          user: user
-        });
 
         superLike = false;
         $scope.peopleIndex++;
@@ -223,6 +228,8 @@
         });
 
         Mousetrap.bind('right', function () {
+          var user = $scope.allPeople[$scope.peopleIndex];
+          console.log(user)
           var cardEl = $scope.cards[$scope.cards.length - $scope.peopleIndex - 1];
           var card = window.stack.getCard(cardEl);
           if (!!card) {
@@ -234,8 +241,13 @@
         });
 
         Mousetrap.bind('up', function () {
-          superLike = true;
           var user = $scope.allPeople[$scope.peopleIndex];
+
+          if($scope.superLikesRemaining == '0'){
+            return swal("Oops!", "Sorry, you are out of superlikes! Try again later!" , "error");
+          }
+
+          superLike = true;
 
           var cardEl = $scope.cards[$scope.cards.length - $scope.peopleIndex - 1];
           var card = window.stack.getCard(cardEl);
@@ -245,8 +257,7 @@
           $passOverlay = $(cardEl).children('.pass-overlay');
           $likeOverlay = $(cardEl).children('.like-overlay');
           like(1);
-
-          swal("Good job!", "You just superliked!", "success")
+          swal("Nice!", "You just superliked " + user.name + ", increasing your chance of a match by 3x!" , "success");
         });
 
         Mousetrap.bind('backspace', function(evt) {
