@@ -50,7 +50,7 @@
     };
 
     apiObj.login = function(id, token) {
-      client.authorize(token, id, function(err, res) {
+      client.authorize(token, id, function(err, res, data) {
         if (!!err) { 
           handleError(err);
           return;
@@ -69,7 +69,7 @@
 
     apiObj.updateLocation = function(lng, lat) {
       return $q(function (resolve, reject) {
-        client.updatePosition(lng, lat, function(err, res) {
+        client.updatePosition(lng, lat, function(err, res, data) {
           if (!!err) { 
             handleError(err, reject);
             return;
@@ -95,7 +95,7 @@
     apiObj.people = function(limit) {
       return $q(function (resolve, reject) {
         limit = limit || 10;
-        client.getRecommendations(limit, function(err, res) {
+        client.getRecommendations(limit, function(err, res, data) {
           if (!!err) { 
             handleError(err, reject);
             return;
@@ -119,7 +119,7 @@
 
     apiObj.userInfo = function(userId) {
       return $q(function (resolve, reject) {
-        client.getUser(userId, function(err, res) {
+        client.getUser(userId, function(err, res, data) {
           if (!!err) { 
             handleError(err, reject);
             return;
@@ -136,7 +136,7 @@
 
     apiObj.like = function(userId) {
       return $q(function (resolve, reject) {
-        client.like(userId, function(err, res) {
+        client.like(userId, function(err, res, data) {
           if (!!err) { 
             handleError(err, reject);
             return;
@@ -145,7 +145,7 @@
           
           // if the liked user is a match, alert it right away
           if (res && res.match) {
-            apiObj.userInfo(res.match.participants[1], function(err2, res2) {
+            apiObj.userInfo(res.match.participants[1], function(err2, res2, data2) {
               var user = res2.results;
               swal({
                 title: 'It\'s a match!',
@@ -194,7 +194,7 @@
 
     apiObj.pass = function(userId) {
       return $q(function (resolve, reject) {
-        client.pass(userId, function(err, res) {
+        client.pass(userId, function(err, res, data) {
           if (!!err) { 
             handleError(err, reject);
             return;
@@ -207,7 +207,7 @@
 
     apiObj.sendMessage = function(matchId, message) {
       return $q(function (resolve, reject) {
-        client.sendMessage(matchId, message, function(err, res) {
+        client.sendMessage(matchId, message, function(err, res, data) {
           if (!!err) { 
             handleError(err, reject);
             return;
@@ -234,7 +234,7 @@
 
     apiObj.getUpdates = function() {
       return $q(function (resolve, reject) {
-        client.getUpdates(function(err, res) {
+        client.getUpdates(function(err, res, data) {
           if (!!err) { 
             handleError(err, reject);
             return;
@@ -247,7 +247,7 @@
 
     apiObj.getHistory = function() {
       return $q(function (resolve, reject) {
-        client.getHistory(function(err, res) {
+        client.getHistory(function(err, res, data) {
           if (!!err) { 
             handleError(err, reject);
             return;
