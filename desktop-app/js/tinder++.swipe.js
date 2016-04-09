@@ -14,6 +14,10 @@
       types: '(cities)'
     };
 
+    API.getAccount().then(function(response){
+      $scope.superLikesRemaining = response.rating.super_likes.remaining;
+    })
+
     $scope.likesRemaining = null;
     $interval(function() { $scope.likesRemaining = API.getLikesRemaining(); }, 1000);
 

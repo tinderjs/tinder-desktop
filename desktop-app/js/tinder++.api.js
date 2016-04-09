@@ -134,8 +134,25 @@
             handleError('userInfo result is null', reject);
             return;
           }
-          // console.log(JSON.stringify(res));
+          console.log(JSON.stringify(res));
           resolve(res.results);
+        });
+      });
+    };
+
+    apiObj.getAccount = function() {
+      return $q(function (resolve, reject) {
+        client.getProfile(function(err, res, data) { // change to client.getAccount
+          if (!!err) { 
+            handleError(err, reject);
+            return;
+          }
+          if (res === null) {
+            handleError('userInfo result is null', reject);
+            return;
+          }
+          console.log(JSON.stringify(res));
+          resolve(res);
         });
       });
     };
