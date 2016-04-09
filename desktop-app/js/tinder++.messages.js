@@ -7,10 +7,22 @@
     $scope.showExtra = Settings.get('messageListExtraInfo') === 'yes';
     $scope.open = function(matchId) {
       $scope.conversation = $scope.conversations[matchId];
-      ga_storage._trackEvent('Messages', 'opened thread');
-      window._rg.record('messages', 'opened thread', { origin: 'tinderplusplus' });
     };
     var ENTER = 13;
+
+    $scope.unmatch = function(conversation){
+      swal({   
+        title: "Unmatch with " + conversation.name + "?",   
+        text: "You will not be able to message this person",   // Unmatch with conversation.name 
+        type: "info",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Yes, unmatch",   
+        closeOnConfirm: true }, 
+      function(){   
+        API.unmatch(conversation.matchId)
+      });
+    }
 
     $scope.lastMessageClass = function (match) {
       if (match.messages.length) {
@@ -33,8 +45,6 @@
         event.preventDefault();
         if ($scope.message.length > 0) {
           API.sendMessage($scope.conversation.matchId, $scope.message);
-          ga_storage._trackEvent('Messages', 'sent message');
-          window._rg.record('messages', 'sent message', { origin: 'tinderplusplus' });
           // Show pending message
           $scope.conversation.pending = $scope.conversation.pending || [];
           $scope.conversation.pending.push($scope.message);

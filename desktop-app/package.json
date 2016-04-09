@@ -8,8 +8,8 @@
     "toolbar": true,
     "resizable": true,
     "fullscreen": false,
-    "width": 560,
-    "height": 800,
+    "width": 1400,
+    "height": 900,
     "position": "center"
   },
   "webkit": {
@@ -21,7 +21,7 @@
   "dependencies": {
     "moment": "^2.8.4",
     "nw-updater": "git://github.com/mfkp/nw-updater",
-    "tinder": "^1.11.0",
+    "tinder": "^1.16.0",
     "tinderjs": "git://github.com/mfkp/tinderjs"
   }
 }

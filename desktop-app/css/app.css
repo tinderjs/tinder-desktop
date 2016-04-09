@@ -136,6 +136,45 @@ html, body, body > div.ng-scope {
     border-radius: 50px;
     background-color: #FAFAFA;
     padding: 10px;
+    position: relative;
+}
+
+.container .loader {
+    border: 2px solid;
+    margin-top: 15px;
+    margin-left: 10px;
+    border-color: transparent #FF8271 #FF8271 #FF8271;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: -4px;
+    display: inline-block;
+    margin-left: 54px;
+    -webkit-animation: single-arc-rotate 1s infinite linear;
+    animation: single-arc-rotate 1s infinite linear;
+    animation-name: single-arc-rotate;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-delay: initial;
+    animation-iteration-count: infinite;
+    animation-direction: initial;
+    animation-fill-mode: initial;
+    animation-play-state: initial;
+}
+
+@-webkit-keyframes single-arc-rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes single-arc-rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 
 .container h1 {

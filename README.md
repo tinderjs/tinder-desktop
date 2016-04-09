@@ -1,6 +1,12 @@
 tinder-desktop
 ========
 
+#### Contribution ####
+
+tinder-desktop is a project that has a lot of potential if the power of the open-source community is harnessed. Come [join us on on Slack](http://tinderjs.com) and view the [priorities list](https://github.com/tinderjs/tinder-desktop/wiki/Development-Priorities) to see how you can contribute, it is well appreciated!
+
+#### tinder-desktop ####
+
 It's a node-webkit (now nw.js) app.
 
 You'll need to run `npm install` in both the main directory, and inside of desktop-app before starting.
@@ -20,13 +26,17 @@ Note: if you don't have Wine installed and want to run the build script (`node b
 
 #### Contributors ####
 
-- [@mkfp] (https://github.com/mkfp) ([http://www.kylepowers.com/](http://www.kylepowers.com/)
+- [@mfkp] (https://github.com/mfkp) ([http://www.kylepowers.com/](http://www.kylepowers.com/))
 - [@tomlandia](https://github.com/tomlandia) ([http://thomasschneider.com/](http://thomasschneider.com/))
 - [@wbyoko](https://github.com/wbyoko) ([http://wbyoko.co/](http://wbyoko.co/))
 
 #### Acknowledgment ####
 
-This application was originally created by Github user [@mkfp] (https://github.com/mkfp) as [tinderplusplus](https://github.com/mkfp/tinderplusplus) and a big thank you is given to him for getting the project off the ground and running.
+This application was originally created by Github user [@mfkp] (https://github.com/mfkp) as [tinderplusplus](https://github.com/mfkp/tinderplusplus) and a big thank you is given to him for getting the project off the ground and running.
+
+#### Disclaimer ####
+
+This is not an official Tinder app and as such its usage may violate Tinder's TOS. As with any experimental technology you should use it with caution.
 
 ### ISC License ###
 
