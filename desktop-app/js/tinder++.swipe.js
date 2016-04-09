@@ -1,7 +1,7 @@
 (function() {
   var superLike;
   var gui = require('nw.gui');
-  var module = angular.module('tinder++.swipe', ['ngAutocomplete', 'ngSanitize', 'emoji', 'tinder++.api', 'tinder++.settings']);
+  var module = angular.module('tinder++.swipe', ['ngAutocomplete', 'ngSanitize', 'emoji', 'tinder++.api']);
 
   module.controller('SwipeController', function SwipeController($scope, $http, $timeout, $interval, API) {
     $scope.allPeople = [];
@@ -326,16 +326,6 @@
   module.filter('pingToAgo', function() {
     return function(ping) {
       return moment(ping).fromNow();
-    };
-  });
-
-  module.filter('distanceToUnits', function(Settings) {
-    return function(distanceMi) {
-      if (Settings.get('distanceUnits') == 'mi') {
-        return distanceMi + ' miles';
-      } else {
-        return Math.round(distanceMi * 1.60934) + ' kilometres';
-      }
     };
   });
 

@@ -3,9 +3,9 @@
   var gui = require('nw.gui');
   var win = gui.Window.get();
 
-  module = angular.module('tinder++.controls', ['tinder++.api', 'tinder++.settings']);
+  module = angular.module('tinder++.controls', ['tinder++.api']);
 
-  module.service('Controls', function(API, Settings, $interval, $q, orderByFilter, $timeout) {
+  module.service('Controls', function(API, $interval, $q, orderByFilter, $timeout) {
 
     var controls = {
       'init': init
@@ -190,7 +190,7 @@
         var conversation = API.conversations[matchId];
         if (conversation) {
           angular.extend(conversation, {
-            userDistance: calcUserDistance(user),
+            userDistanceMi: user.distance_mi,
             userPingTime: user.ping_time,
             infoUpdateTime: calcUserUpdateTimeISOString(user)
           });
@@ -209,15 +209,6 @@
     function resetInfoQueue () {
       pendingInfoRequests = {};
       infoQueue = $q.when();
-    }
-
-    function calcUserDistance(user) {
-      var distance = user.distance_mi;
-      if (Settings.get('distanceUnits') == 'mi') {
-        return distance;
-      } else {
-        return Math.round(distance * 1.60934);
-      }
     }
 
     function calcUserUpdateTimeISOString(user) {
