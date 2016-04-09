@@ -230,7 +230,8 @@
 
     apiObj.unmatch = function(matchId, message) {
       return $q(function (resolve, reject) {
-        client.unmatch(matchId, message, function(err, res, data) {
+        console.log('hello')
+        client.unmatch(matchId, function(err, res, data) {
           if (!!err) { 
             handleError(err, reject);
             return;
