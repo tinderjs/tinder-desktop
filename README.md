@@ -28,6 +28,10 @@ Note: if you don't have Wine installed and want to run the build script (`node b
 
 This application was originally created by Github user [@mfkp] (https://github.com/mfkp) as [tinderplusplus](https://github.com/mfkp/tinderplusplus) and a big thank you is given to him for getting the project off the ground and running.
 
+#### Disclaimer ####
+
+The Tinder API is not officially documented, and as such, usage of tinder-desktop possibly violates the Tinder Terms of Service. Use this at your own risk.
+
 ### ISC License ###
 
 Copyright (c) 2015, VibraMedia, LLC
