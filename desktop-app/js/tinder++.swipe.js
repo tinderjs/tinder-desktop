@@ -3,19 +3,11 @@
   var gui = require('nw.gui');
   var module = angular.module('tinder++.swipe', ['ngAutocomplete', 'ngSanitize', 'emoji', 'tinder++.api']);
 
-  module.controller('SwipeController', function SwipeController($scope, $http, $timeout, $interval, API) {
+  module.controller('SwipeController', function SwipeController($scope, $timeout, API) {
     $scope.allPeople = [];
     $scope.peopleIndex = 0;
-    $scope.showLocation = false;
     $scope.apiQueue = [];
     var queueTimer = null;
-
-    $scope.autocompleteOptions = {
-      types: '(cities)'
-    };
-
-    $scope.likesRemaining = null;
-    $interval(function() { $scope.likesRemaining = API.getLikesRemaining(); }, 1000);
 
     $scope.swapPhoto = function(index) {
       $scope.allPeople[$scope.peopleIndex].photoIndex = index;
@@ -23,43 +15,6 @@
 
     $scope.getCookie = function(cookieName) {
       return localStorage[cookieName];
-    };
-
-    $scope.watchAutocomplete = function () { return $scope.details; };
-    $scope.$watch($scope.watchAutocomplete, function (details) {
-      if (details) {
-        localStorage.currentCity = details.name;
-        var fuzzAmount = +(Math.random() * (0.0000009 - 0.0000001) + 0.0000001);
-        var lng = (parseFloat(details.geometry.location.lng()) + fuzzAmount).toFixed(7);
-        var lat = (parseFloat(details.geometry.location.lat()) + fuzzAmount).toFixed(7);
-        API.updateLocation(lng.toString(), lat.toString()).then(function() {
-          getPeople();
-        });
-        $scope.showLocation = false;
-      }
-    }, true);
-
-    $scope.toggleLocation = function() {
-      $('#autocompleteLocation').val('');
-      if ($scope.showLocation) {
-        $scope.showLocation = false;
-      } else {
-        swal({
-          title: 'Warning',
-          text: 'If you change location too much, you might lose access to swiping for a few hours.',
-          type: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: "#F8C086",
-          confirmButtonText: 'Got it',
-          closeOnConfirm: true
-        }, function() {
-          $scope.showLocation = true;
-          $timeout(function() {
-            $scope.$apply();
-            $('#autocompleteLocation').focus();
-          }, 0, false);
-        });
-      }
     };
 
     $scope.$on('cardsRendered', function() {
