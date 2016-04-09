@@ -55,7 +55,7 @@
           handleError(err);
           return;
         }
-        console.log(JSON.stringify(res));
+        // console.log(JSON.stringify(res));
         localStorage.tinderToken = client.getAuthToken();
         localStorage.name = res.user.full_name;
         localStorage.smallPhoto = res.user.photos[0].processedFiles[3].url;
@@ -74,7 +74,7 @@
             handleError(err, reject);
             return;
           }
-          console.log(JSON.stringify(res));
+          // console.log(JSON.stringify(res));
           if (res && res.error && res.error == 'major position change not significant') {
             // clear out the stored city because we don't know where they are anymore
             localStorage.removeItem('currentCity');
@@ -203,7 +203,7 @@
             handleError(err, reject);
             return;
           }
-          console.log(JSON.stringify(res));
+          // console.log(JSON.stringify(res));
           resolve(res);
         });        
       });
@@ -229,7 +229,7 @@
             handleError(err, reject);
             return;
           }
-          console.log(JSON.stringify(res));
+          // console.log(JSON.stringify(res));
           resolve(res);
         });        
       });
@@ -269,7 +269,7 @@
             handleError(err, reject);
             return;
           }
-          console.log(JSON.stringify(res));
+          // console.log(JSON.stringify(res));
           resolve(res);
         });        
       });
