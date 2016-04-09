@@ -5,7 +5,7 @@
 #define MyAppVersion "1.2.1"
 #define MyAppPublisher "VibraMedia, LLC"
 #define MyAppURL "http://www.tinderplusplus.com/"
-#define MyAppExeName "Tinder++.exe"
+#define MyAppExeName "Tinder⁺⁺.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -22,7 +22,7 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={userpf}\{#MyAppName}
 DisableDirPage=yes
 DefaultGroupName={#MyAppName}
-OutputDir=Z:\workspace\tinder++\build\Tinder++
+OutputDir=Z:\workspace\tinder++\build\Tinder⁺⁺
 OutputBaseFilename=InstallTinder++
 SetupIconFile=Z:\workspace\tinder++\icons\win.ico
 Compression=lzma
@@ -36,8 +36,8 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 0,6.1
 
 [Files]
-Source: "Z:\workspace\tinder++\build\Tinder++\win32\Tinder++.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "Z:\workspace\tinder++\build\Tinder++\win32\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "Z:\workspace\tinder++\build\Tinder⁺⁺\win32\Tinder⁺⁺.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "Z:\workspace\tinder++\build\Tinder⁺⁺\win32\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

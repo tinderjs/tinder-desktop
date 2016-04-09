@@ -3,12 +3,12 @@ console.log('Before running, make sure versions are updated in both package.json
 
 var NwBuilder = require('node-webkit-builder');
 var appPkg = require('./desktop-app/package.json');
-var appName = 'Tinder++';
+var appName = 'Tinder⁺⁺';
 
 var nw = new NwBuilder({
   files: 'desktop-app/**',
   platforms: ['osx32', 'win32'],
-  version: '0.12.3',
+  version: '0.11.6',
   appName: appName,
   appVersion: appPkg.version,
   winIco: 'icons/win.ico',

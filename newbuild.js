@@ -3,7 +3,7 @@ var nw = new NwBuilder({
     files: './desktop-app/**/**', // use the glob format
     platforms: ['osx32'], 
     build: './newbuild',
-    version: '0.12.3'
+    version: '0.11.6'
   });
 
 //Log stuff you want
