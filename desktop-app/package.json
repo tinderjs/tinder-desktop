@@ -1,11 +1,11 @@
 {
-  "name": "TinderPlusPlus",
-  "version": "1.3",
+  "name": "tinder-desktop",
+  "version": "1.2.1",
   "main": "index.html",
   "window": {
-    "title": "TinderPlusPlus",
+    "title": "Tinder Desktop",
     "icon": "img/icon.png",
-    "toolbar": false,
+    "toolbar": true,
     "resizable": true,
     "fullscreen": false,
     "width": 560,
@@ -15,11 +15,13 @@
   "webkit": {
     "page-cache": true
   },
+  "single-instance": false,
   "user-agent": "Mozilla/5.0 (Linux; U; en-gb; KFTHWI Build/JDQ39) AppleWebKit/535.19 (KHTML, like Gecko) Silk/3.16 Safari/535.19",
   "no-edit-menu": true,
   "dependencies": {
     "moment": "^2.8.4",
-    "tinderjs": "git://github.com/mfkp/tinderjs",
-    "nw-updater": "git://github.com/mfkp/nw-updater"
+    "nw-updater": "git://github.com/mfkp/nw-updater",
+    "tinder": "^1.11.0",
+    "tinderjs": "git://github.com/mfkp/tinderjs"
   }
 }
