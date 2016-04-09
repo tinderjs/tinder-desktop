@@ -168,7 +168,7 @@
   <div id="conversation" ng-show="conversation">
     <h2 class="message-header">
       Chat with <a ng-href="#/profile/{{conversation.userId}}">{{conversation.name}}</a>
-      <a ng-click="unmatch(conversation.matchId)">CLICK 4 UNMATCH</a>
+      <a ng-click="unmatch(conversation)">CLICK 4 UNMATCH</a>
     </h2>
     <div ng-show="conversation.messages.length == 0" class="messages-list-empty">
       No messages yet. Write something!
