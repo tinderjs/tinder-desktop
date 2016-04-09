@@ -213,7 +213,7 @@
             handleError(err, reject);
             return;
           }
-          console.log(JSON.stringify(res, data));
+          console.log(JSON.stringify(res));
           resolve(res);
         });        
       });

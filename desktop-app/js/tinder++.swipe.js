@@ -156,18 +156,19 @@
       });
 
       window.stack.on('throwout', function (e) {
+        var user = $scope.allPeople[$scope.peopleIndex];
         var method;
         if(superLike === true){
-          method = 'superLike'
+          API.superLike(user._id).then(function(response){
+            $scope.superLikesRemaining = response.super_likes.remaining;
+          })
         } else {
           method = (e.throwDirection < 0) ? 'pass' : 'like'
+          addToApiQueue({
+            method: method,
+            user: user
+          });
         }
-
-        var user = $scope.allPeople[$scope.peopleIndex];
-        addToApiQueue({
-          method: method,
-          user: user
-        });
 
         superLike = false;
         $scope.peopleIndex++;
