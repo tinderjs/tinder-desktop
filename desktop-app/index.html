@@ -168,7 +168,11 @@
   <div id="conversation" ng-show="conversation">
     <h2 class="message-header">
       Chat with <a ng-href="#/profile/{{conversation.userId}}">{{conversation.name}}</a>
-      <a ng-click="unmatch(conversation)">CLICK 4 UNMATCH</a>
+      <div ng-click="unmatch(conversation)" style="display:inline;">
+        <!-- <p style="display: inline;color: darkgrey;font-size:17px;" ng-click="unmatch(conversation) ">[  UNMATCH ]</p> -->
+
+        <i class="fa fa-heart fa-1x" style="display:inline;"></i>
+      </div>
     </h2>
     <div ng-show="conversation.messages.length == 0" class="messages-list-empty">
       No messages yet. Write something!
