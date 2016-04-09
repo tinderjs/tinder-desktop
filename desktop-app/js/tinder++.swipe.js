@@ -244,6 +244,10 @@
           superLike = true;
           var user = $scope.allPeople[$scope.peopleIndex];
 
+          if($scope.superLikesRemaining == '0'){
+            return swal("Oops!", "Sorry, you are out of superlikes! Try again later!" , "error");
+          }
+
           var cardEl = $scope.cards[$scope.cards.length - $scope.peopleIndex - 1];
           var card = window.stack.getCard(cardEl);
           if (!!card) {
@@ -252,7 +256,6 @@
           $passOverlay = $(cardEl).children('.pass-overlay');
           $likeOverlay = $(cardEl).children('.like-overlay');
           like(1);
-
           swal("Nice!", "You just superliked " + user.name + ", increasing your chance of a match by 3x!" , "success");
         });
 
