@@ -7,24 +7,53 @@ h1, h2, h3, h4, h5 {
     font-family: 'Raleway', sans-serif;
 }
 
+h1 {
+	font-size: 1.5em;
+}
+
+h2 {
+	font-size: 1.3em;
+}
+
+h3 {
+	font-size: 1.1em;
+}
+
 a {
     color: #db6151;
     text-decoration: none;
 }
 
+.left {
+    float: left;
+    text-align: left;
+	width:33%;
+}
+
 .right {
     float: right;
     text-align: right;
+	width:33%;
+}
+
+.center {
+    text-align: center;
+	clear: none;
+	display: inline-block;
+	width:33%;
+	margin: 0px;
 }
 
 .top-icon {
+	color: #AAA;
     position: relative;
-    top: -4px;
     padding: 0 5px;
 }
-
-.left {
-    float: left;
+.top-icon:hover {
+	color: #DB6151;
+}
+.top-icon:active {
+	color: #FF0000;
 }
 
 .clear {
@@ -32,6 +61,7 @@ a {
 }
 
 /* General layout */
+/*
 html, body, body > div.ng-scope {
     max-width: 100%;
     max-height: 100%;
@@ -39,6 +69,15 @@ html, body, body > div.ng-scope {
     overflow-y: hidden;
     height: 100%;
 }
+*/
+
+.ng-scope {
+overflow: hidden;
+}
+
+.wrapper {position:absolute;top:32px;left:0px;right:0px;bottom:0px;overflow:hidden;}
+#match-list {top:0px;bottom:0px;left:0px;overflow-y:auto;}
+#conversation {top:0px;bottom:0px;right:0px;overflow-y:auto;}
 
 .y-scroll {
     overflow-y: auto;
@@ -60,37 +99,24 @@ html, body, body > div.ng-scope {
 }
 
 /* Specific */
-.title-bar {
-    width: 100%;
-    height: 25px;
-    background: #f8f8f8; /* Old browsers */
-    background: -moz-linear-gradient(top,  #f8f8f8 0%, #e3e3e3 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#e3e3e3)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #f8f8f8 0%,#e3e3e3 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #f8f8f8 0%,#e3e3e3 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #f8f8f8 0%,#e3e3e3 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  #f8f8f8 0%,#e3e3e3 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f8f8', endColorstr='#e3e3e3',GradientType=0 ); /* IE6-9 */
-    z-index: 10001;
-    position: fixed;
-    -webkit-app-region: drag;
-    text-align: center;
-    font-family: 'Raleway', sans-serif;
-    font-size: 16px;
-    line-height: 25px;
+.swipe-undo {
+	position: absolute;
+	top: 118px;
+	left: -96px;
 }
 
-.title-bar i {
-    float: right;
-    font-size: 18px;
-    padding: 3px 7px 0 0;
-    cursor: pointer;
+.title-bar {
+    width: 100%;
+    height: 32px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    text-align: center;
 }
 
 .user {
-    max-width: 500px;
-    margin: 10px auto 0;
+    margin: 0px;
     font-family: 'Raleway', sans-serif;
+	width: 100%;
 }
 
 .user img {
@@ -108,26 +134,10 @@ html, body, body > div.ng-scope {
     font-size: 12px;
     position: relative;
     text-align: right;
-    margin: 8px 5px 18px;
-}
-
-.top-button {
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.top-button .button {
-    background-color: #FF8271;
-    width: 15%;
-    height: 7px;
-    float: right;
-    margin-right: 15%;
-    top: -7px;
-    position: relative;
+    margin: 0px;
 }
 
 .container, .settings fieldset {
-    max-width: 500px;
     margin: 0 auto 5px;
     text-align: center;
     border: 4px solid #FF8271;
@@ -135,10 +145,8 @@ html, body, body > div.ng-scope {
     -moz-border-radius: 50px;
     border-radius: 50px;
     background-color: #FAFAFA;
-    padding: 10px;
-    position: relative;
+    padding: 8px;
 }
-
 .container .loader {
     border: 2px solid;
     margin-top: 15px;
@@ -177,6 +185,11 @@ html, body, body > div.ng-scope {
   }
 }
 
+legend {
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
 .container h1 {
     margin: 0;
 }
@@ -190,7 +203,13 @@ html, body, body > div.ng-scope {
 }
 
 .bio {
-    margin: 0 0 15px 0;
+	width: 320px;
+    margin-top: 6px;
+	margin-bottom: 8px;
+	margin-left: auto;
+	margin-right: auto;
+	white-space: pre-wrap;
+	text-align: left;
 }
 
 .bio img {
@@ -200,26 +219,28 @@ html, body, body > div.ng-scope {
 
 .main-photo-container {
     height: 320px;
+	width: 320px;
     position: relative;
-    margin-top: 20px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .main-photo-container img {
-    max-width: 400px;
+    max-width: 320px;
 }
 
 .main-photo {
     text-align: center;
-    width: 300px;
-    height: 300px;
-    display: inline-block;
+    width: 320px;
+    height: 320px;
+    display: block;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
     overflow: hidden;
     position: absolute;
-    left: 50%;
-    margin-left: -150px;
     background: #fff top left / contain no-repeat;
     z-index: 1000;
 }
@@ -272,6 +293,26 @@ html, body, body > div.ng-scope {
 
 .small-photos img.selected {
     border: 5px solid #FF8271;
+}
+
+.schoolwork {
+	display: block;
+	margin-top: 12px;
+	margin-bottom: 8px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width: 320px;
+}
+
+.instagram, .school, .work {
+	display: block;
+	clear: both;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	text-align: left;
+	padding-left: 2px;
+	padding-right: 2px;
 }
 
 /* facebook login button */
@@ -344,7 +385,7 @@ html, body, body > div.ng-scope {
     flex: initial;
 }
 #match-list.more-info {
-    width: 215px;
+    width: 210px;
 }
 #back-arrow {
     margin: 3px calc(75px - 1em);
@@ -358,6 +399,13 @@ html, body, body > div.ng-scope {
     cursor: pointer;
     color: inherit;
 }
+.match:hover {
+	color: #DB6151;
+}
+.match:active {
+	color: #FF0000;
+}
+
 .match .thumbnail {
     display: inline-block;
     box-sizing: border-box;
@@ -391,6 +439,7 @@ html, body, body > div.ng-scope {
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 13px;
+	letter-spacing: -0.6px;
 }
 
 /* from http://codepen.io/samuelkraft/pen/Farhl */
@@ -406,12 +455,20 @@ html, body, body > div.ng-scope {
     flex: 1;
 }
 #conversation h2 {
-    padding: 0 14px 14px 11px;
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 0;
+  text-align: center;
 }
+
+.message-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #ddd;
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+}
+
 #conversation .messages-list {
-    overflow-y: scroll;
+    overflow-y: auto;
   overflow-x: hidden;
   padding: 14px;
 }
@@ -421,9 +478,9 @@ html, body, body > div.ng-scope {
 
 #conversation div.from-me,
 #conversation div.from-them {
-    max-width: 51%;
+    max-width: 60%;
     word-wrap: break-word;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 #conversation textarea {
     font-size: 1em;
@@ -448,7 +505,7 @@ html, body, body > div.ng-scope {
 
 .from-me {
     position: relative;
-    padding: 10px 15px;
+    padding: 4px 15px;
     color: white;
     background: #0B93F6;
     border-radius: 25px;
@@ -480,7 +537,7 @@ html, body, body > div.ng-scope {
 
 .from-them {
     position: relative;
-    padding: 10px 15px;
+    padding: 4px 15px;
     background: #E5E5EA;
     border-radius: 25px;
     color: black;
