@@ -17,16 +17,6 @@
   <script>
     var moment = require('moment');
   </script>
-  <script type="text/javascript" src="js/vendor/ga-localstorage.js"></script>
-  <script>
-    ga_storage._setAccount('UA-57228925-3');
-    ga_storage._trackPageview('/index.html');
-  </script>
-  <script src="https://dfl6rxi4kum4c.cloudfront.net/analytics.min.js"></script>
-  <script>
-    window._rg = _rg({ organization:'81829pft328x5hfrm19ujx05kcxo5hfr', pageView: false });
-    window._rg.record('index', 'loaded', { origin: 'tinderplusplus'})
-  </script>
 
   <script src="js/error_handler.js"></script>
   
@@ -284,7 +274,6 @@
 <script type="text/javascript">
   window.addEventListener('error', function(e) {
     console.log(e);
-    ga_storage._trackEvent('JS Error', e.message, e.filename + ':  ' + e.lineno);
   });
 </script>
 

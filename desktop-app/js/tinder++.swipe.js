@@ -33,8 +33,6 @@
         var lng = (parseFloat(details.geometry.location.lng()) + fuzzAmount).toFixed(7);
         var lat = (parseFloat(details.geometry.location.lat()) + fuzzAmount).toFixed(7);
         API.updateLocation(lng.toString(), lat.toString()).then(function() {
-          ga_storage._trackEvent('Location', 'Location Updated');
-          window._rg.record('swipe', 'location updated', { origin: 'tinderplusplus' });
           getPeople();
         });
         $scope.showLocation = false;
@@ -46,8 +44,6 @@
       if ($scope.showLocation) {
         $scope.showLocation = false;
       } else {
-        ga_storage._trackEvent('Location', 'Clicked Change Location');
-        window._rg.record('swipe', 'clicked change location', { origin: 'tinderplusplus' });
         swal({
           title: 'Warning',
           text: 'If you change location too much, you might lose access to swiping for a few hours.',
@@ -73,8 +69,6 @@
     var getPeople = function() {
       flushApiQueue();
       API.people().then(setPeople);
-      ga_storage._trackEvent('People', 'Loading more people');
-      window._rg.record('swipe', 'loading more people', { origin: 'tinderplusplus' });
     };
 
     var setPeople = function(people) {
@@ -130,8 +124,6 @@
       $timeout(function() {
         $scope.$apply();
       });
-      ga_storage._trackEvent('Undo', 'Clicked Undo');
-      window._rg.record('swipe', 'clicked undo', { origin: 'tinderplusplus' });
     };
 
     var firstLoad = true;
@@ -173,13 +165,6 @@
         $(e.target).fadeOut(500);
         if ($scope.peopleIndex >= $scope.allPeople.length) {
           getPeople();
-        }
-        ga_storage._trackEvent('Swipe', (e.throwDirection < 0) ? 'pass' : 'like');
-
-        if (e.throwDirection > 0) {
-          window._rg.record('swipe', 'like', { origin: 'tinderplusplus' });
-        } else {
-          window._rg.record('swipe', 'pass', { origin: 'tinderplusplus' });
         }
       });
 
@@ -235,8 +220,6 @@
           $passOverlay = $(cardEl).children('.pass-overlay');
           $likeOverlay = $(cardEl).children('.like-overlay');
           pass(1);
-          ga_storage._trackEvent('Keyboard', 'left');
-          window._rg.record('keyboard', 'left', { origin: 'tinderplusplus' });
         });
 
         Mousetrap.bind('right', function () {
@@ -248,8 +231,6 @@
           $passOverlay = $(cardEl).children('.pass-overlay');
           $likeOverlay = $(cardEl).children('.like-overlay');
           like(1);
-          ga_storage._trackEvent('Keyboard', 'right');
-          window._rg.record('keyboard', 'right', { origin: 'tinderplusplus' });
         });
 
         Mousetrap.bind('up', function () {
@@ -266,14 +247,10 @@
           like(1);
 
           swal("Good job!", "You just superliked!", "success")
-          ga_storage._trackEvent('Keyboard', 'up');
-          window._rg.record('keyboard', 'up', { origin: 'tinderplusplus' });
         });
 
         Mousetrap.bind('backspace', function(evt) {
           $scope.undo();
-          ga_storage._trackEvent('Keyboard', 'backspace');
-          window._rg.record('keyboard', 'backspace', { origin: 'tinderplusplus' });
           evt.preventDefault();
         });
       }
