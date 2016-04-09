@@ -15,7 +15,6 @@
     };
 
     API.getAccount().then(function(response){
-      console.log(response.rating.super_likes.remaining)
       $scope.superLikesRemaining = '' + response.rating.super_likes.remaining;
     })
 
