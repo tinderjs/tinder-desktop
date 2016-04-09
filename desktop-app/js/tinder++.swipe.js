@@ -229,7 +229,6 @@
 
         Mousetrap.bind('right', function () {
           var user = $scope.allPeople[$scope.peopleIndex];
-          console.log(user)
           var cardEl = $scope.cards[$scope.cards.length - $scope.peopleIndex - 1];
           var card = window.stack.getCard(cardEl);
           if (!!card) {
