@@ -109,7 +109,7 @@
 
   // Scroll to bottom in conversations
   module.directive('scrollToLast', function() {
-    return function(scope, element) {
+    return function(scope, element, attrs) {
       if(scope.$last) {
         console.log("Scrolling", scope);
         setTimeout(function(){
