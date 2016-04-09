@@ -178,8 +178,6 @@
         });
 
         Mousetrap.bind('right', function () {
-          var user = $scope.allPeople[$scope.peopleIndex];
-          console.log(user)
           var cardEl = $scope.cards[$scope.cards.length - $scope.peopleIndex - 1];
           var card = window.stack.getCard(cardEl);
           if (!!card) {
@@ -203,7 +201,7 @@
           $likeOverlay = $(cardEl).children('.like-overlay');
           like(1);
 
-          swal("Nice!", "You just superliked " + user.name + ", increasing your chance of a match by 3x!" , "success");
+          swal("Good job!", "You just superliked!", "success")
         });
 
         Mousetrap.bind('backspace', function(evt) {
