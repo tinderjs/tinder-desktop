@@ -12,6 +12,10 @@
     };
     var ENTER = 13;
 
+    $scope.unmatch = function(matchId){
+      API.unmatch(matchId)
+    }
+
     $scope.lastMessageClass = function (match) {
       if (match.messages.length) {
         var lastMessage = match.messages[match.messages.length - 1];
