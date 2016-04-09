@@ -128,7 +128,7 @@
             handleError('userInfo result is null', reject);
             return;
           }
-          console.log(JSON.stringify(res));
+          // console.log(JSON.stringify(res));
           resolve(res.results);
         });
       });
@@ -145,7 +145,7 @@
             handleError('userInfo result is null', reject);
             return;
           }
-          console.log(JSON.stringify(res));
+          // console.log(JSON.stringify(res));
           resolve(res);
         });
       });
