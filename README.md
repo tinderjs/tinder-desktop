@@ -1,6 +1,12 @@
 tinder-desktop
 ========
 
+#### Contribution ####
+
+tinder-desktop is a project that has a lot of potential if the power of the open-source community is harnessed. Come [join us on on Slack](http://tinderjs.com) and view the [priorities list](https://github.com/tinderjs/tinder-desktop/wiki/Development-Priorities) to see how you can contribute, it is well appreciated!
+
+#### tinder-desktop ####
+
 It's a node-webkit (now nw.js) app.
 
 You'll need to run `npm install` in both the main directory, and inside of desktop-app before starting.
