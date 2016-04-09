@@ -118,7 +118,7 @@
           {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}
         </i>
       </p>
-      <p ng-show="allPeople[peopleIndex].bio" class="fader bio" ng-bind-html="allPeople[peopleIndex].bio | emoji"></p>
+      <p ng-show="allPeople[peopleIndex].bio" class="fader bio">{{ allPeople[peopleIndex].bio }}</p>
 
       <div class="small-photos fader">
         <div ng-repeat="photo in allPeople[peopleIndex].photos">
