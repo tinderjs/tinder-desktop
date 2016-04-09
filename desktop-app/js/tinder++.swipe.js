@@ -152,7 +152,7 @@
         var method;
         if(superLike === true){
           API.superLike(user._id).then(function(response){
-            $scope.superLikesRemaining = response.super_likes.remaining;
+            $scope.superLikesRemaining = '' + response.super_likes.remaining;
           })
         } else {
           method = (e.throwDirection < 0) ? 'pass' : 'like'
@@ -241,12 +241,13 @@
         });
 
         Mousetrap.bind('up', function () {
-          superLike = true;
           var user = $scope.allPeople[$scope.peopleIndex];
 
           if($scope.superLikesRemaining == '0'){
             return swal("Oops!", "Sorry, you are out of superlikes! Try again later!" , "error");
           }
+
+          superLike = true;
 
           var cardEl = $scope.cards[$scope.cards.length - $scope.peopleIndex - 1];
           var card = window.stack.getCard(cardEl);
