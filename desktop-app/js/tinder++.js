@@ -1,6 +1,6 @@
 (function() {
   // resize to window to full screen height
-  var resizeToHeight = Math.min(900, window.screen.availHeight);
+  var resizeToHeight = Math.min(820, window.screen.availHeight);
   window.resizeTo(window.innerWidth, resizeToHeight);
 
   var gui = require('nw.gui');
