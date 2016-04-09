@@ -36,7 +36,7 @@ This application was originally created by Github user [@mfkp] (https://github.c
 
 #### Disclaimer ####
 
-The Tinder API is not officially documented, and as such, usage of tinder-desktop possibly violates the Tinder Terms of Service. Use this at your own risk.
+This is not an official Tinder app and as such its usage may violate Tinder's TOS. As with any experimental technology you should use it with caution.
 
 ### ISC License ###
 
