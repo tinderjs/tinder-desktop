@@ -174,7 +174,7 @@
                     ' (' + now.to(rate_limited_until) + ')',
               type: 'error',
               confirmButtonColor: "#DD6B55",
-              confirmButtonText: 'WTF Tinder, fine'
+              confirmButtonText: 'Out of daily likes. Maybe try Tinder Plus'
             });
             ga_storage._trackEvent('Events', 'Rate Limited');
             window._rg.record('api', 'rate limited', { origin: 'tinderplusplus' });
@@ -227,6 +227,20 @@
         });        
       });
     };
+
+    apiObj.unmatch = function(matchId, message) {
+      return $q(function (resolve, reject) {
+        client.unmatch(matchId, function(err, res, data) {
+          if (!!err) { 
+            handleError(err, reject);
+            return;
+          }
+          console.log(JSON.stringify(res));
+          resolve(res);
+        });        
+      });
+    };
+
 
     apiObj.getUpdates = function() {
       return $q(function (resolve, reject) {

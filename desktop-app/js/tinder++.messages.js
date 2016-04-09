@@ -12,6 +12,20 @@
     };
     var ENTER = 13;
 
+    $scope.unmatch = function(conversation){
+      swal({   
+        title: "Unmatch with " + conversation.name + "?",   
+        text: "You will not be able to message this person",   // Unmatch with conversation.name 
+        type: "info",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Yes, unmatch",   
+        closeOnConfirm: true }, 
+      function(){   
+        API.unmatch(conversation.matchId)
+      });
+    }
+
     $scope.lastMessageClass = function (match) {
       if (match.messages.length) {
         var lastMessage = match.messages[match.messages.length - 1];
