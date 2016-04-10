@@ -44,52 +44,34 @@
   <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 </head>
 <body ng-app="tinder++">
-<!--<div class="title-bar"><i class="fa fa-times" onclick="window.close()"></i>Tinder++</div>-->
+
+<div class="wrapper">
+
+	<div class="menu">
+		<div class="left">
+		  <a href="#/settings">
+			<i class="fa fa-cog fa-2x top-icon"></i>
+		  </a>
+		</div>
+		<div class="right">
+		  <a ng-href="#/messages">
+			<i class="fa fa-envelope fa-2x top-icon"></i>
+		  </a>
+		</div>
+		<div class="center">
+		  <a href="#/swipe">
+			<i class="fa fa-heart fa-2x top-icon"></i>
+		  </a>
+		</div>
+	</div>
 
 
-<div ng-view></div>
+	<div ng-view class="page"></div>
+
+</div>
+
 
 <script type="text/ng-template" id="swipe.html">
-<div class="y-scroll">
-  <div class="user">
-    <div class="left" ng-show="apiQueue.length > 0">
-      <a href="" ng-click="undo()">
-        Undo <i class="fa fa-undo"></i>
-        <img ng-src="{{apiQueue[0].user.photos[0].processedFiles[3].url}}" />
-      </a>
-    </div>
-    <div class="right">
-      <p>
-        {{getCookie('name')}}
-        <span ng-show="(likesRemaining !== null)">
-          <br>
-          Likes Remaining: {{likesRemaining ? '<' + likesRemaining : likesRemaining}}
-        </span>
-        <span ng-show="(superLikesRemaining)">
-          <br>
-          Superlikes Remaining: {{superLikesRemaining}}
-        </span>
-        <br>
-        <a href="" ng-click="toggleLocation()" >({{getCookie('currentCity') ? getCookie('currentCity') : 'set location'}})</a> | 
-        <a href="#/settings">Settings</a>
-      </p>
-      <a ng-href="#/profile/{{getCookie('userId')}}">
-        <img ng-src="{{getCookie('smallPhoto')}}" />
-      </a>
-      <a ng-href="#/messages">
-        <i class="fa fa-envelope fa-3x top-icon"></i>
-      </a>
-      <div ng-show="showLocation">
-        <input type="text" ng-autocomplete ng-model="autocomplete" options="autocompleteOptions" details="details"
-               placeholder="Change Location" id="autocompleteLocation" />
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="top-button">
-    <div class="button"></div>
-  </div>
-
   <!-- Main Application Container -->
   <div class="container">
     <div ng-show="allPeople.length === 0 || peopleIndex >= allPeople.length">Loading...<div class="loader"></div></div>
@@ -138,7 +120,6 @@
       </div>
     </div>
   </div>
-</div>
 </script>
 
 <script type="text/ng-template" id="login.html">
@@ -201,10 +182,8 @@
 </script>
 
 <script type="text/ng-template" id="profile.html">
-  <div class="y-scroll">
-    <a ng-href="{{backLink}}">
-      <i class="fa fa-arrow-left fa-3x top-icon"></i>
-    </a>
+
+
     <div class="container" ng-show="user">
       <h1 class="fader">
         {{user.name}}
@@ -236,7 +215,7 @@
         </div>
       </div>
     </div>
-  </div>
+
 </script>
 
 <script type="text/ng-template" id="settings.html">

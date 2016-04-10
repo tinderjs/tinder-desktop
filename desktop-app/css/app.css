@@ -41,8 +41,7 @@ html, body, body > div.ng-scope {
 }
 
 .y-scroll {
-    overflow-y: auto;
-    overflow-x: hidden;
+
     height: 100%;
 }
 
@@ -59,33 +58,28 @@ html, body, body > div.ng-scope {
     height: 100%;
 }
 
-/* Specific */
-.title-bar {
-    width: 100%;
-    height: 25px;
-    background: #f8f8f8; /* Old browsers */
-    background: -moz-linear-gradient(top,  #f8f8f8 0%, #e3e3e3 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#e3e3e3)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #f8f8f8 0%,#e3e3e3 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #f8f8f8 0%,#e3e3e3 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #f8f8f8 0%,#e3e3e3 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  #f8f8f8 0%,#e3e3e3 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f8f8', endColorstr='#e3e3e3',GradientType=0 ); /* IE6-9 */
-    z-index: 10001;
-    position: fixed;
-    -webkit-app-region: drag;
-    text-align: center;
-    font-family: 'Raleway', sans-serif;
-    font-size: 16px;
-    line-height: 25px;
+/* INIT WRAPPER TO CAPTURE ALL CONTENT */
+.wrapper { 
+    height: 100%;
 }
 
-.title-bar i {
-    float: right;
-    font-size: 18px;
-    padding: 3px 7px 0 0;
-    cursor: pointer;
+/* STATIC MENU BLOCK */
+.menu {
+border: solid red; /* dev mode */
+background: green; /* dev mode */
+float: right;
+height: 40px;
+width: 500px;
+z-index: 999; /* CHECK IF THIS IS REALLY NEEDED LATER */
 }
+
+/* ALL OTHER CONTENT TO BE WRAPPED AROUND STATIC MENU BLOCK */
+.page {
+border: solid yellow; /* dev mode */
+background: blue; /* dev mode */
+height: 100%;
+}
+
 
 .user {
     max-width: 500px;
@@ -134,7 +128,7 @@ html, body, body > div.ng-scope {
     border-radius: 50px;
     background-color: #FAFAFA;
     padding: 10px;
-    position: relative;
+	height: 100%;
 }
 
 .container .loader {
@@ -177,10 +171,14 @@ html, body, body > div.ng-scope {
 
 .container h1 {
     margin: 0;
+	float: right;
+	clear: both;
 }
 
 .container h3 {
     margin: 0 0 20px 0;
+	float: right;
+	clear: both;
 }
 
 #autocompleteLocation {
@@ -189,6 +187,9 @@ html, body, body > div.ng-scope {
 
 .bio {
     margin: 0 0 15px 0;
+	float: right;
+	clear: both;
+	width: 400px;
 }
 
 .bio img {
@@ -251,9 +252,13 @@ html, body, body > div.ng-scope {
 }
 
 .small-photos div {
-    display: absolute;
-    margin-left:200px;
-    padding-right: 5px;
+	display: inline;
+}
+
+.small-photos  {
+ clear: both;
+ float: right;
+ width: 400px;
 }
 
 .small-photos img {
@@ -275,7 +280,6 @@ html, body, body > div.ng-scope {
 .information {
     display: inline;
     width: 400px;
-    position: absolute;
     margin-left: 203px;
     top: 5px;
 }
