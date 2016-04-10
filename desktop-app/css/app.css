@@ -96,6 +96,7 @@ html, body, body > div.ng-scope {
     position: absolute;
     right: 44%;
     margin-top: 18px;
+    z-index:99999;
 }
 
 .user {
@@ -535,6 +536,10 @@ html, body, body > div.ng-scope {
 
 .settings {
     padding-top: 47px;
+}
+
+.settings fieldset {
+    width:400px;
 }
 
 .info .last-them {

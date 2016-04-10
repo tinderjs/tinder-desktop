@@ -201,7 +201,7 @@
 
 <script type="text/ng-template" id="profile.html">
   <div class="y-scroll">
-    <div class="container" ng-show="user">
+    <div class="container" ng-show="user" style="margin-top:42px;">
 
        <div class="main-photo-container">
           <div class="main-photo tinder-card"
@@ -230,7 +230,7 @@
 
       <div class="small-photos fader">
         <div ng-repeat="photo in user.photos">
-          <img ng-src="{{photo.processedFiles[2].url}}" ng-click="swapPhoto($index)" data-photo-index="{{$index}}"
+          <img ng-src="{{photo.processedFiles[0].url}}" ng-click="swapPhoto($index)" data-photo-index="{{$index}}"
                ng-class="{'selected': $index === photoIndex}" />
         </div>
       </div>
