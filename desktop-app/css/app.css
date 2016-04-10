@@ -179,6 +179,10 @@ html, body, body > div.ng-scope {
     margin: 0 0 20px 0;
 }
 
+.container {
+    background-color: white;
+}
+
 #autocompleteLocation {
     margin-bottom: 20px;
 }
@@ -194,7 +198,7 @@ html, body, body > div.ng-scope {
 
 .main-photo-container {
     position: absolute;
-    margin-left: 167px;
+    margin-left: 64px;
 }
 
 .main-photo-container img {
@@ -203,8 +207,8 @@ html, body, body > div.ng-scope {
 
 .main-photo {
     text-align: center;
-    width: 555px;
-    height: 555px;
+    width: 500px;
+    height: 500px;
     display: inline-block;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -212,9 +216,9 @@ html, body, body > div.ng-scope {
     overflow: hidden;
     position: absolute;
     left: 50%;
-    margin-left: -150px;
     background: #fff top left / contain no-repeat;
     z-index: 1000;
+    margin-top: 32px;
 }
 
 .main-photo .pass-overlay {
@@ -255,7 +259,7 @@ html, body, body > div.ng-scope {
     float: right;
     width: 400px;
     margin-right: 135px;
-    margin-top: 291px;
+    margin-top: 259px;
 }       
 
 .small-photos img {
@@ -276,10 +280,11 @@ html, body, body > div.ng-scope {
 
 .information {
     display: inline;
-    width: 400px;
+    width: 550px;
     position: absolute;
-    margin-left: 99px;
-    top: 37px;
+    top: 48px;
+    height: 200px;
+    overflow: hidden;
 }
 
 /* facebook login button */
