@@ -5,7 +5,7 @@
 #define MyAppVersion "1.2.1"
 #define MyAppPublisher "TinderJS, Github Organization"
 #define MyAppURL "https://tinderjs.com"
-#define MyAppExeName "Tinder Desktop.exe"
+#define MyAppExeName "tinder-desktop.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -36,8 +36,8 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 0,6.1
 
 [Files]
-Source: ".\output\Tinder Desktop\win32\Tinder Desktop.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: ".\output\Tinder Desktop\win32\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "output\tinder-desktop\win32\tinder-desktop.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "output\tinder-desktop\win32\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

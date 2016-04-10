@@ -3,7 +3,7 @@ console.log('Before running, make sure versions are updated in both package.json
 
 var NwBuilder = require('node-webkit-builder');
 var appPkg = require('./desktop-app/package.json');
-var appName = 'Tinder Desktop';
+var appName = 'tinder-desktop';
 var buildDir = 'build/output';
 
 var nw = new NwBuilder({
