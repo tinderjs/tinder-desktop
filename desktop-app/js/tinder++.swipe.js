@@ -285,10 +285,10 @@
         var photoIndex = $scope.allPeople[$scope.peopleIndex].photoIndex
 
         // they clicked it while on the last photo, send it to the top 
-        if(photoIndex == numberOfPhotos - 1){
-          $scope.allPeople[$scope.peopleIndex].photoIndex = 0
+        if(photoIndex == 0){
+          $scope.allPeople[$scope.peopleIndex].photoIndex = numberOfPhotos - 1
         } else {
-          $scope.allPeople[$scope.peopleIndex].photoIndex += 1
+          $scope.allPeople[$scope.peopleIndex].photoIndex += -1
           return
         }
       }); 
