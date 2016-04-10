@@ -134,7 +134,6 @@
 <script type="text/ng-template" id="messages.html">
 <div id="messages" class="columns">
   <div id="match-list" ng-class="showExtra && 'more-info'">
-    <a ng-href="#/swipe"><i id="back-arrow" class="fa fa-arrow-left fa-2x"></i></a>
     <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true track by match.matchId"
          ng-click="open(match.matchId)" 
          ng-class="showExtra && match.infoUpdateTime && 'more-info'"
@@ -219,9 +218,6 @@
 </script>
 
 <script type="text/ng-template" id="settings.html">
-  <a ng-href="#/swipe">
-    <i class="fa fa-arrow-left fa-3x top-icon"></i>
-  </a>
   <div class="settings">
     <h1>Settings</h1>
     <form name="tppSettings">

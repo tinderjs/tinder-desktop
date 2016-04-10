@@ -40,11 +40,6 @@ html, body, body > div.ng-scope {
     height: 100%;
 }
 
-.y-scroll {
-
-    height: 100%;
-}
-
 .columns {
     display: flex;
     overflow: hidden;
