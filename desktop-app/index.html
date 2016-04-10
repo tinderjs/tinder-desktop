@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <title>Tinder⁺⁺</title>
+  <title>Tinder Desktop</title>
   <meta name="description" content="Desktop optimized Tinder">
 
   <link rel="stylesheet" href="css/normalize.min.css"/>
@@ -80,7 +80,6 @@
           Superlikes Remaining: {{superLikesRemaining}}
         </span>
         <br>
-        <a href="" ng-click="toggleLocation()" >({{getCookie('currentCity') ? getCookie('currentCity') : 'set location'}})</a> | 
         <a href="#/settings">Settings</a>
       </p>
       <div ng-show="showLocation">
@@ -246,6 +245,18 @@
   <div class="settings" style="margin-top:10px">
     <h1>Settings</h1>
     <form name="tppSettings">
+      <fieldset>
+        <legend>Location</legend>
+			  <p>
+				<a href="" ng-click="toggleLocation()" >{{getCookie('currentCity') ? getCookie('currentCity') : 'Set Location'}}</a>
+			  </p>
+			  <div ng-show="showLocation">
+				<input type="text" ng-autocomplete ng-model="autocomplete" options="autocompleteOptions" details="details" placeholder="Change Location" id="autocompleteLocation" />
+			  </div>
+      </fieldset>
+	  
+	  <br />
+	  
       <fieldset>
         <legend>Landing Page</legend>
         <label for="landingPage_1">

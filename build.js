@@ -3,16 +3,19 @@ console.log('Before running, make sure versions are updated in both package.json
 
 var NwBuilder = require('node-webkit-builder');
 var appPkg = require('./desktop-app/package.json');
-var appName = 'Tinder⁺⁺';
+var appName = 'tinder-desktop';
+var buildDir = 'build/output';
 
 var nw = new NwBuilder({
   files: 'desktop-app/**',
   platforms: ['osx32', 'win32'],
-  version: '0.11.6',
+  version: '0.12.3',
   appName: appName,
+  buildDir: buildDir,
+  cacheDir: 'build/cache',
   appVersion: appPkg.version,
-  winIco: 'icons/win.ico',
-  macIcns: 'icons/mac.icns',
+  winIco: 'build/icons/win.ico',
+  macIcns: 'build/icons/mac.icns',
   buildType: 'default',
   mergeZip: false
 });
@@ -36,7 +39,7 @@ function createNW() {
   var archiver = require('archiver');
   var archive = archiver('zip');
 
-  var output = fs.createWriteStream('./build/' + appName + '/tinder-' + appPkg.version + '.nw');
+  var output = fs.createWriteStream(buildDir + '/tinder-desktop-' + appPkg.version + '.nw');
   output.on('close', function () {
     console.log((archive.pointer() / 1000000).toFixed(2) + 'mb compressed');
   });
@@ -54,8 +57,8 @@ function createDMG() {
   console.log('creating mac dmg...');
   var appdmg = require('appdmg');
   var ee = appdmg({
-    source: './dmg.json',
-    target: './build/' + appName + '/Tinder++.dmg'
+    source: './build/dmg.json',
+    target: buildDir + '/Tinder Desktop.dmg'
   });
    
   ee.on('progress', function (info) {
