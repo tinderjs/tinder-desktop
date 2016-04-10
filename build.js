@@ -9,7 +9,7 @@ var buildDir = 'build/output';
 var nw = new NwBuilder({
   files: 'desktop-app/**',
   platforms: ['osx32', 'win32'],
-  version: '0.11.6',
+  version: '0.12.3',
   appName: appName,
   buildDir: buildDir,
   cacheDir: 'build/cache',
