@@ -201,7 +201,7 @@
         like(1);
       });
 
-      Mousetrap.bind('space', function (evt) {
+      Mousetrap.bind('shift+right', function (evt) {
         var location = $location.path()
         if( location != '/swipe/' ) return
         
