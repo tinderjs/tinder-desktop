@@ -1,6 +1,6 @@
 .idea/
 *.log
 node_modules
-cache/
-build/Tinder⁺⁺/*
+build/cache/
+build/output/*
 *.DS_Store
