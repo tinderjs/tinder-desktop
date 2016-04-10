@@ -419,7 +419,7 @@ html, body, body > div.ng-scope {
     flex: 1;
 }
 #conversation h2 {
-    padding: 0 14px 14px 11px;
+    padding: 0 14px 21px 11px;
   border-bottom: 1px solid #ddd;
   margin-bottom: 0;
 }
