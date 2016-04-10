@@ -522,8 +522,14 @@ html, body, body > div.ng-scope {
     color: #DAE3EA;
 }
 
+/* Settings Page */
+
 .settings h1 {
     text-align: center;
+}
+
+.settings {
+    padding-top: 47px;
 }
 
 .info .last-them {
