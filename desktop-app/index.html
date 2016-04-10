@@ -92,18 +92,10 @@
   <div class="container">
     <div ng-show="allPeople.length === 0 || peopleIndex >= allPeople.length">Loading...<div class="loader"></div></div>
     <div ng-show="allPeople.length > 0 && peopleIndex < allPeople.length">
-      <h1 class="fader">
-        {{allPeople[peopleIndex].name}}
-        <a ng-show="allPeople[peopleIndex].instagram" href="https://instagram.com/{{allPeople[peopleIndex].instagram.username}}" target="_blank">
-          ({{allPeople[peopleIndex].instagram.username}})
-        </a>
-        , {{allPeople[peopleIndex].birth_date | bdayToAge}}&nbsp;
-      </h1>
-      <h3 class="fader" style="display: inline;">{{allPeople[peopleIndex].distance_mi}} miles {{getCookie('currentCity') ? "from " + getCookie('currentCity') : 'away'}}, Active {{allPeople[peopleIndex].ping_time | pingToAgo}}</h3>
-
+      
       <div class="main-photo-container">
         <div class="main-photo tinder-card" ng-repeat="user in allPeople.slice().reverse()" render-images-directive
-             style="background-image: url({{user.photos[user.photoIndex].processedFiles[1].url}});">
+             style="background-image: url({{user.photos[user.photoIndex].processedFiles[0].url}});">
           <div class="pass-overlay">
             <i class="fa fa-thumbs-o-down"></i>
           </div>
@@ -112,19 +104,32 @@
           </div>
         </div>
       </div>
-      <p class="fader">
-        <i ng-repeat="school in allPeople[peopleIndex].schools" class="fa fa-graduation-cap">{{school.name}}</i>
-        <i ng-repeat="job in allPeople[peopleIndex].jobs" class="fa fa-briefcase">
-          {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}
-        </i>
-      </p>
-      <p ng-show="allPeople[peopleIndex].bio" class="fader bio">{{ allPeople[peopleIndex].bio }}</p>
 
       <div class="small-photos fader">
         <div ng-repeat="photo in allPeople[peopleIndex].photos">
           <img ng-src="{{photo.processedFiles[2].url}}" ng-click="swapPhoto($index)" data-photo-index="{{$index}}"
                ng-class="{'selected': $index === allPeople[peopleIndex].photoIndex}" />
         </div>
+      </div>
+      
+      <div class="information">
+        <h1 class="fader">
+          {{allPeople[peopleIndex].name}}
+          <a ng-show="allPeople[peopleIndex].instagram" href="https://instagram.com/{{allPeople[peopleIndex].instagram.username}}" target="_blank">
+            ({{allPeople[peopleIndex].instagram.username}})
+          </a>
+          , {{allPeople[peopleIndex].birth_date | bdayToAge}}&nbsp;
+        </h1>
+        <h3 class="fader" style="display: inline;">{{allPeople[peopleIndex].distance_mi}} miles {{getCookie('currentCity') ? "from " + getCookie('currentCity') : 'away'}}, Active {{allPeople[peopleIndex].ping_time | pingToAgo}}</h3>
+
+
+        <p class="fader">
+          <i ng-repeat="school in allPeople[peopleIndex].schools" class="fa fa-graduation-cap">{{school.name}}</i>
+          <i ng-repeat="job in allPeople[peopleIndex].jobs" class="fa fa-briefcase">
+            {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}
+          </i>
+        </p>
+        <p ng-show="allPeople[peopleIndex].bio" class="fader bio">{{ allPeople[peopleIndex].bio }}</p>
       </div>
     </div>
   </div>

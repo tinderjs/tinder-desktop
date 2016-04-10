@@ -127,10 +127,8 @@ html, body, body > div.ng-scope {
 }
 
 .container, .settings fieldset {
-    max-width: 500px;
     margin: 0 auto 5px;
     text-align: center;
-    border: 4px solid #FF8271;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
     border-radius: 50px;
@@ -199,9 +197,8 @@ html, body, body > div.ng-scope {
 }
 
 .main-photo-container {
-    height: 320px;
-    position: relative;
-    margin-top: 20px;
+    position: absolute;
+    margin-left: 167px;
 }
 
 .main-photo-container img {
@@ -210,8 +207,8 @@ html, body, body > div.ng-scope {
 
 .main-photo {
     text-align: center;
-    width: 300px;
-    height: 300px;
+    width: 600px;
+    height: 600px;
     display: inline-block;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -254,7 +251,8 @@ html, body, body > div.ng-scope {
 }
 
 .small-photos div {
-    display: inline-block;
+    display: absolute;
+    margin-left:200px;
     padding-right: 5px;
 }
 
@@ -272,6 +270,14 @@ html, body, body > div.ng-scope {
 
 .small-photos img.selected {
     border: 5px solid #FF8271;
+}
+
+.information {
+    display: inline;
+    width: 400px;
+    position: absolute;
+    margin-left: 203px;
+    top: 5px;
 }
 
 /* facebook login button */
