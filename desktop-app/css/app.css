@@ -12,6 +12,11 @@ a {
     text-decoration: none;
 }
 
+.center {
+    float: center;
+    text-align: center;
+}
+
 .right {
     float: right;
     text-align: right;
@@ -236,10 +241,16 @@ html, body, body > div.ng-scope {
 }
 
 .small-photos div {
-    display: absolute;
-    margin-left:200px;
-    padding-right: 5px;
+    display: inline;
 }
+ 
+.small-photos  {
+    clear: both;
+    float: right;
+    width: 400px;
+    margin-right: 135px;
+    margin-top: 291px;
+}       
 
 .small-photos img {
     width: 120px;
@@ -261,8 +272,8 @@ html, body, body > div.ng-scope {
     display: inline;
     width: 400px;
     position: absolute;
-    margin-left: 203px;
-    top: 5px;
+    margin-left: 99px;
+    top: 37px;
 }
 
 /* facebook login button */
