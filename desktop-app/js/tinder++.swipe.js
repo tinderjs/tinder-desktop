@@ -1,6 +1,7 @@
 (function() {
   var superLike;
   var gui = require('nw.gui');
+  var moment = require('moment');
   var module = angular.module('tinder++.swipe', ['ngAutocomplete', 'ngSanitize', 'emoji', 'tinder++.api']);
 
   module.controller('SwipeController', function SwipeController($scope, $http, $timeout, $interval, API) {
@@ -16,6 +17,7 @@
 
     API.getAccount().then(function(response){
       $scope.superLikesRemaining = '' + response.rating.super_likes.remaining;
+      $scope.timeUntilSuperLike = response.rating.super_likes.resets_at;
     })
 
     $scope.likesRemaining = null;
@@ -243,7 +245,9 @@
           var user = $scope.allPeople[$scope.peopleIndex];
 
           if($scope.superLikesRemaining == '0'){
-            return swal("Oops!", "Sorry, you are out of superlikes! Try again later!" , "error");
+            var timeUntilSuperLike = $scope.timeUntilSuperLike
+            var formattedTime = moment(timeUntilSuperLike).format('MMMM Do, h:mm:ss a')
+            return swal("Oops!", "Sorry, you are out of superlikes! \n Try again at " + formattedTime , "error");
           }
 
           superLike = true;
