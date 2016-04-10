@@ -252,7 +252,8 @@
         if($scope.superLikesRemaining == '0'){
           var timeUntilSuperLike = $scope.timeUntilSuperLike
           var formattedTime = moment(timeUntilSuperLike).format('MMMM Do, h:mm:ss a')
-          return swal("Oops!", "Sorry, you are out of superlikes! \n Try again at " + formattedTime , "error");
+          swal("Oops!", "Sorry, you are out of superlikes! \n Try again at " + formattedTime , "error");
+          return false
         }
 
         superLike = true;
@@ -266,7 +267,7 @@
         $likeOverlay = $(cardEl).children('.like-overlay');
         like(1);
         swal("Nice!", "You just superliked " + user.name + ", increasing your chance of a match by 3x!" , "success");
-
+        return false
       });
 
       Mousetrap.bind('backspace', function(evt) {
