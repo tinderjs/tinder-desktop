@@ -3,7 +3,7 @@ tinder-desktop
 
 #### Contribution ####
 
-tinder-desktop is a project that has a lot of potential if the power of the open-source community is harnessed. Come [join us on on Slack](http://tinderjs.com) and view the [priorities list](https://github.com/tinderjs/tinder-desktop/wiki/Development-Priorities) to see how you can contribute, it is well appreciated!
+tinder-desktop is a project that has a lot of potential if the power of the open-source community is harnessed. Come [join us on Slack](http://tinderjs.com) and view the [priorities list](https://github.com/tinderjs/tinder-desktop/wiki/Development-Priorities) to see how you can contribute, it is well appreciated!
 
 #### tinder-desktop ####
 
@@ -13,7 +13,7 @@ You'll need to run `npm install` in both the main directory, and inside of deskt
 
 To compile your changes and test:
 
-First, download node-webkit (currently using [v0.11.6](https://github.com/nwjs/nw.js/wiki/Downloads-of-old-versions#v0116-jan-21-2015))
+First, download NW.js (currently using [v0.12.3](http://dl.nwjs.io/v0.12.3/))
 
 To start the app:
 
