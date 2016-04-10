@@ -37,6 +37,7 @@
   <script src="js/tinder++.messages.js"></script>
   <script src="js/tinder++.profile.js"></script>
   <script src="js/tinder++.settings.js"></script>
+  <script src="js/tinder++.shortcuts.js"></script>
   <script src="js/tinder++.js"></script>
   <script src="js/tinder++.updater.js"></script>
   <script src="js/emoji.js"></script>
@@ -45,7 +46,20 @@
 </head>
 <body ng-app="tinder++">
 <!--<div class="title-bar"><i class="fa fa-times" onclick="window.close()"></i>Tinder++</div>-->
-
+<div class="header center">
+  <a ng-href="#/profile/{{getCookie('userId')}}">
+    <img ng-src="{{getCookie('smallPhoto')}}" />
+  </a>
+  <a ng-href="#/settings">
+    <i class="fa fa-gear fa-3x top-icon"></i>
+  </a>
+  <a ng-href="#/swipe">
+    <i class="fa fa-heart fa-3x top-icon"></i>
+  </a>
+  <a ng-href="#/messages">
+    <i class="fa fa-envelope fa-3x top-icon"></i>
+  </a>
+</div>
 
 <div ng-view></div>
 
@@ -61,10 +75,6 @@
     <div class="right">
       <p>
         {{getCookie('name')}}
-        <span ng-show="(likesRemaining !== null)">
-          <br>
-          Likes Remaining: {{likesRemaining ? '<' + likesRemaining : likesRemaining}}
-        </span>
         <span ng-show="(superLikesRemaining)">
           <br>
           Superlikes Remaining: {{superLikesRemaining}}
@@ -72,12 +82,6 @@
         <br>
         <a href="#/settings">Settings</a>
       </p>
-      <a ng-href="#/profile/{{getCookie('userId')}}">
-        <img ng-src="{{getCookie('smallPhoto')}}" />
-      </a>
-      <a ng-href="#/messages">
-        <i class="fa fa-envelope fa-3x top-icon"></i>
-      </a>
       <div ng-show="showLocation">
         <input type="text" ng-autocomplete ng-model="autocomplete" options="autocompleteOptions" details="details"
                placeholder="Change Location" id="autocompleteLocation" />
@@ -85,24 +89,15 @@
     </div>
     <div class="clear"></div>
   </div>
-  <div class="top-button">
-    <div class="button"></div>
-  </div>
+
+  <!-- Main Application Container -->
   <div class="container">
     <div ng-show="allPeople.length === 0 || peopleIndex >= allPeople.length">Loading...<div class="loader"></div></div>
     <div ng-show="allPeople.length > 0 && peopleIndex < allPeople.length">
-      <h1 class="fader">
-        {{allPeople[peopleIndex].name}}
-        <a ng-show="allPeople[peopleIndex].instagram" href="https://instagram.com/{{allPeople[peopleIndex].instagram.username}}" target="_blank">
-          ({{allPeople[peopleIndex].instagram.username}})
-        </a>
-        , {{allPeople[peopleIndex].birth_date | bdayToAge}}&nbsp;
-      </h1>
-      <h3 class="fader" style="display: inline;">{{allPeople[peopleIndex].distance_mi}} miles {{getCookie('currentCity') ? "from " + getCookie('currentCity') : 'away'}}, Active {{allPeople[peopleIndex].ping_time | pingToAgo}}</h3>
-
+      
       <div class="main-photo-container">
         <div class="main-photo tinder-card" ng-repeat="user in allPeople.slice().reverse()" render-images-directive
-             style="background-image: url({{user.photos[user.photoIndex].processedFiles[1].url}});">
+             style="background-image: url({{user.photos[user.photoIndex].processedFiles[0].url}});">
           <div class="pass-overlay">
             <i class="fa fa-thumbs-o-down"></i>
           </div>
@@ -111,14 +106,30 @@
           </div>
         </div>
       </div>
-      <p class="fader">
-        <i ng-repeat="school in allPeople[peopleIndex].schools" class="fa fa-graduation-cap">{{school.name}}</i>
-        <i ng-repeat="job in allPeople[peopleIndex].jobs" class="fa fa-briefcase">
-          {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}
-        </i>
-      </p>
-      <p ng-show="allPeople[peopleIndex].bio" class="fader bio">{{ allPeople[peopleIndex].bio }}</p>
 
+      <!-- information including bio etc -->
+      <div class="information">
+        <h1 class="fader">
+          {{allPeople[peopleIndex].name}}
+          <a ng-show="allPeople[peopleIndex].instagram" href="https://instagram.com/{{allPeople[peopleIndex].instagram.username}}" target="_blank">
+            ({{allPeople[peopleIndex].instagram.username}})
+          </a>
+          , {{allPeople[peopleIndex].birth_date | bdayToAge}}&nbsp;
+        </h1>
+        <h3 class="fader" style="display: inline;">{{allPeople[peopleIndex].distance_mi}} miles {{getCookie('currentCity') ? "from " + getCookie('currentCity') : 'away'}}, Active {{allPeople[peopleIndex].ping_time | pingToAgo}}</h3>
+
+
+        <p class="fader">
+          <i ng-repeat="school in allPeople[peopleIndex].schools" class="fa fa-graduation-cap">{{school.name}}</i>
+          <i ng-repeat="job in allPeople[peopleIndex].jobs" class="fa fa-briefcase">
+            {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}
+          </i>
+        </p>
+        <p ng-show="allPeople[peopleIndex].bio" class="fader bio">{{ allPeople[peopleIndex].bio }}</p>
+      </div>
+
+
+      <!-- small inactive photos -->
       <div class="small-photos fader">
         <div ng-repeat="photo in allPeople[peopleIndex].photos">
           <img ng-src="{{photo.processedFiles[2].url}}" ng-click="swapPhoto($index)" data-photo-index="{{$index}}"
@@ -142,7 +153,6 @@
 <script type="text/ng-template" id="messages.html">
 <div id="messages" class="columns">
   <div id="match-list" ng-class="showExtra && 'more-info'">
-    <a ng-href="#/swipe"><i id="back-arrow" class="fa fa-arrow-left fa-2x"></i></a>
     <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true track by match.matchId"
          ng-click="open(match.matchId)" 
          ng-class="showExtra && match.infoUpdateTime && 'more-info'"
@@ -191,32 +201,32 @@
 
 <script type="text/ng-template" id="profile.html">
   <div class="y-scroll">
-    <a ng-href="{{backLink}}">
-      <i class="fa fa-arrow-left fa-3x top-icon"></i>
-    </a>
     <div class="container" ng-show="user">
-      <h1 class="fader">
-        {{user.name}}
-        <a ng-show="user.instagram" href="https://instagram.com/{{user.instagram.username}}" target="_blank">
-          ({{user.instagram.username}})
-        </a>
-        , {{user.birth_date | bdayToAge}}&nbsp;
-      </h1>
-      <h3 class="fader" style="display: inline;">{{user.distance_mi}} miles away, Active {{user.ping_time | pingToAgo}}</h3>
 
-      <div class="main-photo-container">
-        <div class="main-photo tinder-card"
-             style="background-image: url({{user.photos[photoIndex].processedFiles[1].url}});">
+       <div class="main-photo-container">
+          <div class="main-photo tinder-card"
+               style="background-image: url({{user.photos[photoIndex].processedFiles[1].url}});">
+          </div>
         </div>
-      </div>
 
-      <p class="fader">
-        <i ng-repeat="school in user.schools" class="fa fa-graduation-cap">{{school.name}}</i>
-        <i ng-repeat="job in user.jobs" class="fa fa-briefcase">
-          {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}
-        </i>
-      </p>
-      <p ng-show="user.bio" class="fader bio" ng-bind-html="user.bio | emoji"></p>
+      <div class="information">
+        <h1 class="fader">
+          {{user.name}}
+          <a ng-show="user.instagram" href="https://instagram.com/{{user.instagram.username}}" target="_blank">
+            ({{user.instagram.username}})
+          </a>
+          , {{user.birth_date | bdayToAge}}&nbsp;
+        </h1>
+        <h3 class="fader" style="display: inline;">{{user.distance_mi}} miles away, Active {{user.ping_time | pingToAgo}}</h3>
+
+        <p class="fader">
+          <i ng-repeat="school in user.schools" class="fa fa-graduation-cap">{{school.name}}</i>
+          <i ng-repeat="job in user.jobs" class="fa fa-briefcase">
+            {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}
+          </i>
+        </p>
+        <p ng-show="user.bio" class="fader bio" ng-bind-html="user.bio | emoji"></p>
+      </div>
 
       <div class="small-photos fader">
         <div ng-repeat="photo in user.photos">
@@ -224,15 +234,15 @@
                ng-class="{'selected': $index === photoIndex}" />
         </div>
       </div>
+
+
     </div>
   </div>
 </script>
 
 <script type="text/ng-template" id="settings.html">
-  <a ng-href="#/swipe">
-    <i class="fa fa-arrow-left fa-3x top-icon"></i>
-  </a>
-  <div class="settings">
+
+  <div class="settings" style="margin-top:10px">
     <h1>Settings</h1>
     <form name="tppSettings">
       <fieldset>

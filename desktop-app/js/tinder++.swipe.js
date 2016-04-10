@@ -4,7 +4,7 @@
   var moment = require('moment');
   var module = angular.module('tinder++.swipe', ['ngAutocomplete', 'ngSanitize', 'emoji', 'tinder++.api']);
 
-  module.controller('SwipeController', function SwipeController($scope, $timeout, $interval, API) {
+  module.controller('SwipeController', function SwipeController($scope, $http, $timeout, $interval, $location, API) {
     $scope.allPeople = [];
     $scope.peopleIndex = 0;
     $scope.apiQueue = [];
@@ -90,8 +90,6 @@
       });
     };
 
-    var firstLoad = true;
-
     var initCards = function() {
       $scope.cards = [].slice.call($('.tinder-card'));
       var $faderEls;
@@ -172,60 +170,109 @@
         }
       });
 
-      if (firstLoad) {
-        // console.log('running firstload');
-        firstLoad = false;
+      Mousetrap.bind('left', function (evt) {
+        evt.preventDefault()
+        var location = $location.path()
+        if( location != '/swipe/' ) return
 
-        Mousetrap.bind('left', function () {
-          var cardEl = $scope.cards[$scope.cards.length - $scope.peopleIndex - 1];
-          var card = window.stack.getCard(cardEl);
-          if (!!card) {
-            card.throwOut(-100, -50);
-          }
-          $passOverlay = $(cardEl).children('.pass-overlay');
-          $likeOverlay = $(cardEl).children('.like-overlay');
-          pass(1);
-        });
+        var cardEl = $scope.cards[$scope.cards.length - $scope.peopleIndex - 1];
+        var card = window.stack.getCard(cardEl);
+        if (!!card) {
+          card.throwOut(-100, -50);
+        }
+        $passOverlay = $(cardEl).children('.pass-overlay');
+        $likeOverlay = $(cardEl).children('.like-overlay');
+        pass(1);
+      });
 
-        Mousetrap.bind('right', function () {
-          var user = $scope.allPeople[$scope.peopleIndex];
-          var cardEl = $scope.cards[$scope.cards.length - $scope.peopleIndex - 1];
-          var card = window.stack.getCard(cardEl);
-          if (!!card) {
-            card.throwOut(100, -50);
-          }
-          $passOverlay = $(cardEl).children('.pass-overlay');
-          $likeOverlay = $(cardEl).children('.like-overlay');
-          like(1);
-        });
+      Mousetrap.bind('right', function (evt) {
+        evt.preventDefault()
+        var location = $location.path()
+        if( location != '/swipe/' ) return
 
-        Mousetrap.bind('up', function () {
-          var user = $scope.allPeople[$scope.peopleIndex];
+        var user = $scope.allPeople[$scope.peopleIndex];
+        var cardEl = $scope.cards[$scope.cards.length - $scope.peopleIndex - 1];
+        var card = window.stack.getCard(cardEl);
+        if (!!card) {
+          card.throwOut(100, -50);
+        }
+        $passOverlay = $(cardEl).children('.pass-overlay');
+        $likeOverlay = $(cardEl).children('.like-overlay');
+        like(1);
+      });
 
-          if($scope.superLikesRemaining == '0'){
-            var timeUntilSuperLike = $scope.timeUntilSuperLike
-            var formattedTime = moment(timeUntilSuperLike).format('MMMM Do, h:mm:ss a')
-            return swal("Oops!", "Sorry, you are out of superlikes! \n Try again at " + formattedTime , "error");
-          }
+      Mousetrap.bind('enter', function (evt) {
+        var location = $location.path()
+        if( location != '/swipe/' ) return
+        
+        var user = $scope.allPeople[$scope.peopleIndex];
 
-          superLike = true;
+        if($scope.superLikesRemaining == '0'){
+          var timeUntilSuperLike = $scope.timeUntilSuperLike
+          var formattedTime = moment(timeUntilSuperLike).format('MMMM Do, h:mm:ss a')
+          swal("Oops!", "Sorry, you are out of superlikes! \n Try again at " + formattedTime , "error");
+          return false
+        }
 
-          var cardEl = $scope.cards[$scope.cards.length - $scope.peopleIndex - 1];
-          var card = window.stack.getCard(cardEl);
-          if (!!card) {
-            card.throwOut(100, -50);
-          }
-          $passOverlay = $(cardEl).children('.pass-overlay');
-          $likeOverlay = $(cardEl).children('.like-overlay');
-          like(1);
-          swal("Nice!", "You just superliked " + user.name + ", increasing your chance of a match by 3x!" , "success");
-        });
+        superLike = true;
 
-        Mousetrap.bind('backspace', function(evt) {
-          $scope.undo();
-          evt.preventDefault();
-        });
-      }
+        var cardEl = $scope.cards[$scope.cards.length - $scope.peopleIndex - 1];
+        var card = window.stack.getCard(cardEl);
+        if (!!card) {
+          card.throwOut(100, -50);
+        }
+        $passOverlay = $(cardEl).children('.pass-overlay');
+        $likeOverlay = $(cardEl).children('.like-overlay');
+        like(1);
+        swal("Nice!", "You just superliked " + user.name + ", increasing your chance of a match by 3x!" , "success");
+        return false
+      });
+
+      Mousetrap.bind('backspace', function(evt) {
+        evt.preventDefault();
+        var location = $location.path()
+        if( location != '/swipe/' ) return
+
+        $scope.undo();
+      });
+
+      Mousetrap.bind('up', function(evt) {
+        evt.preventDefault();
+        var location = $location.path()
+        if( location != '/swipe/' ) return
+
+        // someone has said to go to the next picture, 
+        // accomplish by increasing the current length by 1
+        var numberOfPhotos = $scope.allPeople[$scope.peopleIndex].photos.length
+        var photoIndex = $scope.allPeople[$scope.peopleIndex].photoIndex
+
+        // they clicked it while on the last photo, send it to the top 
+        if(photoIndex == 0){
+          $scope.allPeople[$scope.peopleIndex].photoIndex = numberOfPhotos - 1
+        } else {
+          $scope.allPeople[$scope.peopleIndex].photoIndex += -1
+          return
+        }
+      }); 
+
+      Mousetrap.bind('down', function(evt) {
+        evt.preventDefault();
+        var location = $location.path()
+        if( location != '/swipe/' ) return
+
+        // someone has said to go to the next picture, 
+        // accomplish by increasing the current length by 1
+        var numberOfPhotos = $scope.allPeople[$scope.peopleIndex].photos.length
+        var photoIndex = $scope.allPeople[$scope.peopleIndex].photoIndex
+
+        // they clicked it while on the last photo, send it to the top 
+        if(photoIndex == numberOfPhotos - 1){
+          $scope.allPeople[$scope.peopleIndex].photoIndex = 0
+        } else {
+          $scope.allPeople[$scope.peopleIndex].photoIndex += 1
+          return
+        }
+      }); 
 
       // randomize rotation
       $timeout(function() {

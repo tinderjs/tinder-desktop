@@ -12,6 +12,11 @@ a {
     text-decoration: none;
 }
 
+.center {
+    float: center;
+    text-align: center;
+}
+
 .right {
     float: right;
     text-align: right;
@@ -87,6 +92,12 @@ html, body, body > div.ng-scope {
     cursor: pointer;
 }
 
+.header {
+    position: absolute;
+    right: 44%;
+    margin-top: 18px;
+}
+
 .user {
     max-width: 500px;
     margin: 10px auto 0;
@@ -111,26 +122,9 @@ html, body, body > div.ng-scope {
     margin: 8px 5px 18px;
 }
 
-.top-button {
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.top-button .button {
-    background-color: #FF8271;
-    width: 15%;
-    height: 7px;
-    float: right;
-    margin-right: 15%;
-    top: -7px;
-    position: relative;
-}
-
 .container, .settings fieldset {
-    max-width: 500px;
     margin: 0 auto 5px;
     text-align: center;
-    border: 4px solid #FF8271;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
     border-radius: 50px;
@@ -185,6 +179,10 @@ html, body, body > div.ng-scope {
     margin: 0 0 20px 0;
 }
 
+.container {
+    background-color: white;
+}
+
 #autocompleteLocation {
     margin-bottom: 20px;
 }
@@ -199,9 +197,8 @@ html, body, body > div.ng-scope {
 }
 
 .main-photo-container {
-    height: 320px;
-    position: relative;
-    margin-top: 20px;
+    position: absolute;
+    margin-left: 64px;
 }
 
 .main-photo-container img {
@@ -210,8 +207,8 @@ html, body, body > div.ng-scope {
 
 .main-photo {
     text-align: center;
-    width: 300px;
-    height: 300px;
+    width: 500px;
+    height: 500px;
     display: inline-block;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -219,9 +216,9 @@ html, body, body > div.ng-scope {
     overflow: hidden;
     position: absolute;
     left: 50%;
-    margin-left: -150px;
     background: #fff top left / contain no-repeat;
     z-index: 1000;
+    margin-top: 32px;
 }
 
 .main-photo .pass-overlay {
@@ -254,9 +251,16 @@ html, body, body > div.ng-scope {
 }
 
 .small-photos div {
-    display: inline-block;
-    padding-right: 5px;
+    display: inline;
 }
+ 
+.small-photos  {
+    clear: both;
+    float: right;
+    width: 400px;
+    margin-right: 135px;
+    margin-top: 259px;
+}       
 
 .small-photos img {
     width: 120px;
@@ -272,6 +276,15 @@ html, body, body > div.ng-scope {
 
 .small-photos img.selected {
     border: 5px solid #FF8271;
+}
+
+.information {
+    display: inline;
+    width: 550px;
+    position: absolute;
+    top: 48px;
+    height: 200px;
+    overflow: hidden;
 }
 
 /* facebook login button */
@@ -406,7 +419,7 @@ html, body, body > div.ng-scope {
     flex: 1;
 }
 #conversation h2 {
-    padding: 0 14px 14px 11px;
+    padding: 0 14px 21px 11px;
   border-bottom: 1px solid #ddd;
   margin-bottom: 0;
 }
@@ -514,8 +527,14 @@ html, body, body > div.ng-scope {
     color: #DAE3EA;
 }
 
+/* Settings Page */
+
 .settings h1 {
     text-align: center;
+}
+
+.settings {
+    padding-top: 47px;
 }
 
 .info .last-them {
