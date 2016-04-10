@@ -13,7 +13,7 @@ You'll need to run `npm install` in both the main directory, and inside of deskt
 
 To compile your changes and test:
 
-First, download node-webkit (currently using [v0.11.6](https://github.com/nwjs/nw.js/wiki/Downloads-of-old-versions#v0116-jan-21-2015))
+First, download NW.js (currently using [v0.12.3](http://dl.nwjs.io/v0.12.3/))
 
 To start the app:
 
