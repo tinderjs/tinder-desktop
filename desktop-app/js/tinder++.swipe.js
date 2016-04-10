@@ -201,7 +201,7 @@
         like(1);
       });
 
-      Mousetrap.bind('enter', function (evt) {
+      Mousetrap.bind('space', function (evt) {
         var location = $location.path()
         if( location != '/swipe/' ) return
         
