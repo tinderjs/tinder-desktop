@@ -92,6 +92,12 @@ html, body, body > div.ng-scope {
     cursor: pointer;
 }
 
+.header {
+    position: absolute;
+    right: 44%;
+    margin-top: 18px;
+}
+
 .user {
     max-width: 500px;
     margin: 10px auto 0;

@@ -37,6 +37,7 @@
   <script src="js/tinder++.messages.js"></script>
   <script src="js/tinder++.profile.js"></script>
   <script src="js/tinder++.settings.js"></script>
+  <script src="js/tinder++.shortcuts.js"></script>
   <script src="js/tinder++.js"></script>
   <script src="js/tinder++.updater.js"></script>
   <script src="js/emoji.js"></script>
@@ -45,7 +46,20 @@
 </head>
 <body ng-app="tinder++">
 <!--<div class="title-bar"><i class="fa fa-times" onclick="window.close()"></i>Tinder++</div>-->
-
+<div class="header center">
+  <a ng-href="#/profile/{{getCookie('userId')}}">
+    <img ng-src="{{getCookie('smallPhoto')}}" />
+  </a>
+  <a ng-href="#/settings">
+    <i class="fa fa-gear fa-3x top-icon"></i>
+  </a>
+  <a ng-href="#/swipe">
+    <i class="fa fa-heart fa-3x top-icon"></i>
+  </a>
+  <a ng-href="#/messages">
+    <i class="fa fa-envelope fa-3x top-icon"></i>
+  </a>
+</div>
 
 <div ng-view></div>
 
@@ -73,12 +87,6 @@
         <a href="" ng-click="toggleLocation()" >({{getCookie('currentCity') ? getCookie('currentCity') : 'set location'}})</a> | 
         <a href="#/settings">Settings</a>
       </p>
-      <a ng-href="#/profile/{{getCookie('userId')}}">
-        <img ng-src="{{getCookie('smallPhoto')}}" />
-      </a>
-      <a ng-href="#/messages">
-        <i class="fa fa-envelope fa-3x top-icon"></i>
-      </a>
       <div ng-show="showLocation">
         <input type="text" ng-autocomplete ng-model="autocomplete" options="autocompleteOptions" details="details"
                placeholder="Change Location" id="autocompleteLocation" />
@@ -150,7 +158,6 @@
 <script type="text/ng-template" id="messages.html">
 <div id="messages" class="columns">
   <div id="match-list" ng-class="showExtra && 'more-info'">
-    <a ng-href="#/swipe"><i id="back-arrow" class="fa fa-arrow-left fa-2x"></i></a>
     <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true track by match.matchId"
          ng-click="open(match.matchId)" 
          ng-class="showExtra && match.infoUpdateTime && 'more-info'"
@@ -237,10 +244,8 @@
 </script>
 
 <script type="text/ng-template" id="settings.html">
-  <a ng-href="#/swipe">
-    <i class="fa fa-arrow-left fa-3x top-icon"></i>
-  </a>
-  <div class="settings">
+
+  <div class="settings" style="margin-top:10px">
     <h1>Settings</h1>
     <form name="tppSettings">
       <fieldset>
