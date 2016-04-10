@@ -96,6 +96,7 @@ html, body, body > div.ng-scope {
     position: absolute;
     right: 44%;
     margin-top: 18px;
+    z-index:99999;
 }
 
 .user {
