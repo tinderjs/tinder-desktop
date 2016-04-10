@@ -58,7 +58,7 @@ function createDMG() {
   var appdmg = require('appdmg');
   var ee = appdmg({
     source: './build/dmg.json',
-    target: buildDir + '/Tinder-Desktop.dmg'
+    target: buildDir + '/Tinder Desktop.dmg'
   });
    
   ee.on('progress', function (info) {
