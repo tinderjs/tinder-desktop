@@ -111,21 +111,6 @@ html, body, body > div.ng-scope {
     margin: 8px 5px 18px;
 }
 
-.top-button {
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.top-button .button {
-    background-color: #FF8271;
-    width: 15%;
-    height: 7px;
-    float: right;
-    margin-right: 15%;
-    top: -7px;
-    position: relative;
-}
-
 .container, .settings fieldset {
     margin: 0 auto 5px;
     text-align: center;
