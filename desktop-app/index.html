@@ -89,6 +89,8 @@
   <div class="top-button">
     <div class="button"></div>
   </div>
+
+  <!-- Main Application Container -->
   <div class="container">
     <div ng-show="allPeople.length === 0 || peopleIndex >= allPeople.length">Loading...<div class="loader"></div></div>
     <div ng-show="allPeople.length > 0 && peopleIndex < allPeople.length">
@@ -105,13 +107,7 @@
         </div>
       </div>
 
-      <div class="small-photos fader">
-        <div ng-repeat="photo in allPeople[peopleIndex].photos">
-          <img ng-src="{{photo.processedFiles[2].url}}" ng-click="swapPhoto($index)" data-photo-index="{{$index}}"
-               ng-class="{'selected': $index === allPeople[peopleIndex].photoIndex}" />
-        </div>
-      </div>
-      
+      <!-- information including bio etc -->
       <div class="information">
         <h1 class="fader">
           {{allPeople[peopleIndex].name}}
@@ -130,6 +126,15 @@
           </i>
         </p>
         <p ng-show="allPeople[peopleIndex].bio" class="fader bio">{{ allPeople[peopleIndex].bio }}</p>
+      </div>
+
+
+      <!-- small inactive photos -->
+      <div class="small-photos fader">
+        <div ng-repeat="photo in allPeople[peopleIndex].photos">
+          <img ng-src="{{photo.processedFiles[2].url}}" ng-click="swapPhoto($index)" data-photo-index="{{$index}}"
+               ng-class="{'selected': $index === allPeople[peopleIndex].photoIndex}" />
+        </div>
       </div>
     </div>
   </div>

@@ -263,6 +263,22 @@
           $scope.undo();
           evt.preventDefault();
         });
+
+        Mousetrap.bind('down', function(evt) {
+          // someone has said to go to the next picture, 
+          // accomplish by increasing the current length by 1
+          var numberOfPhotos = $scope.allPeople[$scope.peopleIndex].photos.length
+          var photoIndex = $scope.allPeople[$scope.peopleIndex].photoIndex
+
+          // they clicked it while on the last photo, send it to the top 
+          if(photoIndex == numberOfPhotos - 1){
+            $scope.allPeople[$scope.peopleIndex].photoIndex = 0
+          } else {
+            $scope.allPeople[$scope.peopleIndex].photoIndex += 1
+            return
+          }
+          evt.preventDefault();
+        }); 
       }
 
       // randomize rotation
