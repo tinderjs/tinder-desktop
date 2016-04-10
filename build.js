@@ -39,7 +39,7 @@ function createNW() {
   var archiver = require('archiver');
   var archive = archiver('zip');
 
-  var output = fs.createWriteStream(buildDir + '/tinder-' + appPkg.version + '.nw');
+  var output = fs.createWriteStream(buildDir + '/tinder-desktop-' + appPkg.version + '.nw');
   output.on('close', function () {
     console.log((archive.pointer() / 1000000).toFixed(2) + 'mb compressed');
   });
