@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Tinder Desktop"
-#define MyAppVersion "1.2.1"
+#define MyAppVersion "0.1.0"
 #define MyAppPublisher "TinderJS, Github Organization"
 #define MyAppURL "https://github.com/tinderjs/tinder-desktop"
 #define MyAppExeName "tinder-desktop.exe"

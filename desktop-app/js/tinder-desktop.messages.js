@@ -1,5 +1,5 @@
 (function() {
-  module = angular.module('tinder++.messages', ['tinder++.api', 'tinder++.settings', 'ngSanitize', 'emoji']);
+  module = angular.module('tinder-desktop.messages', ['tinder-desktop.api', 'tinder-desktop.settings', 'ngSanitize', 'emoji']);
 
   module.controller('MessagesController', function($scope, API, Settings) {
     // console.log(API.conversations)

@@ -1,6 +1,6 @@
 {
   "name": "tinder-desktop",
-  "version": "1.2.1",
+  "version": "0.1.0",
   "main": "index.html",
   "window": {
     "title": "Tinder Desktop",
@@ -19,8 +19,7 @@
   "user-agent": "Mozilla/5.0 (Linux; U; en-gb; KFTHWI Build/JDQ39) AppleWebKit/535.19 (KHTML, like Gecko) Silk/3.16 Safari/535.19",
   "no-edit-menu": true,
   "dependencies": {
-    "moment": "^2.8.4",
-    "nw-updater": "git://github.com/mfkp/nw-updater",
+    "moment": "^2.12.0",
     "tinder": "^1.16.0"
   }
 }
