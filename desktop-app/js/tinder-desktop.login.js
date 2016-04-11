@@ -1,6 +1,6 @@
 (function() {
   gui = require('nw.gui');
-  module = angular.module('tinder++.login', ['tinder++.api']);
+  module = angular.module('tinder-desktop.login', ['tinder-desktop.api']);
 
   module.controller('LoginController', function LoginController($scope, $http, API) {
     $scope.loginUrl = 'https://m.facebook.com/dialog/oauth?client_id=464891386855067&redirect_uri=https://www.facebook.com/connect/login_success.html&scope=user_birthday,user_relationship_details,user_likes,user_activities,user_education_history,user_photos,user_friends,user_about_me,email,public_profile&response_type=token';

@@ -6,7 +6,7 @@
   // if a token returned from tinder is in localstorage, set that token and skip auth
   if (localStorage.tinderToken) { client.setAuthToken(localStorage.tinderToken); }
 
-  angular.module('tinder++.api', []).factory('API', function($q) {
+  angular.module('tinder-desktop.api', []).factory('API', function($q) {
     var likesRemaining = null;
     var apiObj = {};
 

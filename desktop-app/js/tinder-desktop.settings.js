@@ -1,5 +1,5 @@
 (function() {
-  module = angular.module('tinder++.settings', ['ngAutocomplete', 'ngSanitize']);
+  module = angular.module('tinder-desktop.settings', ['ngAutocomplete', 'ngSanitize']);
 
   module.service('Settings', function() {
     var settingsObj = {

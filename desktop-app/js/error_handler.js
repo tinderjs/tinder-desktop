@@ -18,7 +18,7 @@ process.on('uncaughtException', function(e) {
   console.log(e);
   console.groupEnd();
 
-  alert('Sorry, something went wrong, please restart the app (or try downloading latest version from tinderplusplus.com)');
+  alert('Sorry, something went wrong, please restart the app (or try downloading latest version from github.com/tinderjs/tinder-desktop)');
   return false;
 });
 

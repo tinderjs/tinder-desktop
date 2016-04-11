@@ -2,7 +2,7 @@
   var superLike;
   var gui = require('nw.gui');
   var moment = require('moment');
-  var module = angular.module('tinder++.swipe', ['ngAutocomplete', 'ngSanitize', 'emoji', 'tinder++.api']);
+  var module = angular.module('tinder-desktop.swipe', ['ngAutocomplete', 'ngSanitize', 'emoji', 'tinder-desktop.api']);
 
   module.controller('SwipeController', function SwipeController($scope, $timeout, $interval, $location, API) {
     $scope.allPeople = [];

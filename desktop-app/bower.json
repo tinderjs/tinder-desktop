@@ -1,6 +1,6 @@
 {
   "name": "tinder-desktop",
-  "description": "",
+  "description": "A cross-platform desktop Tinder client",
   "main": "index.html",
   "authors": [
     "tinderjs"

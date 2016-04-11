@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <title>Tinder Desktop</title>
-  <meta name="description" content="Desktop optimized Tinder">
+  <meta name="description" content="A cross-platform desktop Tinder client">
 
   <link rel="stylesheet" href="css/normalize.min.css"/>
   <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
@@ -25,22 +25,21 @@
   <script src="js/vendor/swing.min.js"></script>
   <script src="js/vendor/twemoji.min.js"></script>
 
-  <script src="js/tinder++.api.js"></script>
-  <script src="js/tinder++.controls.js"></script>
-  <script src="js/tinder++.login.js"></script>
-  <script src="js/tinder++.swipe.js"></script>
-  <script src="js/tinder++.messages.js"></script>
-  <script src="js/tinder++.profile.js"></script>
-  <script src="js/tinder++.settings.js"></script>
-  <script src="js/tinder++.js"></script>
-  <!-- <script src="js/tinder++.updater.js"></script> -->
+  <script src="js/tinder-desktop.api.js"></script>
+  <script src="js/tinder-desktop.controls.js"></script>
+  <script src="js/tinder-desktop.login.js"></script>
+  <script src="js/tinder-desktop.swipe.js"></script>
+  <script src="js/tinder-desktop.messages.js"></script>
+  <script src="js/tinder-desktop.profile.js"></script>
+  <script src="js/tinder-desktop.settings.js"></script>
+  <script src="js/tinder-desktop.js"></script>
   <script src="js/emoji.js"></script>
   <script src="js/sweet-alert.min.js"></script>
 
   <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 </head>
-<body ng-app="tinder++">
-<!--<div class="title-bar"><i class="fa fa-times" onclick="window.close()"></i>Tinder++</div>-->
+<body ng-app="tinder-desktop">
+<!--<div class="title-bar"><i class="fa fa-times" onclick="window.close()"></i>Tinder Desktop</div>-->
 <div class="header center">
   <a ng-href="#/profile/{{getCookie('userId')}}">
     <img ng-src="{{getCookie('smallPhoto')}}" />
@@ -139,7 +138,7 @@
 <script type="text/ng-template" id="login.html">
   <div class="fb-login">
     <div class="login-container">
-      <img src="img/icon.png" alt="Tinder++" class="icon" />
+      <img src="img/icon.png" alt="Tinder Desktop" class="icon" />
       <a id="sign_in" href="" ng-click="startLogin()"></a>
     </div>
   </div>

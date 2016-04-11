@@ -1,17 +1,21 @@
 {
-  "name": "tinderplusplus",
-  "version": "1.2.1",
-  "description": "tinder",
+  "name": "tinder-desktop",
+  "version": "0.1.0",
+  "description": "A cross-platform desktop Tinder client",
   "main": "build.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mfkp/tinderplusplus.git"
+    "url": "https://github.com/tinderjs/tinder-desktop.git"
   },
-  "author": "@mfkp",
+  "author": "tinderjs",
   "contributors": [
+    {
+      "name": "Kyle Powers (@mfkp)",
+      "url": "http://kylepowers.com"
+    },
     {
       "name": "Thomas Schneider",
       "url": "http://thomasschneider.com"
@@ -23,11 +27,10 @@
   ],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mfkp/tinderplusplus/issues"
+    "url": "https://github.com/tinderjs/tinder-desktop/issues"
   },
-  "homepage": "https://github.com/mfkp/tinderplusplus",
+  "homepage": "https://github.com/tinderjs/tinder-desktop",
   "devDependencies": {
-    "archiver": "^0.14.4",
     "gulp": "^3.9.1",
     "gulp-appdmg": "^1.0.2",
     "gulp-inno": "0.0.7",
