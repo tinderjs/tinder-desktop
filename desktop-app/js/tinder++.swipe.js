@@ -4,7 +4,7 @@
   var moment = require('moment');
   var module = angular.module('tinder++.swipe', ['ngAutocomplete', 'ngSanitize', 'emoji', 'tinder++.api']);
 
-  module.controller('SwipeController', function SwipeController($scope, $http, $timeout, $interval, $location, API) {
+  module.controller('SwipeController', function SwipeController($scope, $timeout, $interval, $location, API) {
     $scope.allPeople = [];
     $scope.peopleIndex = 0;
     $scope.apiQueue = [];
