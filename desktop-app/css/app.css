@@ -68,6 +68,15 @@ width: 500px;
 z-index: 999; /* CHECK IF THIS IS REALLY NEEDED LATER */
 }
 
+.menu-logo {
+
+}
+
+.menu-icon {
+display: inline-block;
+float: right;
+}
+
 /* ALL OTHER CONTENT TO BE WRAPPED AROUND STATIC MENU BLOCK */
 .page {
 border: solid yellow; /* dev mode */
