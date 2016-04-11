@@ -134,6 +134,7 @@
         matchId: match._id,
         userId: (match.person ? match.person._id : null),
         name: (match.person ? match.person.name : null),
+        isSuperLike: match.is_super_like,
         thumbnail: (match.person ? match.person.photos[0].processedFiles[3].url : null),
         messages: [],
         pending: [],
