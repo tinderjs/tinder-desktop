@@ -29,6 +29,7 @@
   "devDependencies": {
     "appdmg": "^0.3.6",
     "archiver": "^0.14.4",
-    "nw-builder": "2.1.0"
+    "nw-builder": "2.1.0",
+    "removeNPMAbsolutePaths": "^0.0.1"
   }
 }
