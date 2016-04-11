@@ -1,7 +1,8 @@
 // TODO: automate updating desktop-app/package.json version
 console.log('Before running, make sure versions are updated in both package.json and desktop-app/package.json');
 
-var NwBuilder = require('node-webkit-builder');
+var NwBuilder = require('nw-builder');
+var removeNPMAbsolutePaths = require('removeNPMAbsolutePaths');
 var appPkg = require('./desktop-app/package.json');
 var appName = 'tinder-desktop';
 var buildDir = 'build/output';
@@ -24,6 +25,7 @@ nw.on('log', console.log);
 
 nw.build()
   .then(function () {
+    removeNPMAbsolutePaths(buildDir);
     console.log('done building apps');
     createDMG();
     createNW();
@@ -34,7 +36,7 @@ nw.build()
 
 // create the regular .nw file for updates
 function createNW() {
-  console.log('creating regular tinder.nw for updates...');
+  console.log('creating regular tinder-desktop.nw for updates...');
   var fs = require('fs');
   var archiver = require('archiver');
   var archive = archiver('zip');

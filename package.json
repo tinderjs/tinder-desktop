@@ -27,9 +27,9 @@
   },
   "homepage": "https://github.com/mfkp/tinderplusplus",
   "devDependencies": {
-    "appdmg": "^0.3.1",
+    "appdmg": "^0.3.6",
     "archiver": "^0.14.4",
-    "node-webkit-builder": "git://github.com/mfkp/node-webkit-builder",
-    "nw-builder": "^2.2.0"
+    "nw-builder": "2.1.0",
+    "removeNPMAbsolutePaths": "^0.0.1"
   }
 }
