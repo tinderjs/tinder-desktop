@@ -22,9 +22,9 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={userpf}\{#MyAppName}
 DisableDirPage=yes
 DefaultGroupName={#MyAppName}
-OutputDir=.\output
+OutputDir=..\dist
 OutputBaseFilename=InstallTinderDesktop
-SetupIconFile=.\icons\win.ico
+SetupIconFile=icon.ico
 Compression=lzma
 SolidCompression=yes
 
@@ -36,8 +36,8 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 0,6.1
 
 [Files]
-Source: "output\tinder-desktop\win32\tinder-desktop.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "output\tinder-desktop\win32\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\build\tinder-desktop\win32\tinder-desktop.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\build\tinder-desktop\win32\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

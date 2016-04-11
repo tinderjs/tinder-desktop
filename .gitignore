@@ -1,6 +1,7 @@
 .idea/
 *.log
 node_modules
-build/cache/
-build/output/*
+build
+cache
+dist
 *.DS_Store
