@@ -16,7 +16,7 @@ var PATHS = {
     'desktop-app/bower_components/angular-cookies/angular-cookies.min.js',
     'desktop-app/bower_components/angular-route/angular-route.min.js',
     'desktop-app/bower_components/angular-sanitize/angular-sanitize.min.js',
-    'desktop-app/bower_components/jquery/jquery.min.js',
+    'desktop-app/bower_components/jquery/dist/jquery.min.js',
     'desktop-app/bower_components/mousetrap/mousetrap.min.js',
     'desktop-app/bower_components/ngAutocomplete/src/ngAutocomplete.js',
     'desktop-app/bower_components/swing/dist/swing.min.js',
