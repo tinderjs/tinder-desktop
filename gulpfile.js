@@ -9,6 +9,49 @@ var $ = require('gulp-load-plugins')();
 var appName = 'tinder-desktop';
 var buildDir = 'build';
 
+// File paths to various assets are defined here.
+var PATHS = {
+  javascript: [
+    'desktop-app/bower_components/angular/angular.min.js',
+    'desktop-app/bower_components/angular-cookies/angular-cookies.min.js',
+    'desktop-app/bower_components/angular-route/angular-route.min.js',
+    'desktop-app/bower_components/angular-sanitize/angular-sanitize.min.js',
+    'desktop-app/bower_components/jquery/jquery.min.js',
+    'desktop-app/bower_components/mousetrap/mousetrap.min.js',
+    'desktop-app/bower_components/ngAutocomplete/src/ngAutocomplete.js',
+    'desktop-app/bower_components/swing/dist/swing.min.js',
+    'desktop-app/bower_components/twemoji/twemoji.min.js'
+  ],
+  stylesheets: [
+    'desktop-app/bower_components/font-awesome/css/font-awesome.min.css'
+  ],
+  fonts: [
+    'desktop-app/bower_components/font-awesome/fonts/*.{eot,svg,ttf,woff,woff2}'
+  ]
+};
+
+// JavaScript assets handler
+gulp.task('scripts', function() {
+  shelljs.rm('-rf', './desktop-app/js/vendor');
+  return gulp.src(PATHS.javascript)
+    .pipe(gulp.dest('desktop-app/js/vendor'));
+});
+
+// Stylesheet assets handler
+gulp.task('stylesheets', function() {
+  return gulp.src(PATHS.stylesheets)
+    .pipe(gulp.dest('desktop-app/css'));
+});
+
+// Fonts assets handler
+gulp.task('fonts', function() {
+  return gulp.src(PATHS.fonts)
+    .pipe(gulp.dest('desktop-app/fonts'));
+});
+
+// Assets handler
+gulp.task('assets', ['scripts', 'stylesheets', 'fonts']);
+
 // Remove build output directories
 gulp.task('clean', function() {
   shelljs.rm('-rf', './build');
