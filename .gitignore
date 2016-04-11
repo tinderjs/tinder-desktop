@@ -1,6 +1,7 @@
 .idea/
 *.log
 node_modules
+bower_components
 build
 cache
 dist
