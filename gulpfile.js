@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var shelljs = require('shelljs');
 var runSequence = require('run-sequence');
+var mergeStream = require('merge-stream');
 var nwBuilder = require('nw-builder');
 var removeNPMAbsolutePaths = require('removeNPMAbsolutePaths');
 var appPkg = require('./desktop-app/package.json');
@@ -59,7 +60,7 @@ gulp.task('clean', function() {
 });
 
 // Build for all platforms
-['win32', 'osx64'].forEach(function(platform) {
+['win32', 'osx64', 'linux32', 'linux64'].forEach(function(platform) {
   return gulp.task('build:' + platform, function() {
     var nw = new nwBuilder({
       files: 'desktop-app/**',
@@ -105,9 +106,32 @@ gulp.task('pack:win32', ['build:win32'], function(callback) {
   return gulp.src('./assets-windows/installer-script.iss').pipe($.inno());
 });
 
+// Package for Linux
+[32, 64].forEach(function(arch) {
+  return ['deb', 'rpm'].forEach(function(target) {
+    return gulp.task("pack:linux" + arch + ":" + target, ['build:linux' + arch], function() {
+      var move_opt;
+      shelljs.rm('-rf', './build/linux');
+      shelljs.mkdir('-p', './build/linux');
+      move_opt = gulp.src(['./assets-linux/after-install.sh', './assets-linux/after-remove.sh', './build/tinder-desktop/linux' + arch + '/**']).pipe(gulp.dest('./build/linux/opt/tinder-desktop'));
+      return mergeStream(move_opt).on('end', function() {
+        var output, port;
+        shelljs.cd('./build/linux');
+        port = arch === 32 ? 'i386' : 'x86_64';
+        output = "../../dist/tinder-desktop_linux" + arch + "." + target;
+        shelljs.mkdir('-p', '../../dist');
+        shelljs.rm('-f', output);
+        shelljs.exec("fpm -s dir -t " + target + " -a " + port + " --rpm-os linux -n tinder-desktop --after-install ./opt/tinder-desktop/after-install.sh --after-remove ./opt/tinder-desktop/after-remove.sh --license ISC --category Chat --url \"https://github.com/tinderjs/tinder-desktop\" --description \"A cross-platform desktop Tinder client\" -p " + output + " -v " + appPkg.version + " .");
+        return shelljs.cd('../..');
+      });
+    });
+  });
+});
+
 // Package all platforms
 gulp.task('pack:all', ['clean'], function(callback) {
-  runSequence('pack:osx64', 'pack:win32', callback);
+  runSequence('pack:osx64', 'pack:win32', 'pack:linux32:deb', 
+              'pack:linux64:deb', callback);
 });
 
 // Default task is to package for all platforms

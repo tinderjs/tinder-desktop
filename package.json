@@ -35,6 +35,7 @@
     "gulp-appdmg": "^1.0.2",
     "gulp-inno": "0.0.7",
     "gulp-load-plugins": "^1.2.0",
+    "merge-stream": "^1.0.0",
     "nw-builder": "2.1.0",
     "removeNPMAbsolutePaths": "^0.0.1",
     "run-sequence": "^1.1.5",
