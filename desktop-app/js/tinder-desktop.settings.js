@@ -10,7 +10,8 @@
       settings : {
         // set defaults here
         landingPage : '/swipe',
-        messageListExtraInfo : 'no'
+        messageListExtraInfo : 'no',
+        distanceUnits: 'mi'
       }
     };
 
