@@ -1,7 +1,5 @@
 (function() {
-
-  var gui = require('nw.gui');
-  var win = gui.Window.get();
+  var remote = require('remote'); 
 
   module = angular.module('tinder-desktop.controls', ['tinder-desktop.api']);
 
@@ -84,7 +82,7 @@
             var notification = new Notification("New Match",options);
 
             notification.onclick = function () {
-              win.show();
+              remote.getCurrentWindow().show();
             }
 
             notification.onshow = function () {

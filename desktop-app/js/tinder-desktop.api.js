@@ -1,7 +1,7 @@
 (function() {
-  var gui = require('nw.gui');
   var tinder = require('tinder');
   var client = new tinder.TinderClient();
+  var remote = require('remote'); 
 
   // if a token returned from tinder is in localstorage, set that token and skip auth
   if (localStorage.tinderToken) { client.setAuthToken(localStorage.tinderToken); }
@@ -22,31 +22,14 @@
     };
 
     apiObj.logout = function() {
+      var win = remote.getCurrentWindow();
       localStorage.clear();
-      // clear the cache
-      gui.App.clearCache();
-      var nwWin = gui.Window.get();
 
-      function removeCookie(cookie) {
-        var lurl = "http" + (cookie.secure ? "s" : "") + "://" + cookie.domain + cookie.path;
-        nwWin.cookies.remove({ url: lurl, name: cookie.name },
-        function(result) {
-          if (result) {
-            if (!result.name) { result = result[0]; }
-            console.log('cookie remove callback: ' + result.name + ' ' + result.url);
-          } else {
-            console.log('cookie removal failed');
-          }
+      win.webContents.session.clearCache(function(){
+        win.webContents.session.clearStorageData({storages: ["cookies"]}, function(){
+          win.webContents.reloadIgnoringCache();
         });
-      }
-
-      nwWin.cookies.getAll({}, function(cookies) {
-        console.log('Attempting to remove '+cookies.length+' cookies...');
-        for (var i=0; i<cookies.length; i++) {
-          removeCookie(cookies[i]);
-        }
       });
-      gui.Window.get().reloadIgnoringCache();
     };
 
     apiObj.login = function(id, token) {
