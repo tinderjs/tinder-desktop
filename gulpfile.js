@@ -70,7 +70,7 @@ gulp.task('clean', function() {
       buildDir: buildDir,
       cacheDir: 'cache',
       appVersion: appPkg.version,
-      winIco: './assets-windows/icon.ico',
+      winIco: process.argv.indexOf('--noicon') > 0 ? void 0 : './assets-windows/icon.ico',
       macIcns: './assets-osx/icon.icns',
       mergeZip: false
     });
