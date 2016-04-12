@@ -84,22 +84,6 @@ var template = [
     ]
   },
   {
-    label: 'Window',
-    role: 'window',
-    submenu: [
-      {
-        label: 'Minimize',
-        accelerator: 'CmdOrCtrl+M',
-        role: 'minimize'
-      },
-      {
-        label: 'Close',
-        accelerator: 'CmdOrCtrl+W',
-        role: 'close'
-      },
-    ]
-  },
-  {
     label: 'Help',
     role: 'help',
     submenu: [
@@ -119,14 +103,6 @@ if (process.platform == 'darwin') {
       {
         label: 'About ' + name,
         role: 'about'
-      },
-      {
-        type: 'separator'
-      },
-      {
-        label: 'Services',
-        role: 'services',
-        submenu: []
       },
       {
         type: 'separator'
@@ -156,13 +132,29 @@ if (process.platform == 'darwin') {
     ]
   });
   // Window menu.
-  template[3].submenu.push(
+  template.splice(3, 0,
     {
-      type: 'separator'
-    },
-    {
-      label: 'Bring All to Front',
-      role: 'front'
+      label: 'Window',
+      role: 'window',
+      submenu: [
+        {
+          label: 'Minimize',
+          accelerator: 'CmdOrCtrl+M',
+          role: 'minimize'
+        },
+        {
+          label: 'Close',
+          accelerator: 'CmdOrCtrl+W',
+          role: 'close'
+        },
+        {
+        type: 'separator'
+        },
+        {
+          label: 'Bring All to Front',
+          role: 'front'
+        },
+      ]
     }
   );
 }
