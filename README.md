@@ -7,19 +7,13 @@ tinder-desktop is a project that has a lot of potential if the power of the open
 
 #### Development ####
 
-It's a node-webkit (now nw.js) app.
+You'll need to run `npm install` in both the main directory, and inside of desktop-app before starting.
 
-You'll need to run `npm install` and `bower install` in the root directory, and `npm install` in the desktop-app directory before starting.
-
-###### Running via NW.js
-
-First, download NW.js (currently using [v0.12.3](http://dl.nwjs.io/v0.12.3/))
-
-To start the app:
+###### Running
 
 ```
 cd desktop-app
-/path/to/your/nwjs .
+electron .
 ```
 
 ###### Building and packaging
