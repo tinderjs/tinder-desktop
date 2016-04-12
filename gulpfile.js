@@ -121,7 +121,7 @@ gulp.task('pack:win32', ['build:win32'], function(callback) {
         output = "../../dist/tinder-desktop_linux" + arch + "." + target;
         shelljs.mkdir('-p', '../../dist');
         shelljs.rm('-f', output);
-        shelljs.exec("fpm -s dir -t " + target + " -a " + port + " --rpm-os linux -n tinder-desktop --after-install ./opt/tinder-desktop/after-install.sh --after-remove ./opt/tinder-desktop/after-remove.sh --license ISC --category Chat --url \"https://github.com/tinderjs/tinder-desktop\" --description \"A cross-platform desktop Tinder client\" -p " + output + " -v " + appPkg.version + " .");
+        shelljs.exec("fpm -s dir -t " + target + " -a " + port + " --rpm-os linux -n tinder-desktop --after-install ./opt/tinder-desktop/after-install.sh --after-remove ./opt/tinder-desktop/after-remove.sh --vendor \"tinderjs\" --license ISC --category Chat --url \"https://github.com/tinderjs/tinder-desktop\" --description \"A cross-platform desktop Tinder client\" -m \"Stuart Williams <stuart@sidereal.ca>\" -p " + output + " -v " + appPkg.version + " .");
         return shelljs.cd('../..');
       });
     });
