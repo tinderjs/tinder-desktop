@@ -1,0 +1,72 @@
+<div ng-include src="'partials/menu.html'"></div>
+<div class="y-scroll">
+  <div class="user">
+    <div class="left" ng-show="apiQueue.length > 0">
+      <a href="" ng-click="undo()">
+        Undo <i class="fa fa-undo"></i>
+        <img ng-src="{{apiQueue[0].user.photos[0].processedFiles[3].url}}" />
+      </a>
+    </div>
+    <div class="right">
+      <p>
+        {{getCookie('name')}}
+        <span ng-show="(superLikesRemaining)">
+          <br>
+          Superlikes Remaining: {{superLikesRemaining}}
+        </span>
+        <br>
+        <a href="#/settings">Settings</a>
+      </p>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <!-- Main Application Container -->
+  <div class="container">
+    <div ng-show="allPeople.length === 0 || peopleIndex >= allPeople.length">Loading...<div class="loader"></div></div>
+    <div ng-show="allPeople.length > 0 && peopleIndex < allPeople.length">
+      
+      <div class="main-photo-container">
+        <div class="main-photo tinder-card" ng-repeat="user in allPeople.slice().reverse()" render-images-directive
+             style="background-image: url({{user.photos[user.photoIndex].processedFiles[0].url}});">
+          <div class="pass-overlay">
+            <i class="fa fa-thumbs-o-down"></i>
+          </div>
+          <div class="like-overlay">
+            <i class="fa fa-thumbs-o-up"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- information including bio etc -->
+      <div class="information">
+        <h1 class="fader">
+          {{allPeople[peopleIndex].name}}
+          <a ng-show="allPeople[peopleIndex].instagram" href="https://instagram.com/{{allPeople[peopleIndex].instagram.username}}" target="_blank">
+            ({{allPeople[peopleIndex].instagram.username}})
+          </a>
+          , {{allPeople[peopleIndex].birth_date | bdayToAge}}&nbsp;
+        </h1>
+        <h3 class="fader" style="display: inline;">{{allPeople[peopleIndex].distance_mi | distanceToUnits}} {{getCookie('currentCity') ? "from " + getCookie('currentCity') : 'away'}}, Active {{allPeople[peopleIndex].ping_time | pingToAgo}}</h3>
+
+
+        <p class="fader">
+          <i ng-repeat="school in allPeople[peopleIndex].schools" class="fa fa-graduation-cap">{{school.name}}</i>
+          <i ng-repeat="job in allPeople[peopleIndex].jobs" class="fa fa-briefcase">
+            {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}
+          </i>
+        </p>
+        <p ng-show="allPeople[peopleIndex].bio" class="fader bio">{{ allPeople[peopleIndex].bio }}</p>
+      </div>
+
+
+      <!-- small inactive photos -->
+      <div class="small-photos fader">
+        <div ng-repeat="photo in allPeople[peopleIndex].photos">
+          <img ng-src="{{photo.processedFiles[2].url}}" ng-click="swapPhoto($index)" data-photo-index="{{$index}}"
+               ng-class="{'selected': $index === allPeople[peopleIndex].photoIndex}" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

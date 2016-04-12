@@ -22,7 +22,7 @@
     ['/login', '/swipe/', '/messages', '/profile/:userId', '/settings'].forEach(function(route) {
       var name = route.split('/')[1];
       $routeProvider.when(route, {
-        templateUrl: name + '.html',
+        templateUrl: 'templates/'  + name + '.html',
         controller: capitalize(name) + 'Controller'
       });
     });
