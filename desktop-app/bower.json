@@ -23,7 +23,6 @@
     "jquery": "^1.12.3",
     "mousetrap": "^1.4.10",
     "ngAutocomplete": "^1.0.0",
-    "swing": "1.1.2",
     "twemoji": "^2.0.5"
   }
 }
