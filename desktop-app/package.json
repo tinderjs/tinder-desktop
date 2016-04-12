@@ -19,7 +19,6 @@
   "user-agent": "Mozilla/5.0 (Linux; U; en-gb; KFTHWI Build/JDQ39) AppleWebKit/535.19 (KHTML, like Gecko) Silk/3.16 Safari/535.19",
   "no-edit-menu": true,
   "dependencies": {
-    "moment": "^2.12.0",
     "tinder": "^1.16.0"
   }
 }

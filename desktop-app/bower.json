@@ -21,6 +21,7 @@
     "angular-sanitize": "~1.4",
     "font-awesome": "^4.5.0",
     "jquery": "^1.12.3",
+    "moment": "^2.12.0",
     "mousetrap": "^1.4.10",
     "ngAutocomplete": "^1.0.0",
     "twemoji": "^2.0.5"
