@@ -16,6 +16,7 @@
           nodeIntegration: false 
         }
       });
+      window.setMenu(null);
       window.loadURL($scope.loginUrl);
       window.show();
 
