@@ -7,6 +7,16 @@ const Menu = electron.Menu;
 
 var template = [
   {
+    label: 'File',
+    submenu: [
+      {
+        label: 'Quit',
+        accelerator: 'Alt+F4',
+        click: function() { app.quit(); }
+      }
+    ]
+  },
+  {
     label: 'Edit',
     submenu: [
       {
@@ -97,7 +107,7 @@ var template = [
 
 if (process.platform == 'darwin') {
   const name = 'Tinder Desktop';
-  template.unshift({
+  template[0] = ({
     label: name,
     submenu: [
       {
