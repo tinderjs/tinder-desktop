@@ -188,7 +188,7 @@
         var conversation = API.conversations[matchId];
         if (conversation) {
           angular.extend(conversation, {
-            userDistanceMi: user.distance_mi,
+            userDistance: user.distance_mi,
             userPingTime: user.ping_time,
             infoUpdateTime: calcUserUpdateTimeISOString(user)
           });
