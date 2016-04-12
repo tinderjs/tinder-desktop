@@ -40,5 +40,8 @@
     "removeNPMAbsolutePaths": "^0.0.1",
     "run-sequence": "^1.1.5",
     "shelljs": "^0.6.0"
+  },
+  "optionalDependencies": {
+    "gulp-appdmg": "^1.0.2"
   }
 }
