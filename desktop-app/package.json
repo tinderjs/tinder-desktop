@@ -1,23 +1,7 @@
 {
   "name": "tinder-desktop",
   "version": "0.1.0",
-  "main": "index.html",
-  "window": {
-    "title": "Tinder Desktop",
-    "icon": "img/icon.png",
-    "toolbar": true,
-    "resizable": true,
-    "fullscreen": false,
-    "width": 1200,
-    "height": 768,
-    "position": "center"
-  },
-  "webkit": {
-    "page-cache": true
-  },
-  "single-instance": false,
-  "user-agent": "Mozilla/5.0 (Linux; U; en-gb; KFTHWI Build/JDQ39) AppleWebKit/535.19 (KHTML, like Gecko) Silk/3.16 Safari/535.19",
-  "no-edit-menu": true,
+  "main": "main.js",
   "dependencies": {
     "tinder": "^1.17.0"
   }
