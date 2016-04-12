@@ -41,22 +41,6 @@
 </head>
 
 <body ng-app="tinder-desktop">
-
-  <div class="header center">
-    <a ng-href="#/profile/{{getCookie('userId')}}">
-      <img ng-src="{{getCookie('smallPhoto')}}" />
-    </a>
-    <a ng-href="#/settings">
-      <i class="fa fa-gear fa-3x top-icon"></i>
-    </a>
-    <a ng-href="#/swipe">
-      <i class="fa fa-heart fa-3x top-icon"></i>
-    </a>
-    <a ng-href="#/messages">
-      <i class="fa fa-envelope fa-3x top-icon"></i>
-    </a>
-  </div>
-
   <div ng-view></div>
 
   <script type="text/javascript">
@@ -74,6 +58,5 @@
         location.reload();
     });
   </script>
-
 </body>
 </html>

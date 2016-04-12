@@ -1,3 +1,4 @@
+<div ng-include src="'partials/menu.html'"></div>
 <div id="messages" class="columns">
   <div id="match-list" ng-class="showExtra && 'more-info'">
     <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true track by match.matchId"
