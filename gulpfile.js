@@ -19,7 +19,6 @@ var PATHS = {
     'desktop-app/bower_components/jquery/dist/jquery.min.js',
     'desktop-app/bower_components/mousetrap/mousetrap.min.js',
     'desktop-app/bower_components/ngAutocomplete/src/ngAutocomplete.js',
-    'desktop-app/bower_components/swing/dist/swing.min.js',
     'desktop-app/bower_components/twemoji/twemoji.min.js'
   ],
   stylesheets: [
