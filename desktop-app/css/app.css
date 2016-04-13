@@ -64,6 +64,24 @@ html, body, body > div.ng-scope {
     height: 100%;
 }
 
+/* STATIC MENU BLOCK */
+.menu {
+	float: right;
+	height: 50px;
+	width: 380px; /* To be defined later when logo has been inserted */
+}
+
+.menu-logo {
+	float: left;
+}
+
+.menu-icons {
+	float: right;
+}
+.menu-icon {
+	display: inline-block;
+}
+
 /* Specific */
 .title-bar {
     width: 100%;
