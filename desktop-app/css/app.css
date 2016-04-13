@@ -153,17 +153,17 @@ html, body, body > div.ng-scope {
 }
 
 .container .loader {
+/* Give this one a nice new position, maybe in the most centered place of the whole page */
+}
+
+.container .loader-anim {
     border: 2px solid;
-    margin-top: 15px;
-    margin-left: 10px;
     border-color: transparent #FF8271 #FF8271 #FF8271;
     border-radius: 50%;
     width: 16px;
     height: 16px;
-    position: absolute;
-    top: -4px;
     display: inline-block;
-    margin-left: 54px;
+    margin-left: 24px;
     -webkit-animation: single-arc-rotate 1s infinite linear;
     animation: single-arc-rotate 1s infinite linear;
     animation-name: single-arc-rotate;
