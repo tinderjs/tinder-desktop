@@ -268,6 +268,13 @@ html, body, body > div.ng-scope {
     cursor: -webkit-grab;
 }
 
+.profile {
+	float: right;
+	clear: both;
+	position: relative;
+    width: 400px;
+}
+
 .schoolwork {
 	display: block;
 }
@@ -281,10 +288,6 @@ html, body, body > div.ng-scope {
 }
 
 .small-photos  {
-    clear: both;
-    float: right;
-    width: 400px;
-    margin-right: 135px;
 }       
 
 .small-photos img {
@@ -304,12 +307,6 @@ html, body, body > div.ng-scope {
 }
 
 .information {
-    display: inline;
-    width: 550px;
-    position: relative;
-    overflow: hidden;
-    float: right;
-    clear: both;
 }
 
 /* facebook login button */
