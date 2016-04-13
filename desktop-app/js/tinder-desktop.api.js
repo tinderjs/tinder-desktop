@@ -34,7 +34,7 @@
 
     apiObj.login = function(id, token) {
       client.authorize(token, id, function(err, res, data) {
-        if (!!err) { 
+        if (!!err) {
           handleError(err);
           return;
         }
@@ -53,7 +53,7 @@
     apiObj.updateLocation = function(lng, lat) {
       return $q(function (resolve, reject) {
         client.updatePosition(lng, lat, function(err, res, data) {
-          if (!!err) { 
+          if (!!err) {
             handleError(err, reject);
             return;
           }
@@ -79,7 +79,7 @@
       return $q(function (resolve, reject) {
         limit = limit || 10;
         client.getRecommendations(limit, function(err, res, data) {
-          if (!!err) { 
+          if (!!err) {
             handleError(err, reject);
             return;
           }
@@ -103,7 +103,7 @@
     apiObj.userInfo = function(userId) {
       return $q(function (resolve, reject) {
         client.getUser(userId, function(err, res, data) {
-          if (!!err) { 
+          if (!!err) {
             handleError(err, reject);
             return;
           }
@@ -134,15 +134,35 @@
       });
     };
 
+    apiObj.updatePreferences = function(discovery, ageMin, ageMax, gender, distance) {
+      return $q(function (resolve, reject) {
+        console.log(discovery, ageMin, ageMax, gender, distance)
+        client.updatePreferences(discovery, ageMin, ageMax, gender, distance, function(err, res, data) { // change to client.getAccount
+          console.log(err);
+          console.log(res);
+          console.log(data);
+          if (!!err) {
+            handleError(err, reject);
+            return;
+          }
+          if (res === null) {
+            handleError('Fail to update Preferences', reject);
+            return;
+          }
+          resolve(res);
+        });
+      });
+    };
+
     apiObj.like = function(userId) {
       return $q(function (resolve, reject) {
         client.like(userId, function(err, res, data) {
-          if (!!err) { 
+          if (!!err) {
             handleError(err, reject);
             return;
           }
           // console.log(JSON.stringify(res));
-          
+
           // if the liked user is a match, alert it right away
           if (res && res.match) {
             apiObj.userInfo(res.match.participants[1], function(err2, res2, data2) {
@@ -162,7 +182,7 @@
             // TODO: I think alerts belong to controller
             swal({
               title: 'Out of Swipes',
-              text: 'Sorry, Tinder doesn\'t like your business. Try again at ' + rate_limited_until.format('dddd, h:mma') + 
+              text: 'Sorry, Tinder doesn\'t like your business. Try again at ' + rate_limited_until.format('dddd, h:mma') +
                     ' (' + now.to(rate_limited_until) + ')',
               type: 'error',
               confirmButtonColor: "#DD6B55",
@@ -175,59 +195,59 @@
             likesRemaining = res.likes_remaining;
           }
           resolve(res);
-        });        
+        });
       });
     };
 
     apiObj.superLike = function(userId) {
       return $q(function (resolve, reject) {
         client.superLike(userId, function(err, res, data) {
-          if (!!err) { 
+          if (!!err) {
             handleError(err, reject);
             return;
           }
           // console.log(JSON.stringify(res));
           resolve(res);
-        });        
+        });
       });
     };
 
     apiObj.pass = function(userId) {
       return $q(function (resolve, reject) {
         client.pass(userId, function(err, res, data) {
-          if (!!err) { 
+          if (!!err) {
             handleError(err, reject);
             return;
           }
           console.log(JSON.stringify(res));
           resolve(res);
-        });        
+        });
       });
     };
 
     apiObj.sendMessage = function(matchId, message) {
       return $q(function (resolve, reject) {
         client.sendMessage(matchId, message, function(err, res, data) {
-          if (!!err) { 
+          if (!!err) {
             handleError(err, reject);
             return;
           }
           // console.log(JSON.stringify(res));
           resolve(res);
-        });        
+        });
       });
     };
 
     apiObj.unmatch = function(matchId, message) {
       return $q(function (resolve, reject) {
         client.unmatch(matchId, function(err, res, data) {
-          if (!!err) { 
+          if (!!err) {
             handleError(err, reject);
             return;
           }
           console.log(JSON.stringify(res));
           resolve(res);
-        });        
+        });
       });
     };
 
@@ -235,26 +255,26 @@
     apiObj.getUpdates = function() {
       return $q(function (resolve, reject) {
         client.getUpdates(function(err, res, data) {
-          if (!!err) { 
+          if (!!err) {
             handleError(err, reject);
             return;
           }
           // console.log(JSON.stringify(res));
           resolve(res);
-        });        
+        });
       });
-    };    
+    };
 
     apiObj.getHistory = function() {
       return $q(function (resolve, reject) {
         client.getHistory(function(err, res, data) {
-          if (!!err) { 
+          if (!!err) {
             handleError(err, reject);
             return;
           }
           // console.log(JSON.stringify(res));
           resolve(res);
-        });        
+        });
       });
     };
 

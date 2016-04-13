@@ -4,16 +4,16 @@
   <form name="tppSettings">
     <fieldset>
       <legend>Show me:</legend>
-      <label for="Women">
-        <input type="radio" name="chooseGender" id="chooseGender_1" value="0" ng-model="settings.distanceUnits" ng-change="syncSettings()"/>
-        Women
+      <label for="Female">
+        <input type="radio" name="chooseGender" id="chooseGender_1" value="1" ng-model="DiscoverySettings.gender_filter" ng-change="updateDiscoverySettings()"/>
+        Female
       </label>
-      <label for="Men">
-        <input type="radio" name="chooseGender" id="chooseGender_2" value="1" ng-model="settings.distanceUnits" ng-change="syncSettings()"/>
-        Men
+      <label for="Male">
+        <input type="radio" name="chooseGender" id="chooseGender_2" value="0" ng-model="DiscoverySettings.gender_filter" ng-change="updateDiscoverySettings()"/>
+        Male
       </label>
       <label for="Both">
-        <input type="radio" name="chooseGender" id="chooseGender_3" value="-1" ng-model="settings.distanceUnits" ng-change="syncSettings()"/>
+        <input type="radio" name="chooseGender" id="chooseGender_3" value="-1" ng-model="DiscoverySettings.gender_filter" ng-change="updateDiscoverySettings()"/>
         Both
       </label>
     </fieldset>
