@@ -1,6 +1,7 @@
-<div ng-include src="'partials/menu.html'"></div>
-<div class="settings" style="margin-top:10px">
-  <h1>Settings</h1>
+<div class="wrapper">
+  <div class="wrapper-menu" ng-include src="'partials/menu.html'"></div>
+  <div class="wrapper-page">
+    <div class="settings">
   <form name="tppSettings">
     <fieldset>
       <legend translate="SETTINGS.LOCATION"></legend>
@@ -64,5 +65,6 @@
       <a href="" ng-click="logout()" translate="SETTINGS.CLICK_TO_LOGOUT"></a>
     </fieldset>
   </form>
-
+    </div>
+  </div>
 </div>
