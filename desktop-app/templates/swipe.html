@@ -15,7 +15,7 @@
           Superlikes Remaining: {{superLikesRemaining}}
         </span>
         <br>
-        <a href="#/settings">Settings</a>
+        <a href="#/myProfile">Settings</a>
       </p>
     </div>
     <div class="clear"></div>
@@ -25,7 +25,7 @@
   <div class="container">
     <div ng-show="allPeople.length === 0 || peopleIndex >= allPeople.length">Loading...<div class="loader"></div></div>
     <div ng-show="allPeople.length > 0 && peopleIndex < allPeople.length">
-      
+
       <div class="main-photo-container">
         <div class="main-photo tinder-card" ng-repeat="user in allPeople.slice().reverse()" render-images-directive
              style="background-image: url({{user.photos[user.photoIndex].processedFiles[0].url}});">

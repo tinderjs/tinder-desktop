@@ -14,12 +14,12 @@
     win.menu = nativeMenuBar;
   }
 
-  var app = angular.module('tinder-desktop', ['tinder-desktop.login', 'tinder-desktop.swipe', 'tinder-desktop.messages', 'tinder-desktop.profile', 'ngRoute', 'tinder-desktop.settings', 'tinder-desktop.controls', 'tinder-desktop.common']);
+  var app = angular.module('tinder-desktop', ['tinder-desktop.login', 'tinder-desktop.swipe', 'tinder-desktop.messages', 'tinder-desktop.profile','tinder-desktop.myprofile', 'ngRoute', 'tinder-desktop.settings', 'tinder-desktop.controls', 'tinder-desktop.common']);
 
   app.config(function($routeProvider) {
     var capitalize = function (s) { return s[0].toUpperCase() + s.slice(1); };
 
-    ['/login', '/swipe/', '/messages', '/profile/:userId', '/settings'].forEach(function(route) {
+    ['/login', '/swipe/', '/messages', '/profile/:userId', '/settings', '/myProfile'].forEach(function(route) {
       var name = route.split('/')[1];
       $routeProvider.when(route, {
         templateUrl: 'templates/'  + name + '.html',
