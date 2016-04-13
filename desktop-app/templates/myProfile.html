@@ -3,6 +3,17 @@
   <h1>Settings</h1>
   <form name="tppSettings">
     <fieldset>
+      <legend>Discoverable</legend>
+      <label for="Yes">
+        <input type="radio" name="discoverable" id="discoverable_1" value="1" ng-model="DiscoverySettings.discoverable" ng-change="updateDiscoverySettings()"/>
+        Yes
+      </label>
+      <label for="No">
+        <input type="radio" name="discoverable" id="discoverable_2" value="0" ng-model="DiscoverySettings.discoverable" ng-change="updateDiscoverySettings()"/>
+        No
+      </label>
+    </fieldset>
+    <fieldset>
       <legend>Show me:</legend>
       <label for="Female">
         <input type="radio" name="chooseGender" id="chooseGender_1" value="1" ng-model="DiscoverySettings.gender_filter" ng-change="updateDiscoverySettings()"/>
@@ -16,6 +27,10 @@
         <input type="radio" name="chooseGender" id="chooseGender_3" value="-1" ng-model="DiscoverySettings.gender_filter" ng-change="updateDiscoverySettings()"/>
         Both
       </label>
+    </fieldset>
+    <fieldset>
+      <legend>Search Proximity</legend>
+       <input type="range" name="distance" min="0" max="100" ng-model="DiscoverySettings.distance_filter" ng-change="updateDiscoverySettings()"/>
     </fieldset>
   </form>
 

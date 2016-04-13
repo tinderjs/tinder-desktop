@@ -12,9 +12,9 @@
     });
 
     $scope.updateDiscoverySettings = function() {
-      API.updatePreferences($scope.DiscoverySettings.discoverable, $scope.DiscoverySettings.age_filter_min
+      API.updatePreferences(Boolean(parseInt($scope.DiscoverySettings.discoverable)), $scope.DiscoverySettings.age_filter_min
         , $scope.DiscoverySettings.age_filter_max, parseInt($scope.DiscoverySettings.gender_filter)
-        , $scope.DiscoverySettings.distance_filter)
+        , parseInt($scope.DiscoverySettings.distance_filter))
         .then(function(){
           console.log('ok');
       });
