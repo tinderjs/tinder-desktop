@@ -18,7 +18,7 @@
       </h1>
       <h3 class="fader" style="display: inline;">{{user.distance_mi | distanceToUnits}} away, active {{user.ping_time | timeFromNow}}</h3>
 
-      <p class="fader">
+      <p class="schoolwork fader">
         <i ng-repeat="school in user.schools" class="fa fa-graduation-cap">{{school.name}}</i>
         <i ng-repeat="job in user.jobs" class="fa fa-briefcase">
           {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}

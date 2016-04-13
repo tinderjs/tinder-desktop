@@ -251,6 +251,10 @@ html, body, body > div.ng-scope {
     cursor: -webkit-grab;
 }
 
+.schoolwork {
+	display: block;
+}
+
 .small-photos div {
     display: inline;
 }

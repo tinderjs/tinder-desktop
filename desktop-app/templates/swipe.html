@@ -50,7 +50,7 @@
         <h3 class="fader" style="display: inline;">{{allPeople[peopleIndex].distance_mi | distanceToUnits}} {{getCookie('currentCity') ? "from " + getCookie('currentCity') : 'away'}}, active {{allPeople[peopleIndex].ping_time | timeFromNow}}</h3>
 
 
-        <p class="fader">
+        <p class="schoolwork fader">
           <i ng-repeat="school in allPeople[peopleIndex].schools" class="fa fa-graduation-cap">{{school.name}}</i>
           <i ng-repeat="job in allPeople[peopleIndex].jobs" class="fa fa-briefcase">
             {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}
