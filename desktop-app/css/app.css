@@ -68,7 +68,7 @@ html, body, body > div.ng-scope {
 .menu {
 	float: right;
 	height: 50px;
-	width: 380px; /* To be defined later when logo has been inserted */
+	width: 400px; /* To be defined later when logo has been inserted */
 }
 
 .menu-logo {
