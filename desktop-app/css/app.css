@@ -216,28 +216,27 @@ html, body, body > div.ng-scope {
 }
 
 .main-photo-container {
-    position: absolute;
-    margin-left: 64px;
+    position: relative;
+    margin-left: 16px;
+    margin-top: 16px;
 }
 
 .main-photo-container img {
-    max-width: 400px;
+    max-width: 600px;
 }
 
 .main-photo {
     text-align: center;
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
     display: inline-block;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
     overflow: hidden;
     position: absolute;
-    left: 50%;
     background: #fff top left / contain no-repeat;
     z-index: 1000;
-    margin-top: 32px;
 }
 
 .main-photo .pass-overlay {
