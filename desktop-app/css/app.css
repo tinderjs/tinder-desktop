@@ -255,6 +255,10 @@ html, body, body > div.ng-scope {
 	display: block;
 }
 
+.school, .work {
+	display: block;
+}
+
 .small-photos div {
     display: inline;
 }
