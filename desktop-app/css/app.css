@@ -141,7 +141,7 @@ html, body, body > div.ng-scope {
     margin: 8px 5px 18px;
 }
 
-.container, .settings fieldset {
+.settings fieldset {
     margin: 0 auto 5px;
     text-align: center;
     -webkit-border-radius: 50px;
@@ -200,7 +200,6 @@ html, body, body > div.ng-scope {
 
 .container {
     background-color: white;
-	clear: both;
 }
 
 #autocompleteLocation {
