@@ -200,6 +200,7 @@ html, body, body > div.ng-scope {
 
 .container {
     background-color: white;
+	clear: both;
 }
 
 #autocompleteLocation {
