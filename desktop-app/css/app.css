@@ -307,7 +307,6 @@ html, body, body > div.ng-scope {
     display: inline;
     width: 550px;
     position: relative;
-    height: 200px;
     overflow: hidden;
     float: right;
     clear: both;
