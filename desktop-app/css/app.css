@@ -208,6 +208,7 @@ html, body, body > div.ng-scope {
 
 .bio {
     margin: 0 0 15px 0;
+	white-space: pre-wrap;
 }
 
 .bio img {
