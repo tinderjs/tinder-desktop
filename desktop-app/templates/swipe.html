@@ -1,26 +1,4 @@
 <div ng-include src="'partials/menu.html'"></div>
-<div class="y-scroll">
-  <div class="user">
-    <div class="left" ng-show="apiQueue.length > 0">
-      <a href="" ng-click="undo()">
-        Undo <i class="fa fa-undo"></i>
-        <img ng-src="{{apiQueue[0].user.photos[0].processedFiles[3].url}}" />
-      </a>
-    </div>
-    <div class="right">
-      <p>
-        {{getCookie('name')}}
-        <span ng-show="(superLikesRemaining)">
-          <br>
-          Superlikes Remaining: {{superLikesRemaining}}
-        </span>
-        <br>
-        <a href="#/discovery">Discovery Settings</a>
-      </p>
-    </div>
-    <div class="clear"></div>
-  </div>
-
   <!-- Main Application Container -->
   <div class="container">
     <div ng-show="allPeople.length === 0 || peopleIndex >= allPeople.length">Loading...<div class="loader"></div></div>
@@ -69,4 +47,3 @@
       </div>
     </div>
   </div>
-</div>
