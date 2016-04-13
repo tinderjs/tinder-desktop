@@ -281,15 +281,6 @@
         }); 
       }
 
-      // randomize rotation
-      $timeout(function() {
-        $.each($scope.cards, function(idx, card) {
-          var $card = $(card);
-          var marginLeft = parseInt($card.css('margin-left'));
-          $card.css('margin-left', '-' + (Math.floor(Math.random()*((marginLeft+10)-(marginLeft-10)+1)+(marginLeft-10))) + 'px')
-              .css('transform', 'rotate(' + (Math.floor(Math.random()*(3+3+1)-3)) + 'deg)');
-        });
-      }, 0, false);
     };
 
     getPeople();

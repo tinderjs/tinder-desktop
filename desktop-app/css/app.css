@@ -63,18 +63,20 @@ html, body, body > div.ng-scope {
 border: solid red; /* dev mode */
 background: green; /* dev mode */
 float: right;
-height: 40px;
-width: 500px;
+height: 50px;
+width: 380px;
 z-index: 999; /* CHECK IF THIS IS REALLY NEEDED LATER */
 }
 
 .menu-logo {
-
+float: left;
 }
 
+.menu-icons {
+float: right;
+}
 .menu-icon {
 display: inline-block;
-float: right;
 }
 
 /* ALL OTHER CONTENT TO BE WRAPPED AROUND STATIC MENU BLOCK */
