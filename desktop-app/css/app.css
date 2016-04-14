@@ -276,6 +276,14 @@ html, body, body > div.ng-scope {
     width: 400px;
 }
 
+.name {
+	text-align: center;
+}
+
+.status {
+	text-align: center;
+}
+
 .schoolwork {
 	display: block;
 }

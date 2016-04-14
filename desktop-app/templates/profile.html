@@ -10,14 +10,14 @@
 
 	<div class="profile">
     <div class="information">
-      <h1 class="fader">
+      <h1 class="name fader">
         {{user.name}}
         <a ng-show="user.instagram" href="https://instagram.com/{{user.instagram.username}}" target="_blank">
           ({{user.instagram.username}})
         </a>
         , {{user.birth_date | bdayToAge}}&nbsp;
       </h1>
-      <h3 class="fader" style="display: inline;">{{user.distance_mi | distanceToUnits}} away, active {{user.ping_time | timeFromNow}}</h3>
+      <h3 class="status fader">{{user.distance_mi | distanceToUnits}} away, Active {{user.ping_time | timeFromNow}}</h3>
 
       <p class="schoolwork fader">
         <i ng-repeat="school in user.schools" class="school fa fa-graduation-cap">{{school.name}}</i>
