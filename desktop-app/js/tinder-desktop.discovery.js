@@ -58,7 +58,7 @@
         
         if(response.travel.is_traveling){
           var tl = response.travel.travel_location_info[0];
-          $scope.DiscoverySettings.currentLocation = tl.locality.short_name + tl.route.short_name + tl.street_number.short_name;
+          $scope.DiscoverySettings.currentLocation = tl.locality.short_name + ', ' + tl.street_number.short_name + ' ' + tl.route.short_name;
         }
         
       });
