@@ -290,6 +290,7 @@ html, body, body > div.ng-scope {
 
 .schoolwork {
 	display: block;
+	text-align: center;
 }
 
 .school, .work {
