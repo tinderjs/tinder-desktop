@@ -305,7 +305,7 @@ html, body, body > div.ng-scope {
 }
 
 .small-photos  {
-    width: 400px;
+	margin: auto;
 }       
 
 .small-photos img {
@@ -318,6 +318,9 @@ html, body, body > div.ng-scope {
     overflow: hidden;
     cursor: pointer;
     border: 5px solid #FAFAFA;
+	margin: 16px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 .small-photos img.selected {
