@@ -3,6 +3,19 @@
   <h1>Discovery Settings</h1>
   <form name="discoverySettings">
     <fieldset>
+      <legend>Passport</legend>
+      <p ng-show="DiscoverySettings.is_traveling">
+        {{ DiscoverySettings.currentLocation }}
+      </p>
+      <p ng-show="!DiscoverySettings.is_traveling">
+        Actual location
+      </p>
+      <div >
+        <input type="text" ng-autocomplete ng-model="autocomplete" options="autocompleteOptions" details="details" placeholder="Change Location" id="autocompleteLocation" />
+      </div>
+      <a ng-show="DiscoverySettings.is_traveling" href="" ng-click="resetPassport()">Actual location</a>
+    </fieldset>
+    <fieldset>
       <legend>Discoverable</legend>
       <label for="Yes">
         <input type="radio" name="discoverable" id="discoverable_1" value="1" ng-model="DiscoverySettings.discoverable" />
