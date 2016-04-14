@@ -153,11 +153,7 @@
 
     apiObj.updatePreferences = function(discovery, ageMin, ageMax, gender, distance) {
       return $q(function (resolve, reject) {
-        console.log(discovery, ageMin, ageMax, gender, distance)
         client.updatePreferences(discovery, ageMin, ageMax, gender, distance, function(err, res, data) { // change to client.getAccount
-          console.log(err);
-          console.log(res);
-          console.log(data);
           if (!!err) {
             handleError(err, reject);
             return;
