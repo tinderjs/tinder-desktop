@@ -5,32 +5,41 @@
     <fieldset>
       <legend>Discoverable</legend>
       <label for="Yes">
-        <input type="radio" name="discoverable" id="discoverable_1" value="1" ng-model="DiscoverySettings.discoverable" ng-change="updateDiscoverySettings()"/>
+        <input type="radio" name="discoverable" id="discoverable_1" value="1" ng-model="DiscoverySettings.discoverable" />
         Yes
       </label>
       <label for="No">
-        <input type="radio" name="discoverable" id="discoverable_2" value="0" ng-model="DiscoverySettings.discoverable" ng-change="updateDiscoverySettings()"/>
+        <input type="radio" name="discoverable" id="discoverable_2" value="0" ng-model="DiscoverySettings.discoverable" />
         No
       </label>
     </fieldset>
     <fieldset>
       <legend>Show me:</legend>
       <label for="Female">
-        <input type="radio" name="chooseGender" id="chooseGender_1" value="1" ng-model="DiscoverySettings.gender_filter" ng-change="updateDiscoverySettings()"/>
+        <input type="radio" name="chooseGender" id="chooseGender_1" value="1" ng-model="DiscoverySettings.gender_filter" />
         Female
       </label>
       <label for="Male">
-        <input type="radio" name="chooseGender" id="chooseGender_2" value="0" ng-model="DiscoverySettings.gender_filter" ng-change="updateDiscoverySettings()"/>
+        <input type="radio" name="chooseGender" id="chooseGender_2" value="0" ng-model="DiscoverySettings.gender_filter" />
         Male
       </label>
       <label for="Both">
-        <input type="radio" name="chooseGender" id="chooseGender_3" value="-1" ng-model="DiscoverySettings.gender_filter" ng-change="updateDiscoverySettings()"/>
+        <input type="radio" name="chooseGender" id="chooseGender_3" value="-1" ng-model="DiscoverySettings.gender_filter" />
         Both
       </label>
     </fieldset>
     <fieldset>
       <legend>Search Proximity</legend>
-       <input type="range" name="distance" min="0" max="100" ng-model="DiscoverySettings.distance_filter" ng-change="updateDiscoverySettings()"/>
+      <label for="distance">
+        <input type="range" name="distance" min="2" max="100" ng-model="DiscoverySettings.distance_filter" />
+        {{DiscoverySettings.distance_filter}} miles
+      </label>
+    </fieldset>
+    <fieldset>
+      <legend>Display ages from {{DiscoverySettings.age_filter.from}} to {{DiscoverySettings.age_filter.to}}</legend>
+      <label for="age">
+        <section data-range-slider class="range-slider" ng-model="DiscoverySettings.age_filter" min="18" max="55"></section>
+      </label>
     </fieldset>
   </form>
 

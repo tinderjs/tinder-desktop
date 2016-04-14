@@ -1,24 +1,33 @@
 (function() {
-  module = angular.module('tinder-desktop.myprofile', ['ngAutocomplete', 'ngSanitize']);
+  module = angular.module('tinder-desktop.myprofile', ['ngRangeSlider', 'ngSanitize']);
 
   module.controller('MyProfileController', function($scope, $timeout, $interval, API) {
-    $scope.DiscoverySettings = {};
+    $scope.DiscoverySettings = {
+      age_filter : {
+        from: 0,
+        to: 0
+      }
+    };
     API.getAccount().then(function(response){
-      $scope.DiscoverySettings.age_filter_max = response.user.age_filter_max;
-      $scope.DiscoverySettings.age_filter_min = response.user.age_filter_min;
-      $scope.DiscoverySettings.discoverable = response.user.discoverable;
+      $scope.DiscoverySettings.discoverable = response.user.discoverable ? '1' : '0';
       $scope.DiscoverySettings.gender_filter = response.user.gender_filter;
       $scope.DiscoverySettings.distance_filter = response.user.distance_filter;
+      $scope.DiscoverySettings.age_filter = { from: response.user.age_filter_min, to: response.user.age_filter_max };
     });
 
     $scope.updateDiscoverySettings = function() {
-      API.updatePreferences(Boolean(parseInt($scope.DiscoverySettings.discoverable)), $scope.DiscoverySettings.age_filter_min
-        , $scope.DiscoverySettings.age_filter_max, parseInt($scope.DiscoverySettings.gender_filter)
+      API.updatePreferences(Boolean(parseInt($scope.DiscoverySettings.discoverable)), $scope.DiscoverySettings.age_filter.from
+        , $scope.DiscoverySettings.age_filter.to, parseInt($scope.DiscoverySettings.gender_filter)
         , parseInt($scope.DiscoverySettings.distance_filter))
         .then(function(){
-          console.log('ok');
+          console.log('Preferences updated');
       });
     };
+
+    $scope.$on('$locationChangeStart', function(event, next, current) {
+      $scope.updateDiscoverySettings();
+    });
+
 
 
   });
