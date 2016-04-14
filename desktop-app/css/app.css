@@ -223,8 +223,7 @@ html, body, body > div.ng-scope {
 
 .main-photo-container {
     position: relative;
-    margin-left: 16px;
-    margin-top: 16px;
+    margin: 16px;
 }
 
 .main-photo-container img {
