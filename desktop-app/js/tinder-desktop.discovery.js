@@ -1,7 +1,7 @@
 (function() {
-  module = angular.module('tinder-desktop.myprofile', ['ngRangeSlider', 'ngSanitize']);
+  module = angular.module('tinder-desktop.discovery', ['ngRangeSlider', 'ngSanitize']);
 
-  module.controller('MyProfileController', function($scope, $timeout, $interval, API) {
+  module.controller('DiscoveryController', function($scope, $timeout, $interval, API) {
     $scope.DiscoverySettings = {
       age_filter : {
         from: 0,
