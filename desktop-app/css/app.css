@@ -223,13 +223,13 @@ html, body, body > div.ng-scope {
 }
 
 .main-photo-container img {
-    max-width: 600px;
+    max-width: 640px;
 }
 
 .main-photo {
     text-align: center;
-    width: 600px;
-    height: 600px;
+    width: 640px;
+    height: 640px;
     display: inline-block;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
