@@ -278,6 +278,8 @@ html, body, body > div.ng-scope {
 	clear: both;
 	position: relative;
     width: 500px;
+	margin-top: 16px;
+	margin-right: 16px;
 }
 
 .name {
