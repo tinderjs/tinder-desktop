@@ -273,6 +273,32 @@
         });
       });
     };
+    
+    apiObj.updatePassport =  function(lat, lon){
+      return $q(function (resolve, reject) {
+        client.updatePassport(lat, lon, function(err, res, data) {
+          if (!!err) {
+            handleError(err, reject);
+            return;
+          }
+          // console.log(JSON.stringify(res));
+          resolve(res);
+        });
+      });
+    }
+    
+    apiObj.resetPassport =  function(){
+      return $q(function (resolve, reject) {
+        client.resetPassport(function(err, res, data) {
+          if (!!err) {
+            handleError(err, reject);
+            return;
+          }
+          // console.log(JSON.stringify(res));
+          resolve(res);
+        });
+      });
+    }
 
     apiObj.getLikesRemaining = function() {
       return likesRemaining;
