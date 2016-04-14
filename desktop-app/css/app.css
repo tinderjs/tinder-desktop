@@ -277,7 +277,7 @@ html, body, body > div.ng-scope {
 	float: right;
 	clear: both;
 	position: relative;
-    width: 400px;
+    width: 500px;
 }
 
 .name {
@@ -302,6 +302,7 @@ html, body, body > div.ng-scope {
 }
 
 .small-photos  {
+    width: 400px;
 }       
 
 .small-photos img {
