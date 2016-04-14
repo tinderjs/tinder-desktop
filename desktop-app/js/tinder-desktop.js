@@ -4,7 +4,7 @@
   app.config(function($routeProvider) {
     var capitalize = function (s) { return s[0].toUpperCase() + s.slice(1); };
 
-    ['/login', '/swipe/', '/messages', '/profile/:userId', '/settings', '/myProfile'].forEach(function(route) {
+    ['/login', '/swipe/', '/messages', '/profile/:userId', '/settings', '/discovery'].forEach(function(route) {
       var name = route.split('/')[1];
       $routeProvider.when(route, {
         templateUrl: 'templates/'  + name + '.html',
