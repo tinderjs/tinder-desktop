@@ -2,6 +2,16 @@
 <div class="settings" style="margin-top:10px">
   <h1>Settings</h1>
   <form name="tppSettings">
+  
+    <fieldset>
+      <legend>Profile</legend>
+      <a ng-href="#/profile/{{getCookie('userId')}}">
+        <img ng-src="{{getCookie('smallPhoto')}}" />
+        <br>
+        {{getCookie('name')}}
+      </a>
+    </fieldset>
+
     <fieldset>
       <legend>Location</legend>
       <p>
