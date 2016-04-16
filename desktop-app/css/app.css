@@ -624,6 +624,7 @@ html, body, body > div.ng-scope {
 
 .settings h1 {
     text-align: center;
+	clear: both;
 }
 
 .settings {
@@ -631,6 +632,8 @@ html, body, body > div.ng-scope {
 
 .settings fieldset {
     margin-top: 16px;
+	margin-left: auto;
+	margin-right: auto;
     text-align: center;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
