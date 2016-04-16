@@ -146,17 +146,6 @@ html, body, body > div.ng-scope {
     margin: 8px 5px 18px;
 }
 
-.settings fieldset {
-    margin: 0 auto 5px;
-    text-align: center;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    border-radius: 50px;
-    background-color: #FAFAFA;
-    padding: 10px;
-    position: relative;
-}
-
 .container .loader {
 /* Give this one a nice new position, maybe in the most centered place of the whole page */
 }
@@ -642,6 +631,14 @@ html, body, body > div.ng-scope {
 }
 
 .settings fieldset {
+    margin-top: 16px;
+    text-align: center;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    background-color: #FAFAFA;
+    padding: 10px;
+    position: relative;
     width:400px;
 }
 
