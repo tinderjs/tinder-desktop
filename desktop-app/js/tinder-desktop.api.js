@@ -136,7 +136,7 @@
 
     apiObj.getAccount = function() {
       return $q(function (resolve, reject) {
-        client.getProfile(function(err, res, data) { // change to client.getAccount
+        client.getAccount(function(err, res, data) {
           if (!!err) { 
             handleError(err, reject);
             return;
