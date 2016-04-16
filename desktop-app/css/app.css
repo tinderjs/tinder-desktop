@@ -645,6 +645,11 @@ html, body, body > div.ng-scope {
     width:400px;
 }
 
+.settings legend {
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
 .info .last-them {
     color: #007a00;
 }
