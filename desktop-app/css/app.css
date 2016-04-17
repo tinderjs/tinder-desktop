@@ -89,6 +89,29 @@ html, body, body > div.ng-scope {
 	background-color: #DB6151;
 }
 
+  
+.menu .fa {
+	display: none;
+}
+
+@media all and (max-width: 640px) {
+
+	.menu-item {
+		padding: 4px;
+	}
+
+	.menu .text {
+		display: none;
+	}
+
+	.menu .fa {
+		display: inline;
+		padding-top: 10px;
+	}
+
+}
+
+
 /* Specific */
 .title-bar {
     width: 100%;
