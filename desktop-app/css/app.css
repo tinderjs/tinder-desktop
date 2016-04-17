@@ -66,25 +66,27 @@ html, body, body > div.ng-scope {
 
 /* STATIC MENU BLOCK */
 .menu {
-	float: right;
-	width: 400px; /* To be defined later when logo has been inserted */
-	-webkit-border-radius: 0px 0px 0px 20px;
-    -moz-border-radius: 0px 0px 0px 20px;
-    border-radius: 0px 0px 0px 20px;
-    border-width: 0px 0px 5px 5px;
+    display: table;
+    table-layout: fixed;
+    border-width: 2px 0px 2px 0px;
     border-style: solid;
     border-color: #DB6151;
+    width: 100%;
 }
 
 .menu-logo {
-	float: left;
+	display: table-cell;
 }
 
-.menu-icons {
-	float: right;
+.menu-item {
+	display: table-cell;
+	font-size: 24px;
+	text-align: center;
 }
-.menu-icon {
-	display: inline-block;
+
+.menu-item:hover, .menu-item:hover a {
+	color: white;
+	background-color: #DB6151;
 }
 
 /* Specific */
