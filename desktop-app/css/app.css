@@ -51,19 +51,6 @@ html, body, body > div.ng-scope {
     height: 100%;
 }
 
-.columns {
-    display: flex;
-    overflow: hidden;
-    height: 100%;
-}
-
-.columns > div {
-    flex: 1;
-    overflow-x: hidden;
-    overflow-y: auto;
-    height: 100%;
-}
-
 /* STATIC MENU BLOCK */
 .menu {
     display: table;
@@ -421,13 +408,14 @@ html, body, body > div.ng-scope {
 #messages {
     display: flex;
     height: 100%;
+    overflow: hidden;
 }
+
 
 /* Chat */
 #match-list {
-    width: 250px;
     border-right: 1px solid #ddd;
-    flex: initial;
+    flex: 0 0 185px;
 }
 .match-header {
   display: flex;
@@ -442,7 +430,7 @@ html, body, body > div.ng-scope {
   width: 234px;
 }
 #match-list.more-info {
-    width: 250px;
+    flex: 0 0 230px;
 }
 #back-arrow {
     margin: 3px calc(75px - 1em);
@@ -508,6 +496,7 @@ html, body, body > div.ng-scope {
     font-size: 1.1em;
     line-height: 20px;
     font-weight: normal;
+	flex: auto;
     display: flex;
     flex-direction: column;
 }
