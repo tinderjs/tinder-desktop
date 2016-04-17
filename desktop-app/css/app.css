@@ -71,6 +71,10 @@ html, body, body > div.ng-scope {
 	text-align: center;
 }
 
+.menu-item a {
+	display: block;
+}
+
 .menu-item:hover, .menu-item:hover a {
 	color: white;
 	background-color: #DB6151;
