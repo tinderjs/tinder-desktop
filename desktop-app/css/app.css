@@ -370,7 +370,7 @@ html, body, body > div.ng-scope {
   width: 234px;
 }
 #match-list.more-info {
-    width: 215px;
+    width: 250px;
 }
 #back-arrow {
     margin: 3px calc(75px - 1em);
@@ -383,6 +383,19 @@ html, body, body > div.ng-scope {
     cursor: pointer;
     color: inherit;
 }
+.match:hover {
+    background-color: rgba(245, 245, 245, 0.5);
+}
+.match.selected {
+    background-color: #F5F5F5;
+}
+.info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
 .match .thumbnail {
     display: inline-block;
     box-sizing: border-box;
@@ -394,7 +407,6 @@ html, body, body > div.ng-scope {
 .match .name {
     margin: 0;
     text-align: center;
-    line-height: 42px;
     font-weight: bold;
     overflow: hidden;
     text-overflow: ellipsis;
