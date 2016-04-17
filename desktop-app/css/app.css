@@ -622,13 +622,9 @@ html, body, body > div.ng-scope {
 
 /* Settings Page */
 
-.settings h1 {
-    text-align: center;
-	clear: both;
-}
-
 .settings {
-}
+	clear: both;
+	}
 
 .settings fieldset {
     margin-top: 16px;
