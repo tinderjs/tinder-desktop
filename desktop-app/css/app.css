@@ -240,8 +240,8 @@ html, body, body > div.ng-scope {
 }
 
 .main-photo-container {
-       -webkit-flex: 0 0 672px;
-           flex: 0 0 672px;
+       -webkit-flex: 0 0 640px;
+           flex: 0 0 640px;
    -webkit-order: 1;
            order: 1;
     margin: 16px;
