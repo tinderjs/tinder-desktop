@@ -50,15 +50,5 @@
       console.log(e);
     });
   </script>
-
-  <script>
-    var path = './';
-    var fs = require('fs');
-
-    fs.watch(path, { recursive: true },  function() {
-      if (location)
-        location.reload();
-    });
-  </script>
 </body>
 </html>
