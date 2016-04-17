@@ -41,7 +41,7 @@ html, body, body > div.ng-scope {
     max-width: 100%;
     max-height: 100%;
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: auto;
     height: 100%;
 }
 
@@ -219,6 +219,19 @@ html, body, body > div.ng-scope {
 
 .container {
     background-color: white;
+       display: -webkit-flex;
+   display:         flex;
+   -webkit-flex-flow: row;
+           flex-flow: row;
+}
+
+@media all and (max-width: 1034px) {
+
+	.container {
+	   -webkit-flex-flow: column;
+			   flex-flow: column;
+	}
+
 }
 
 #autocompleteLocation {
@@ -236,7 +249,10 @@ html, body, body > div.ng-scope {
 }
 
 .main-photo-container {
-    position: relative;
+       -webkit-flex: 0 0 672px;
+           flex: 0 0 672px;
+   -webkit-order: 1;
+           order: 1;
     margin: 16px;
 }
 
@@ -248,12 +264,9 @@ html, body, body > div.ng-scope {
     text-align: center;
     width: 640px;
     height: 640px;
-    display: inline-block;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    overflow: hidden;
-    position: absolute;
     background: #fff top left / contain no-repeat;
     z-index: 1000;
 }
@@ -288,12 +301,18 @@ html, body, body > div.ng-scope {
 }
 
 .profile {
-	float: right;
-	clear: both;
-	position: relative;
-    width: 500px;
-	margin-top: 16px;
-	margin-right: 16px;
+   -webkit-flex: auto;
+           flex: auto;
+   -webkit-order: 2;
+           order: 2;
+	margin: 16px;
+}
+
+@media all and (max-width: 1034px) {
+	.profile, .main-photo-container {
+	   -webkit-order: 0;
+			   order: 0;
+	}
 }
 
 .name {
@@ -331,9 +350,7 @@ html, body, body > div.ng-scope {
     overflow: hidden;
     cursor: pointer;
     border: 5px solid #FAFAFA;
-	margin: 16px;
-	margin-top: 0px;
-	margin-bottom: 0px;
+	margin: 8px;
 }
 
 .small-photos img.selected {
