@@ -65,7 +65,7 @@ gulp.task('clean', function() {
     if(platform == 'darwin') {
       icon = './assets-osx/icon.icns';
     } else if(platform == 'win32') { 
-      icon = './assets-osx/icon.ico';
+      icon = './assets-windows/icon.ico';
     };
 
     var opts = {
@@ -90,6 +90,11 @@ gulp.task('clean', function() {
 
 // Package .dmg for OS X
 gulp.task('pack:darwin:x64', function(callback) {
+  if(process.platform !== 'darwin') {
+    console.warn('Skipping darwin x64 packaging: must be on OS X.');
+    return callback();
+  }
+
   shelljs.mkdir('-p', './dist/darwin');
   shelljs.rm('-f', './dist/darwin/Tinder Desktop.dmg');
 

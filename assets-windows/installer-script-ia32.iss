@@ -5,7 +5,7 @@
 #define MyAppVersion "0.1.0"
 #define MyAppPublisher "TinderJS, Github Organization"
 #define MyAppURL "https://github.com/tinderjs/tinder-desktop"
-#define MyAppExeName "tinder-desktop.exe"
+#define MyAppExeName "Tinder Desktop.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
