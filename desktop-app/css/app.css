@@ -461,12 +461,14 @@ html, body, body > div.ng-scope {
 }
 
 .from-me {
+    cursor: pointer;
     position: relative;
     padding: 10px 15px;
     color: white;
     background: #0B93F6;
     border-radius: 25px;
     float: right;
+    z-index: 10;
 }
 .from-me:before {
     content: "";
@@ -492,8 +494,51 @@ html, body, body > div.ng-scope {
     -webkit-transform: translate(-30px, -2px);
 }
 
+.sentAt {
+    position: absolute;
+    z-index: 9;
+    opacity: 0;
+    color: #555;
+    min-width: 150px;
+}
+
+.from-them-date {
+    right: -100px;
+}
+
+.from-them-date.bounceIn {
+    transition: all .2s;
+    opacity: 1;
+    transform: translateX(55px);
+}
+
+.from-them-date.bounceOut {
+    transition: all .2s;
+    opacity: 0;
+    transform: translateX(-55px);
+}
+
+.from-me-date {
+    /*right: 0;*/
+    left: -100px;
+}
+
+.from-me-date.bounceIn {
+    transition: all .2s;
+    opacity: 1;
+    transform: translateX(-55px);
+}
+
+.from-me-date.bounceOut {
+    transition: all .2s;
+    opacity: 0;
+    transform: translateX(55px);
+}
+
 .from-them {
+    cursor: pointer;
     position: relative;
+    z-index: 10;
     padding: 10px 15px;
     background: #E5E5EA;
     border-radius: 25px;

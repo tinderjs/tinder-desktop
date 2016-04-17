@@ -28,17 +28,29 @@
     </div>
     <div class="messages-list">
       <!-- normal messages -->
-      <div ng-repeat-start="message in conversation.messages track by $index"
-          class="{{message.fromMe ? 'from-me' : 'from-them'}}">
-      <div ng-if="message.text" ng-bind-html="message.text | emoji"></div>
+      <div ng-repeat-start="message in conversation.messages track by $index" 
+           ng-click="$showTimeStamp = !$showTimeStamp"
+           style="position:relative">
+
+        <div class="{{message.fromMe ? 'from-me' : 'from-them'}}">
+        <div class="{{message.fromMe ? 'from-me-date sentAt' : 'from-them-date sentAt'}}" 
+             ng-class="{true: 'bounceIn', false: 'bounceOut'}[$showTimeStamp === true]">
+            {{message.sentDate | date : 'short'}}
+        </div>
+          <div ng-if="message.text" 
+               ng-bind-html="message.text | emoji"></div>
+        </div>
       </div>
+
       <div ng-repeat-end class="clear" scroll-to-last></div>
       <!-- pending messages -->
       <div ng-repeat-start="message in conversation.pending track by $index"
           class="from-me">
         <p class="pending-message">{{message}}</p>
       </div>
+
       <div ng-repeat-end class="clear" scroll-to-last></div>
+
     </div>
     <textarea ng-keypress="keypress($event)" ng-model="message" rows="4" placeholder="Insert something witty here...">
   </div>
