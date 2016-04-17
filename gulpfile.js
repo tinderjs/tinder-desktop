@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var shelljs = require('shelljs');
 var runSequence = require('run-sequence');
 var mergeStream = require('merge-stream');
+var removeNPMAbsolutePaths = require('removeNPMAbsolutePaths');
 var packager = require('electron-packager');
 var appPkg = require('./desktop-app/package.json');
 var $ = require('gulp-load-plugins')();
@@ -55,6 +56,7 @@ gulp.task('compile', ['scripts', 'stylesheets', 'fonts']);
 gulp.task('clean', function() {
   shelljs.rm('-rf', buildDir);
   shelljs.rm('-rf', './dist');
+  removeNPMAbsolutePaths('./desktop-app/node_modules');
 });
 
 // Build for all platforms
