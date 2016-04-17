@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/tinderjs/tinder-desktop",
   "devDependencies": {
+    "electron-packager": "^6.0.2",
     "electron-prebuilt": "^0.37.5",
     "gulp": "^3.9.1",
     "gulp-appdmg": "^1.0.2",
