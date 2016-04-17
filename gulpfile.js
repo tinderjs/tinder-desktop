@@ -75,7 +75,6 @@ gulp.task('clean', function() {
       cache: './cache',
       dir: './desktop-app',
       icon: icon,
-      name: appPkg.name,
       out: buildDir,
       overwrite: true,
       'app-version': appPkg.version

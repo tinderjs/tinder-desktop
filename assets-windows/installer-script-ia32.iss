@@ -36,8 +36,8 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 0,6.1
 
 [Files]
-Source: "..\build\tinder-desktop-win32-ia32\tinder-desktop.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\build\tinder-desktop-win32-ia32\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\build\Tinder Desktop-win32-ia32\Tinder Desktop.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\build\Tinder Desktop-win32-ia32\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
