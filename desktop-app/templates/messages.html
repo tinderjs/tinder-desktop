@@ -30,7 +30,7 @@
       <!-- normal messages -->
       <div ng-repeat-start="message in conversation.messages track by $index"
           class="{{message.fromMe ? 'from-me' : 'from-them'}}">
-      <p ng-if="message.text" ng-bind-html="message.text | emoji"></p>
+      <div ng-if="message.text" ng-bind-html="message.text | emoji"></div>
       </div>
       <div ng-repeat-end class="clear" scroll-to-last></div>
       <!-- pending messages -->
