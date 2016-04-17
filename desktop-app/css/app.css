@@ -353,9 +353,21 @@ html, body, body > div.ng-scope {
 
 /* Chat */
 #match-list {
-    width: 185px;
+    width: 250px;
     border-right: 1px solid #ddd;
     flex: initial;
+}
+.match-header {
+  display: flex;
+  height: 53px;
+  align-items: center;
+  padding: 0 8px;
+  border-bottom: 1px solid #DDD;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  background: white;
+  width: 234px;
 }
 #match-list.more-info {
     width: 215px;
@@ -366,8 +378,7 @@ html, body, body > div.ng-scope {
 .match {
     display: block;
     border-bottom: 1px solid #ddd;
-    padding: 3px 0;
-    margin: 0 5px;
+    padding: 8px;
     height: 42px; /* Thumbnail size: 84px */
     cursor: pointer;
     color: inherit;
@@ -421,16 +432,16 @@ html, body, body > div.ng-scope {
 }
 #conversation h2 {
     padding: 0 14px 21px 11px;
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 0;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 0;
 }
 #conversation .messages-list {
     overflow-y: scroll;
-  overflow-x: hidden;
-  padding: 14px;
+    overflow-x: hidden;
+    padding: 14px;
 }
 #conversation .messages-list-empty {
-  padding: 14px;
+    padding: 14px;
 }
 
 #conversation div.from-me,
@@ -552,4 +563,30 @@ html, body, body > div.ng-scope {
 
 .info .last-me-pass {
     color: #cc00cc;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    max-height: 53px;
+    align-items: center;
+    padding: 0 8px;
+    border-bottom: 1px solid #DDD;
+}
+
+.scrollable-matchlist {
+    margin-top: 50px;
+}
+
+.unmatch-button {
+    background-color: white;
+    color: #f15626;
+    border: 0px;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+
+.unmatch-button.hover {
+    opacity: 0.8;
 }

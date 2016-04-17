@@ -4,6 +4,7 @@
   module.controller('MessagesController', function($scope, API, Settings) {
     // console.log(API.conversations)
     $scope.conversations = API.conversations;
+    $scope.conversationCount = Object.keys($scope.conversations).length
     $scope.showExtra = Settings.get('messageListExtraInfo') === 'yes';
     $scope.open = function(matchId) {
       $scope.conversation = $scope.conversations[matchId];
