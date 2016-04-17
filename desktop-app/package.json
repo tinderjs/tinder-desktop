@@ -4,6 +4,6 @@
   "version": "0.1.0",
   "main": "main.js",
   "dependencies": {
-    "tinder": "^1.17.0"
+    "tinder": "git://github.com/tinderjs/tinderjs"
   }
 }
