@@ -53,7 +53,7 @@
       <!-- pending messages -->
       <div ng-repeat-start="message in conversation.pending track by $index"
           class="from-me">
-        <p class="pending-message">{{message}}</p>
+        <div class="pending-message">{{message}}</div>
       </div>
 
       <div ng-repeat-end class="clear" scroll-to-last></div>
