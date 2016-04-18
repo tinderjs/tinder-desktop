@@ -507,9 +507,24 @@ html, body, body > div.ng-scope {
     display: flex;
     flex-direction: column;
 }
-#conversation div {
-    flex: 1;
+
+.message-header {
+	flex: 0 0 auto;
+	order: 1;
 }
+
+.messages-list-container {
+	flex: 0 0 auto;
+	flex: auto;
+	order: 2;
+	overflow: auto;
+}
+
+.messages-textarea {
+	flex: 0 0 auto;
+	order: 3;
+}
+
 #conversation h2 {
     padding: 0 14px 21px 11px;
     border-bottom: 1px solid #ddd;

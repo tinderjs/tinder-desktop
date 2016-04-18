@@ -1,4 +1,5 @@
 <div ng-include src="'partials/menu.html'"></div>
+
 <div id="messages">
   <div id="match-list" ng-class="showExtra && 'more-info'">
     <div class="match-header">
@@ -29,7 +30,8 @@
       <button ng-click="unmatch(conversation)" class="unmatch-button">
         Unmatch
       </button>
-    </div>
+	</div>
+	<div class="messages-list-container">
     <div ng-show="conversation.messages.length == 0" class="messages-list-empty">
       No messages yet. Write something!
     </div>
@@ -59,6 +61,9 @@
       <div ng-repeat-end class="clear" scroll-to-last></div>
 
     </div>
-    <textarea ng-keypress="keypress($event)" ng-model="message" rows="4" placeholder="Insert something witty here...">
+	</div>
+	<div class="messages-textarea">
+		<textarea ng-keypress="keypress($event)" ng-model="message" placeholder="Insert something witty here...">
+	</div>
   </div>
 </div>
