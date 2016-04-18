@@ -245,6 +245,7 @@ html, body, body > div.ng-scope {
    -webkit-order: 1;
            order: 1;
     margin: 16px;
+	position: relative;
 }
 
 .main-photo-container img {
@@ -260,6 +261,7 @@ html, body, body > div.ng-scope {
     border-radius: 10px;
     background: #fff top left / contain no-repeat;
     z-index: 1000;
+	position: absolute;
 }
 
 .main-photo .pass-overlay {
