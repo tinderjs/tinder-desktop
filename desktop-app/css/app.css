@@ -515,7 +515,6 @@ html, body, body > div.ng-scope {
 }
 
 .messages-list-container {
-	flex: 0 0 auto;
 	flex: auto;
 	order: 2;
 	overflow: auto;
