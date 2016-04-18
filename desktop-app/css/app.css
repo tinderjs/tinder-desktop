@@ -415,14 +415,15 @@ html, body, body > div.ng-scope {
 #messages {
     display: flex;
     height: 100%;
-    overflow: hidden;
 }
 
 
 /* Chat */
 #match-list {
     border-right: 1px solid #ddd;
+    overflow-y: scroll;
     flex: 0 0 185px;
+    height: 100%;
 }
 .match-header {
   display: flex;
