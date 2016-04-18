@@ -163,7 +163,8 @@ html, body, body > div.ng-scope {
 }
 
 .container .loader {
-/* Give this one a nice new position, maybe in the most centered place of the whole page */
+	text-align: center;
+	margin-top: 16px;
 }
 
 .container .loader-anim {
