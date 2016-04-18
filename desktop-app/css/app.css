@@ -208,7 +208,7 @@ html, body, body > div.ng-scope {
     margin: 0 0 20px 0;
 }
 
-.container {
+.responsive-profile {
     background-color: white;
        display: -webkit-flex;
    display:         flex;
@@ -218,7 +218,7 @@ html, body, body > div.ng-scope {
 
 @media all and (max-width: 1034px) {
 
-	.container {
+	.responsive-profile {
 	   -webkit-flex-flow: column;
 			   flex-flow: column;
 	}
