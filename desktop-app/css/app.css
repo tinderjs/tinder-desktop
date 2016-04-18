@@ -531,12 +531,12 @@ html, body, body > div.ng-scope {
     margin-bottom: 0;
 }
 #conversation .messages-list {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    padding: 14px;
+  padding: 14px;
+	overflow: hidden;
 }
 #conversation .messages-list-empty {
-    padding: 14px;
+  padding: 14px;
+	overflow: hidden;
 }
 
 #conversation div.from-me,
