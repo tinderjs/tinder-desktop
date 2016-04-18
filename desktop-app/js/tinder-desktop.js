@@ -1,19 +1,4 @@
 (function() {
-  // resize to window to full screen height
-  var resizeToHeight = Math.min(820, window.screen.availHeight);
-  window.resizeTo(window.innerWidth, resizeToHeight);
-
-  var gui = require('nw.gui');
-  var win = gui.Window.get();
-
-  if (process.platform === 'darwin') {
-    var nativeMenuBar = new gui.Menu({ type: 'menubar' });
-    nativeMenuBar.createMacBuiltin('Tinder⁺⁺', {
-      hideEdit: false
-    });
-    win.menu = nativeMenuBar;
-  }
-
   var app = angular.module('tinder-desktop', ['tinder-desktop.login', 'tinder-desktop.swipe', 'tinder-desktop.messages', 'tinder-desktop.profile', 'ngRoute', 'tinder-desktop.settings', 'tinder-desktop.controls', 'tinder-desktop.common']);
 
   app.config(function($routeProvider) {

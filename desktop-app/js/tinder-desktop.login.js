@@ -1,5 +1,6 @@
 (function() {
-  gui = require('nw.gui');
+  const BrowserWindow = require('electron').remote.BrowserWindow;
+
   module = angular.module('tinder-desktop.login', ['tinder-desktop.api']);
 
   module.controller('LoginController', function LoginController($scope, $http, API) {
@@ -7,21 +8,24 @@
     $scope.fbAuthData = {};
 
     $scope.startLogin = function() {
-      window.loginWindow = gui.Window.open($scope.loginUrl, {
-        title: 'Login to Facebook',
-        position: 'center',
-        width: 400,
-        height: 480,
-        focus: true
-      });
-      var interval = window.setInterval(function() {
-        if (window.loginWindow) {
-          checkForToken(window.loginWindow.window, interval);
+      var window = new BrowserWindow({ 
+        width: 700, 
+        height: 600, 
+        show: false, 
+        webPreferences: {
+          nodeIntegration: false 
         }
+      });
+      window.setMenu(null);
+      window.loadURL($scope.loginUrl);
+      window.show();
+
+      var interval = setInterval(function() {
+        if (window) checkForToken(window, interval);  
       }, 500);
-      window.loginWindow.on('closed', function() {
-        window.clearInterval(interval);
-        window.loginWindow = null;
+
+      window.on('closed', function() {
+        window = null;
       });
     };
 
@@ -30,21 +34,16 @@
     };
 
     var checkForToken = function(loginWindow, interval) {
-      if (loginWindow.closed) {
-        window.clearInterval(interval);
-      } else {
-        var url = loginWindow.document.URL;
-        var paramString = url.split("#")[1];
-        if (!!paramString) {
-          var allParam = paramString.split("&");
-          for (var i = 0; i < allParam.length; i++) {
-            var param = allParam[i].split("=");
-            $scope.fbAuthData[param[0]] = param[1];
-          }
-          loginWindow.close();
-          window.clearInterval(interval);
-          getFBUserId($scope.fbAuthData['access_token']);
+      var url = loginWindow.getURL();
+      var paramString = url.split("#")[1];
+      if (!!paramString) {
+        var allParam = paramString.split("&");
+        for (var i = 0; i < allParam.length; i++) {
+          var param = allParam[i].split("=");
+          $scope.fbAuthData[param[0]] = param[1];
         }
+        loginWindow.close();
+        getFBUserId($scope.fbAuthData['access_token']);
       }
     };
 

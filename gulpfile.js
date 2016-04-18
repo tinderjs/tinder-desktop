@@ -2,13 +2,12 @@ var gulp = require('gulp');
 var shelljs = require('shelljs');
 var runSequence = require('run-sequence');
 var mergeStream = require('merge-stream');
-var nwBuilder = require('nw-builder');
 var removeNPMAbsolutePaths = require('removeNPMAbsolutePaths');
+var packager = require('electron-packager');
 var appPkg = require('./desktop-app/package.json');
 var $ = require('gulp-load-plugins')();
 
-var appName = 'tinder-desktop';
-var buildDir = 'build';
+var buildDir = './build';
 
 // File paths to various assets are defined here.
 var PATHS = {
@@ -51,75 +50,84 @@ gulp.task('fonts', function() {
 });
 
 // Assets handler
-gulp.task('assets', ['scripts', 'stylesheets', 'fonts']);
+gulp.task('compile', ['scripts', 'stylesheets', 'fonts']);
 
 // Remove build output directories
 gulp.task('clean', function() {
-  shelljs.rm('-rf', './build');
+  shelljs.rm('-rf', buildDir);
   shelljs.rm('-rf', './dist');
+  removeNPMAbsolutePaths('./desktop-app/node_modules');
 });
 
 // Build for all platforms
-['win32', 'osx64', 'linux32', 'linux64'].forEach(function(platform) {
-  return gulp.task('build:' + platform, function() {
-    var nw = new nwBuilder({
-      files: 'desktop-app/**',
-      platforms: [platform],
-      version: '0.12.3',
-      appName: appName,
-      buildDir: buildDir,
-      cacheDir: 'cache',
-      appVersion: appPkg.version,
-      winIco: process.argv.indexOf('--noicon') > 0 ? void 0 : './assets-windows/icon.ico',
-      macIcns: './assets-osx/icon.icns',
-      mergeZip: false
-    });
+['darwin', 'linux', 'win32'].forEach(function(platform) {
+  return gulp.task('build:' + platform, function(callback) {
+    var icon = null;
 
-    nw.on('log', function(msg) {
-      if (msg.indexOf('Zipping') !== 0) console.log(msg)
-    });
+    if(platform == 'darwin') {
+      icon = './assets-osx/icon.icns';
+    } else if(platform == 'win32') { 
+      icon = './assets-windows/icon.ico';
+    };
 
-    return nw.build()
-    .then(function () {
-      removeNPMAbsolutePaths(buildDir);
-    })
-    .catch(function (error) {
-      console.error(error);
+    var opts = {
+      platform: platform,
+      arch: 'all',
+      asar: true,
+      cache: './cache',
+      dir: './desktop-app',
+      icon: icon,
+      out: buildDir,
+      overwrite: true,
+      'app-version': appPkg.version
+    };
+
+    packager(opts, function done_callback (err, appPaths) {
+      if(err) { return console.log(err); }
+      callback();
     });
 
   });
 });
 
 // Package .dmg for OS X
-gulp.task('pack:osx64', ['build:osx64'], function(callback) {
-  shelljs.mkdir('-p', './dist');
-  shelljs.rm('-f', './dist/Tinder Desktop.dmg');
+gulp.task('pack:darwin:x64', function(callback) {
+  if(process.platform !== 'darwin') {
+    console.warn('Skipping darwin x64 packaging: must be on OS X.');
+    return callback();
+  }
+
+  shelljs.mkdir('-p', './dist/darwin');
+  shelljs.rm('-f', './dist/darwin/Tinder Desktop.dmg');
 
   return gulp.src([]).pipe($.appdmg({
     source: './assets-osx/dmg.json',
-    target: './dist/Tinder Desktop.dmg'
+    target: './dist/darwin/Tinder Desktop.dmg'
   }));
 });
 
 // Package installer .exe for Windows
-gulp.task('pack:win32', ['build:win32'], function(callback) {
-  return gulp.src('./assets-windows/installer-script.iss').pipe($.inno());
+['ia32', 'x64'].forEach(function(arch) {
+  gulp.task('pack:win32:' + arch, function(callback) {
+    return gulp.src('./assets-windows/installer-script-' + arch + '.iss')
+      .pipe($.inno());
+  });
 });
 
 // Package for Linux
-[32, 64].forEach(function(arch) {
+['ia32', 'x64'].forEach(function(arch) {
   return ['deb', 'rpm'].forEach(function(target) {
-    return gulp.task("pack:linux" + arch + ":" + target, ['build:linux' + arch], function() {
+    return gulp.task("pack:linux:" + arch + ":" + target, function() {
       var move_opt;
-      shelljs.rm('-rf', './build/linux');
-      shelljs.mkdir('-p', './build/linux');
-      move_opt = gulp.src(['./assets-linux/after-install.sh', './assets-linux/after-remove.sh', './build/tinder-desktop/linux' + arch + '/**']).pipe(gulp.dest('./build/linux/opt/tinder-desktop'));
+      shelljs.rm('-rf', buildDir + '/linux');
+      shelljs.mkdir('-p', buildDir + '/linux');
+      move_opt = gulp.src(['./assets-linux/after-install.sh', './assets-linux/after-remove.sh', buildDir + '/tinder-desktop/linux' + arch + '/**']).pipe(gulp.dest(buildDir + '/linux/opt/tinder-desktop'));
       return mergeStream(move_opt).on('end', function() {
         var output, port;
-        shelljs.cd('./build/linux');
-        port = arch === 32 ? 'i386' : 'x86_64';
-        output = "../../dist/tinder-desktop_linux" + arch + "." + target;
-        shelljs.mkdir('-p', '../../dist');
+        shelljs.cd(buildDir + '/linux');
+        port = arch === 'ia32' ? 'i386' : 'x86_64';
+        output = "../../dist/linux/tinder-desktop-" + arch + "." + target;
+        shelljs.mkdir('-p', '../../dist/linux');
         shelljs.rm('-f', output);
         shelljs.exec("fpm -s dir -t " + target + " -a " + port + " --rpm-os linux -n tinder-desktop --after-install ./opt/tinder-desktop/after-install.sh --after-remove ./opt/tinder-desktop/after-remove.sh --vendor \"tinderjs\" --license ISC --category Chat --url \"https://github.com/tinderjs/tinder-desktop\" --description \"A cross-platform desktop Tinder client\" -m \"Stuart Williams <stuart@sidereal.ca>\" -p " + output + " -v " + appPkg.version + " .");
         return shelljs.cd('../..');
@@ -128,11 +136,27 @@ gulp.task('pack:win32', ['build:win32'], function(callback) {
   });
 });
 
+// Build all platforms
+gulp.task('build:all', ['clean'], function(callback) {
+  runSequence('build:darwin', 'build:win32', 'build:linux', callback);
+});
+
+// Package all Linux platforms
+gulp.task('pack:linux:all', function(callback) {
+  runSequence('pack:linux:ia32:deb', 'pack:linux:ia32:rpm', 
+              'pack:linux:x64:deb', 'pack:linux:x64:rpm', callback);
+})
+
+// Package all Windows platforms
+gulp.task('pack:win32:all', function(callback) {
+  runSequence('pack:win32:ia32', 'pack:win32:x64', callback);
+})
+
 // Package all platforms
-gulp.task('pack:all', ['clean'], function(callback) {
-  runSequence('pack:osx64', 'pack:win32', 'pack:linux32:deb', 
-              'pack:linux64:deb', callback);
+gulp.task('pack:all', function(callback) {
+  runSequence('build:all', 'pack:darwin:x64', 'pack:win32:all', 
+              'pack:linux:all', callback);
 });
 
 // Default task is to package for all platforms
-gulp.task('default', ['pack:all']);
+gulp.task('default', ['compile', 'pack:all']);

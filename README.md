@@ -7,29 +7,24 @@ tinder-desktop is a project that has a lot of potential if the power of the open
 
 #### Development ####
 
-It's a node-webkit (now nw.js) app.
+You'll need to run `npm install` and `bower install` in the main directory, and `npm install` inside of desktop-app before starting.
 
-You'll need to run `npm install` and `bower install` in the root directory, and `npm install` in the desktop-app directory before starting.
+###### Running
 
-###### Running via NW.js
-
-First, download NW.js (currently using [v0.12.3](http://dl.nwjs.io/v0.12.3/))
-
-To start the app:
+From the project root:
 
 ```
-cd desktop-app
-/path/to/your/nwjs .
+npm run electron
 ```
 
 ###### Building and packaging
 
 Ensure you have gulp installed (`npm install -g gulp-cli`).
 
-Running `gulp` will execute the default tasks of building and packaging the app for Windows, OS X, and Linux (.deb package). A full list of tasks is available via `gulp -T`. 
+Running `gulp` will execute the default tasks of building and packaging the app for Windows, OS X, and Linux (.deb and .rpm packages). A full list of tasks is available via `gulp -T`. 
 
 Limitations: 
-- OS X builds can only be packaged on a Mac.
+- OS X can only be built and packaged on a Mac.
 - Packaging Linux builds requires [fpm](https://github.com/jordansissel/fpm).
 
 #### Contributors ####
