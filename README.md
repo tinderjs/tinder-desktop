@@ -9,19 +9,25 @@ tinder-desktop is a project that has a lot of potential if the power of the open
 
 You'll need to run `npm install` and `bower install` in the main directory, and `npm install` inside of desktop-app before starting.
 
+Also, ensure you have gulp installed (`npm install -g gulp-cli`).
+
 ###### Running
 
 From the project root:
 
 ```
-npm run electron
+gulp run
 ```
+
+This starts the app, and listens on port 5858 to allow remote debugging of the main Electron process.
 
 ###### Building and packaging
 
-Ensure you have gulp installed (`npm install -g gulp-cli`).
+`gulp build:all` builds binaries for all platforms.
 
-Running `gulp` will execute the default tasks of building and packaging the app for Windows, OS X, and Linux (.deb and .rpm packages). A full list of tasks is available via `gulp -T`. 
+`gulp pack:all` packages installers for all platforms.
+
+`gulp -T` lists all available tasks, including platform-specific ones.
 
 Limitations: 
 - OS X can only be built and packaged on a Mac.
