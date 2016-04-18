@@ -1,10 +1,12 @@
 var gulp = require('gulp');
-var shelljs = require('shelljs');
-var runSequence = require('run-sequence');
-var mergeStream = require('merge-stream');
-var removeNPMAbsolutePaths = require('removeNPMAbsolutePaths');
-var packager = require('electron-packager');
 var appPkg = require('./desktop-app/package.json');
+var electron = require('electron-prebuilt');
+var mergeStream = require('merge-stream');
+var proc = require('child_process');
+var removeNPMAbsolutePaths = require('removeNPMAbsolutePaths');
+var runSequence = require('run-sequence');
+var shelljs = require('shelljs');
+var packager = require('electron-packager');
 var $ = require('gulp-load-plugins')();
 
 var buildDir = './build';
@@ -31,26 +33,27 @@ var PATHS = {
 };
 
 // JavaScript assets handler
-gulp.task('scripts', function() {
+gulp.task('compile:scripts', function() {
   shelljs.rm('-rf', './desktop-app/js/vendor');
   return gulp.src(PATHS.javascript)
     .pipe(gulp.dest('desktop-app/js/vendor'));
 });
 
 // Stylesheet assets handler
-gulp.task('stylesheets', function() {
+gulp.task('compile:stylesheets', function() {
   return gulp.src(PATHS.stylesheets)
     .pipe(gulp.dest('desktop-app/css'));
 });
 
 // Fonts assets handler
-gulp.task('fonts', function() {
+gulp.task('compile:fonts', function() {
   return gulp.src(PATHS.fonts)
     .pipe(gulp.dest('desktop-app/fonts'));
 });
 
 // Assets handler
-gulp.task('compile', ['scripts', 'stylesheets', 'fonts']);
+gulp.task('compile:all', ['compile:scripts', 'compile:stylesheets', 
+          'compile:fonts']);
 
 // Remove build output directories
 gulp.task('clean', function() {
@@ -61,37 +64,42 @@ gulp.task('clean', function() {
 
 // Build for all platforms
 ['darwin', 'linux', 'win32'].forEach(function(platform) {
-  return gulp.task('build:' + platform, function(callback) {
-    var icon = null;
+  var arch = ['ia32', 'x64'];
+  // Only x64 on darwin
+  if(platform == 'darwin') arch = ['x64'];
 
-    if(platform == 'darwin') {
-      icon = './assets-osx/icon.icns';
-    } else if(platform == 'win32') { 
-      icon = './assets-windows/icon.ico';
-    };
+  arch.forEach(function(arch) {
+    return gulp.task('build:' + platform + ':' + arch, function(callback) {
+      var icon = null;
 
-    var opts = {
-      platform: platform,
-      arch: 'all',
-      asar: true,
-      cache: './cache',
-      dir: './desktop-app',
-      icon: icon,
-      out: buildDir,
-      overwrite: true,
-      'app-version': appPkg.version
-    };
+      if(platform == 'darwin') {
+        icon = './assets-osx/icon.icns';
+      } else if(platform == 'win32') { 
+        icon = './assets-windows/icon.ico';
+      };
 
-    packager(opts, function done_callback (err, appPaths) {
-      if(err) { return console.log(err); }
-      callback();
+      var opts = {
+        platform: platform,
+        arch: arch,
+        asar: true,
+        cache: './cache',
+        dir: './desktop-app',
+        icon: icon,
+        out: buildDir,
+        overwrite: true,
+        'app-version': appPkg.version
+      };
+
+      packager(opts, function done_callback (err, appPaths) {
+        if(err) { return console.log(err); }
+        callback();
+      });
     });
-
   });
 });
 
 // Package .dmg for OS X
-gulp.task('pack:darwin:x64', function(callback) {
+gulp.task('pack:darwin:x64', ['build:darwin:x64'], function(callback) {
   if(process.platform !== 'darwin') {
     console.warn('Skipping darwin x64 packaging: must be on OS X.');
     return callback();
@@ -117,7 +125,7 @@ gulp.task('pack:darwin:x64', function(callback) {
 // Package for Linux
 ['ia32', 'x64'].forEach(function(arch) {
   return ['deb', 'rpm'].forEach(function(target) {
-    return gulp.task("pack:linux:" + arch + ":" + target, function() {
+    return gulp.task('pack:linux:' + arch + ':' + target, function() {
       var move_opt;
       shelljs.rm('-rf', buildDir + '/linux');
       shelljs.mkdir('-p', buildDir + '/linux');
@@ -138,25 +146,50 @@ gulp.task('pack:darwin:x64', function(callback) {
 
 // Build all platforms
 gulp.task('build:all', ['clean'], function(callback) {
-  runSequence('build:darwin', 'build:win32', 'build:linux', callback);
+  runSequence('build:darwin:x64', 'build:win32:all', 'build:linux:all', 
+              callback);
 });
 
-// Package all Linux platforms
-gulp.task('pack:linux:all', function(callback) {
+// Build all Windows archs
+gulp.task('build:win32:all', function(callback) {
+  runSequence('build:win32:ia32', 'build:win32:x64', callback);
+});
+
+// Build all Linux archs
+gulp.task('build:linux:all', function(callback) {
+  runSequence('build:linux:ia32', 'build:linux:x64', callback);
+});
+
+// Build and package all Linux archs
+gulp.task('pack:linux:all', ['build:linux:all'], function(callback) {
   runSequence('pack:linux:ia32:deb', 'pack:linux:ia32:rpm', 
               'pack:linux:x64:deb', 'pack:linux:x64:rpm', callback);
 })
 
-// Package all Windows platforms
-gulp.task('pack:win32:all', function(callback) {
+// Build and package all Windows archs
+gulp.task('pack:win32:all', ['build:win32:all'], function(callback) {
   runSequence('pack:win32:ia32', 'pack:win32:x64', callback);
 })
 
-// Package all platforms
-gulp.task('pack:all', function(callback) {
-  runSequence('build:all', 'pack:darwin:x64', 'pack:win32:all', 
+// Build and package all platforms
+gulp.task('pack:all', ['compile:all'], function(callback) {
+  runSequence('pack:darwin:x64', 'pack:win32:all', 
               'pack:linux:all', callback);
 });
 
-// Default task is to package for all platforms
-gulp.task('default', ['compile', 'pack:all']);
+// Run Tinder Desktop in debug mode
+gulp.task('run', ['compile:all'], function(callback) {
+  var child = proc.spawn(electron, ['--debug=5858', './desktop-app']);
+
+  child.stdout.on('data', function(data) {
+    console.log(`${data}`);
+  });
+
+  child.on('exit', function(exitCode) {
+    console.log('Exited with code: ' + exitCode);
+    return callback(exitCode === 1 ? new Error('Error running run task') : null);
+  });
+});
+
+// Default task is to run Tinder Desktop in debug mode
+gulp.task('default', ['run']);
