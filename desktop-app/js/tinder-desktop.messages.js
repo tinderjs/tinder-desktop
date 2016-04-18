@@ -7,6 +7,7 @@
     $scope.conversationCount = Object.keys($scope.conversations).length
     $scope.showExtra = Settings.get('messageListExtraInfo') === 'yes';
     $scope.open = function(matchId) {
+      $scope.currentMatch = matchId
       $scope.conversation = $scope.conversations[matchId];
     };
     var ENTER = 13;

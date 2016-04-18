@@ -7,16 +7,16 @@
     <div class="scrollable-matchlist">
       <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true track by match.matchId"
            ng-click="open(match.matchId)" 
-           ng-class="showExtra && match.infoUpdateTime && 'more-info'"
+           ng-class="{true: 'selected'}[currentMatch === match.matchId]"
            class="match">
         <img ng-src="{{match.thumbnail || 'img/anonymous.png'}}" class="thumbnail"/>
-        <div>
-          <p class="name">{{match.name || 'Unknown'}}</p>
-          <p class="info" ng-show="showExtra && match.infoUpdateTime">
+        <div class="info-container">
+          <div class="name">{{match.name || 'Unknown'}}</div>
+          <div class="info" ng-show="showExtra && match.infoUpdateTime">
             <i class="fa fa-location-arrow"></i> {{match.userDistance | distanceToUnits}} |
             <i class="fa fa-bolt"></i> <span short-time-ago="{{match.userPingTime}}"></span> |
             <i class="fa fa-comments" ng-class="lastMessageClass(match)"></i> <span short-time-ago="{{match.lastActive}}"></span>
-          </p>
+          </div>
         </div>
       </div>
     </div>
