@@ -19,10 +19,11 @@
   <script src="js/vendor/angular.min.js"></script>
   <script src="js/vendor/angular-sanitize.min.js"></script>
   <script src="js/vendor/ngAutocomplete.js"></script>
-  <script src="js/vendor/ngRangeSlider.min.js"></script>
+  <script src="js/vendor/ng-range-slider.min.js"></script>
   <script src="js/vendor/angular-route.min.js"></script>
   <script src="js/vendor/jquery.min.js"></script>
   <script src="js/vendor/moment.min.js"></script>
+  <script>window.jQuery = window.$ = module.exports;</script>
   <script src="js/vendor/mousetrap.min.js"></script>
   <script src="js/vendor/twemoji.min.js"></script>
 
@@ -49,16 +50,6 @@
   <script type="text/javascript">
     window.addEventListener('error', function(e) {
       console.log(e);
-    });
-  </script>
-
-  <script>
-    var path = './';
-    var fs = require('fs');
-
-    fs.watch(path, { recursive: true },  function() {
-      if (location)
-        location.reload();
     });
   </script>
 </body>

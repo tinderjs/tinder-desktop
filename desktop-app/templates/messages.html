@@ -1,44 +1,63 @@
 <div ng-include src="'partials/menu.html'"></div>
 <div id="messages" class="columns">
   <div id="match-list" ng-class="showExtra && 'more-info'">
-    <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true track by match.matchId"
-         ng-click="open(match.matchId)" 
-         ng-class="showExtra && match.infoUpdateTime && 'more-info'"
-         class="match">
-      <img ng-src="{{match.thumbnail || 'img/anonymous.png'}}" class="thumbnail"/>
-      <div>
-        <p class="name">{{match.name || 'Unknown'}}</p>
-        <p class="info" ng-show="showExtra && match.infoUpdateTime">
-          <i class="fa fa-location-arrow"></i> {{match.userDistance | distanceToUnits}} |
-          <i class="fa fa-bolt"></i> <span short-time-ago="{{match.userPingTime}}"></span> |
-          <i class="fa fa-comments" ng-class="lastMessageClass(match)"></i> <span short-time-ago="{{match.lastActive}}"></span>
-        </p>
+    <div class="match-header">
+      Messages ({{conversationCount}})
+    </div>
+    <div class="scrollable-matchlist">
+      <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true track by match.matchId"
+           ng-click="open(match.matchId)" 
+           ng-class="{true: 'selected'}[currentMatch === match.matchId]"
+           class="match">
+        <img ng-src="{{match.thumbnail || 'img/anonymous.png'}}" class="thumbnail"/>
+        <div class="info-container">
+          <div class="name">{{match.name || 'Unknown'}}</div>
+          <div class="info" ng-show="showExtra && match.infoUpdateTime">
+            <i class="fa fa-location-arrow"></i> {{match.userDistance | distanceToUnits}} |
+            <i class="fa fa-bolt"></i> <span short-time-ago="{{match.userPingTime}}"></span> |
+            <i class="fa fa-comments" ng-class="lastMessageClass(match)"></i> <span short-time-ago="{{match.lastActive}}"></span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <div id="conversation" ng-show="conversation">
-    <h2 class="message-header">
-      Chat with <a ng-href="#/profile/{{conversation.userId}}">{{conversation.name}}</a>
-      <div ng-click="unmatch(conversation)" style="display:inline;">
-        <i class="fa fa-heart fa-1x" style="display:inline;"></i>
+    <div class="message-header">
+      <div class="chat-with">
+        Chat with <a ng-href="#/profile/{{conversation.userId}}">{{conversation.name}}</a>
       </div>
-    </h2>
+      <button ng-click="unmatch(conversation)" class="unmatch-button">
+        Unmatch
+      </button>
+    </div>
     <div ng-show="conversation.messages.length == 0" class="messages-list-empty">
       No messages yet. Write something!
     </div>
     <div class="messages-list">
       <!-- normal messages -->
-      <div ng-repeat-start="message in conversation.messages track by $index"
-          class="{{message.fromMe ? 'from-me' : 'from-them'}}">
-      <p ng-if="message.text" ng-bind-html="message.text | emoji"></p>
+      <div ng-repeat-start="message in conversation.messages track by $index" 
+           ng-click="$showTimeStamp = !$showTimeStamp"
+           style="position:relative">
+
+        <div class="{{message.fromMe ? 'from-me' : 'from-them'}}">
+        <div class="{{message.fromMe ? 'from-me-date sentAt' : 'from-them-date sentAt'}}" 
+             ng-class="{true: 'bounceIn', false: 'bounceOut'}[$showTimeStamp === true]">
+            {{message.sentDate | date : 'short'}}
+        </div>
+          <div ng-if="message.text" 
+               ng-bind-html="message.text | emoji"></div>
+        </div>
       </div>
+
       <div ng-repeat-end class="clear" scroll-to-last></div>
       <!-- pending messages -->
       <div ng-repeat-start="message in conversation.pending track by $index"
           class="from-me">
-        <p class="pending-message">{{message}}</p>
+        <div class="pending-message">{{message}}</div>
       </div>
+
       <div ng-repeat-end class="clear" scroll-to-last></div>
+
     </div>
     <textarea ng-keypress="keypress($event)" ng-model="message" rows="4" placeholder="Insert something witty here...">
   </div>

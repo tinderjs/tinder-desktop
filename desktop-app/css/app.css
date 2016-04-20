@@ -353,12 +353,24 @@ html, body, body > div.ng-scope {
 
 /* Chat */
 #match-list {
-    width: 185px;
+    width: 250px;
     border-right: 1px solid #ddd;
     flex: initial;
 }
+.match-header {
+  display: flex;
+  height: 53px;
+  align-items: center;
+  padding: 0 8px;
+  border-bottom: 1px solid #DDD;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  background: white;
+  width: 234px;
+}
 #match-list.more-info {
-    width: 215px;
+    width: 250px;
 }
 #back-arrow {
     margin: 3px calc(75px - 1em);
@@ -366,11 +378,23 @@ html, body, body > div.ng-scope {
 .match {
     display: block;
     border-bottom: 1px solid #ddd;
-    padding: 3px 0;
-    margin: 0 5px;
+    padding: 8px;
     height: 42px; /* Thumbnail size: 84px */
     cursor: pointer;
     color: inherit;
+}
+.match:hover {
+    background-color: rgba(245, 245, 245, 0.5);
+}
+.match.selected {
+    background-color: #F5F5F5;
+}
+.info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 .match .thumbnail {
     display: inline-block;
@@ -383,7 +407,6 @@ html, body, body > div.ng-scope {
 .match .name {
     margin: 0;
     text-align: center;
-    line-height: 42px;
     font-weight: bold;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -421,16 +444,16 @@ html, body, body > div.ng-scope {
 }
 #conversation h2 {
     padding: 0 14px 21px 11px;
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 0;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 0;
 }
 #conversation .messages-list {
     overflow-y: scroll;
-  overflow-x: hidden;
-  padding: 14px;
+    overflow-x: hidden;
+    padding: 14px;
 }
 #conversation .messages-list-empty {
-  padding: 14px;
+    padding: 14px;
 }
 
 #conversation div.from-me,
@@ -461,12 +484,14 @@ html, body, body > div.ng-scope {
 }
 
 .from-me {
+    cursor: pointer;
     position: relative;
     padding: 10px 15px;
     color: white;
     background: #0B93F6;
     border-radius: 25px;
     float: right;
+    z-index: 10;
 }
 .from-me:before {
     content: "";
@@ -492,8 +517,51 @@ html, body, body > div.ng-scope {
     -webkit-transform: translate(-30px, -2px);
 }
 
+.sentAt {
+    position: absolute;
+    z-index: 9;
+    opacity: 0;
+    color: #555;
+    min-width: 150px;
+}
+
+.from-them-date {
+    right: -100px;
+}
+
+.from-them-date.bounceIn {
+    transition: all .2s;
+    opacity: 1;
+    transform: translateX(55px);
+}
+
+.from-them-date.bounceOut {
+    transition: all .2s;
+    opacity: 0;
+    transform: translateX(-55px);
+}
+
+.from-me-date {
+    /*right: 0;*/
+    left: -100px;
+}
+
+.from-me-date.bounceIn {
+    transition: all .2s;
+    opacity: 1;
+    transform: translateX(-55px);
+}
+
+.from-me-date.bounceOut {
+    transition: all .2s;
+    opacity: 0;
+    transform: translateX(55px);
+}
+
 .from-them {
+    cursor: pointer;
     position: relative;
+    z-index: 10;
     padding: 10px 15px;
     background: #E5E5EA;
     border-radius: 25px;
@@ -552,6 +620,114 @@ html, body, body > div.ng-scope {
 
 .info .last-me-pass {
     color: #cc00cc;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    max-height: 53px;
+    align-items: center;
+    padding: 0 8px;
+    border-bottom: 1px solid #DDD;
+}
+
+.scrollable-matchlist {
+    margin-top: 50px;
+}
+
+.unmatch-button {
+    background-color: white;
+    color: #f15626;
+    border: 0px;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+
+.unmatch-button.hover {
+    opacity: 0.8;
+}
+
+/* Discovery Settings Page */
+section.range-slider {
+    overflow: hidden;
+    position: relative;
+    width: 200px;
+    height: 18px;
+    display: inline-block;
+}
+
+section.range-slider input {
+    pointer-events: none;
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+    top: 0;
+    width: 200px;
+    outline: none;
+    height: 18px;
+}
+
+section.range-slider input::-webkit-slider-thumb {
+    pointer-events: all;
+    position: relative;
+    z-index: 1;
+    outline: 0;
+}
+
+section.range-slider input::-moz-range-thumb {
+    pointer-events: all;
+    position: relative;
+    z-index: 10;
+    -moz-appearance: none;
+    background: linear-gradient(to bottom, #ededed 0%, #dedede 100%);
+    width: 11px;
+}
+
+section.range-slider input::-moz-range-track {
+    position: relative;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, .15);
+    border: 0;
+}
+
+section.range-slider input:last-of-type::-moz-range-track {
+    -moz-appearance: none;
+    background: none transparent;
+    border: 0;
+}
+
+ul.from-to {
+    display: block;
+    list-style-type: none;
+    margin-top: 10px;
+    font-family: Arial, Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+}
+
+ul.from-to li {
+    margin-bottom: 1px;
+}
+
+ul.from-to li label {
+    background-color: rgba(0, 0, 0, .1);
+    height: 24px;
+    line-height: 24px;
+    display: inline-block;
+    width: 60px;
+    padding: 0 10px;
+    float: left;
+    font-size: 9px;
+    color: rgba(0, 0, 0, .25);
+    text-transform: uppercase;
+}
+
+ul.from-to li input {
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: 0 8px;
+    height: 24px;
+    line-height: 24px;
+    outline: none;
 }
 
 /* Discovery Settings Page */

@@ -12,7 +12,7 @@
 
     { "x": 452, "y": 220, "type": "link", "path": "/Applications" },
 
-    { "x": 145, "y": 220, "type": "file", "path": "../build/tinder-desktop/osx64/tinder-desktop.app" }
+    { "x": 145, "y": 220, "type": "file", "path": "../build/Tinder Desktop-darwin-x64/Tinder Desktop.app" }
 
   ]
 

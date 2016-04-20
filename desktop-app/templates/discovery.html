@@ -45,7 +45,7 @@
       <legend>Search Proximity</legend>
       <label for="distance">
         <input type="range" name="distance" min="2" max="100" ng-model="DiscoverySettings.distance_filter" />
-        {{DiscoverySettings.distance_filter}} miles
+        {{DiscoverySettings.distance_filter | distanceToUnits}}
       </label>
     </fieldset>
     <fieldset>
