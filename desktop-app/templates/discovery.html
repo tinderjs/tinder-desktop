@@ -2,7 +2,7 @@
 <div class="settings" style="margin-top:10px">
   <h1>Discovery Settings</h1>
   <form name="discoverySettings">
-    <fieldset>
+    <fieldset ng-show="DiscoverySettings.tinder_plus">
       <legend>Passport</legend>
       <p ng-show="DiscoverySettings.is_traveling">
         {{ DiscoverySettings.currentLocation }}

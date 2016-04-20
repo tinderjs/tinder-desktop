@@ -3,6 +3,7 @@
 
   module.controller('DiscoveryController', function($scope, $timeout, $interval, API) {
     
+    var change = 0;
     $scope.DiscoverySettings = {
       age_filter : {
         from: 0,
@@ -39,7 +40,7 @@
     }, true);
   
     $scope.$on('$locationChangeStart', function(event, next, current) {
-      $scope.updateDiscoverySettings();
+      if(change >= 2){  $scope.updateDiscoverySettings() }
     });
     
     $scope.resetPassport = function(){
@@ -55,11 +56,16 @@
         $scope.DiscoverySettings.distance_filter = response.user.distance_filter;
         $scope.DiscoverySettings.age_filter = { from: response.user.age_filter_min, to: response.user.age_filter_max };
         $scope.DiscoverySettings.is_traveling = response.travel.is_traveling;
-        
+        $scope.DiscoverySettings.tinder_plus = (response.purchases.length == 0)? false : true;
         if(response.travel.is_traveling){
           var tl = response.travel.travel_location_info[0];
           $scope.DiscoverySettings.currentLocation = tl.locality.short_name + ', ' + tl.street_number.short_name + ' ' + tl.route.short_name;
         }
+        
+        $scope.watchDiscoveryChange = function () { return $scope.DiscoverySettings; };  
+        $scope.$watch($scope.watchDiscoveryChange, function () {
+          change++;
+        }, true);
         
       });
     }
