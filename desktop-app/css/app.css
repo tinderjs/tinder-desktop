@@ -412,9 +412,22 @@ html, body, body > div.ng-scope {
 }
 
 /* Messages screen */
+.messages-page-container {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+.messages-page-menu {
+	order: 1;
+}
+
+.messages-page-messages {
+	flex: 1;
+	order: 2;
+}
+
 #messages {
     display: flex;
-    height: 100%;
 }
 
 
@@ -423,7 +436,6 @@ html, body, body > div.ng-scope {
     border-right: 1px solid #ddd;
     overflow-y: scroll;
     flex: 0 0 185px;
-    height: 100%;
 }
 .match-header {
   display: flex;
@@ -504,24 +516,22 @@ html, body, body > div.ng-scope {
     font-size: 1.1em;
     line-height: 20px;
     font-weight: normal;
-	flex: auto;
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
 
 .message-header {
-	flex: 0 0 auto;
 	order: 1;
 }
 
 .messages-list-container {
-	flex: auto;
 	order: 2;
 	overflow: auto;
+	flex: 1;
 }
 
 .messages-textarea {
-	flex: 0 0 auto;
 	order: 3;
 }
 
@@ -555,6 +565,7 @@ html, body, body > div.ng-scope {
     padding: 10px;
     box-sizing: border-box;
       margin: 0;
+	display: block;
 }
 
 .clear {

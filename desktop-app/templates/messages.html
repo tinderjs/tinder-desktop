@@ -1,6 +1,8 @@
-<div ng-include src="'partials/menu.html'"></div>
+<div class="messages-page-container">
 
-<div id="messages">
+<div class="messages-page-menu" ng-include src="'partials/menu.html'"></div>
+
+<div class="messages-page-messages" id="messages">
   <div id="match-list" ng-class="showExtra && 'more-info'">
     <div class="match-header">
       Messages ({{conversationCount}})
@@ -66,4 +68,5 @@
 		<textarea ng-keypress="keypress($event)" ng-model="message" placeholder="Insert something witty here...">
 	</div>
   </div>
+</div>
 </div>
