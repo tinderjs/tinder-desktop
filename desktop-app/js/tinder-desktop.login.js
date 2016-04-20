@@ -30,7 +30,7 @@
     };
 
     var tinderLogin = function() {
-      API.login($scope.fbAuthData['fb_id'], $scope.fbAuthData['access_token']);
+      API.login(localStorage.fbUserId, localStorage.fbToken);
     };
 
     var checkForToken = function(loginWindow, interval) {
@@ -43,6 +43,10 @@
           $scope.fbAuthData[param[0]] = param[1];
         }
         loginWindow.close();
+        localStorage.fbToken = $scope.fbAuthData['access_token'];
+        var now = Date.now()
+        var expiryTime = new Date(now + (1000 * $scope.fbAuthData['expires_in']));
+        localStorage.fbTokenExpiresAt = expiryTime;
         getFBUserId($scope.fbAuthData['access_token']);
       }
     };
@@ -53,11 +57,18 @@
           .success(function(data) {
             console.log(data);
             $scope.fbAuthData['fb_id'] = data.id;
+            localStorage.fbUserId = $scope.fbAuthData['fb_id']
             tinderLogin();
           })
           .error(function(data) {
             console.log(data);
           });
     }
+
+    var init = function () {
+      // Pop the login window if localStorage exists already
+      if(localStorage.length != 0) $scope.startLogin();
+    };
+    init();
   });
 })();

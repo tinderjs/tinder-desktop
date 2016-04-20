@@ -6,7 +6,7 @@
   // if a token returned from tinder is in localstorage, set that token and skip auth
   if (localStorage.tinderToken) { client.setAuthToken(localStorage.tinderToken); }
 
-  angular.module('tinder-desktop.api', []).factory('API', function($q) {
+  angular.module('tinder-desktop.api', []).factory('API', function($q, $location) {
     var likesRemaining = null;
     var apiObj = {};
 
@@ -14,8 +14,17 @@
       console.log('ERROR!!!!');
       console.log(err);
 
-      // api token invalid, logout and refresh
-      if (err.status === 401) {
+      // Tinder API token is not valid.
+      if (err.status === 401 && localStorage.getItem('fbTokenExpiresAt') != null) {
+        if(Date.parse(localStorage.fbTokenExpiresAt) > new Date()) {
+          // Facebook token is still good. Get a new Tinder token.
+          apiObj.login(localStorage.fbUserId, localStorage.fbToken);
+        } else {
+          // Facebook token expired. Get a new Facebook token, then login.
+          $location.path('/login');
+        }
+      } else {
+        // Something's gone horribly wrong. Log the user out.
         apiObj.logout();
       }
       (callbackFn || angular.noop)(err);
