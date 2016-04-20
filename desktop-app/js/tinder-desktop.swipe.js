@@ -1,6 +1,6 @@
 (function() {
   var superLike;
-  var module = angular.module('tinder-desktop.swipe', ['ngAutocomplete', 'ngSanitize', 'tinder-desktop.api']);
+  var module = angular.module('tinder-desktop.swipe', ['ngAutocomplete', 'ngSanitize', 'tinder-desktop.api', 'tinder-desktop.common']);
 
   module.controller('SwipeController', function SwipeController($scope, $timeout, $interval, $location, API) {
     $scope.allPeople = [];
@@ -308,18 +308,6 @@
       if (scope.$last){
         scope.$emit('cardsRendered');
       }
-    };
-  });
-
-  module.filter('bdayToAge', function() {
-    return function(bday) {
-      return moment.duration(moment().diff(moment(bday))).years();
-    };
-  });
-
-  module.filter('pingToAgo', function() {
-    return function(ping) {
-      return moment(ping).fromNow();
     };
   });
 

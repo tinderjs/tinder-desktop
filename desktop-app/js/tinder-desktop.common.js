@@ -10,4 +10,16 @@
       }
     };
   });
+
+  module.filter('bdayToAge', function() {
+    return function(bday) {
+      return moment.duration(moment().diff(moment(bday))).years();
+    };
+  });
+
+  module.filter('pingToAgo', function() {
+    return function(ping) {
+      return moment(ping).fromNow();
+    };
+  });
 })();
