@@ -1,6 +1,6 @@
 (function() {
   var superLike;
-  var module = angular.module('tinder-desktop.swipe', ['ngAutocomplete', 'ngSanitize', 'emoji', 'tinder-desktop.api']);
+  var module = angular.module('tinder-desktop.swipe', ['ngAutocomplete', 'ngSanitize', 'tinder-desktop.api']);
 
   module.controller('SwipeController', function SwipeController($scope, $timeout, $interval, $location, API) {
     $scope.allPeople = [];

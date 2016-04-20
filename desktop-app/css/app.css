@@ -478,11 +478,6 @@ html, body, body > div.ng-scope {
     clear: both;
 }
 
-#conversation img.emoji {
-  width: 1em;
-  height: 1em;
-}
-
 .from-me {
     cursor: pointer;
     position: relative;
