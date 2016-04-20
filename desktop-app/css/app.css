@@ -523,6 +523,14 @@ html, body, body > div.ng-scope {
 
 .message-header {
 	order: 1;
+	
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    max-height: 53px;
+    align-items: center;
+    padding: 0 8px;
+    border-bottom: 1px solid #DDD;
 }
 
 .messages-list-container {
@@ -533,6 +541,22 @@ html, body, body > div.ng-scope {
 
 .messages-textarea {
 	order: 3;
+}
+
+.scrollable-matchlist {
+    margin-top: 50px;
+}
+
+.unmatch-button {
+    background-color: white;
+    color: #f15626;
+    border: 0px;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+
+.unmatch-button.hover {
+    opacity: 0.8;
 }
 
 #conversation h2 {
@@ -719,32 +743,6 @@ html, body, body > div.ng-scope {
 
 .info .last-me-pass {
     color: #cc00cc;
-}
-
-.message-header {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    max-height: 53px;
-    align-items: center;
-    padding: 0 8px;
-    border-bottom: 1px solid #DDD;
-}
-
-.scrollable-matchlist {
-    margin-top: 50px;
-}
-
-.unmatch-button {
-    background-color: white;
-    color: #f15626;
-    border: 0px;
-    cursor: pointer;
-    transition: all .2s linear;
-}
-
-.unmatch-button.hover {
-    opacity: 0.8;
 }
 
 /* Discovery Settings Page */
