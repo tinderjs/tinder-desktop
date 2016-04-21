@@ -5,7 +5,7 @@
 <div class="messages-page-messages" id="messages">
   <div id="match-list" ng-class="showExtra && 'more-info'">
     <div class="match-header">
-      Messages ({{conversationCount}})
+      Matches: {{conversationCount}}
     </div>
     <div class="scrollable-matchlist">
       <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true track by match.matchId"
