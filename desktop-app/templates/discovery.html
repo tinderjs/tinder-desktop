@@ -1,6 +1,16 @@
 <div ng-include src="'partials/menu.html'"></div>
 <div class="settings">
   <form name="discoverySettings">
+  
+    <fieldset>
+      <legend>Profile</legend>
+      <a ng-href="#/profile/{{getCookie('userId')}}">
+        <img ng-src="{{getCookie('smallPhoto')}}" />
+        <br>
+        {{getCookie('name')}}
+      </a>
+    </fieldset>
+	
     <fieldset ng-show="DiscoverySettings.tinder_plus">
       <legend>Passport</legend>
       <p ng-show="DiscoverySettings.is_traveling">
@@ -14,6 +24,7 @@
       </div>
       <a ng-show="DiscoverySettings.is_traveling" href="" ng-click="resetPassport()">Actual location</a>
     </fieldset>
+	
     <fieldset>
       <legend>Discoverable</legend>
       <label for="Yes">

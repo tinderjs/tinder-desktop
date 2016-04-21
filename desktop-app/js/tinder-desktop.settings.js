@@ -58,10 +58,6 @@
       types: '(cities)'
     };
 
-    $scope.getCookie = function(cookieName) {
-      return localStorage[cookieName];
-    };
-
 	    $scope.watchAutocomplete = function () { return $scope.details; };
     $scope.$watch($scope.watchAutocomplete, function (details) {
       if (details) {
