@@ -434,20 +434,16 @@ html, body, body > div.ng-scope {
 /* Chat */
 #match-list {
     border-right: 1px solid #ddd;
-    overflow-y: scroll;
     flex: 0 0 185px;
+    display: flex;
+    flex-direction: column;
 }
 .match-header {
-  display: flex;
-  height: 53px;
-  align-items: center;
-  padding: 0 8px;
-  border-bottom: 1px solid #DDD;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  background: white;
-  width: 234px;
+	flex: 0 0 40px;
+	border-bottom: 1px solid #DDD;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 #match-list.more-info {
     flex: 0 0 260px;
@@ -523,14 +519,13 @@ html, body, body > div.ng-scope {
 
 .message-header {
 	order: 1;
-	
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    max-height: 53px;
-    align-items: center;
-    padding: 0 8px;
-    border-bottom: 1px solid #DDD;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	border-bottom: 1px solid #DDD;
+	flex: 0 0 40px;
+	justify-content: center;
+	align-items: center;
 }
 
 .messages-list-container {
@@ -544,7 +539,11 @@ html, body, body > div.ng-scope {
 }
 
 .scrollable-matchlist {
-    margin-top: 50px;
+	flex: 1;
+	overflow-y: scroll;
+}
+.chat-with {
+	flex: 1;
 }
 
 .unmatch-button {
@@ -553,6 +552,7 @@ html, body, body > div.ng-scope {
     border: 0px;
     cursor: pointer;
     transition: all .2s linear;
+	flex: 1;
 }
 
 .unmatch-button.hover {
