@@ -450,7 +450,7 @@ html, body, body > div.ng-scope {
   width: 234px;
 }
 #match-list.more-info {
-    flex: 0 0 230px;
+    flex: 0 0 260px;
 }
 #back-arrow {
     margin: 3px calc(75px - 1em);
