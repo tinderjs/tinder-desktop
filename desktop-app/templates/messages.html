@@ -1,8 +1,8 @@
 <div ng-include src="'partials/menu.html'"></div>
 <div id="messages" class="columns">
   <div id="match-list" ng-class="showExtra && 'more-info'">
-    <div class="match-header">
-      Messages ({{conversationCount}})
+    <div class="match-header" translate="MESSAGES.MESSAGES_COUNT"
+         translate-values="{ count: conversationCount }">
     </div>
     <div class="scrollable-matchlist">
       <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true track by match.matchId"
@@ -24,14 +24,14 @@
   <div id="conversation" ng-show="conversation">
     <div class="message-header">
       <div class="chat-with">
-        Chat with <a ng-href="#/profile/{{conversation.userId}}">{{conversation.name}}</a>
+        {{'MESSAGES.CHAT_WITH' | translate}} <a ng-href="#/profile/{{conversation.userId}}">{{conversation.name}}</a>
       </div>
-      <button ng-click="unmatch(conversation)" class="unmatch-button">
-        Unmatch
+      <button ng-click="unmatch(conversation)" class="unmatch-button"
+              translate="MESSAGES.UNMATCH">
       </button>
     </div>
-    <div ng-show="conversation.messages.length == 0" class="messages-list-empty">
-      No messages yet. Write something!
+    <div ng-show="conversation.messages.length == 0" class="messages-list-empty"
+         translate="MESSAGES.NO_MESSAGES">
     </div>
     <div class="messages-list">
       <!-- normal messages -->
@@ -59,6 +59,6 @@
       <div ng-repeat-end class="clear" scroll-to-last></div>
 
     </div>
-    <textarea ng-keypress="keypress($event)" ng-model="message" rows="4" placeholder="Insert something witty here...">
+    <textarea ng-keypress="keypress($event)" ng-model="message" rows="4" placeholder="{{'MESSAGES.MESSAGE_PLACEHOLDER' | translate}}">
   </div>
 </div>

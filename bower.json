@@ -19,6 +19,8 @@
     "angular-cookies": "~1.4",
     "angular-route": "~1.4",
     "angular-sanitize": "~1.4",
+    "angular-translate": "^2.11.0",
+    "angular-translate-loader-static-files": "^2.11.0",
     "font-awesome": "^4.5.0",
     "jquery": "^1.12.3",
     "moment": "^2.12.0",

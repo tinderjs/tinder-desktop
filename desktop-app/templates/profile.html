@@ -21,7 +21,7 @@
       <p class="fader">
         <i ng-repeat="school in user.schools" class="fa fa-graduation-cap">{{school.name}}</i>
         <i ng-repeat="job in user.jobs" class="fa fa-briefcase">
-          {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}
+          {{job.title.name}} {{job.company && job.title ? ('PROFILE.AT' | translate) : ''}} {{job.company.name}}
         </i>
       </p>
       <p ng-show="user.bio" class="fader bio" ng-bind-html="user.bio"></p>

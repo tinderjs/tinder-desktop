@@ -1,7 +1,7 @@
 (function() {
   module = angular.module('tinder-desktop.discovery', ['ngAutocomplete','ngRangeSlider', 'ngSanitize']);
 
-  module.controller('DiscoveryController', function($scope, $timeout, $interval, API) {
+  module.controller('DiscoveryController', function($scope, $translate, $timeout, $interval, API) {
     
     var change = 0;
     $scope.DiscoverySettings = {
