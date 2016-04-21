@@ -1,6 +1,7 @@
 (function() {
   var app = angular.module('tinder-desktop', ['tinder-desktop.login', 'tinder-desktop.swipe', 'tinder-desktop.messages', 'tinder-desktop.profile','tinder-desktop.discovery', 'ngRoute', 'tinder-desktop.settings', 'tinder-desktop.controls', 'tinder-desktop.common']);
-
+  var remote = require('remote');
+  
   app.config(function($routeProvider) {
     var capitalize = function (s) { return s[0].toUpperCase() + s.slice(1); };
 
@@ -15,6 +16,7 @@
 
   app.run(function($location, Settings, Controls) {
     var firstPage = (localStorage.tinderToken ? Settings.get('landingPage') : '/login');
+    moment.locale(remote.getGlobal('sharedObject').locale);
     $location.path(firstPage);
     Controls.init();
   });

@@ -1,5 +1,5 @@
 (function() {
-  module = angular.module('tinder-desktop.messages', ['tinder-desktop.api', 'tinder-desktop.settings', 'ngSanitize']);
+  module = angular.module('tinder-desktop.messages', ['tinder-desktop.api', 'tinder-desktop.settings', 'tinder-desktop.common', 'ngSanitize']);
 
   module.controller('MessagesController', function($scope, API, Settings) {
     // console.log(API.conversations)

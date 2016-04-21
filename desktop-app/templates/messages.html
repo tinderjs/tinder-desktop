@@ -42,7 +42,7 @@
         <div class="{{message.fromMe ? 'from-me' : 'from-them'}}">
         <div class="{{message.fromMe ? 'from-me-date sentAt' : 'from-them-date sentAt'}}" 
              ng-class="{true: 'bounceIn', false: 'bounceOut'}[$showTimeStamp === true]">
-            {{message.sentDate | date : 'short'}}
+          {{message.sentDate | timeToLocalized}}
         </div>
           <div ng-if="message.text" 
                ng-bind-html="message.text"></div>

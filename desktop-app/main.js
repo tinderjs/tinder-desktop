@@ -4,6 +4,7 @@ const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const Menu = electron.Menu;
+const osLocale = require('os-locale'); 
 
 var template = [
   {
@@ -189,8 +190,11 @@ app.on('activate', function()
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', function() {
-  Menu.setApplicationMenu(menu);
-  createWindow();
+  osLocale(function (err, locale) {
+    global.sharedObject = { locale: locale };
+    Menu.setApplicationMenu(menu);
+    createWindow();
+  });
 });
 
 // Create the initial window.

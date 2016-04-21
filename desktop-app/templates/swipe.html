@@ -47,7 +47,7 @@
           </a>
           , {{allPeople[peopleIndex].birth_date | bdayToAge}}&nbsp;
         </h1>
-        <h3 class="fader" style="display: inline;">{{allPeople[peopleIndex].distance_mi | distanceToUnits}} {{getCookie('currentCity') ? "from " + getCookie('currentCity') : 'away'}}, Active {{allPeople[peopleIndex].ping_time | pingToAgo}}</h3>
+        <h3 class="fader" style="display: inline;">{{allPeople[peopleIndex].distance_mi | distanceToUnits}} {{getCookie('currentCity') ? "from " + getCookie('currentCity') : 'away'}}, active {{allPeople[peopleIndex].ping_time | timeFromNow}}</h3>
 
 
         <p class="fader">

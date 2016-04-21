@@ -17,9 +17,15 @@
     };
   });
 
-  module.filter('pingToAgo', function() {
-    return function(ping) {
-      return moment(ping).fromNow();
+  module.filter('timeFromNow', function() {
+    return function(time) {
+      return moment(time).fromNow();
+    };
+  });
+
+  module.filter('timeToLocalized', function () {
+    return function(time) {
+      return moment(time).format('L HH:mm');
     };
   });
 })();

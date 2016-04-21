@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "main": "main.js",
   "dependencies": {
+    "os-locale": "~1.4.0",
     "tinder": "git://github.com/tinderjs/tinderjs"
   }
 }
