@@ -20,7 +20,7 @@
           // Facebook token is still good. Get a new Tinder token.
           apiObj.login(localStorage.fbUserId, localStorage.fbToken);
         } else {
-          // Facebook token expired. Get a new Facebook token, then login.
+          // Facebook token expired. Get a new Facebook token.
           $location.path('/login');
         }
       } else {
@@ -32,8 +32,20 @@
 
     apiObj.logout = function() {
       var win = remote.getCurrentWindow();
-      localStorage.clear();
 
+      // Retain settings on logout.
+      var removeArr = [];
+      for (var i = 0; i < localStorage.length; i++){
+        if (localStorage.key(i) != 'settings') {
+          removeArr.push(localStorage.key(i));
+        }
+      }
+
+      for (var i = 0; i < removeArr.length; i++) {
+        localStorage.removeItem(removeArr[i]);
+      }
+
+      // Clear cache and cookies.
       win.webContents.session.clearCache(function(){
         win.webContents.session.clearStorageData({storages: ["cookies"]}, function(){
           win.webContents.reloadIgnoringCache();

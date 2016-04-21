@@ -66,8 +66,8 @@
     }
 
     var init = function () {
-      // Pop the login window if localStorage exists already
-      if(localStorage.length != 0) $scope.startLogin();
+      // Pop the login window if the user was involuntarily logged out.
+      if(localStorage.length > 1) $scope.startLogin();
     };
     init();
   });
