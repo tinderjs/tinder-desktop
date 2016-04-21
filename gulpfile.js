@@ -82,7 +82,9 @@ gulp.task('clean', function() {
         platform: platform,
         arch: arch,
         asar: true,
-        cache: './cache',
+        download: {
+          cache: './cache'
+        },
         dir: './desktop-app',
         icon: icon,
         out: buildDir,
