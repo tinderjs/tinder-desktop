@@ -433,14 +433,14 @@ html, body, body > div.ng-scope {
 
 /* Chat */
 #match-list {
-    border-right: 1px solid #ddd;
     flex: 0 0 185px;
     display: flex;
     flex-direction: column;
 }
 .match-header {
 	flex: 0 0 40px;
-	border-bottom: 1px solid #DDD;
+	border-bottom: 1px solid #DB6151;
+	border-right: 1px solid #DB6151;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -522,10 +522,27 @@ html, body, body > div.ng-scope {
 	display: flex;
 	justify-content: space-between;
 	flex-direction: row;
-	border-bottom: 1px solid #DDD;
+	border-bottom: 1px solid #DB6151;
 	flex: 0 0 40px;
 	justify-content: center;
 	align-items: center;
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+.match-options a {
+	border-left: 2px solid #DB6151;
+	border-collapse: collapse;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 8px;
+	padding-right: 8px;
+    cursor: pointer;
+	flex: 1;
+}
+
+.match-options a:first-child {
+	border-left: 0px
 }
 
 .messages-list-container {
@@ -541,22 +558,10 @@ html, body, body > div.ng-scope {
 .scrollable-matchlist {
 	flex: 1;
 	overflow-y: scroll;
+	border-right: 1px solid #ddd;
 }
 .chat-with {
 	flex: 1;
-}
-
-.unmatch-button {
-    background-color: white;
-    color: #f15626;
-    border: 0px;
-    cursor: pointer;
-    transition: all .2s linear;
-	flex: 1;
-}
-
-.unmatch-button.hover {
-    opacity: 0.8;
 }
 
 #conversation h2 {

@@ -29,9 +29,14 @@
       <div class="chat-with">
         Chat with <a ng-href="#/profile/{{conversation.userId}}">{{conversation.name}}</a>
       </div>
-      <button ng-click="unmatch(conversation)" class="unmatch-button">
-        Unmatch
-      </button>
+      <div class="match-options">
+	    <a ng-href="#/profile/{{conversation.userId}}">
+		  Profile
+		</a>
+	    <a ng-click="unmatch(conversation)">
+          Unmatch
+        </a>
+	  </div>
 	</div>
 	<div class="messages-list-container">
     <div ng-show="conversation.messages.length == 0" class="messages-list-empty">
