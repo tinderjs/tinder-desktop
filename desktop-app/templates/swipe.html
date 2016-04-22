@@ -22,8 +22,7 @@
 	  <div class="profile">
       <div class="information">
         <h1 class="name fader">
-          {{allPeople[peopleIndex].name}}
-          <a ng-show="allPeople[peopleIndex].instagram" href="https://instagram.com/{{allPeople[peopleIndex].instagram.username}}" target="_blank">
+          {{allPeople[peopleIndex].name}}<a ng-show="allPeople[peopleIndex].instagram" href="https://instagram.com/{{allPeople[peopleIndex].instagram.username}}" target="_blank">
             ({{allPeople[peopleIndex].instagram.username}})</a>,
 			{{allPeople[peopleIndex].birth_date | bdayToAge}}&nbsp;
         </h1>
