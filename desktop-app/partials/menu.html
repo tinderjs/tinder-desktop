@@ -1,4 +1,4 @@
-	<div class="menu">
+	<div class="menu" ng-controller="MenuController">
 	<!---
 		<div class="menu-logo">
 		  <a href="">
@@ -15,6 +15,11 @@
 		<div class="menu-item">
 		  <a ng-href="#/messages">
 			<span class="fa fa-envelope fa-lg"></span><span class="text">MESSAGES</span>
+		  </a>
+		</div>
+		<div class="menu-item">
+		  <a ng-href="#/profile/{{getCookie('userId')}}">
+			<span class="fa fa-image fa-lg"></span><span class="text">PROFILE</span>
 		  </a>
 		</div>
 		<div class="menu-item">

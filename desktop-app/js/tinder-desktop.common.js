@@ -1,6 +1,12 @@
 (function() {
   var module = angular.module('tinder-desktop.common', []);
-
+  
+  module.controller('MenuController', function($scope) {
+    $scope.getCookie = function(cookieName) {
+      return localStorage[cookieName];
+    };
+  });
+  
   module.filter('distanceToUnits', function(Settings) {
     return function(distanceMi) {
       if (Settings.get('distanceUnits') == 'mi') {
