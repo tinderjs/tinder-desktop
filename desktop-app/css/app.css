@@ -545,6 +545,10 @@ html, body, body > div.ng-scope {
 	border-left: 0px
 }
 
+.match-options a:last-child {
+	padding-right: 0px
+}
+
 .messages-list-container {
 	order: 2;
 	overflow: auto;
