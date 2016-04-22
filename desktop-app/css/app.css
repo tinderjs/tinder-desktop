@@ -333,7 +333,14 @@ html, body, body > div.ng-scope {
 .small-photos  {
 	margin: auto;
 }       
+     
+@media all and (max-width: 1034px) {
 
+	.small-photos  {
+		max-width: 448px;
+	} 
+
+}
 .small-photos img {
     width: 120px;
     height: 120px;
