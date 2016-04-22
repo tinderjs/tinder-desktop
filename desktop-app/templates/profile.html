@@ -15,9 +15,8 @@
       <h1 class="name fader">
         {{user.name}}
         <a ng-show="user.instagram" href="https://instagram.com/{{user.instagram.username}}" target="_blank">
-          ({{user.instagram.username}})
-        </a>
-        , {{user.birth_date | bdayToAge}}&nbsp;
+          ({{user.instagram.username}})</a>,
+		  {{user.birth_date | bdayToAge}}&nbsp;
       </h1>
       <h3 class="status fader">{{user.distance_mi | distanceToUnits}} away, Active {{user.ping_time | timeFromNow}}</h3>
 

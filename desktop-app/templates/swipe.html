@@ -24,9 +24,8 @@
         <h1 class="name fader">
           {{allPeople[peopleIndex].name}}
           <a ng-show="allPeople[peopleIndex].instagram" href="https://instagram.com/{{allPeople[peopleIndex].instagram.username}}" target="_blank">
-            ({{allPeople[peopleIndex].instagram.username}})
-          </a>
-          , {{allPeople[peopleIndex].birth_date | bdayToAge}}&nbsp;
+            ({{allPeople[peopleIndex].instagram.username}})</a>,
+			{{allPeople[peopleIndex].birth_date | bdayToAge}}&nbsp;
         </h1>
         <h3 class="status fader">{{allPeople[peopleIndex].distance_mi | distanceToUnits}} {{getCookie('currentCity') ? "from " + getCookie('currentCity') : 'away'}}, Active {{allPeople[peopleIndex].ping_time | timeFromNow}}</h3>
 
