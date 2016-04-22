@@ -327,11 +327,12 @@ html, body, body > div.ng-scope {
 }
 
 .small-photos div {
-    display: inline;
+    display: inline-block;
 }
 
 .small-photos  {
 	margin: auto;
+	text-align: center;
 }       
      
 @media all and (max-width: 1034px) {
