@@ -84,7 +84,6 @@ html, body, body > div.ng-scope {
     height: 16px;
     display: inline-block;
     margin-left: 24px;
-    -webkit-animation: single-arc-rotate 1s infinite linear;
     animation: single-arc-rotate 1s infinite linear;
     animation-name: single-arc-rotate;
     animation-duration: 1s;
@@ -96,16 +95,8 @@ html, body, body > div.ng-scope {
     animation-play-state: initial;
 }
 
-@-webkit-keyframes single-arc-rotate {
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-
 @keyframes single-arc-rotate {
   100% {
-    -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
   }
 }
@@ -156,8 +147,6 @@ html, body, body > div.ng-scope {
     text-align: center;
     width: 640px;
     height: 640px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
     border-radius: 10px;
     background: #fff top left / contain no-repeat;
     z-index: 1000;
@@ -241,8 +230,6 @@ html, body, body > div.ng-scope {
 .small-photos img {
     width: 120px;
     height: 120px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
     border-radius: 10px;
     overflow: hidden;
     cursor: pointer;
@@ -291,7 +278,6 @@ html, body, body > div.ng-scope {
 .login-container {
     position: relative;
     top: 50%;
-    -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
 }
 
@@ -506,7 +492,6 @@ html, body, body > div.ng-scope {
     height: 20px;
     border-right: 20px solid #0B93F6;
     border-bottom-left-radius: 16px 14px;
-    -webkit-transform: translate(0, -2px);
     transform: translate(0, -2px);
 }
 .from-me:after {
@@ -519,7 +504,6 @@ html, body, body > div.ng-scope {
     height: 20px;
     background: white;
     border-bottom-left-radius: 10px;
-    -webkit-transform: translate(-30px, -2px);
     transform: translate(-30px, -2px);
 }
 
@@ -582,7 +566,6 @@ html, body, body > div.ng-scope {
     height: 20px;
     border-left: 20px solid #E5E5EA;
     border-bottom-right-radius: 16px 14px;
-    -webkit-transform: translate(0, -2px);
     transform: translate(0, -2px);
 }
 .from-them:after {
@@ -595,7 +578,6 @@ html, body, body > div.ng-scope {
     height: 20px;
     background: white;
     border-bottom-right-radius: 10px;
-    -webkit-transform: translate(-30px, -2px);
     transform: translate(-30px, -2px);
 }
 
@@ -614,8 +596,6 @@ html, body, body > div.ng-scope {
 	margin-left: auto;
 	margin-right: auto;
     text-align: center;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
     border-radius: 50px;
     background-color: #FAFAFA;
     padding: 10px;
@@ -658,35 +638,6 @@ section.range-slider input {
     width: 200px;
     outline: none;
     height: 18px;
-}
-
-section.range-slider input::-webkit-slider-thumb {
-    pointer-events: all;
-    position: relative;
-    z-index: 1;
-    outline: 0;
-}
-
-section.range-slider input::-moz-range-thumb {
-    pointer-events: all;
-    position: relative;
-    z-index: 10;
-    -moz-appearance: none;
-    background: linear-gradient(to bottom, #ededed 0%, #dedede 100%);
-    width: 11px;
-}
-
-section.range-slider input::-moz-range-track {
-    position: relative;
-    z-index: -1;
-    background-color: rgba(0, 0, 0, .15);
-    border: 0;
-}
-
-section.range-slider input:last-of-type::-moz-range-track {
-    -moz-appearance: none;
-    background: none transparent;
-    border: 0;
 }
 
 ul.from-to {
