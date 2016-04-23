@@ -4,7 +4,7 @@
   "description": "A cross-platform desktop Tinder client",
   "main": "build.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "bower install && cd desktop-app && npm install"
   },
   "repository": {
     "type": "git",
@@ -44,8 +44,5 @@
   },
   "optionalDependencies": {
     "gulp-appdmg": "^1.0.2"
-  },
-  "scripts": {
-    "postinstall": "bower install && cd desktop-app && npm install"
   }
 }

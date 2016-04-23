@@ -19,7 +19,7 @@ var PATHS = {
     'bower_components/angular-route/angular-route.min.js',
     'bower_components/angular-sanitize/angular-sanitize.min.js',
     'bower_components/jquery/dist/jquery.min.js',
-    'bower_components/moment/min/moment.min.js',
+    'bower_components/moment/min/moment-with-locales.min.js',
     'bower_components/mousetrap/mousetrap.min.js',
     'bower_components/ngAutocomplete/src/ngAutocomplete.js',
     'bower_components/ng-range-slider/dist/ng-range-slider.min.js'

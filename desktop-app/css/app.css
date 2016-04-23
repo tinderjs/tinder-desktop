@@ -517,11 +517,11 @@ html, body, body > div.ng-scope {
     z-index: 9;
     opacity: 0;
     color: #555;
-    min-width: 150px;
+    min-width: 160px;
 }
 
 .from-them-date {
-    right: -100px;
+    right: -110px;
 }
 
 .from-them-date.bounceIn {
@@ -537,8 +537,7 @@ html, body, body > div.ng-scope {
 }
 
 .from-me-date {
-    /*right: 0;*/
-    left: -100px;
+    left: -110px;
 }
 
 .from-me-date.bounceIn {

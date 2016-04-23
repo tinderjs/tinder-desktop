@@ -10,4 +10,22 @@
       }
     };
   });
+
+  module.filter('bdayToAge', function() {
+    return function(bday) {
+      return moment.duration(moment().diff(moment(bday))).years();
+    };
+  });
+
+  module.filter('timeFromNow', function() {
+    return function(time) {
+      return moment(time).fromNow();
+    };
+  });
+
+  module.filter('timeToLocalized', function () {
+    return function(time) {
+      return moment(time).format('L HH:mm');
+    };
+  });
 })();
