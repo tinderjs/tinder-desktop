@@ -9,7 +9,7 @@ h1, h2, h3, h4, h5 {
 }
 
 a {
-	color: #db6151;
+	color: #DB6151;
 	text-decoration: none;
 }
 
@@ -150,7 +150,7 @@ html, body, body > div.ng-scope {
 	width: 640px;
 	height: 640px;
 	border-radius: 10px;
-	background: #fff top left / contain no-repeat;
+	background: #FFF top left / contain no-repeat;
 	z-index: 1000;
 	position: absolute;
 }
@@ -340,12 +340,12 @@ html, body, body > div.ng-scope {
 .scrollable-matchlist {
 	flex: 1;
 	overflow-y: scroll;
-	border-right: 1px solid #ddd;
+	border-right: 1px solid #DDD;
 }
 
 .match {
 	display: block;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #DDD;
 	padding: 8px;
 	height: 42px; /* Thumbnail size: 84px */
 	cursor: pointer;
@@ -399,7 +399,7 @@ html, body, body > div.ng-scope {
 }
 
 .info .last-them {
-	color: #007a00;
+	color: #007A00;
 }
 
 .info .last-me-rest {
@@ -407,7 +407,7 @@ html, body, body > div.ng-scope {
 }
 
 .info .last-me-pass {
-	color: #cc00cc;
+	color: #CC00CC;
 }
 
 .match.more-info .name {
@@ -612,7 +612,7 @@ html, body, body > div.ng-scope {
 #conversation textarea {
 	font-size: 1em;
 	outline: none;
-	border: solid #ccc;
+	border: solid #CCC;
 	border-width: 1px 0 0 0;
 	border-radius: 0;
 	width: 100%;
