@@ -121,7 +121,6 @@ html, body, body > div.ng-scope {
 /* Templates - swipe & profile */
 
 .responsive-profile {
-	background-color: white;
 	display: flex;
 	flex-flow: row;
 }
