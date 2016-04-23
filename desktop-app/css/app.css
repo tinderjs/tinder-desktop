@@ -596,6 +596,15 @@ html, body, body > div.ng-scope {
     margin-top: 0px;
 }
 
+.settings-box {
+    background-color: #f3f7f9;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .settings {
     margin: 0 auto;
     width: 100%;
@@ -739,6 +748,11 @@ ul.from-to li input {
     text-align: center;
 }
 
+[column] {
+    display: flex;
+    flex-direction: column;
+}
+
 .tinder-bttn {
     background-color: #db6151;
     color: white;
@@ -751,4 +765,10 @@ ul.from-to li input {
 
 .tinder-bttn:hover {
     opacity: 0.8;
+}
+
+.settings .passput {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #DDD;
 }
