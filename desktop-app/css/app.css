@@ -508,6 +508,7 @@ html, body, body > div.ng-scope {
     border-right: 20px solid #0B93F6;
     border-bottom-left-radius: 16px 14px;
     -webkit-transform: translate(0, -2px);
+    transform: translate(0, -2px);
 }
 .from-me:after {
     content: "";
@@ -520,6 +521,7 @@ html, body, body > div.ng-scope {
     background: white;
     border-bottom-left-radius: 10px;
     -webkit-transform: translate(-30px, -2px);
+    transform: translate(-30px, -2px);
 }
 
 .sentAt {
@@ -582,6 +584,7 @@ html, body, body > div.ng-scope {
     border-left: 20px solid #E5E5EA;
     border-bottom-right-radius: 16px 14px;
     -webkit-transform: translate(0, -2px);
+    transform: translate(0, -2px);
 }
 .from-them:after {
     content: "";
@@ -594,6 +597,7 @@ html, body, body > div.ng-scope {
     background: white;
     border-bottom-right-radius: 10px;
     -webkit-transform: translate(-30px, -2px);
+    transform: translate(-30px, -2px);
 }
 
 .pending-message {
