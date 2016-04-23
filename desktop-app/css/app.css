@@ -1,47 +1,47 @@
 /* General styles */
 
 * {
-    font-family: 'Merriweather', serif;
+	font-family: 'Merriweather', serif;
 }
 
 h1, h2, h3, h4, h5 {
-    font-family: 'Raleway', sans-serif;
+	font-family: 'Raleway', sans-serif;
 }
 
 a {
-    color: #db6151;
-    text-decoration: none;
+	color: #db6151;
+	text-decoration: none;
 }
 
 
 /* General layout */
 
 html, body, body > div.ng-scope {
-    max-width: 100%;
-    max-height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    height: 100%;
+	max-width: 100%;
+	max-height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	height: 100%;
 }
 
 .container h1 {
-    margin: 0;
+	margin: 0;
 }
 
 .container h3 {
-    margin: 0 0 20px 0;
+	margin: 0 0 20px 0;
 }
 
 
 /* Partials - menu */
 
 .menu {
-    display: table;
-    table-layout: fixed;
-    border-width: 2px 0px 2px 0px;
-    border-style: solid;
-    border-color: #DB6151;
-    width: 100%;
+	display: table;
+	table-layout: fixed;
+	border-width: 2px 0px 2px 0px;
+	border-style: solid;
+	border-color: #DB6151;
+	width: 100%;
 }
 
 .menu-logo {
@@ -62,7 +62,7 @@ html, body, body > div.ng-scope {
 	color: white;
 	background-color: #DB6151;
 }
-  
+
 .menu .fa {
 	display: none;
 }
@@ -93,27 +93,27 @@ html, body, body > div.ng-scope {
 }
 
 .container .loader-anim {
-    border: 2px solid;
-    border-color: transparent #FF8271 #FF8271 #FF8271;
-    border-radius: 50%;
-    width: 16px;
-    height: 16px;
-    display: inline-block;
-    margin-left: 24px;
-    animation: single-arc-rotate 1s infinite linear;
-    animation-name: single-arc-rotate;
-    animation-duration: 1s;
-    animation-timing-function: linear;
-    animation-delay: initial;
-    animation-iteration-count: infinite;
-    animation-direction: initial;
-    animation-fill-mode: initial;
-    animation-play-state: initial;
+	border: 2px solid;
+	border-color: transparent #FF8271 #FF8271 #FF8271;
+	border-radius: 50%;
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	margin-left: 24px;
+	animation: single-arc-rotate 1s infinite linear;
+	animation-name: single-arc-rotate;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+	animation-delay: initial;
+	animation-iteration-count: infinite;
+	animation-direction: initial;
+	animation-fill-mode: initial;
+	animation-play-state: initial;
 }
 
 @keyframes single-arc-rotate {
   100% {
-            transform: rotate(360deg);
+		transform: rotate(360deg);
   }
 }
 
@@ -121,37 +121,37 @@ html, body, body > div.ng-scope {
 /* Templates - swipe & profile */
 
 .responsive-profile {
-    background-color: white;
-   display:         flex;
-           flex-flow: row;
+	background-color: white;
+	display: flex;
+	flex-flow: row;
 }
 
 @media all and (max-width: 1034px) {
 
 	.responsive-profile {
-			   flex-flow: column;
+		flex-flow: column;
 	}
 
 }
 
 .main-photo-container {
-           flex: 0 0 640px;
-           order: 1;
-    margin: 16px;
+	flex: 0 0 640px;
+	order: 1;
+	margin: 16px;
 	position: relative;
 }
 
 .main-photo-container img {
-    max-width: 640px;
+	max-width: 640px;
 }
 
 .main-photo {
-    text-align: center;
-    width: 640px;
-    height: 640px;
-    border-radius: 10px;
-    background: #fff top left / contain no-repeat;
-    z-index: 1000;
+	text-align: center;
+	width: 640px;
+	height: 640px;
+	border-radius: 10px;
+	background: #fff top left / contain no-repeat;
+	z-index: 1000;
 	position: absolute;
 }
 
@@ -159,46 +159,46 @@ html, body, body > div.ng-scope {
 /* Templates - swipe */
 
 .main-photo .pass-overlay {
-    color: white;
-    position: relative;
-    top: 0;
-    background: #FF2400;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    font-size: 10em;
-    line-height: 200%;
+	color: white;
+	position: relative;
+	top: 0;
+	background: #FF2400;
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	font-size: 10em;
+	line-height: 200%;
 }
 
 .main-photo .like-overlay {
-    color: white;
-    position: relative;
-    top: -100%;
-    background: #2CA624;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    font-size: 10em;
-    line-height: 200%;
+	color: white;
+	position: relative;
+	top: -100%;
+	background: #2CA624;
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	font-size: 10em;
+	line-height: 200%;
 }
 
 .main-photo .like-overlay:hover,
 .main-photo .pass-overlay:hover{
-    cursor: -webkit-grab;
+	cursor: -webkit-grab;
 }
 
 
 /* Templates - swipe & profile */
 
 .profile {
-           flex: auto;
-           order: 2;
+	flex: auto;
+	order: 2;
 	margin: 16px;
 }
 
 @media all and (max-width: 1034px) {
 	.profile, .main-photo-container {
-			   order: 0;
+		order: 0;
 	}
 }
 
@@ -228,82 +228,83 @@ html, body, body > div.ng-scope {
 }
 
 .small-photos div {
-    display: inline-block;
+	display: inline-block;
 }
 
-.small-photos  {
+.small-photos {
 	margin: auto;
 	text-align: center;
-}       
-     
+}
+
 @media all and (max-width: 1034px) {
 
-	.small-photos  {
+	.small-photos {
 		max-width: 448px;
-	} 
+	}
 
 }
+
 .small-photos img {
-    width: 120px;
-    height: 120px;
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
-    border: 5px solid #FAFAFA;
+	width: 120px;
+	height: 120px;
+	border-radius: 10px;
+	overflow: hidden;
+	cursor: pointer;
+	border: 5px solid #FAFAFA;
 	margin: 8px;
 }
 
 .small-photos img.selected {
-    border: 5px solid #FF8271;
+	border: 5px solid #FF8271;
 }
 
 
 /* Templates - login */
 
 .fb-login {
-    color: #404040;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10000;
-    background-color: #4D4D4D;
-    text-align: center;
+	color: #404040;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10000;
+	background-color: #4D4D4D;
+	text-align: center;
 }
 
 .login-container {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
 }
 
 .login-container .icon {
-    padding-bottom: 30px;
+	padding-bottom: 30px;
 }
 
 #sign_in {
-    background: url('../img/login-sprite.png') no-repeat 0 0;
-    width: 340px;
-    height: 72px;
-    cursor: pointer;
-    display: block;
-    margin: 20px auto 0;
+	background: url('../img/login-sprite.png') no-repeat 0 0;
+	width: 340px;
+	height: 72px;
+	cursor: pointer;
+	display: block;
+	margin: 20px auto 0;
 }
 #sign_in:hover {
-    background-position-y: -72px;
+	background-position-y: -72px;
 }
 #sign_in:active {
-    background-position-y: -144px;
+	background-position-y: -144px;
 }
 
 
 /* Templates - messages */
 
 .messages-page-container {
-  display: flex;
-  flex-flow: column;
-  height: 100%;
+	display: flex;
+	flex-flow: column;
+	height: 100%;
 }
 .messages-page-menu {
 	order: 1;
@@ -312,19 +313,19 @@ html, body, body > div.ng-scope {
 .messages-page-messages {
 	flex: 1;
 	order: 2;
-    display: flex;
+	display: flex;
 }
 
 /* Templates - messages - match-list */
 
 #match-list {
-    flex: 0 0 185px;
-    display: flex;
-    flex-direction: column;
+	flex: 0 0 185px;
+	display: flex;
+	flex-direction: column;
 }
 
 #match-list.more-info {
-    flex: 0 0 260px;
+	flex: 0 0 260px;
 }
 
 .match-header {
@@ -343,87 +344,87 @@ html, body, body > div.ng-scope {
 }
 
 .match {
-    display: block;
-    border-bottom: 1px solid #ddd;
-    padding: 8px;
-    height: 42px; /* Thumbnail size: 84px */
-    cursor: pointer;
-    color: inherit;
+	display: block;
+	border-bottom: 1px solid #ddd;
+	padding: 8px;
+	height: 42px; /* Thumbnail size: 84px */
+	cursor: pointer;
+	color: inherit;
 }
 .match:hover {
-    background-color: rgba(245, 245, 245, 0.5);
+	background-color: rgba(245, 245, 245, 0.5);
 }
 .match.selected {
-    background-color: #F5F5F5;
+	background-color: #F5F5F5;
 }
 
 .info-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
 }
 
 .match .thumbnail {
-    display: inline-block;
-    box-sizing: border-box;
-    border-radius: 50%;
-    float: left;
-    height: 42px;
-    width: 42px;
+	display: inline-block;
+	box-sizing: border-box;
+	border-radius: 50%;
+	float: left;
+	height: 42px;
+	width: 42px;
 }
 
 .match .name {
-    margin: 0;
-    text-align: center;
-    font-weight: bold;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding-left: .5em;
+	margin: 0;
+	text-align: center;
+	font-weight: bold;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding-left: .5em;
 }
 
 .match .info {
-    margin: 0;
-    padding-top: 5px;
-    text-align: center;
-    font-weight: normal;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 13px;
+	margin: 0;
+	padding-top: 5px;
+	text-align: center;
+	font-weight: normal;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 13px;
 }
 
 .match.more-info {
-    padding: 5px;
+	padding: 5px;
 }
 
 .info .last-them {
-    color: #007a00;
+	color: #007a00;
 }
 
 .info .last-me-rest {
-    color: #0000CC;
+	color: #0000CC;
 }
 
 .info .last-me-pass {
-    color: #cc00cc;
+	color: #cc00cc;
 }
 
 .match.more-info .name {
-    line-height: 22px;
+	line-height: 22px;
 }
 
 /* Templates - messages - conversation */
 /* from http://codepen.io/samuelkraft/pen/Farhl */ /* Put this credits in an external file? */
 
 #conversation {
-    font-family: "Helvetica Neue", sans-serif;
-    font-size: 1.1em;
-    line-height: 20px;
-    font-weight: normal;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+	font-family: "Helvetica Neue", sans-serif;
+	font-size: 1.1em;
+	line-height: 20px;
+	font-weight: normal;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
 }
 
 .message-header {
@@ -450,7 +451,7 @@ html, body, body > div.ng-scope {
 	padding-bottom: 4px;
 	padding-left: 8px;
 	padding-right: 8px;
-    cursor: pointer;
+	cursor: pointer;
 	flex: 1;
 }
 .match-options a:first-child {
@@ -466,87 +467,87 @@ html, body, body > div.ng-scope {
 	flex: 1;
 }
 #conversation .messages-list-empty {
-  padding: 14px;
+	padding: 14px;
 	overflow: hidden;
 }
 #conversation .messages-list {
-  padding: 14px;
+	padding: 14px;
 	overflow: hidden;
 }
 
 #conversation div.from-me,
 #conversation div.from-them {
-    max-width: 51%;
-    word-wrap: break-word;
-    margin-bottom: 10px;
+	max-width: 51%;
+	word-wrap: break-word;
+	margin-bottom: 10px;
 }
 
 .from-me {
-    cursor: pointer;
-    position: relative;
-    padding: 10px 15px;
-    color: white;
-    background: #0B93F6;
-    border-radius: 25px;
-    float: right;
-    z-index: 10;
+	cursor: pointer;
+	position: relative;
+	padding: 10px 15px;
+	color: white;
+	background: #0B93F6;
+	border-radius: 25px;
+	float: right;
+	z-index: 10;
 }
 .from-me:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    bottom: -2px;
-    right: -7px;
-    height: 20px;
-    border-right: 20px solid #0B93F6;
-    border-bottom-left-radius: 16px 14px;
-    transform: translate(0, -2px);
+	content: "";
+	position: absolute;
+	z-index: -1;
+	bottom: -2px;
+	right: -7px;
+	height: 20px;
+	border-right: 20px solid #0B93F6;
+	border-bottom-left-radius: 16px 14px;
+	transform: translate(0, -2px);
 }
 .from-me:after {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    bottom: -2px;
-    right: -56px;
-    width: 26px;
-    height: 20px;
-    background: white;
-    border-bottom-left-radius: 10px;
-    transform: translate(-30px, -2px);
+	content: "";
+	position: absolute;
+	z-index: 1;
+	bottom: -2px;
+	right: -56px;
+	width: 26px;
+	height: 20px;
+	background: white;
+	border-bottom-left-radius: 10px;
+	transform: translate(-30px, -2px);
 }
 
 .from-them {
-    cursor: pointer;
-    position: relative;
-    z-index: 10;
-    padding: 10px 15px;
-    background: #E5E5EA;
-    border-radius: 25px;
-    color: black;
-    float: left;
+	cursor: pointer;
+	position: relative;
+	z-index: 10;
+	padding: 10px 15px;
+	background: #E5E5EA;
+	border-radius: 25px;
+	color: black;
+	float: left;
 }
 .from-them:before {
-    content: "";
-    position: absolute;
-    z-index: 2;
-    bottom: -2px;
-    left: -7px;
-    height: 20px;
-    border-left: 20px solid #E5E5EA;
-    border-bottom-right-radius: 16px 14px;
-    transform: translate(0, -2px);
+	content: "";
+	position: absolute;
+	z-index: 2;
+	bottom: -2px;
+	left: -7px;
+	height: 20px;
+	border-left: 20px solid #E5E5EA;
+	border-bottom-right-radius: 16px 14px;
+	transform: translate(0, -2px);
 }
 .from-them:after {
-    content: "";
-    position: absolute;
-    z-index: 3;
-    bottom: -2px;
-    left: 4px;
-    width: 26px;
-    height: 20px;
-    background: white;
-    border-bottom-right-radius: 10px;
-    transform: translate(-30px, -2px);
+	content: "";
+	position: absolute;
+	z-index: 3;
+	bottom: -2px;
+	left: 4px;
+	width: 26px;
+	height: 20px;
+	background: white;
+	border-bottom-right-radius: 10px;
+	transform: translate(-30px, -2px);
 }
 
 .sentAt {
@@ -558,43 +559,50 @@ html, body, body > div.ng-scope {
 }
 
 .from-them-date {
-    right: -110px;
+	right: -110px;
+	position: absolute;
+	z-index: 9;
+	opacity: 0;
+	color: #555;
+	min-width: 150px;
 }
 
 .from-them-date.bounceIn {
-    transition: all .2s;
-    opacity: 1;
-    transform: translateX(55px);
+	transition: all .2s;
+	opacity: 1;
+	transform: translateX(55px);
 }
 
 .from-them-date.bounceOut {
-    transition: all .2s;
-    opacity: 0;
-    transform: translateX(-55px);
+	transition: all .2s;
+	opacity: 0;
+	transform: translateX(-55px);
 }
 
 .from-me-date {
-    left: -110px;
+	left: -110px;
+	/*right: 0;*/
+	left: -100px;
 }
 
 .from-me-date.bounceIn {
-    transition: all .2s;
-    opacity: 1;
-    transform: translateX(-55px);
+	transition: all .2s;
+	opacity: 1;
+	transform: translateX(-55px);
 }
 
 .from-me-date.bounceOut {
-    transition: all .2s;
-    opacity: 0;
-    transform: translateX(55px);
+	transition: all .2s;
+	opacity: 0;
+	transform: translateX(55px);
 }
 
 .messages-in-chat {
-    clear: both;
+	clear: both;
 }
 
 .pending-message {
-    color: #DAE3EA;
+	color: #DAE3EA;
 }
 
 .messages-textarea {
@@ -602,15 +610,15 @@ html, body, body > div.ng-scope {
 }
 
 #conversation textarea {
-    font-size: 1em;
-    outline: none;
-    border: solid #ccc;
-    border-width: 1px 0 0 0;
-    border-radius: 0;
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-      margin: 0;
+	font-size: 1em;
+	outline: none;
+	border: solid #ccc;
+	border-width: 1px 0 0 0;
+	border-radius: 0;
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	margin: 0;
 	display: block;
 }
 
@@ -619,18 +627,18 @@ html, body, body > div.ng-scope {
 
 .settings {
 	clear: both;
-	}
+}
 
 .settings fieldset {
-    margin-top: 16px;
+	margin-top: 16px;
 	margin-left: auto;
 	margin-right: auto;
-    text-align: center;
-    border-radius: 50px;
-    background-color: #FAFAFA;
-    padding: 10px;
-    position: relative;
-    width:400px;
+	text-align: center;
+	border-radius: 50px;
+	background-color: #FAFAFA;
+	padding: 10px;
+	position: relative;
+	width:400px;
 }
 
 .settings legend {
@@ -642,60 +650,60 @@ html, body, body > div.ng-scope {
 /* Templates - discovery */
 
 section.range-slider {
-    overflow: hidden;
-    position: relative;
-    width: 200px;
-    height: 18px;
-    display: inline-block;
+	overflow: hidden;
+	position: relative;
+	width: 200px;
+	height: 18px;
+	display: inline-block;
 }
 
 section.range-slider input {
-    pointer-events: none;
-    position: absolute;
-    overflow: hidden;
-    left: 0;
-    top: 0;
-    width: 200px;
-    outline: none;
-    height: 18px;
+	pointer-events: none;
+	position: absolute;
+	overflow: hidden;
+	left: 0;
+	top: 0;
+	width: 200px;
+	outline: none;
+	height: 18px;
 }
 
 ul.from-to {
-    display: block;
-    list-style-type: none;
-    margin-top: 10px;
-    font-family: Arial, Tahoma, Verdana, Arial, Helvetica, sans-serif;
-    font-size: 11px;
+	display: block;
+	list-style-type: none;
+	margin-top: 10px;
+	font-family: Arial, Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
 }
 
 ul.from-to li {
-    margin-bottom: 1px;
+	margin-bottom: 1px;
 }
 
 ul.from-to li label {
-    background-color: rgba(0, 0, 0, .1);
-    height: 24px;
-    line-height: 24px;
-    display: inline-block;
-    width: 60px;
-    padding: 0 10px;
-    float: left;
-    font-size: 9px;
-    color: rgba(0, 0, 0, .25);
-    text-transform: uppercase;
+	background-color: rgba(0, 0, 0, .1);
+	height: 24px;
+	line-height: 24px;
+	display: inline-block;
+	width: 60px;
+	padding: 0 10px;
+	float: left;
+	font-size: 9px;
+	color: rgba(0, 0, 0, .25);
+	text-transform: uppercase;
 }
 
 ul.from-to li input {
-    border: 1px solid rgba(0, 0, 0, .1);
-    padding: 0 8px;
-    height: 24px;
-    line-height: 24px;
-    outline: none;
+	border: 1px solid rgba(0, 0, 0, .1);
+	padding: 0 8px;
+	height: 24px;
+	line-height: 24px;
+	outline: none;
 }
 
 
 /* Templates - settings */
 
 #autocompleteLocation {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
