@@ -34,4 +34,11 @@
       return moment(time).format('L HH:mm');
     };
   });
+  
+  module.filter('twemoji', function() {
+    return function(string) {
+      return twemoji.parse(string);
+    };  
+  });
+  
 })();

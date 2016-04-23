@@ -36,7 +36,7 @@
                 {{job.title.name}} {{job.company && job.title ? ('SWIPE.AT' | translate) : ''}} {{job.company.name}}
                 </i>
               </p>
-              <p ng-show="allPeople[peopleIndex].bio" class="bio fader">{{ allPeople[peopleIndex].bio }}</p>
+              <p ng-show="allPeople[peopleIndex].bio" html-bind="allPeople[peopleIndex].bio | twemojie" class="bio fader"></p>
             </div>
             <!-- small inactive photos -->
             <div class="small-photos fader">

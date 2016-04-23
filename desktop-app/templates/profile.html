@@ -22,7 +22,7 @@
           	    {{job.title.name}} {{job.company && job.title ? ('PROFILE.AT' | translate) : ''}} {{job.company.name}}
               </i>
             </p>
-            <p ng-show="user.bio" class="bio fader" ng-bind-html="user.bio"></p>
+            <p ng-show="user.bio" class="bio fader" ng-bind-html="user.bio | twemoji"></p>
           </div>
           <div class="small-photos fader">
             <div ng-repeat="photo in user.photos">

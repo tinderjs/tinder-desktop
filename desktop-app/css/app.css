@@ -741,6 +741,11 @@ ul.from-to li input {
     outline: none;
 }
 
+.emoji {
+  width: 20px;
+  padding-left: 5px;
+}
+
 
 /* Templates - settings */
 
