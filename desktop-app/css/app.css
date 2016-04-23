@@ -37,11 +37,9 @@ a {
 }
 
 /* General layout */
+html, body, body,
 html, body, body > div.ng-scope {
-    max-width: 100%;
-    max-height: 100%;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    width: 100%;
     height: 100%;
 }
 
@@ -123,15 +121,17 @@ html, body, body > div.ng-scope {
     margin: 8px 5px 18px;
 }
 
-.container, .settings fieldset {
-    margin: 0 auto 5px;
-    text-align: center;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    border-radius: 50px;
-    background-color: #FAFAFA;
-    padding: 10px;
-    position: relative;
+.settings-header {
+
+}
+
+.config {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 10px 0;
+    min-height: 30px;
 }
 
 .container .loader {
@@ -592,17 +592,27 @@ html, body, body > div.ng-scope {
 }
 
 /* Settings Page */
-
-.settings h1 {
-    text-align: center;
+.settings-title {
+    margin-top: 0px;
 }
 
 .settings {
-    padding-top: 47px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 24px 36px;
+    background-color: white;
+    max-width: 800px;
+    box-shadow: 0 3px 3px rgba(221, 221, 221, 0.26);
 }
 
-.settings fieldset {
-    width:400px;
+.settings-opts {
+    display: flex;
+    flex-direction: row;
+}
+
+.settings-opts label {
+    margin: 0 8px;
+    cursor: pointer;
 }
 
 .info .last-them {
@@ -723,4 +733,22 @@ ul.from-to li input {
     height: 24px;
     line-height: 24px;
     outline: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.tinder-bttn {
+    background-color: #db6151;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: 0px;
+    outline: none;
+    cursor: pointer;
+}
+
+.tinder-bttn:hover {
+    opacity: 0.8;
 }
