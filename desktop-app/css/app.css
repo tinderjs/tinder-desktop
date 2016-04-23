@@ -248,8 +248,11 @@ html, body, body > div.ng-scope {
 	border-radius: 8px;
 	overflow: hidden;
 	cursor: pointer;
-	border: 5px solid #FAFAFA;
+	border: 5px solid #DDD;
 	margin: 8px;
+}
+.small-photos img:hover {
+	border: 5px solid #BBB;
 }
 
 .small-photos img.selected {
