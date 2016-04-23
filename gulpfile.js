@@ -18,6 +18,8 @@ var PATHS = {
     'bower_components/angular-cookies/angular-cookies.min.js',
     'bower_components/angular-route/angular-route.min.js',
     'bower_components/angular-sanitize/angular-sanitize.min.js',
+    'bower_components/angular-translate/angular-translate.min.js',
+    'bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js',
     'bower_components/jquery/dist/jquery.min.js',
     'bower_components/moment/min/moment-with-locales.min.js',
     'bower_components/mousetrap/mousetrap.min.js',

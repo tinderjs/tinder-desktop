@@ -186,6 +186,7 @@ html, body, body > div.ng-scope {
 
 #autocompleteLocation {
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .bio {

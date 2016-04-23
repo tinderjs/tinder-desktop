@@ -1,5 +1,5 @@
 (function() {
-  var app = angular.module('tinder-desktop', ['tinder-desktop.login', 'tinder-desktop.swipe', 'tinder-desktop.messages', 'tinder-desktop.profile','tinder-desktop.discovery', 'ngRoute', 'tinder-desktop.settings', 'tinder-desktop.controls', 'tinder-desktop.common']);
+  var app = angular.module('tinder-desktop', ['tinder-desktop.login', 'tinder-desktop.swipe', 'tinder-desktop.messages', 'tinder-desktop.profile','tinder-desktop.discovery', 'ngRoute', 'tinder-desktop.settings', 'tinder-desktop.controls', 'tinder-desktop.common', 'pascalprecht.translate']);
   var remote = require('remote');
   
   app.config(function($routeProvider) {
@@ -13,6 +13,20 @@
       });
     });
   });
+
+  app.config(['$translateProvider', function($translateProvider) {
+    $translateProvider
+      .useStaticFilesLoader({
+        prefix: 'locales/',
+        suffix: '.json'
+      })
+      .registerAvailableLanguageKeys(['en'], {
+        'en-*': 'en'
+      })
+      .uniformLanguageTag('bcp47')
+      .determinePreferredLanguage()
+      .fallbackLanguage('en');
+  }]);
 
   app.run(function($location, Settings, Controls) {
     var firstPage = (localStorage.tinderToken ? Settings.get('landingPage') : '/login');

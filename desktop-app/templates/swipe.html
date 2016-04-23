@@ -3,7 +3,7 @@
   <div class="user">
     <div class="left" ng-show="apiQueue.length > 0">
       <a href="" ng-click="undo()">
-        Undo <i class="fa fa-undo"></i>
+        {{'SWIPE.UNDO' | translate}} <i class="fa fa-undo"></i>
         <img ng-src="{{apiQueue[0].user.photos[0].processedFiles[3].url}}" />
       </a>
     </div>
@@ -12,10 +12,10 @@
         {{getCookie('name')}}
         <span ng-show="(superLikesRemaining)">
           <br>
-          Superlikes Remaining: {{superLikesRemaining}}
+          {{'SWIPE.SUPERLIKES_REMAINING' | translate}}: {{superLikesRemaining}}
         </span>
         <br>
-        <a href="#/discovery">Discovery Settings</a>
+        <a href="#/discovery" translate="DISCOVERY.TITLE"></a>
       </p>
     </div>
     <div class="clear"></div>
@@ -23,7 +23,7 @@
 
   <!-- Main Application Container -->
   <div class="container">
-    <div ng-show="allPeople.length === 0 || peopleIndex >= allPeople.length">Loading...<div class="loader"></div></div>
+    <div ng-show="allPeople.length === 0 || peopleIndex >= allPeople.length">{{'SWIPE.LOADING' | translate}}<div class="loader"></div></div>
     <div ng-show="allPeople.length > 0 && peopleIndex < allPeople.length">
 
       <div class="main-photo-container">
@@ -47,13 +47,13 @@
           </a>
           , {{allPeople[peopleIndex].birth_date | bdayToAge}}&nbsp;
         </h1>
-        <h3 class="fader" style="display: inline;">{{allPeople[peopleIndex].distance_mi | distanceToUnits}} {{getCookie('currentCity') ? "from " + getCookie('currentCity') : 'away'}}, active {{allPeople[peopleIndex].ping_time | timeFromNow}}</h3>
+        <h3 class="fader" style="display: inline;">{{allPeople[peopleIndex].distance_mi | distanceToUnits}} {{getCookie('currentCity') ? "from " + getCookie('currentCity') : ('SWIPE.AWAY' | translate)}}, {{'SWIPE.ACTIVE' | translate}} {{allPeople[peopleIndex].ping_time | timeFromNow}}</h3>
 
 
         <p class="fader">
           <i ng-repeat="school in allPeople[peopleIndex].schools" class="fa fa-graduation-cap">{{school.name}}</i>
           <i ng-repeat="job in allPeople[peopleIndex].jobs" class="fa fa-briefcase">
-            {{job.title.name}}{{job.company && job.title ? ' at ' : ''}}{{job.company.name}}
+            {{job.title.name}} {{job.company && job.title ? ('SWIPE.AT' | translate) : ''}} {{job.company.name}}
           </i>
         </p>
         <p ng-show="allPeople[peopleIndex].bio" class="fader bio">{{ allPeople[peopleIndex].bio }}</p>
