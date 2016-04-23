@@ -241,7 +241,6 @@ html, body, body > div.ng-scope {
 .small-photos img {
     width: 120px;
     height: 120px;
-    /*max-width: 120px;*/
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
