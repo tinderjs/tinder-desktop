@@ -17,7 +17,7 @@
           ({{user.instagram.username}})</a>,
 		  {{user.birth_date | bdayToAge}}&nbsp;
       </h1>
-      <h3 class="status fader">{{user.distance_mi | distanceToUnits}} away, Active {{user.ping_time | timeFromNow}}</h3>
+      <h3 class="status fader">{{user.distance_mi | distanceToUnits}} away, active {{user.ping_time | timeFromNow}}</h3>
 
       <p class="schoolwork fader">
         <i ng-repeat="school in user.schools" class="school fa fa-graduation-cap">{{school.name}}</i>
