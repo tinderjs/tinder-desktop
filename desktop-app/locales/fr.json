@@ -1,0 +1,57 @@
+{
+  "DISCOVERY": {
+    "TITLE": "Réglage de la découverte",
+    "PASSPORT": "Passport",
+    "CHANGE_LOCATION": "Utiliser à",
+    "ACTUAL_LOCATION": "Ma position actuelle",
+    "DISCOVERABLE": "Decouverte",
+    "YES": "oui",
+    "NO": "non",
+    "SHOW_ME": "Montrez-moi",
+    "FEMALE": "Femme",
+    "MALE": "Homme",
+    "BOTH": "Les deux",
+    "SEARCH_PROXIMITY": "Distance pour la recherche",
+    "DISPLAY_AGES": "Afficher les Âges: {{from_age}} - {{to_age}}"
+  },
+  "MESSAGES": {
+    "TITLE": "Messages",
+    "MESSAGES_COUNT": "Messages ({{count}})",
+    "UNKNOWN": "Inconnu",
+    "CHAT_WITH": "Discussion avec",
+    "UNMATCH": "Supprimer Affinité",
+    "NO_MESSAGES": "Aucun message pour l'instant, écrivez-en un !",
+    "MESSAGE_PLACEHOLDER": "Ecrivez quelque chose..."
+  },
+  "PROFILE": {
+    "TITLE": "Profil",
+    "AWAY": "absent",
+    "ACTIVE": "en ligne",
+    "AT": "à"
+  },
+  "SETTINGS": {
+    "TITLE": "Paramètres",
+    "LOCATION": "Position",
+    "SET_LOCATION": "Configurer ma position",
+    "CHANGE_LOCATION": "Changer ma position",
+    "LANDING_PAGE": "Page d'accueil",
+    "SWIPE": "@:SWIPE.TITLE",
+    "MESSAGES": "@:MESSAGES.TITLE",
+    "EXTRA_INFO_ON": "Afficher affinité/Résumé de la conversation",
+    "EXTRA_INFO_OFF": "Cacher affinité/Résumé de la conversation",
+    "DISTANCE_UNITS": "Unitées de disance",
+    "MILES": "Miles",
+    "KILOMETRES": "Kilomètres",
+    "LOGOUT": "se déconnecter",
+    "CLICK_TO_LOGOUT": "Clicquez pour se déconnecter"
+  },
+  "SWIPE": {
+    "TITLE": "Draguer",
+    "UNDO": "Annuler",
+    "SUPERLIKES_REMAINING": "Superlikes restant",
+    "LOADING": "Chargement...",
+    "AWAY": "@:PROFILE.AWAY",
+    "ACTIVE": "@:PROFILE.ACTIVE",
+    "AT": "@:PROFILE.AT"
+  }
+}
