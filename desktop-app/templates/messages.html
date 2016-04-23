@@ -1,77 +1,71 @@
 <div class="wrapper">
-
-<div class="wrapper-menu" ng-include src="'partials/menu.html'"></div>
-
-<div class="wrapper-page">
-  <div id="match-list" ng-class="showExtra && 'more-info'">
-    <div class="match-header">
-      Matches: {{conversationCount}}
-    </div>
-    <div class="scrollable-matchlist">
-      <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true track by match.matchId"
-           ng-click="open(match.matchId)" 
-           ng-class="{true: 'selected'}[currentMatch === match.matchId]"
-           class="match">
-        <img ng-src="{{match.thumbnail || 'img/anonymous.png'}}" class="thumbnail"/>
-        <div class="info-container">
-          <div class="name">{{match.name || 'Unknown'}}</div>
-          <div class="info" ng-show="showExtra && match.infoUpdateTime">
-            <i class="fa fa-location-arrow"></i> {{match.userDistance | distanceToUnits}} |
-            <i class="fa fa-bolt"></i> <span short-time-ago="{{match.userPingTime}}"></span> |
-            <i class="fa fa-comments" ng-class="lastMessageClass(match)"></i> <span short-time-ago="{{match.lastActive}}"></span>
+  <div class="wrapper-menu" ng-include src="'partials/menu.html'"></div>
+  <div class="wrapper-page">
+    <div id="match-list" ng-class="showExtra && 'more-info'">
+      <div class="match-header">
+        Matches: {{conversationCount}}
+      </div>
+      <div class="scrollable-matchlist">
+        <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true track by match.matchId"
+          ng-click="open(match.matchId)" 
+          ng-class="{true: 'selected'}[currentMatch === match.matchId]"
+          class="match">
+          <img ng-src="{{match.thumbnail || 'img/anonymous.png'}}" class="thumbnail"/>
+          <div class="info-container">
+            <div class="name">{{match.name || 'Unknown'}}</div>
+            <div class="info" ng-show="showExtra && match.infoUpdateTime">
+              <i class="fa fa-location-arrow"></i> {{match.userDistance | distanceToUnits}} |
+              <i class="fa fa-bolt"></i> <span short-time-ago="{{match.userPingTime}}"></span> |
+              <i class="fa fa-comments" ng-class="lastMessageClass(match)"></i> <span short-time-ago="{{match.lastActive}}"></span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div id="conversation" ng-show="conversation">
-    <div class="message-header">
-      <div class="chat-with">
-        Chat with <a ng-href="#/profile/{{conversation.userId}}">{{conversation.name}}</a>
-      </div>
-      <div class="match-options">
-	    <a ng-href="#/profile/{{conversation.userId}}">
-		  Profile
-		</a>
-	    <a ng-click="unmatch(conversation)">
+    <div id="conversation" ng-show="conversation">
+      <div class="message-header">
+        <div class="chat-with">
+          Chat with <a ng-href="#/profile/{{conversation.userId}}">{{conversation.name}}</a>
+        </div>
+        <div class="match-options">
+          <a ng-href="#/profile/{{conversation.userId}}">
+          Profile
+          </a>
+          <a ng-click="unmatch(conversation)">
           Unmatch
-        </a>
-	  </div>
-	</div>
-	<div class="messages-list-container">
-    <div ng-show="conversation.messages.length == 0" class="messages-list-empty">
-      No messages yet. Write something!
-    </div>
-    <div class="messages-list">
-      <!-- normal messages -->
-      <div ng-repeat-start="message in conversation.messages track by $index" 
-           ng-click="$showTimeStamp = !$showTimeStamp"
-           style="position:relative">
-
-        <div class="{{message.fromMe ? 'from-me' : 'from-them'}}">
-        <div class="{{message.fromMe ? 'from-me-date sentAt' : 'from-them-date sentAt'}}" 
-             ng-class="{true: 'bounceIn', false: 'bounceOut'}[$showTimeStamp === true]">
-          {{message.sentDate | timeToLocalized}}
-        </div>
-          <div ng-if="message.text" 
-               ng-bind-html="message.text"></div>
+          </a>
         </div>
       </div>
-
-      <div ng-repeat-end class="messages-in-chat" scroll-to-last></div>
-      <!-- pending messages -->
-      <div ng-repeat-start="message in conversation.pending track by $index"
-          class="from-me">
-        <div class="pending-message">{{message}}</div>
+      <div class="messages-list-container">
+        <div ng-show="conversation.messages.length == 0" class="messages-list-empty">
+          No messages yet. Write something!
+        </div>
+        <div class="messages-list">
+          <!-- normal messages -->
+          <div ng-repeat-start="message in conversation.messages track by $index" 
+            ng-click="$showTimeStamp = !$showTimeStamp"
+            style="position:relative">
+            <div class="{{message.fromMe ? 'from-me' : 'from-them'}}">
+              <div class="{{message.fromMe ? 'from-me-date sentAt' : 'from-them-date sentAt'}}" 
+                ng-class="{true: 'bounceIn', false: 'bounceOut'}[$showTimeStamp === true]">
+                {{message.sentDate | timeToLocalized}}
+              </div>
+              <div ng-if="message.text" 
+                ng-bind-html="message.text"></div>
+            </div>
+          </div>
+          <div ng-repeat-end class="messages-in-chat" scroll-to-last></div>
+          <!-- pending messages -->
+          <div ng-repeat-start="message in conversation.pending track by $index"
+            class="from-me">
+            <div class="pending-message">{{message}}</div>
+          </div>
+          <div ng-repeat-end class="messages-in-chat" scroll-to-last></div>
+        </div>
       </div>
-
-      <div ng-repeat-end class="messages-in-chat" scroll-to-last></div>
-
+      <div class="messages-textarea">
+        <textarea ng-keypress="keypress($event)" ng-model="message" placeholder="Insert something witty here...">
+      </div>
     </div>
-	</div>
-	<div class="messages-textarea">
-		<textarea ng-keypress="keypress($event)" ng-model="message" placeholder="Insert something witty here...">
-	</div>
   </div>
-</div>
 </div>
