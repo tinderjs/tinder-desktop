@@ -245,7 +245,7 @@ html, body, body > div.ng-scope {
 .small-photos img {
 	width: 120px;
 	height: 120px;
-	border-radius: 10px;
+	border-radius: 8px;
 	overflow: hidden;
 	cursor: pointer;
 	border: 5px solid #FAFAFA;
