@@ -120,16 +120,13 @@ html, body, body > div.ng-scope {
 
 .responsive-profile {
     background-color: white;
-       display: -webkit-flex;
    display:         flex;
-   -webkit-flex-flow: row;
            flex-flow: row;
 }
 
 @media all and (max-width: 1034px) {
 
 	.responsive-profile {
-	   -webkit-flex-flow: column;
 			   flex-flow: column;
 	}
 
@@ -145,9 +142,7 @@ html, body, body > div.ng-scope {
 }
 
 .main-photo-container {
-       -webkit-flex: 0 0 640px;
            flex: 0 0 640px;
-   -webkit-order: 1;
            order: 1;
     margin: 16px;
 	position: relative;
@@ -199,16 +194,13 @@ html, body, body > div.ng-scope {
 }
 
 .profile {
-   -webkit-flex: auto;
            flex: auto;
-   -webkit-order: 2;
            order: 2;
 	margin: 16px;
 }
 
 @media all and (max-width: 1034px) {
 	.profile, .main-photo-container {
-	   -webkit-order: 0;
 			   order: 0;
 	}
 }
