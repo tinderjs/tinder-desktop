@@ -45,7 +45,7 @@
           {{message.sentDate | timeToLocalized}}
         </div>
           <div ng-if="message.text" 
-               ng-bind-html="message.text"></div>
+               ng-bind-html="message.text | twemoji"></div>
         </div>
       </div>
 

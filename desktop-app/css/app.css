@@ -724,3 +724,8 @@ ul.from-to li input {
     line-height: 24px;
     outline: none;
 }
+
+.emoji {
+  width: 20px;
+  padding-left: 5px;
+}
