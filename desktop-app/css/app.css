@@ -1,4 +1,5 @@
 /* General styles */
+
 * {
     font-family: 'Merriweather', serif;
 }
@@ -12,7 +13,9 @@ a {
     text-decoration: none;
 }
 
+
 /* General layout */
+
 html, body, body > div.ng-scope {
     max-width: 100%;
     max-height: 100%;
@@ -21,7 +24,17 @@ html, body, body > div.ng-scope {
     height: 100%;
 }
 
-/* STATIC MENU BLOCK */
+.container h1 {
+    margin: 0;
+}
+
+.container h3 {
+    margin: 0 0 20px 0;
+}
+
+
+/* Partials - menu */
+
 .menu {
     display: table;
     table-layout: fixed;
@@ -71,6 +84,9 @@ html, body, body > div.ng-scope {
 
 }
 
+
+/* Templates - swipe */
+
 .container .loader {
 	text-align: center;
 	margin-top: 16px;
@@ -101,13 +117,8 @@ html, body, body > div.ng-scope {
   }
 }
 
-.container h1 {
-    margin: 0;
-}
 
-.container h3 {
-    margin: 0 0 20px 0;
-}
+/* Templates - swipe & profile */
 
 .responsive-profile {
     background-color: white;
@@ -121,15 +132,6 @@ html, body, body > div.ng-scope {
 			   flex-flow: column;
 	}
 
-}
-
-#autocompleteLocation {
-    margin-bottom: 20px;
-}
-
-.bio {
-	text-align: center;
-	white-space: pre-wrap;
 }
 
 .main-photo-container {
@@ -152,6 +154,9 @@ html, body, body > div.ng-scope {
     z-index: 1000;
 	position: absolute;
 }
+
+
+/* Templates - swipe */
 
 .main-photo .pass-overlay {
     color: white;
@@ -182,6 +187,9 @@ html, body, body > div.ng-scope {
     cursor: -webkit-grab;
 }
 
+
+/* Templates - swipe & profile */
+
 .profile {
            flex: auto;
            order: 2;
@@ -192,6 +200,9 @@ html, body, body > div.ng-scope {
 	.profile, .main-photo-container {
 			   order: 0;
 	}
+}
+
+.information {
 }
 
 .name {
@@ -209,6 +220,11 @@ html, body, body > div.ng-scope {
 
 .school, .work {
 	display: block;
+}
+
+.bio {
+	text-align: center;
+	white-space: pre-wrap;
 }
 
 .small-photos div {
@@ -241,28 +257,9 @@ html, body, body > div.ng-scope {
     border: 5px solid #FF8271;
 }
 
-.information {
-}
 
-/* facebook login button */
-#sign_in {
-    background: url('../img/login-sprite.png') no-repeat 0 0;
-    width: 340px;
-    height: 72px;
-    cursor: pointer;
-    display: block;
-    margin: 20px auto 0;
-}
+/* Templates - login */
 
-#sign_in:hover {
-    background-position-y: -72px;
-}
-
-#sign_in:active {
-    background-position-y: -144px;
-}
-
-/* facebook login */
 .fb-login {
     color: #404040;
     position: fixed;
@@ -285,7 +282,24 @@ html, body, body > div.ng-scope {
     padding-bottom: 30px;
 }
 
-/* Messages screen */
+#sign_in {
+    background: url('../img/login-sprite.png') no-repeat 0 0;
+    width: 340px;
+    height: 72px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto 0;
+}
+#sign_in:hover {
+    background-position-y: -72px;
+}
+#sign_in:active {
+    background-position-y: -144px;
+}
+
+
+/* Templates - messages */
+
 .messages-page-container {
   display: flex;
   flex-flow: column;
@@ -301,12 +315,18 @@ html, body, body > div.ng-scope {
     display: flex;
 }
 
-/* Chat */
+/* Templates - messages - match-list */
+
 #match-list {
     flex: 0 0 185px;
     display: flex;
     flex-direction: column;
 }
+
+#match-list.more-info {
+    flex: 0 0 260px;
+}
+
 .match-header {
 	flex: 0 0 40px;
 	border-bottom: 1px solid #DB6151;
@@ -315,8 +335,11 @@ html, body, body > div.ng-scope {
 	justify-content: center;
 	align-items: center;
 }
-#match-list.more-info {
-    flex: 0 0 260px;
+
+.scrollable-matchlist {
+	flex: 1;
+	overflow-y: scroll;
+	border-right: 1px solid #ddd;
 }
 
 .match {
@@ -333,6 +356,7 @@ html, body, body > div.ng-scope {
 .match.selected {
     background-color: #F5F5F5;
 }
+
 .info-container {
     display: flex;
     flex-direction: column;
@@ -340,6 +364,7 @@ html, body, body > div.ng-scope {
     justify-content: center;
     height: 100%;
 }
+
 .match .thumbnail {
     display: inline-block;
     box-sizing: border-box;
@@ -348,6 +373,7 @@ html, body, body > div.ng-scope {
     height: 42px;
     width: 42px;
 }
+
 .match .name {
     margin: 0;
     text-align: center;
@@ -355,13 +381,6 @@ html, body, body > div.ng-scope {
     overflow: hidden;
     text-overflow: ellipsis;
     padding-left: .5em;
-}
-.match.more-info {
-    padding: 5px;
-}
-
-.match.more-info .name {
-    line-height: 22px;
 }
 
 .match .info {
@@ -374,7 +393,29 @@ html, body, body > div.ng-scope {
     font-size: 13px;
 }
 
-/* from http://codepen.io/samuelkraft/pen/Farhl */
+.match.more-info {
+    padding: 5px;
+}
+
+.info .last-them {
+    color: #007a00;
+}
+
+.info .last-me-rest {
+    color: #0000CC;
+}
+
+.info .last-me-pass {
+    color: #cc00cc;
+}
+
+.match.more-info .name {
+    line-height: 22px;
+}
+
+/* Templates - messages - conversation */
+/* from http://codepen.io/samuelkraft/pen/Farhl */ /* Put this credits in an external file? */
+
 #conversation {
     font-family: "Helvetica Neue", sans-serif;
     font-size: 1.1em;
@@ -398,6 +439,10 @@ html, body, body > div.ng-scope {
 	padding-right: 16px;
 }
 
+.chat-with {
+	flex: 1;
+}
+
 .match-options a {
 	border-left: 2px solid #DB6151;
 	border-collapse: collapse;
@@ -408,11 +453,9 @@ html, body, body > div.ng-scope {
     cursor: pointer;
 	flex: 1;
 }
-
 .match-options a:first-child {
 	border-left: 0px
 }
-
 .match-options a:last-child {
 	padding-right: 0px
 }
@@ -422,30 +465,11 @@ html, body, body > div.ng-scope {
 	overflow: auto;
 	flex: 1;
 }
-
-.messages-textarea {
-	order: 3;
-}
-
-.scrollable-matchlist {
-	flex: 1;
-	overflow-y: scroll;
-	border-right: 1px solid #ddd;
-}
-.chat-with {
-	flex: 1;
-}
-
-#conversation h2 {
-    padding: 0 14px 21px 11px;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 0;
-}
-#conversation .messages-list {
+#conversation .messages-list-empty {
   padding: 14px;
 	overflow: hidden;
 }
-#conversation .messages-list-empty {
+#conversation .messages-list {
   padding: 14px;
 	overflow: hidden;
 }
@@ -455,22 +479,6 @@ html, body, body > div.ng-scope {
     max-width: 51%;
     word-wrap: break-word;
     margin-bottom: 10px;
-}
-#conversation textarea {
-    font-size: 1em;
-    outline: none;
-    border: solid #ccc;
-    border-width: 1px 0 0 0;
-    border-radius: 0;
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-      margin: 0;
-	display: block;
-}
-
-.messages-in-chat {
-    clear: both;
 }
 
 .from-me {
@@ -504,6 +512,40 @@ html, body, body > div.ng-scope {
     height: 20px;
     background: white;
     border-bottom-left-radius: 10px;
+    transform: translate(-30px, -2px);
+}
+
+.from-them {
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+    padding: 10px 15px;
+    background: #E5E5EA;
+    border-radius: 25px;
+    color: black;
+    float: left;
+}
+.from-them:before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    bottom: -2px;
+    left: -7px;
+    height: 20px;
+    border-left: 20px solid #E5E5EA;
+    border-bottom-right-radius: 16px 14px;
+    transform: translate(0, -2px);
+}
+.from-them:after {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    bottom: -2px;
+    left: 4px;
+    width: 26px;
+    height: 20px;
+    background: white;
+    border-bottom-right-radius: 10px;
     transform: translate(-30px, -2px);
 }
 
@@ -547,45 +589,33 @@ html, body, body > div.ng-scope {
     transform: translateX(55px);
 }
 
-.from-them {
-    cursor: pointer;
-    position: relative;
-    z-index: 10;
-    padding: 10px 15px;
-    background: #E5E5EA;
-    border-radius: 25px;
-    color: black;
-    float: left;
-}
-.from-them:before {
-    content: "";
-    position: absolute;
-    z-index: 2;
-    bottom: -2px;
-    left: -7px;
-    height: 20px;
-    border-left: 20px solid #E5E5EA;
-    border-bottom-right-radius: 16px 14px;
-    transform: translate(0, -2px);
-}
-.from-them:after {
-    content: "";
-    position: absolute;
-    z-index: 3;
-    bottom: -2px;
-    left: 4px;
-    width: 26px;
-    height: 20px;
-    background: white;
-    border-bottom-right-radius: 10px;
-    transform: translate(-30px, -2px);
+.messages-in-chat {
+    clear: both;
 }
 
 .pending-message {
     color: #DAE3EA;
 }
 
-/* Settings Page */
+.messages-textarea {
+	order: 3;
+}
+
+#conversation textarea {
+    font-size: 1em;
+    outline: none;
+    border: solid #ccc;
+    border-width: 1px 0 0 0;
+    border-radius: 0;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+      margin: 0;
+	display: block;
+}
+
+
+/* Templates - settings & discovery */
 
 .settings {
 	clear: both;
@@ -608,19 +638,9 @@ html, body, body > div.ng-scope {
 	padding-right: 4px;
 }
 
-.info .last-them {
-    color: #007a00;
-}
 
-.info .last-me-rest {
-    color: #0000CC;
-}
+/* Templates - discovery */
 
-.info .last-me-pass {
-    color: #cc00cc;
-}
-
-/* Discovery Settings Page */
 section.range-slider {
     overflow: hidden;
     position: relative;
@@ -671,4 +691,11 @@ ul.from-to li input {
     height: 24px;
     line-height: 24px;
     outline: none;
+}
+
+
+/* Templates - settings */
+
+#autocompleteLocation {
+    margin-bottom: 20px;
 }
