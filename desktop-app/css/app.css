@@ -24,6 +24,25 @@ html, body, body > div.ng-scope {
 	height: 100%;
 }
 
+.wrapper {
+	display: flex;
+	flex-flow: column;
+	height: 100%;
+}
+.wrapper-menu {
+	order: 1;
+}
+
+.wrapper-page {
+	flex: 1;
+	order: 2;
+	display: flex;
+}
+
+.container {
+	flex: 1;
+}
+
 .container h1 {
 	margin: 0;
 }
@@ -305,23 +324,6 @@ html, body, body > div.ng-scope {
 	background-position-y: -144px;
 }
 
-
-/* Templates - messages */
-
-.messages-page-container {
-	display: flex;
-	flex-flow: column;
-	height: 100%;
-}
-.messages-page-menu {
-	order: 1;
-}
-
-.messages-page-messages {
-	flex: 1;
-	order: 2;
-	display: flex;
-}
 
 /* Templates - messages - match-list */
 
@@ -634,6 +636,8 @@ html, body, body > div.ng-scope {
 
 .settings {
 	clear: both;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .settings fieldset {

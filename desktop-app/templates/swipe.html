@@ -1,5 +1,9 @@
-<div ng-include src="'partials/menu.html'"></div>
-  <!-- Main Application Container -->
+<div class="wrapper">
+
+<div class="wrapper-menu" ng-include src="'partials/menu.html'"></div>
+
+<div class="wrapper-page">
+
   <div class="container">
     <div ng-show="allPeople.length === 0 || peopleIndex >= allPeople.length"><div class="loader">Loading...<div class="loader-anim"></div></div></div>
     <div ng-show="allPeople.length > 0 && peopleIndex < allPeople.length">
@@ -51,3 +55,7 @@
 	  
     </div>
   </div>
+
+</div>
+
+</div>
