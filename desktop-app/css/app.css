@@ -353,10 +353,10 @@ html, body, body > div.ng-scope {
 	color: inherit;
 }
 .match:hover {
-	background-color: rgba(245, 245, 245, 0.5);
+	background-color: #F7F7F7;
 }
 .match.selected {
-	background-color: #F5F5F5;
+	background-color: #F2F2F2;
 }
 
 .info-container {
