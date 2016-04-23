@@ -23,6 +23,7 @@
       .registerAvailableLanguageKeys(['en'], {
         'en-*': 'en'
       })
+      .useSanitizeValueStrategy('escape')
       .uniformLanguageTag('bcp47')
       .determinePreferredLanguage()
       .fallbackLanguage('en');
