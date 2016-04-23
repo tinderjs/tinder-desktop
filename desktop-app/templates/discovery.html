@@ -1,33 +1,14 @@
 <div style="height: 100%">
   <div ng-include src="'partials/menu.html'"></div>
 
-    <div class="settings-box">
-      <div class="text-center settings-title">
-        <a href="#/settings">Settings</a>
-        Discovery Settings
-      </div>
+  <div class="settings-box">
+    <div class="text-center settings-title">
+      <a href="#/settings">Settings</a>
+      Discovery Settings
+    </div>
 
     <div class="settings" style="margin-top:10px">
-      <form name="discoverySettings">
-
-      <div ng-show="DiscoverySettings.tinder_plus" class="config">
-        <div class="settings-header">Passport</div>
-        <div class="settings-opts">
-          <div column>
-            <input type="text"
-                   ng-autocomplete 
-                   ng-model="autocomplete" 
-                   options="autocompleteOptions" 
-                   details="details" 
-                   class="passput"
-                   placeholder="Change Location" 
-                   id="autocompleteLocation" />
-                <button ng-show="DiscoverySettings.is_traveling" ng-click="resetPassport()" class="tinder-bttn">
-                  {{DiscoverySettings.is_traveling ? 'Reset' : 'Change'}} location
-                </button>
-          </div>
-        </div>
-      </div>
+      <form name="discoverySettings" class="settings-content">
 
       <div class="config">
         <div class="settings-header">Discoverable</div>
@@ -80,6 +61,26 @@
           <div class="text-center">
             {{DiscoverySettings.age_filter.from}} to {{DiscoverySettings.age_filter.to}}
           </div>
+        </div>
+      </div>
+
+      <div ng-show="DiscoverySettings.tinder_plus" class="config">
+        <div class="settings-header">Passport</div>
+        <div class="settings-opts">
+          <div column>
+            <input type="text"
+                   ng-autocomplete 
+                   ng-model="autocomplete" 
+                   options="autocompleteOptions" 
+                   details="details" 
+                   class="passput"
+                   placeholder="Change Location" 
+                   id="autocompleteLocation" />
+                <button ng-show="DiscoverySettings.is_traveling" ng-click="resetPassport()" class="tinder-bttn">
+                  {{DiscoverySettings.is_traveling ? 'Reset' : 'Change'}} location
+                </button>
+          </div>
+        </div>
       </div>
     </form>
 

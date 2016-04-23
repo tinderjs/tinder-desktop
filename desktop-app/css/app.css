@@ -596,6 +596,11 @@ html, body, body > div.ng-scope {
     margin-top: 0px;
 }
 
+.settings-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
 .settings-box {
     background-color: #f3f7f9;
     height: 100%;
@@ -610,7 +615,6 @@ html, body, body > div.ng-scope {
     width: 100%;
     padding: 24px 36px;
     background-color: white;
-    max-width: 800px;
     box-shadow: 0 3px 3px rgba(221, 221, 221, 0.26);
 }
 
