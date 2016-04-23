@@ -12,42 +12,12 @@ a {
     text-decoration: none;
 }
 
-.center {
-    float: center;
-    text-align: center;
-}
-
-.right {
-    float: right;
-    text-align: right;
-}
-
-.top-icon {
-    position: relative;
-    top: -4px;
-    padding: 0 5px;
-}
-
-.left {
-    float: left;
-}
-
-.clear {
-    clear: both;
-}
-
 /* General layout */
 html, body, body > div.ng-scope {
     max-width: 100%;
     max-height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    height: 100%;
-}
-
-.y-scroll {
-    overflow-y: auto;
-    overflow-x: hidden;
     height: 100%;
 }
 
@@ -79,7 +49,6 @@ html, body, body > div.ng-scope {
 	color: white;
 	background-color: #DB6151;
 }
-
   
 .menu .fa {
 	display: none;
@@ -100,66 +69,6 @@ html, body, body > div.ng-scope {
 		padding-top: 10px;
 	}
 
-}
-
-
-/* Specific */
-.title-bar {
-    width: 100%;
-    height: 25px;
-    background: #f8f8f8; /* Old browsers */
-    background: -moz-linear-gradient(top,  #f8f8f8 0%, #e3e3e3 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#e3e3e3)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #f8f8f8 0%,#e3e3e3 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #f8f8f8 0%,#e3e3e3 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #f8f8f8 0%,#e3e3e3 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  #f8f8f8 0%,#e3e3e3 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f8f8', endColorstr='#e3e3e3',GradientType=0 ); /* IE6-9 */
-    z-index: 10001;
-    position: fixed;
-    -webkit-app-region: drag;
-    text-align: center;
-    font-family: 'Raleway', sans-serif;
-    font-size: 16px;
-    line-height: 25px;
-}
-
-.title-bar i {
-    float: right;
-    font-size: 18px;
-    padding: 3px 7px 0 0;
-    cursor: pointer;
-}
-
-.header {
-    position: absolute;
-    right: 44%;
-    margin-top: 18px;
-    z-index:99999;
-}
-
-.user {
-    max-width: 500px;
-    margin: 10px auto 0;
-    font-family: 'Raleway', sans-serif;
-}
-
-.user img {
-    width: 40px;
-    position: relative;
-}
-
-.user .left img {
-    left: 11px;
-    display: block;
-}
-
-.user p {
-    display: inline-block;
-    font-size: 12px;
-    position: relative;
-    text-align: right;
-    margin: 8px 5px 18px;
 }
 
 .container .loader {
@@ -233,11 +142,6 @@ html, body, body > div.ng-scope {
 .bio {
 	text-align: center;
 	white-space: pre-wrap;
-}
-
-.bio img {
-    height: 22px;
-    vertical-align: bottom;
 }
 
 .main-photo-container {
@@ -404,21 +308,6 @@ html, body, body > div.ng-scope {
     padding-bottom: 30px;
 }
 
-.collapse-text-toggle {
-    font-size: 0.9em;
-    color: #666666;
-    cursor: pointer;
-}
-.collapse-text-toggle:hover {
-    color: #222222;
-}
-.collapse-text-toggle:before {
-    content: '\00a0(';
-}
-.collapse-text-toggle:after {
-    content: ')';
-}
-
 /* Messages screen */
 .messages-page-container {
   display: flex;
@@ -432,12 +321,8 @@ html, body, body > div.ng-scope {
 .messages-page-messages {
 	flex: 1;
 	order: 2;
-}
-
-#messages {
     display: flex;
 }
-
 
 /* Chat */
 #match-list {
@@ -456,9 +341,7 @@ html, body, body > div.ng-scope {
 #match-list.more-info {
     flex: 0 0 260px;
 }
-#back-arrow {
-    margin: 3px calc(75px - 1em);
-}
+
 .match {
     display: block;
     border-bottom: 1px solid #ddd;
