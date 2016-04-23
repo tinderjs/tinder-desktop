@@ -320,13 +320,13 @@ html, body, body > div.ng-scope {
 /* Templates - messages - match-list */
 
 #match-list {
-	flex: 0 0 185px;
+	flex: 0 0 190px;
 	display: flex;
 	flex-direction: column;
 }
 
 #match-list.more-info {
-	flex: 0 0 260px;
+	flex: 0 0 265px;
 }
 
 .match-header {
