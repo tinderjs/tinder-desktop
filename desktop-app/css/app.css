@@ -198,6 +198,10 @@ html, body, body > div.ng-scope {
 	.profile, .main-photo-container {
 		order: 0;
 	}
+	
+	.profile {
+		margin-top: 0px;
+	}
 }
 
 .information {
