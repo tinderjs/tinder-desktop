@@ -609,7 +609,7 @@ html, body, body > div.ng-scope {
 	display: block;
 }
 
-.clear {
+.messages-in-chat {
     clear: both;
 }
 

@@ -58,14 +58,14 @@
         </div>
       </div>
 
-      <div ng-repeat-end class="clear" scroll-to-last></div>
+      <div ng-repeat-end class="messages-in-chat" scroll-to-last></div>
       <!-- pending messages -->
       <div ng-repeat-start="message in conversation.pending track by $index"
           class="from-me">
         <div class="pending-message">{{message}}</div>
       </div>
 
-      <div ng-repeat-end class="clear" scroll-to-last></div>
+      <div ng-repeat-end class="messages-in-chat" scroll-to-last></div>
 
     </div>
 	</div>
