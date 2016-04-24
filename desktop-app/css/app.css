@@ -1,6 +1,7 @@
 /* General styles */
 * {
-    font-family: 'Merriweather', serif;
+    font-family: 'Raleway', Arial;
+    font-size: 1.01em;
 }
 
 h1, h2, h3, h4, h5 {
