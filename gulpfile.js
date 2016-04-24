@@ -186,11 +186,11 @@ gulp.task('run', ['compile:all'], function(callback) {
   var child = proc.spawn(electron, ['--enable-logging', '--debug=5858', './desktop-app']);
 
   child.stdout.on('data', function(data) {
-    console.log(`${data}`);
+    console.log('stdout: ' + data);
   });
 
   child.stderr.on('data', function(data) {
-    console.log(`${data}`);
+    console.log('stderr: ' + data);
   });
 
   child.on('exit', function(exitCode) {
