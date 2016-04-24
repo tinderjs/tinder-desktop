@@ -1,10 +1,10 @@
 /* General styles */
 * {
-    font-family: 'Merriweather', serif;
+    font-family: 'Raleway', Arial;
 }
 
 h1, h2, h3, h4, h5 {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Raleway', Arial;
 }
 
 a {
@@ -80,7 +80,6 @@ html, body, body > div.ng-scope {
     position: fixed;
     -webkit-app-region: drag;
     text-align: center;
-    font-family: 'Raleway', sans-serif;
     font-size: 16px;
     line-height: 25px;
 }
@@ -102,7 +101,6 @@ html, body, body > div.ng-scope {
 .user {
     max-width: 500px;
     margin: 10px auto 0;
-    font-family: 'Raleway', sans-serif;
 }
 
 .user img {
