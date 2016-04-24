@@ -1,6 +1,7 @@
 /* General styles */
 * {
-    font-family: 'Merriweather', serif;
+    font-family: 'Raleway', Arial;
+    font-size: 1.01em;
 }
 
 h1, h2, h3, h4, h5 {
@@ -80,7 +81,6 @@ html, body, body > div.ng-scope {
     position: fixed;
     -webkit-app-region: drag;
     text-align: center;
-    font-family: 'Raleway', sans-serif;
     font-size: 16px;
     line-height: 25px;
 }
@@ -696,7 +696,6 @@ ul.from-to {
     display: block;
     list-style-type: none;
     margin-top: 10px;
-    font-family: Arial, Tahoma, Verdana, Arial, Helvetica, sans-serif;
     font-size: 11px;
 }
 
