@@ -7,12 +7,15 @@
       </div>
       <div class="scrollable-matchlist">
         <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true track by match.matchId"
-          ng-click="open(match.matchId)" 
+          ng-click="open(match.matchId)"
           ng-class="{true: 'selected'}[currentMatch === match.matchId]"
           class="match">
           <img ng-src="{{match.thumbnail || 'img/anonymous.png'}}" class="thumbnail"/>
           <div class="info-container">
-            <div class="name">{{match.name || 'Unknown'}}</div>
+            <div class="name">
+              {{match.name || 'Unknown'}}
+              <i ng-show="match.isSuperLike" class="fa fa-star"></i>
+            </div>
             <div class="info" ng-show="showExtra && match.infoUpdateTime">
               <i class="fa fa-location-arrow"></i> {{match.userDistance | distanceToUnits}} |
               <i class="fa fa-bolt"></i> <span short-time-ago="{{match.userPingTime}}"></span> |
@@ -42,15 +45,15 @@
         </div>
         <div class="messages-list">
           <!-- normal messages -->
-          <div ng-repeat-start="message in conversation.messages track by $index" 
+          <div ng-repeat-start="message in conversation.messages track by $index"
             ng-click="$showTimeStamp = !$showTimeStamp"
             style="position:relative">
             <div class="{{message.fromMe ? 'from-me' : 'from-them'}}">
-              <div class="{{message.fromMe ? 'from-me-date sentAt' : 'from-them-date sentAt'}}" 
+              <div class="{{message.fromMe ? 'from-me-date sentAt' : 'from-them-date sentAt'}}"
                 ng-class="{true: 'bounceIn', false: 'bounceOut'}[$showTimeStamp === true]">
                 {{message.sentDate | timeToLocalized}}
               </div>
-              <div ng-if="message.text" 
+              <div ng-if="message.text"
                 ng-bind-html="message.text"></div>
             </div>
           </div>
