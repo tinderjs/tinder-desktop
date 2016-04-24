@@ -1,4 +1,5 @@
 /* General styles */
+
 * {
     font-family: 'Merriweather', serif;
 }
@@ -8,145 +9,116 @@ h1, h2, h3, h4, h5 {
 }
 
 a {
-    color: #db6151;
+    color: #DB6151;
     text-decoration: none;
 }
 
-.center {
-    float: center;
-    text-align: center;
-}
-
-.right {
-    float: right;
-    text-align: right;
-}
-
-.top-icon {
-    position: relative;
-    top: -4px;
-    padding: 0 5px;
-}
-
-.left {
-    float: left;
-}
-
-.clear {
-    clear: both;
-}
 
 /* General layout */
+
 html, body, body > div.ng-scope {
     max-width: 100%;
     max-height: 100%;
     overflow-x: hidden;
-    overflow-y: hidden;
-    height: 100%;
-}
-
-.y-scroll {
     overflow-y: auto;
-    overflow-x: hidden;
     height: 100%;
 }
 
-.columns {
+.wrapper {
     display: flex;
-    overflow: hidden;
+    flex-flow: column;
     height: 100%;
 }
+.wrapper-menu {
+    order: 1;
+}
 
-.columns > div {
+.wrapper-page {
     flex: 1;
-    overflow-x: hidden;
-    overflow-y: auto;
-    height: 100%;
+    order: 2;
+    display: flex;
 }
 
-/* Specific */
-.title-bar {
+.container {
+    flex: 1;
+}
+
+.container h1 {
+    margin: 0;
+}
+
+.container h3 {
+    margin: 0 0 20px 0;
+}
+
+
+/* Partials - menu */
+
+.menu {
+    display: table;
+    table-layout: fixed;
+    border-width: 2px 0px 2px 0px;
+    border-style: solid;
+    border-color: #DB6151;
     width: 100%;
-    height: 25px;
-    background: #f8f8f8; /* Old browsers */
-    background: -moz-linear-gradient(top,  #f8f8f8 0%, #e3e3e3 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#e3e3e3)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #f8f8f8 0%,#e3e3e3 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #f8f8f8 0%,#e3e3e3 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #f8f8f8 0%,#e3e3e3 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  #f8f8f8 0%,#e3e3e3 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f8f8', endColorstr='#e3e3e3',GradientType=0 ); /* IE6-9 */
-    z-index: 10001;
-    position: fixed;
-    -webkit-app-region: drag;
+}
+
+.menu-logo {
+    display: table-cell;
+}
+
+.menu-item {
+    display: table-cell;
+    font-size: 24px;
     text-align: center;
-    font-family: 'Raleway', sans-serif;
-    font-size: 16px;
-    line-height: 25px;
 }
 
-.title-bar i {
-    float: right;
-    font-size: 18px;
-    padding: 3px 7px 0 0;
-    cursor: pointer;
-}
-
-.header {
-    position: absolute;
-    right: 44%;
-    margin-top: 18px;
-    z-index:99999;
-}
-
-.user {
-    max-width: 500px;
-    margin: 10px auto 0;
-    font-family: 'Raleway', sans-serif;
-}
-
-.user img {
-    width: 40px;
-    position: relative;
-}
-
-.user .left img {
-    left: 11px;
+.menu-item a {
     display: block;
 }
 
-.user p {
-    display: inline-block;
-    font-size: 12px;
-    position: relative;
-    text-align: right;
-    margin: 8px 5px 18px;
+.menu-item:hover, .menu-item:hover a {
+    color: white;
+    background-color: #DB6151;
 }
 
-.container, .settings fieldset {
-    margin: 0 auto 5px;
-    text-align: center;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    border-radius: 50px;
-    background-color: #FAFAFA;
-    padding: 10px;
-    position: relative;
+.menu .fa {
+    display: none;
 }
+
+@media all and (max-width: 1034px) {
+
+    .menu-item {
+        padding: 4px;
+    }
+
+    .menu .text {
+        display: none;
+    }
+
+    .menu .fa {
+        display: inline;
+        padding-top: 10px;
+    }
+
+}
+
+
+/* Templates - swipe */
 
 .container .loader {
+    text-align: center;
+    margin-top: 16px;
+}
+
+.container .loader-anim {
     border: 2px solid;
-    margin-top: 15px;
-    margin-left: 10px;
     border-color: transparent #FF8271 #FF8271 #FF8271;
     border-radius: 50%;
     width: 16px;
     height: 16px;
-    position: absolute;
-    top: -4px;
     display: inline-block;
-    margin-left: 54px;
-    -webkit-animation: single-arc-rotate 1s infinite linear;
+    margin-left: 24px;
     animation: single-arc-rotate 1s infinite linear;
     animation-name: single-arc-rotate;
     animation-duration: 1s;
@@ -158,70 +130,51 @@ html, body, body > div.ng-scope {
     animation-play-state: initial;
 }
 
-@-webkit-keyframes single-arc-rotate {
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-
 @keyframes single-arc-rotate {
   100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+        transform: rotate(360deg);
   }
 }
 
-.container h1 {
-    margin: 0;
+
+/* Templates - swipe & profile */
+
+.responsive-profile {
+    display: flex;
+    flex-flow: row;
 }
 
-.container h3 {
-    margin: 0 0 20px 0;
-}
+@media all and (max-width: 1034px) {
 
-.container {
-    background-color: white;
-}
+    .responsive-profile {
+        flex-flow: column;
+    }
 
-#autocompleteLocation {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.bio {
-    margin: 0 0 15px 0;
-}
-
-.bio img {
-    height: 22px;
-    vertical-align: bottom;
 }
 
 .main-photo-container {
-    position: absolute;
-    margin-left: 64px;
+    flex: 0 0 640px;
+    order: 1;
+    margin: 16px;
+    position: relative;
 }
 
 .main-photo-container img {
-    max-width: 400px;
+    max-width: 640px;
 }
 
 .main-photo {
     text-align: center;
-    width: 500px;
-    height: 500px;
-    display: inline-block;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
+    width: 640px;
+    height: 640px;
     border-radius: 10px;
-    overflow: hidden;
-    position: absolute;
-    left: 50%;
-    background: #fff top left / contain no-repeat;
+    background: #FFF top left / contain no-repeat;
     z-index: 1000;
-    margin-top: 32px;
+    position: absolute;
 }
+
+
+/* Templates - swipe */
 
 .main-photo .pass-overlay {
     color: white;
@@ -252,62 +205,88 @@ html, body, body > div.ng-scope {
     cursor: -webkit-grab;
 }
 
-.small-photos div {
-    display: inline;
+
+/* Templates - swipe & profile */
+
+.profile {
+    flex: auto;
+    order: 2;
+    margin: 16px;
 }
 
-.small-photos  {
-    clear: both;
-    float: right;
-    width: 400px;
-    margin-right: 135px;
-    margin-top: 259px;
+@media all and (max-width: 1034px) {
+    .profile, .main-photo-container {
+        order: 0;
+    }
+    
+    .profile {
+        margin-top: 0px;
+    }
+}
+
+.information {
+}
+
+.name {
+    text-align: center;
+}
+
+.status {
+    text-align: center;
+}
+
+.schoolwork {
+    display: block;
+    text-align: center;
+}
+
+.school, .work {
+    display: block;
+    margin-top: 4px;
+}
+
+.bio {
+    text-align: center;
+    white-space: pre-wrap;
+}
+
+.small-photos div {
+    display: inline-block;
+}
+
+.small-photos {
+    margin: auto;
+    text-align: center;
+}
+
+@media all and (max-width: 1034px) {
+
+    .small-photos {
+        max-width: 448px;
+    }
+
 }
 
 .small-photos img {
     width: 120px;
     height: 120px;
-    /*max-width: 120px;*/
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
+    border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
-    border: 5px solid #FAFAFA;
+    border: 5px solid #DDD;
+    margin: 8px;
+}
+.small-photos img:hover {
+    border: 5px solid #BBB;
 }
 
 .small-photos img.selected {
-    border: 5px solid #FF8271;
+    border: 5px solid #DB6151;
 }
 
-.information {
-    display: inline;
-    width: 550px;
-    position: absolute;
-    top: 48px;
-    height: 200px;
-    overflow: hidden;
-}
 
-/* facebook login button */
-#sign_in {
-    background: url('../img/login-sprite.png') no-repeat 0 0;
-    width: 340px;
-    height: 72px;
-    cursor: pointer;
-    display: block;
-    margin: 20px auto 0;
-}
+/* Templates - login */
 
-#sign_in:hover {
-    background-position-y: -72px;
-}
-
-#sign_in:active {
-    background-position-y: -144px;
-}
-
-/* facebook login */
 .fb-login {
     color: #404040;
     position: fixed;
@@ -323,7 +302,6 @@ html, body, body > div.ng-scope {
 .login-container {
     position: relative;
     top: 50%;
-    -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
 }
 
@@ -331,65 +309,64 @@ html, body, body > div.ng-scope {
     padding-bottom: 30px;
 }
 
-.collapse-text-toggle {
-    font-size: 0.9em;
-    color: #666666;
+#sign_in {
+    background: url('../img/login-sprite.png') no-repeat 0 0;
+    width: 340px;
+    height: 72px;
     cursor: pointer;
+    display: block;
+    margin: 20px auto 0;
 }
-.collapse-text-toggle:hover {
-    color: #222222;
+#sign_in:hover {
+    background-position-y: -72px;
 }
-.collapse-text-toggle:before {
-    content: '\00a0(';
-}
-.collapse-text-toggle:after {
-    content: ')';
-}
-
-/* Messages screen */
-#messages {
-    display: flex;
-    height: 100%;
+#sign_in:active {
+    background-position-y: -144px;
 }
 
-/* Chat */
+
+/* Templates - messages - match-list */
+
 #match-list {
-    width: 250px;
-    border-right: 1px solid #ddd;
-    flex: initial;
+    flex: 0 0 190px;
+    display: flex;
+    flex-direction: column;
 }
-.match-header {
-  display: flex;
-  height: 53px;
-  align-items: center;
-  padding: 0 8px;
-  border-bottom: 1px solid #DDD;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  background: white;
-  width: 234px;
-}
+
 #match-list.more-info {
-    width: 250px;
+    flex: 0 0 265px;
 }
-#back-arrow {
-    margin: 3px calc(75px - 1em);
+
+.match-header {
+    flex: 0 0 40px;
+    border-bottom: 1px solid #DB6151;
+    border-right: 1px solid #DB6151;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.scrollable-matchlist {
+    flex: 1;
+    overflow-y: scroll;
+    border-right: 1px solid #DDD;
+}
+
 .match {
     display: block;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #DDD;
     padding: 8px;
     height: 42px; /* Thumbnail size: 84px */
     cursor: pointer;
     color: inherit;
 }
 .match:hover {
-    background-color: rgba(245, 245, 245, 0.5);
+    background-color: #F7F7F7;
 }
 .match.selected {
-    background-color: #F5F5F5;
+    background-color: #F1F1F1;
 }
+
 .info-container {
     display: flex;
     flex-direction: column;
@@ -397,6 +374,7 @@ html, body, body > div.ng-scope {
     justify-content: center;
     height: 100%;
 }
+
 .match .thumbnail {
     display: inline-block;
     box-sizing: border-box;
@@ -405,6 +383,7 @@ html, body, body > div.ng-scope {
     height: 42px;
     width: 42px;
 }
+
 .match .name {
     margin: 0;
     text-align: center;
@@ -412,13 +391,6 @@ html, body, body > div.ng-scope {
     overflow: hidden;
     text-overflow: ellipsis;
     padding-left: .5em;
-}
-.match.more-info {
-    padding: 5px;
-}
-
-.match.more-info .name {
-    line-height: 22px;
 }
 
 .match .info {
@@ -431,7 +403,29 @@ html, body, body > div.ng-scope {
     font-size: 13px;
 }
 
-/* from http://codepen.io/samuelkraft/pen/Farhl */
+.match.more-info {
+    padding: 5px;
+}
+
+.info .last-them {
+    color: #007A00;
+}
+
+.info .last-me-rest {
+    color: #0000CC;
+}
+
+.info .last-me-pass {
+    color: #CC00CC;
+}
+
+.match.more-info .name {
+    line-height: 22px;
+}
+
+/* Templates - messages - conversation */
+/* from http://codepen.io/samuelkraft/pen/Farhl */ /* Put this credits in an external file? */
+
 #conversation {
     font-family: "Helvetica Neue", sans-serif;
     font-size: 1.1em;
@@ -439,22 +433,55 @@ html, body, body > div.ng-scope {
     font-weight: normal;
     display: flex;
     flex-direction: column;
-}
-#conversation div {
     flex: 1;
 }
-#conversation h2 {
-    padding: 0 14px 21px 11px;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 0;
+
+.message-header {
+    order: 1;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    border-bottom: 1px solid #DB6151;
+    flex: 0 0 40px;
+    justify-content: center;
+    align-items: center;
+    padding-left: 16px;
+    padding-right: 16px;
 }
-#conversation .messages-list {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    padding: 14px;
+
+.chat-with {
+    flex: 1;
+}
+
+.match-options a {
+    border-left: 2px solid #DB6151;
+    border-collapse: collapse;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    cursor: pointer;
+    flex: 1;
+}
+.match-options a:first-child {
+    border-left: 0px
+}
+.match-options a:last-child {
+    padding-right: 0px
+}
+
+.messages-list-container {
+    order: 2;
+    overflow: auto;
+    flex: 1;
 }
 #conversation .messages-list-empty {
     padding: 14px;
+    overflow: hidden;
+}
+#conversation .messages-list {
+    padding: 14px;
+    overflow: hidden;
 }
 
 #conversation div.from-me,
@@ -462,21 +489,6 @@ html, body, body > div.ng-scope {
     max-width: 51%;
     word-wrap: break-word;
     margin-bottom: 10px;
-}
-#conversation textarea {
-    font-size: 1em;
-    outline: none;
-    border: solid #ccc;
-    border-width: 1px 0 0 0;
-    border-radius: 0;
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-      margin: 0;
-}
-
-.clear {
-    clear: both;
 }
 
 .from-me {
@@ -498,7 +510,7 @@ html, body, body > div.ng-scope {
     height: 20px;
     border-right: 20px solid #0B93F6;
     border-bottom-left-radius: 16px 14px;
-    -webkit-transform: translate(0, -2px);
+    transform: translate(0, -2px);
 }
 .from-me:after {
     content: "";
@@ -510,47 +522,7 @@ html, body, body > div.ng-scope {
     height: 20px;
     background: white;
     border-bottom-left-radius: 10px;
-    -webkit-transform: translate(-30px, -2px);
-}
-
-.sentAt {
-    position: absolute;
-    z-index: 9;
-    opacity: 0;
-    color: #555;
-    min-width: 160px;
-}
-
-.from-them-date {
-    right: -110px;
-}
-
-.from-them-date.bounceIn {
-    transition: all .2s;
-    opacity: 1;
-    transform: translateX(55px);
-}
-
-.from-them-date.bounceOut {
-    transition: all .2s;
-    opacity: 0;
-    transform: translateX(-55px);
-}
-
-.from-me-date {
-    left: -110px;
-}
-
-.from-me-date.bounceIn {
-    transition: all .2s;
-    opacity: 1;
-    transform: translateX(-55px);
-}
-
-.from-me-date.bounceOut {
-    transition: all .2s;
-    opacity: 0;
-    transform: translateX(55px);
+    transform: translate(-30px, -2px);
 }
 
 .from-them {
@@ -572,7 +544,7 @@ html, body, body > div.ng-scope {
     height: 20px;
     border-left: 20px solid #E5E5EA;
     border-bottom-right-radius: 16px 14px;
-    -webkit-transform: translate(0, -2px);
+    transform: translate(0, -2px);
 }
 .from-them:after {
     content: "";
@@ -584,66 +556,110 @@ html, body, body > div.ng-scope {
     height: 20px;
     background: white;
     border-bottom-right-radius: 10px;
-    -webkit-transform: translate(-30px, -2px);
+    transform: translate(-30px, -2px);
+}
+
+.sentAt {
+    position: absolute;
+    z-index: 9;
+    opacity: 0;
+    color: #555;
+    min-width: 160px;
+}
+
+.from-them-date {
+    right: -110px;
+    position: absolute;
+    z-index: 9;
+    opacity: 0;
+    color: #555;
+    min-width: 150px;
+}
+
+.from-them-date.bounceIn {
+    transition: all .2s;
+    opacity: 1;
+    transform: translateX(55px);
+}
+
+.from-them-date.bounceOut {
+    transition: all .2s;
+    opacity: 0;
+    transform: translateX(-55px);
+}
+
+.from-me-date {
+    left: -110px;
+    /*right: 0;*/
+    left: -100px;
+}
+
+.from-me-date.bounceIn {
+    transition: all .2s;
+    opacity: 1;
+    transform: translateX(-55px);
+}
+
+.from-me-date.bounceOut {
+    transition: all .2s;
+    opacity: 0;
+    transform: translateX(55px);
+}
+
+.messages-in-chat {
+    clear: both;
 }
 
 .pending-message {
     color: #DAE3EA;
 }
 
-/* Settings Page */
-
-.settings h1 {
-    text-align: center;
+.messages-textarea {
+    order: 3;
 }
 
+#conversation textarea {
+    font-size: 1em;
+    outline: none;
+    border: solid #CCC;
+    border-width: 1px 0 0 0;
+    border-radius: 0;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 0;
+    display: block;
+}
+
+
+/* Templates - settings & discovery */
+
 .settings {
-    padding-top: 47px;
+    clear: both;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .settings fieldset {
+    margin-top: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 50px;
+    background-color: #FAFAFA;
+    padding: 10px;
+    position: relative;
     width:400px;
 }
 
-.info .last-them {
-    color: #007a00;
+.settings legend {
+    padding-left: 4px;
+    padding-right: 4px;
 }
 
-.info .last-me-rest {
-    color: #0000CC;
-}
 
-.info .last-me-pass {
-    color: #cc00cc;
-}
+/* Templates - discovery */
 
-.message-header {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    max-height: 53px;
-    align-items: center;
-    padding: 0 8px;
-    border-bottom: 1px solid #DDD;
-}
-
-.scrollable-matchlist {
-    margin-top: 50px;
-}
-
-.unmatch-button {
-    background-color: white;
-    color: #f15626;
-    border: 0px;
-    cursor: pointer;
-    transition: all .2s linear;
-}
-
-.unmatch-button.hover {
-    opacity: 0.8;
-}
-
-/* Discovery Settings Page */
 section.range-slider {
     overflow: hidden;
     position: relative;
@@ -723,4 +739,11 @@ ul.from-to li input {
     height: 24px;
     line-height: 24px;
     outline: none;
+}
+
+
+/* Templates - settings */
+
+#autocompleteLocation {
+    margin-bottom: 20px;
 }
