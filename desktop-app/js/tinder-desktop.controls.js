@@ -1,9 +1,7 @@
 (function() {
+  var remote = require('remote'); 
 
-  var gui = require('nw.gui');
-  var win = gui.Window.get();
-
-  module = angular.module('tinder++.controls', ['tinder++.api']);
+  module = angular.module('tinder-desktop.controls', ['tinder-desktop.api']);
 
   module.service('Controls', function(API, $interval, $q, orderByFilter, $timeout) {
 
@@ -78,13 +76,13 @@
           // could add info from the match to add the name and possibly
           // even the photo from the match as the icon
             var options = {
-              body: "Congratulations, you've got a new match on Tinder++!"
+              body: "Congratulations, you've got a new match on tinder-desktop!"
              };
 
             var notification = new Notification("New Match",options);
 
             notification.onclick = function () {
-              win.show();
+              remote.getCurrentWindow().show();
             }
 
             notification.onshow = function () {
@@ -189,7 +187,7 @@
         var conversation = API.conversations[matchId];
         if (conversation) {
           angular.extend(conversation, {
-            userDistanceMi: user.distance_mi,
+            userDistance: user.distance_mi,
             userPingTime: user.ping_time,
             infoUpdateTime: calcUserUpdateTimeISOString(user)
           });

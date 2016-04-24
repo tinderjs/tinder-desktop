@@ -1,0 +1,67 @@
+<div class="wrapper">
+  <div class="wrapper-menu" ng-include src="'partials/menu.html'"></div>
+  <div class="wrapper-page">
+    <div class="settings">
+    <form name="discoverySettings">
+      <fieldset ng-show="DiscoverySettings.tinder_plus">
+        <legend translate="DISCOVERY.PASSPORT"></legend>
+        <p ng-show="DiscoverySettings.is_traveling">
+          {{ DiscoverySettings.currentLocation }}
+        </p>
+        <p ng-show="!DiscoverySettings.is_traveling"
+           translate="DISCOVERY.ACTUAL_LOCATION">
+        </p>
+        <div>
+          <input type="text" ng-autocomplete ng-model="autocomplete" 
+          options="autocompleteOptions" details="details" 
+          placeholder="{{'DISCOVERY.CHANGE_LOCATION' | translate}}" 
+          id="autocompleteLocation" />
+        </div>
+        <a ng-show="DiscoverySettings.is_traveling" href="" ng-click="resetPassport()" translate="DISCOVERY.ACTUAL_LOCATION"></a>
+      </fieldset>
+      <fieldset>
+        <legend translate="DISCOVERY.DISCOVERABLE"></legend>
+        <label for="Yes">
+          <input type="radio" name="discoverable" id="discoverable_1" value="1" ng-model="DiscoverySettings.discoverable" />
+          {{'DISCOVERY.YES' | translate}}
+        </label>  
+        <label for="No">
+          <input type="radio" name="discoverable" id="discoverable_2" value="0" ng-model="DiscoverySettings.discoverable" />
+          {{'DISCOVERY.NO' | translate}}
+        </label>
+      </fieldset>
+      <fieldset>
+        <legend translate="DISCOVERY.SHOW_ME"></legend>
+        <label for="Female">
+          <input type="radio" name="chooseGender" id="chooseGender_1" value="1" ng-model="DiscoverySettings.gender_filter" />
+          {{'DISCOVERY.FEMALE' | translate}}
+        </label>
+        <label for="Male">
+          <input type="radio" name="chooseGender" id="chooseGender_2" value="0" ng-model="DiscoverySettings.gender_filter" />
+          {{'DISCOVERY.MALE' | translate}}
+        </label>
+        <label for="Both">
+          <input type="radio" name="chooseGender" id="chooseGender_3" value="-1" ng-model="DiscoverySettings.gender_filter" />
+          {{'DISCOVERY.BOTH' | translate}}
+        </label>
+      </fieldset>
+      <fieldset>
+        <legend translate="DISCOVERY.SEARCH_PROXIMITY"></legend>
+        <label for="distance">
+          <input type="range" name="distance" min="2" max="100" ng-model="DiscoverySettings.distance_filter" />
+          {{DiscoverySettings.distance_filter | distanceToUnits}}
+        </label>
+      </fieldset>
+      <fieldset>
+        <legend translate="DISCOVERY.DISPLAY_AGES" 
+                translate-values="{ from_age: DiscoverySettings.age_filter.from, 
+                                    to_age: DiscoverySettings.age_filter.to}">
+        </legend>
+        <label for="age">
+          <section data-range-slider class="range-slider" ng-model="DiscoverySettings.age_filter" min="18" max="55"></section>
+        </label>
+      </fieldset>
+    </form>
+    </div>
+  </div>
+</div>

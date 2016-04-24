@@ -1,0 +1,37 @@
+<div class="wrapper">
+  <div class="wrapper-menu" ng-include src="'partials/menu.html'"></div>
+  <div class="wrapper-page">
+    <div class="container" ng-show="user">
+      <div class="responsive-profile">
+        <div class="main-photo-container">
+          <div class="main-photo tinder-card"
+            style="background-image: url({{user.photos[photoIndex].processedFiles[0].url}});">
+          </div>
+        </div>
+        <div class="profile">
+          <div class="information">
+            <h1 class="name fader">
+              {{user.name}}<a ng-show="user.instagram" href="https://instagram.com/{{user.instagram.username}}" target="_blank">
+              ({{user.instagram.username}})</a>,
+              {{user.birth_date | bdayToAge}}&nbsp;
+            </h1>
+            <h3 class="status fader">{{user.distance_mi | distanceToUnits}} {{'PROFILE.AWAY' | translate}}, {{'PROFILE.ACTIVE' | translate}} {{user.ping_time | timeFromNow}}</h3>
+            <p class="schoolwork fader">
+              <i ng-repeat="school in user.schools" class="school fa fa-graduation-cap">{{school.name}}</i>
+              <i ng-repeat="job in user.jobs" class="work fa fa-briefcase">
+          	    {{job.title.name}} {{job.company && job.title ? ('PROFILE.AT' | translate) : ''}} {{job.company.name}}
+              </i>
+            </p>
+            <p ng-show="user.bio" class="bio fader" ng-bind-html="user.bio"></p>
+          </div>
+          <div class="small-photos fader">
+            <div ng-repeat="photo in user.photos">
+              <img ng-src="{{photo.processedFiles[0].url}}" ng-click="swapPhoto($index)" data-photo-index="{{$index}}"
+                ng-class="{'selected': $index === photoIndex}" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

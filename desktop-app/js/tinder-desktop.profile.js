@@ -1,5 +1,5 @@
 (function() {
-  var module = angular.module('tinder++.profile', ['ngRoute', 'tinder++.api', 'tinder++.swipe']);
+  var module = angular.module('tinder-desktop.profile', ['ngRoute', 'tinder-desktop.api', 'tinder-desktop.common']);
 
   module.controller('ProfileController', function($scope, $routeParams, API) {
     API.userInfo($routeParams.userId).then(function(user) {

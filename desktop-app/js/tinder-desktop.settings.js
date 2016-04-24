@@ -1,5 +1,5 @@
 (function() {
-  module = angular.module('tinder++.settings', ['ngAutocomplete', 'ngSanitize']);
+  module = angular.module('tinder-desktop.settings', ['ngAutocomplete', 'ngSanitize']);
 
   module.service('Settings', function() {
     var settingsObj = {
@@ -10,7 +10,8 @@
       settings : {
         // set defaults here
         landingPage : '/swipe',
-        messageListExtraInfo : 'no'
+        messageListExtraInfo : 'yes',
+        distanceUnits: 'mi'
       }
     };
 
@@ -56,11 +57,7 @@
     $scope.autocompleteOptions = {
       types: '(cities)'
     };
-	
-    $scope.getCookie = function(cookieName) {
-      return localStorage[cookieName];
-    };
-	
+
 	    $scope.watchAutocomplete = function () { return $scope.details; };
     $scope.$watch($scope.watchAutocomplete, function (details) {
       if (details) {
@@ -97,6 +94,6 @@
         });
       }
     };
-	
+
   });
 })();

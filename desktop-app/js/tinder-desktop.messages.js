@@ -1,11 +1,13 @@
 (function() {
-  module = angular.module('tinder++.messages', ['tinder++.api', 'tinder++.settings', 'ngSanitize', 'emoji']);
+  module = angular.module('tinder-desktop.messages', ['tinder-desktop.api', 'tinder-desktop.settings', 'tinder-desktop.common', 'ngSanitize']);
 
   module.controller('MessagesController', function($scope, API, Settings) {
     // console.log(API.conversations)
     $scope.conversations = API.conversations;
+    $scope.conversationCount = Object.keys($scope.conversations).length
     $scope.showExtra = Settings.get('messageListExtraInfo') === 'yes';
     $scope.open = function(matchId) {
+      $scope.currentMatch = matchId
       $scope.conversation = $scope.conversations[matchId];
     };
     var ENTER = 13;

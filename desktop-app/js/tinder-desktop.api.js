@@ -1,12 +1,12 @@
 (function() {
-  var gui = require('nw.gui');
   var tinder = require('tinder');
   var client = new tinder.TinderClient();
+  var remote = require('remote'); 
 
   // if a token returned from tinder is in localstorage, set that token and skip auth
   if (localStorage.tinderToken) { client.setAuthToken(localStorage.tinderToken); }
 
-  angular.module('tinder++.api', []).factory('API', function($q) {
+  angular.module('tinder-desktop.api', []).factory('API', function($q, $location) {
     var likesRemaining = null;
     var apiObj = {};
 
@@ -14,44 +14,48 @@
       console.log('ERROR!!!!');
       console.log(err);
 
-      // api token invalid, logout and refresh
-      if (err.status === 401) {
+      // Tinder API token is not valid.
+      if (err.status === 401 && localStorage.getItem('fbTokenExpiresAt') != null) {
+        if(Date.parse(localStorage.fbTokenExpiresAt) > new Date()) {
+          // Facebook token is still good. Get a new Tinder token.
+          apiObj.login(localStorage.fbUserId, localStorage.fbToken);
+        } else {
+          // Facebook token expired. Get a new Facebook token.
+          $location.path('/login');
+        }
+      } else {
+        // Something's gone horribly wrong. Log the user out.
         apiObj.logout();
       }
       (callbackFn || angular.noop)(err);
     };
 
     apiObj.logout = function() {
-      localStorage.clear();
-      // clear the cache
-      gui.App.clearCache();
-      var nwWin = gui.Window.get();
+      var win = remote.getCurrentWindow();
 
-      function removeCookie(cookie) {
-        var lurl = "http" + (cookie.secure ? "s" : "") + "://" + cookie.domain + cookie.path;
-        nwWin.cookies.remove({ url: lurl, name: cookie.name },
-        function(result) {
-          if (result) {
-            if (!result.name) { result = result[0]; }
-            console.log('cookie remove callback: ' + result.name + ' ' + result.url);
-          } else {
-            console.log('cookie removal failed');
-          }
-        });
+      // Retain settings on logout.
+      var removeArr = [];
+      for (var i = 0; i < localStorage.length; i++){
+        if (localStorage.key(i) != 'settings') {
+          removeArr.push(localStorage.key(i));
+        }
       }
 
-      nwWin.cookies.getAll({}, function(cookies) {
-        console.log('Attempting to remove '+cookies.length+' cookies...');
-        for (var i=0; i<cookies.length; i++) {
-          removeCookie(cookies[i]);
-        }
+      for (var i = 0; i < removeArr.length; i++) {
+        localStorage.removeItem(removeArr[i]);
+      }
+
+      // Clear cache and cookies.
+      win.webContents.session.clearCache(function(){
+        win.webContents.session.clearStorageData({storages: ["cookies"]}, function(){
+          win.webContents.reloadIgnoringCache();
+        });
       });
-      gui.Window.get().reloadIgnoringCache();
     };
 
     apiObj.login = function(id, token) {
       client.authorize(token, id, function(err, res, data) {
-        if (!!err) { 
+        if (!!err) {
           handleError(err);
           return;
         }
@@ -70,7 +74,7 @@
     apiObj.updateLocation = function(lng, lat) {
       return $q(function (resolve, reject) {
         client.updatePosition(lng, lat, function(err, res, data) {
-          if (!!err) { 
+          if (!!err) {
             handleError(err, reject);
             return;
           }
@@ -96,7 +100,7 @@
       return $q(function (resolve, reject) {
         limit = limit || 10;
         client.getRecommendations(limit, function(err, res, data) {
-          if (!!err) { 
+          if (!!err) {
             handleError(err, reject);
             return;
           }
@@ -120,7 +124,7 @@
     apiObj.userInfo = function(userId) {
       return $q(function (resolve, reject) {
         client.getUser(userId, function(err, res, data) {
-          if (!!err) { 
+          if (!!err) {
             handleError(err, reject);
             return;
           }
@@ -136,7 +140,7 @@
 
     apiObj.getAccount = function() {
       return $q(function (resolve, reject) {
-        client.getProfile(function(err, res, data) { // change to client.getAccount
+        client.getAccount(function(err, res, data) {
           if (!!err) { 
             handleError(err, reject);
             return;
@@ -151,15 +155,31 @@
       });
     };
 
+    apiObj.updatePreferences = function(discovery, ageMin, ageMax, gender, distance) {
+      return $q(function (resolve, reject) {
+        client.updatePreferences(discovery, ageMin, ageMax, gender, distance, function(err, res, data) { // change to client.getAccount
+          if (!!err) {
+            handleError(err, reject);
+            return;
+          }
+          if (res === null) {
+            handleError('Fail to update Preferences', reject);
+            return;
+          }
+          resolve(res);
+        });
+      });
+    };
+
     apiObj.like = function(userId) {
       return $q(function (resolve, reject) {
         client.like(userId, function(err, res, data) {
-          if (!!err) { 
+          if (!!err) {
             handleError(err, reject);
             return;
           }
           // console.log(JSON.stringify(res));
-          
+
           // if the liked user is a match, alert it right away
           if (res && res.match) {
             apiObj.userInfo(res.match.participants[1], function(err2, res2, data2) {
@@ -179,7 +199,7 @@
             // TODO: I think alerts belong to controller
             swal({
               title: 'Out of Swipes',
-              text: 'Sorry, Tinder doesn\'t like your business. Try again at ' + rate_limited_until.format('dddd, h:mma') + 
+              text: 'Sorry, Tinder doesn\'t like your business. Try again at ' + rate_limited_until.format('dddd, h:mma') +
                     ' (' + now.to(rate_limited_until) + ')',
               type: 'error',
               confirmButtonColor: "#DD6B55",
@@ -192,59 +212,59 @@
             likesRemaining = res.likes_remaining;
           }
           resolve(res);
-        });        
+        });
       });
     };
 
     apiObj.superLike = function(userId) {
       return $q(function (resolve, reject) {
         client.superLike(userId, function(err, res, data) {
-          if (!!err) { 
+          if (!!err) {
             handleError(err, reject);
             return;
           }
           // console.log(JSON.stringify(res));
           resolve(res);
-        });        
+        });
       });
     };
 
     apiObj.pass = function(userId) {
       return $q(function (resolve, reject) {
         client.pass(userId, function(err, res, data) {
-          if (!!err) { 
+          if (!!err) {
             handleError(err, reject);
             return;
           }
           console.log(JSON.stringify(res));
           resolve(res);
-        });        
+        });
       });
     };
 
     apiObj.sendMessage = function(matchId, message) {
       return $q(function (resolve, reject) {
         client.sendMessage(matchId, message, function(err, res, data) {
-          if (!!err) { 
+          if (!!err) {
             handleError(err, reject);
             return;
           }
           // console.log(JSON.stringify(res));
           resolve(res);
-        });        
+        });
       });
     };
 
     apiObj.unmatch = function(matchId, message) {
       return $q(function (resolve, reject) {
         client.unmatch(matchId, function(err, res, data) {
-          if (!!err) { 
+          if (!!err) {
             handleError(err, reject);
             return;
           }
           console.log(JSON.stringify(res));
           resolve(res);
-        });        
+        });
       });
     };
 
@@ -252,28 +272,54 @@
     apiObj.getUpdates = function() {
       return $q(function (resolve, reject) {
         client.getUpdates(function(err, res, data) {
-          if (!!err) { 
+          if (!!err) {
             handleError(err, reject);
             return;
           }
           // console.log(JSON.stringify(res));
           resolve(res);
-        });        
+        });
       });
-    };    
+    };
 
     apiObj.getHistory = function() {
       return $q(function (resolve, reject) {
         client.getHistory(function(err, res, data) {
-          if (!!err) { 
+          if (!!err) {
             handleError(err, reject);
             return;
           }
           // console.log(JSON.stringify(res));
           resolve(res);
-        });        
+        });
       });
     };
+    
+    apiObj.updatePassport =  function(lat, lon){
+      return $q(function (resolve, reject) {
+        client.updatePassport(lat, lon, function(err, res, data) {
+          if (!!err) {
+            handleError(err, reject);
+            return;
+          }
+          // console.log(JSON.stringify(res));
+          resolve(res);
+        });
+      });
+    }
+    
+    apiObj.resetPassport =  function(){
+      return $q(function (resolve, reject) {
+        client.resetPassport(function(err, res, data) {
+          if (!!err) {
+            handleError(err, reject);
+            return;
+          }
+          // console.log(JSON.stringify(res));
+          resolve(res);
+        });
+      });
+    }
 
     apiObj.getLikesRemaining = function() {
       return likesRemaining;

@@ -1,0 +1,70 @@
+<div class="wrapper">
+  <div class="wrapper-menu" ng-include src="'partials/menu.html'"></div>
+  <div class="wrapper-page">
+    <div class="settings">
+  <form name="tppSettings">
+    <fieldset>
+      <legend translate="SETTINGS.LOCATION"></legend>
+      <p>
+        <a href="" ng-click="toggleLocation()" >{{getCookie('currentCity') ? getCookie('currentCity') : ('SETTINGS.SET_LOCATION' | translate)}}</a>
+      </p>
+      <div ng-show="showLocation">
+        <input type="text" ng-autocomplete ng-model="autocomplete" options="autocompleteOptions" details="details" placeholder="{{'SETTINGS.SET_LOCATION' | translate}}" id="autocompleteLocation" />
+      </div>
+    </fieldset>
+  
+    <br />
+  
+    <fieldset>
+      <legend translate="SETTINGS.LANDING_PAGE"></legend>
+      <label for="landingPage_1">
+        <input type="radio" name="landingPage" id="landingPage_1" value="/swipe" ng-model="settings.landingPage" ng-change="syncSettings()"/>
+        {{'SETTINGS.SWIPE' | translate}}
+      </label>
+      <br/>
+      <label for="landingPage_2">
+        <input type="radio" name="landingPage" id="landingPage_2" value="/messages" ng-model="settings.landingPage" ng-change="syncSettings()"/>
+        {{'SETTINGS.MESSAGES' | translate}}
+      </label>
+    </fieldset>
+
+    <br/>
+
+    <fieldset>
+      <legend translate="SETTINGS.MESSAGES"></legend>
+      <label for="extraInfo_1">
+        <input type="radio" name="extraInfo" id="extraInfo_1" value="yes" ng-model="settings.messageListExtraInfo" ng-change="syncSettings()"/>
+        {{'SETTINGS.EXTRA_INFO_ON' | translate}}
+      </label>
+      <br/>
+      <label for="extraInfo_2">
+        <input type="radio" name="extraInfo" id="extraInfo_2" value="no" ng-model="settings.messageListExtraInfo" ng-change="syncSettings()"/>
+        {{'SETTINGS.EXTRA_INFO_OFF' | translate}}
+      </label>
+    </fieldset>
+
+    <br/>
+
+    <fieldset>
+      <legend translate="SETTINGS.DISTANCE_UNITS"></legend>
+      <label for="distanceUnits_1">
+        <input type="radio" name="distanceUnits" id="distanceUnits_1" value="mi" ng-model="settings.distanceUnits" ng-change="syncSettings()"/>
+        {{'SETTINGS.MILES' | translate}}
+      </label>
+      <br/>
+      <label for="distanceUnits_2">
+        <input type="radio" name="distanceUnits" id="distanceUnits_2" value="km" ng-model="settings.distanceUnits" ng-change="syncSettings()"/>
+        {{'SETTINGS.KILOMETRES' | translate}}
+      </label>
+    </fieldset>
+
+    <br/>
+
+    <fieldset>
+      <legend translate="SETTINGS.LOGOUT"></legend>
+      <a href="" ng-click="logout()" translate="SETTINGS.CLICK_TO_LOGOUT"></a>
+    </fieldset>
+  </form>
+    </div>
+  </div>
+</div>
