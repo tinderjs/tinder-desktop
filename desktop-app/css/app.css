@@ -648,7 +648,7 @@ section.range-slider {
     overflow: hidden;
     position: relative;
     width: 200px;
-    height: 18px;
+    height: 21px;
     display: inline-block;
 }
 
@@ -660,7 +660,7 @@ section.range-slider input {
     top: 0;
     width: 200px;
     outline: none;
-    height: 18px;
+    height: 21px;
 }
 
 section.range-slider input::-webkit-slider-thumb {
