@@ -6,8 +6,8 @@
   module.controller('SwipeController', function SwipeController($scope, $route, $timeout, $interval, $location, API, Cache) {
     API.getHistory();
     function GenerateHtmlStack(){
+
       var HtmlStack = document.querySelector(".main-photo-container");  
-      
       while(HtmlStack.firstChild){
         HtmlStack.removeChild(HtmlStack.firstChild);
       }

@@ -741,9 +741,84 @@ ul.from-to li input {
     outline: none;
 }
 
+<<<<<<< 515b4a440ee7c3db5d02875604fbf55df822fd71
 
 /* Templates - settings */
 
 #autocompleteLocation {
     margin-bottom: 20px;
+=======
+.main-photo {
+    text-align: center;
+    width: 500px;
+    height: 500px;
+    display: inline-block;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    background: #fff top left / contain no-repeat;
+    z-index: 1000;
+    margin-top: 32px;
+}
+
+#viewport .stack {
+    max-width: 400px;
+    height: 300px;
+    position: absolute;
+    border-radius: 10px; 
+}
+  
+#viewport li {
+    width: 500px;
+    height: 500px;
+    list-style: none;
+    border-radius: 5px;
+    border: 5px solid white;
+    display: inline-block;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    cursor: -webkit-grab;
+    box-shadow: 0 0 1px
+}
+
+#viewport li .stampLike{
+  position: absolute;
+  right: 50px;
+  top: 50px;
+  font-size: 100px;
+  color:#A1C820;
+}
+
+#viewport li .stampPass{
+  position: absolute;
+  left: 50px;
+  top: 50px;
+  font-size: 100px;
+  color:#F02311;
+}
+
+#viewport li.in-deck:nth-last-child(1){
+  width: 520px;
+  height: 520px;
+  top: -25px;
+  margin-left:-10px;
+}
+    
+#viewport li.in-deck:nth-last-child(2) {
+  width: 515px;
+  height: 515px;
+  top: -15px;
+  margin-left:-7px;
+}
+
+#viewport li.in-deck:nth-last-child(3) {
+  width: 510px;
+  height: 510px;
+  top: -5px;
+  margin-left:-5px;
+>>>>>>> Rewriting of the swipe part and hadnling cache.
 }
