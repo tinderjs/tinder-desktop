@@ -2,47 +2,38 @@
   <div class="wrapper-menu" ng-include src="'partials/menu.html'"></div>
   <div class="wrapper-page">
     <div class="container">
-      <div ng-show="allPeople.length === 0 || peopleIndex >= allPeople.length">
+      <div ng-show="allPeople.length === 0">
         <div class="loader">
           {{'SWIPE.LOADING' | translate}}
           <div class="loader-anim"></div>
         </div>
       </div>
-      <div ng-show="allPeople.length > 0 && peopleIndex < allPeople.length">
+      <div ng-show="allPeople.length > 0">
         <div class="responsive-profile">
           <div class="main-photo-container">
-            <div class="main-photo tinder-card" ng-repeat="user in allPeople.slice().reverse()" render-images-directive
-              style="background-image: url({{user.photos[user.photoIndex].processedFiles[0].url}});">
-              <div class="pass-overlay">
-                <i class="fa fa-thumbs-o-down"></i>
-              </div>
-              <div class="like-overlay">
-                <i class="fa fa-thumbs-o-up"></i>
-              </div>
-            </div>
           </div>
           <!-- information including bio etc -->
           <div class="profile">
             <div class="information">
               <h1 class="name fader">
-                {{allPeople[peopleIndex].name}}<a ng-show="allPeople[peopleIndex].instagram" href="https://instagram.com/{{allPeople[peopleIndex].instagram.username}}" target="_blank">
-                ({{allPeople[peopleIndex].instagram.username}})</a>,
-                {{allPeople[peopleIndex].birth_date | bdayToAge}}&nbsp;
+                {{allPeople[allPeople.length-1].name}}<a ng-show="allPeople[allPeople.length-1].instagram" href="https://instagram.com/{{allPeople[allPeople.length-1].instagram.username}}" target="_blank">
+                ({{allPeople[allPeople.length-1].instagram.username}})</a>,
+                {{allPeople[allPeople.length-1].birth_date | bdayToAge}}&nbsp;
               </h1>
-              <h3 class="status fader">{{allPeople[peopleIndex].distance_mi | distanceToUnits}} {{getCookie('currentCity') ? "from " + getCookie('currentCity') : ('SWIPE.AWAY' | translate)}}, {{'SWIPE.ACTIVE' | translate}} {{allPeople[peopleIndex].ping_time | timeFromNow}}</h3>
+              <h3 class="status fader">{{allPeople[allPeople.length-1].distance_mi | distanceToUnits}} {{getCookie('currentCity') ? "from " + getCookie('currentCity') : ('SWIPE.AWAY' | translate)}}, {{'SWIPE.ACTIVE' | translate}} {{allPeople[allPeople.length-1].ping_time | timeFromNow}}</h3>
               <p class="schoolwork fader">
-                <i ng-repeat="school in allPeople[peopleIndex].schools" class="school fa fa-graduation-cap">{{school.name}}</i>
-                <i ng-repeat="job in allPeople[peopleIndex].jobs" class="work fa fa-briefcase">
-                {{job.title.name}} {{job.company && job.title ? ('SWIPE.AT' | translate) : ''}} {{job.company.name}}
+                <i ng-repeat="school in allPeople[allPeople.length-1].schools" class="school fa fa-graduation-cap">{{school.name}}</i>
+                <i ng-repeat="job in allPeople[allPeople.length-1].jobs" class="work fa fa-briefcase">
+                  {{job.title.name}} {{job.company && job.title ? ('SWIPE.AT' | translate) : ''}} {{job.company.name}}
                 </i>
-              </p>
-              <p ng-show="allPeople[peopleIndex].bio" class="bio fader">{{ allPeople[peopleIndex].bio }}</p>
+                </p>
+                <p ng-show="allPeople[allPeople.length-1].bio" class="bio fader">{{ allPeople[allPeople.length-1].bio }}</p>
             </div>
             <!-- small inactive photos -->
             <div class="small-photos fader">
-              <div ng-repeat="photo in allPeople[peopleIndex].photos">
+              <div ng-repeat="photo in allPeople[allPeople.length-1].photos">
                 <img ng-src="{{photo.processedFiles[2].url}}" ng-click="swapPhoto($index)" data-photo-index="{{$index}}"
-                  ng-class="{'selected': $index === allPeople[peopleIndex].photoIndex}" />
+                  ng-class="{'selected': $index === allPeople[allPeople.length-1].photoIndex}" />
               </div>
             </div>
           </div>

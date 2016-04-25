@@ -5,6 +5,7 @@
   "main": "main.js",
   "dependencies": {
     "os-locale": "~1.4.0",
+    "swing": "^3.0.3",
     "tinder": "git://github.com/tinderjs/tinderjs"
   }
 }
