@@ -35,7 +35,7 @@
 
       $scope.watchDiscoveryChange = function () { return $scope.Discovery; };  
       $scope.$watch($scope.watchDiscoveryChange, function () {
-        change = true;
+        change++;
       }, true);
     }
     
@@ -69,7 +69,7 @@
     }, true);
   
     $scope.$on('$locationChangeStart', function(event, next, current) {
-      if(change){  
+      if(change >= 3){  
         $scope.updateDiscoverySettings();
         Cache.put('locationUpdated',true);
       }

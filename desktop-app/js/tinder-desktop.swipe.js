@@ -32,6 +32,7 @@
           image.onload = function () {
             $scope.$apply(function () {
               c.style.backgroundImage = 'url("' + $scope.allPeople[index].photos[0].processedFiles[0].url+ '")';
+              c.style.transform = "rotate(" + (Math.floor(Math.random()*(3+3+1)-3)) + "deg)";
               c.className = "main-photo tinder-card";
             });
           };
@@ -48,13 +49,13 @@
           return Math.min(Math.abs(offset) / 250, 1);
         }
       };
-      $scope.cards = [].slice.call(document.querySelectorAll('.stack li'));
+      $scope.cards = [].slice.call(document.querySelectorAll('.main-photo-container div'));
        
       window.stack = Swing.Stack(config);
       
       $scope.cards.forEach(function (targetElement) {
         window.stack.createCard(targetElement);
-        targetElement.classList.add('in-deck');
+        targetElement.classList.add('tinder-card');
       });
 
       window.stack.on('throwout', function (e) {
@@ -72,11 +73,11 @@
            if($scope.allPeople.length == 3){
              preLoad('reload');
            }
-           e.target.classList.remove('in-deck');
+           e.target.classList.remove('tinder-card');
        });
 
       window.stack.on('throwin', function (e) {
-           e.target.classList.add('in-deck');
+           e.target.classList.add('tinder-card');
        });
        
        window.stack.on('dragmove', function (e){
@@ -240,7 +241,7 @@
       image.onload = function () {
         $scope.$apply(function () {
           card.style.backgroundImage = 'url("' + $scope.allPeople[$scope.allPeople.length-1].photos[index].processedFiles[0].url+ '")';
-          card.className = "in-deck";
+          card.className = "tinder-card";
         });
       };
       image.src = $scope.allPeople[$scope.allPeople.length-1].photos[index].processedFiles[0].url;
