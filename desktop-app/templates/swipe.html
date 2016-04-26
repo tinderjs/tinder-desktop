@@ -30,12 +30,12 @@
                 {{allPeople[peopleIndex].birth_date | bdayToAge}}&nbsp;
               </h1>
               <h3 class="status fader">{{allPeople[peopleIndex].distance_mi | distanceToUnits}} {{getCookie('currentCity') ? "from " + getCookie('currentCity') : ('SWIPE.AWAY' | translate)}}, {{'SWIPE.ACTIVE' | translate}} {{allPeople[peopleIndex].ping_time | timeFromNow}}</h3>
-              <p class="schoolwork fader">
-                <i ng-repeat="school in allPeople[peopleIndex].schools" class="school fa fa-graduation-cap">{{school.name}}</i>
-                <i ng-repeat="job in allPeople[peopleIndex].jobs" class="work fa fa-briefcase">
+              <div class="schoolwork fader">
+                <div ng-repeat="school in allPeople[peopleIndex].schools"><div class="school fa fa-graduation-cap fa-lg"></div>{{school.name}}</div>
+                <div ng-repeat="job in allPeople[peopleIndex].jobs"><div class="work fa fa-briefcase fa-lg"></div>
                 {{job.title.name}} {{job.company && job.title ? ('SWIPE.AT' | translate) : ''}} {{job.company.name}}
-                </i>
-              </p>
+                </div>
+              </div>
               <p ng-show="allPeople[peopleIndex].bio" class="bio fader">{{ allPeople[peopleIndex].bio }}</p>
             </div>
             <!-- small inactive photos -->
