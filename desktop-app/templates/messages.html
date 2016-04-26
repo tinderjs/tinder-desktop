@@ -1,64 +1,76 @@
-<div ng-include src="'partials/menu.html'"></div>
-<div id="messages" class="columns">
-  <div id="match-list" ng-class="showExtra && 'more-info'">
-    <div class="match-header" translate="MESSAGES.MESSAGES_COUNT"
+<div class="wrapper">
+  <div class="wrapper-menu" ng-include src="'partials/menu.html'"></div>
+  <div class="wrapper-page">
+    <div id="match-list" ng-class="showExtra && 'more-info'">
+      <div class="match-header" translate="MESSAGES.MATCHES_COUNT"
          translate-values="{ count: conversationCount }">
-    </div>
-    <div class="scrollable-matchlist">
-      <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true track by match.matchId"
-           ng-click="open(match.matchId)" 
-           ng-class="{true: 'selected'}[currentMatch === match.matchId]"
-           class="match">
-        <img ng-src="{{match.thumbnail || 'img/anonymous.png'}}" class="thumbnail"/>
-        <div class="info-container">
-          <div class="name">{{match.name || 'Unknown'}}</div>
-          <div class="info" ng-show="showExtra && match.infoUpdateTime">
-            <i class="fa fa-location-arrow"></i> {{match.userDistance | distanceToUnits}} |
-            <i class="fa fa-bolt"></i> <span short-time-ago="{{match.userPingTime}}"></span> |
-            <i class="fa fa-comments" ng-class="lastMessageClass(match)"></i> <span short-time-ago="{{match.lastActive}}"></span>
+      </div>
+      <div class="scrollable-matchlist">
+        <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true track by match.matchId"
+          ng-click="open(match.matchId)"
+          ng-class="{true: 'selected'}[currentMatch === match.matchId]"
+          class="match">
+          <img ng-src="{{match.thumbnail || 'img/anonymous.png'}}" class="thumbnail"/>
+          <div class="info-container">
+            <div class="name">
+              {{match.name || 'Unknown'}}
+              <i ng-show="match.isSuperLike" class="fa fa-star"></i>
+            </div>
+            <div class="info" ng-show="showExtra && match.infoUpdateTime">
+              <i class="fa fa-location-arrow"></i> {{match.userDistance | distanceToUnits}} |
+              <i class="fa fa-bolt"></i> <span short-time-ago="{{match.userPingTime}}"></span> |
+              <i class="fa fa-comments" ng-class="lastMessageClass(match)"></i> <span short-time-ago="{{match.lastActive}}"></span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div id="conversation" ng-show="conversation">
-    <div class="message-header">
-      <div class="chat-with">
-        {{'MESSAGES.CHAT_WITH' | translate}} <a ng-href="#/profile/{{conversation.userId}}">{{conversation.name}}</a>
+    <div id="conversation" ng-show="conversation">
+      <div class="message-header">
+        <div class="chat-with">
+          {{'MESSAGES.CHAT_WITH' | translate}} <a ng-href="#/profile/{{conversation.userId}}">{{conversation.name}}</a>
+        </div>
+        <div class="match-options">
+          <a ng-href="#/profile/{{conversation.userId}}">
+          {{'PROFILE.TITLE' | translate}}
+          </a>
+          <a ng-click="unmatch(conversation)">
+          {{'MESSAGES.UNMATCH' | translate}}
+          </a>
+        </div>
       </div>
-      <button ng-click="unmatch(conversation)" class="unmatch-button"
-              translate="MESSAGES.UNMATCH">
-      </button>
-    </div>
-    <div ng-show="conversation.messages.length == 0" class="messages-list-empty"
+      <div class="messages-list-container">
+        <div ng-show="conversation.messages.length == 0" class="messages-list-empty"
          translate="MESSAGES.NO_MESSAGES">
-    </div>
-    <div class="messages-list">
-      <!-- normal messages -->
-      <div ng-repeat-start="message in conversation.messages track by $index" 
-           ng-click="$showTimeStamp = !$showTimeStamp"
-           style="position:relative">
-
-        <div class="{{message.fromMe ? 'from-me' : 'from-them'}}">
-        <div class="{{message.fromMe ? 'from-me-date sentAt' : 'from-them-date sentAt'}}" 
-             ng-class="{true: 'bounceIn', false: 'bounceOut'}[$showTimeStamp === true]">
-          {{message.sentDate | timeToLocalized}}
         </div>
-          <div ng-if="message.text" 
+        <div ng-if="message.text"
                ng-bind-html="message.text | twemoji"></div>
+        <div class="messages-list">
+          <!-- normal messages -->
+          <div ng-repeat-start="message in conversation.messages track by $index"
+            ng-click="$showTimeStamp = !$showTimeStamp"
+            style="position:relative">
+            <div class="{{message.fromMe ? 'from-me' : 'from-them'}}">
+              <div class="{{message.fromMe ? 'from-me-date sentAt' : 'from-them-date sentAt'}}"
+                ng-class="{true: 'bounceIn', false: 'bounceOut'}[$showTimeStamp === true]">
+                {{message.sentDate | timeToLocalized}}
+              </div>
+              <div ng-if="message.text"
+                ng-bind-html="message.text"></div>
+            </div>
+          </div>
+          <div ng-repeat-end class="messages-in-chat" scroll-to-last></div>
+          <!-- pending messages -->
+          <div ng-repeat-start="message in conversation.pending track by $index"
+            class="from-me">
+            <div class="pending-message">{{message}}</div>
+          </div>
+          <div ng-repeat-end class="messages-in-chat" scroll-to-last></div>
         </div>
       </div>
-
-      <div ng-repeat-end class="clear" scroll-to-last></div>
-      <!-- pending messages -->
-      <div ng-repeat-start="message in conversation.pending track by $index"
-          class="from-me">
-        <div class="pending-message">{{message}}</div>
+      <div class="messages-textarea">
+        <textarea ng-keypress="keypress($event)" ng-model="message" placeholder="{{'MESSAGES.MESSAGE_PLACEHOLDER' | translate}}">
       </div>
-
-      <div ng-repeat-end class="clear" scroll-to-last></div>
-
     </div>
-    <textarea ng-keypress="keypress($event)" ng-model="message" rows="4" placeholder="{{'MESSAGES.MESSAGE_PLACEHOLDER' | translate}}">
   </div>
 </div>

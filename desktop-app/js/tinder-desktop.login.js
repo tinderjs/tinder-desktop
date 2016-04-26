@@ -8,12 +8,12 @@
     $scope.fbAuthData = {};
 
     $scope.startLogin = function() {
-      var window = new BrowserWindow({ 
-        width: 700, 
-        height: 600, 
-        show: false, 
+      var window = new BrowserWindow({
+        width: 700,
+        height: 600,
+        show: false,
         webPreferences: {
-          nodeIntegration: false 
+          nodeIntegration: false
         }
       });
       window.setMenu(null);
@@ -21,7 +21,7 @@
       window.show();
 
       var interval = setInterval(function() {
-        if (window) checkForToken(window, interval);  
+        if (window) checkForToken(window, interval);
       }, 500);
 
       window.on('closed', function() {
@@ -55,13 +55,13 @@
       var graphUrl = 'https://graph.facebook.com/me?access_token=' + token;
       $http.get(graphUrl)
           .success(function(data) {
-            console.log(data);
+            // console.log(data);
             $scope.fbAuthData['fb_id'] = data.id;
             localStorage.fbUserId = $scope.fbAuthData['fb_id']
             tinderLogin();
           })
           .error(function(data) {
-            console.log(data);
+            // console.log(data);
           });
     }
 

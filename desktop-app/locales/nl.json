@@ -1,0 +1,57 @@
+{
+  "DISCOVERY": {
+    "TITLE": "Instellingen voor ontdekken",
+    "PASSPORT": "Paspoort",
+    "CHANGE_LOCATION": "Locatie wijzigen",
+    "ACTUAL_LOCATION": "Huidige locatie",
+    "DISCOVERABLE": "Vindbaar",
+    "YES": "Ja",
+    "NO": "Nee",
+    "SHOW_ME": "Weergeven",
+    "FEMALE": "Vrouwen",
+    "MALE": "Mannen",
+    "BOTH": "Allebei",
+    "SEARCH_PROXIMITY": "Zoekafstand",
+    "DISPLAY_AGES": "Geef leeftijden weer van {{from_age}} tot {{to_age}} jaar"
+  },
+  "MESSAGES": {
+    "TITLE": "Berichten",
+    "MATCHES_COUNT": "Matches: {{count}}",
+    "UNKNOWN": "Onbekend",
+    "CHAT_WITH": "Gesprek met",
+    "UNMATCH": "Match opheffen",
+    "NO_MESSAGES": "Nog geen berichten. Schrijf iets!",
+    "MESSAGE_PLACEHOLDER": "Schrijf iets leuks hier..."
+  },
+  "PROFILE": {
+    "TITLE": "Profiel",
+    "AWAY": "hier vandaan",
+    "ACTIVE": "actief",
+    "AT": "op"
+  },
+  "SETTINGS": {
+    "TITLE": "Instellingen",
+    "LOCATION": "Locatie",
+    "SET_LOCATION": "Locatie instellen",
+    "CHANGE_LOCATION": "Locatie wijzigen",
+    "LANDING_PAGE": "Begin pagina",
+    "SWIPE": "@:SWIPE.TITLE",
+    "MESSAGES": "@:MESSAGES.TITLE",
+    "EXTRA_INFO_ON": "Geef match informatie in lijst weer",
+    "EXTRA_INFO_OFF": "Geef match informatie in lijst niet weer",
+    "DISTANCE_UNITS": "Afstanden tonen in",
+    "MILES": "Mijl",
+    "KILOMETRES": "Kilometer",
+    "LOGOUT": "Uitloggen",
+    "CLICK_TO_LOGOUT": "Klik om uit te loggen"
+  },
+  "SWIPE": {
+    "TITLE": "Vegen",
+    "UNDO": "Ongedaan maken",
+    "SUPERLIKES_REMAINING": "Superlikes over",
+    "LOADING": "Laden...",
+    "AWAY": "@:PROFILE.AWAY",
+    "ACTIVE": "@:PROFILE.ACTIVE",
+    "AT": "@:PROFILE.AT"
+  }
+}

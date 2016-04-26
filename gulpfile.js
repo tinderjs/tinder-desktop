@@ -54,7 +54,7 @@ gulp.task('compile:fonts', function() {
 });
 
 // Assets handler
-gulp.task('compile:all', ['compile:scripts', 'compile:stylesheets', 
+gulp.task('compile:all', ['compile:scripts', 'compile:stylesheets',
           'compile:fonts']);
 
 // Remove build output directories
@@ -76,7 +76,7 @@ gulp.task('clean', function() {
 
       if(platform == 'darwin') {
         icon = './assets-osx/icon.icns';
-      } else if(platform == 'win32') { 
+      } else if(platform == 'win32') {
         icon = './assets-windows/icon.ico';
       };
 
@@ -150,7 +150,7 @@ gulp.task('pack:darwin:x64', ['build:darwin:x64'], function(callback) {
 
 // Build all platforms
 gulp.task('build:all', ['clean'], function(callback) {
-  runSequence('build:darwin:x64', 'build:win32:all', 'build:linux:all', 
+  runSequence('build:darwin:x64', 'build:win32:all', 'build:linux:all',
               callback);
 });
 
@@ -166,7 +166,7 @@ gulp.task('build:linux:all', function(callback) {
 
 // Build and package all Linux archs
 gulp.task('pack:linux:all', ['build:linux:all'], function(callback) {
-  runSequence('pack:linux:ia32:deb', 'pack:linux:ia32:rpm', 
+  runSequence('pack:linux:ia32:deb', 'pack:linux:ia32:rpm',
               'pack:linux:x64:deb', 'pack:linux:x64:rpm', callback);
 })
 
@@ -177,16 +177,20 @@ gulp.task('pack:win32:all', ['build:win32:all'], function(callback) {
 
 // Build and package all platforms
 gulp.task('pack:all', ['compile:all'], function(callback) {
-  runSequence('pack:darwin:x64', 'pack:win32:all', 
+  runSequence('pack:darwin:x64', 'pack:win32:all',
               'pack:linux:all', callback);
 });
 
 // Run Tinder Desktop in debug mode
 gulp.task('run', ['compile:all'], function(callback) {
-  var child = proc.spawn(electron, ['--debug=5858', './desktop-app']);
+  var child = proc.spawn(electron, ['--enable-logging', '--debug=5858', './desktop-app']);
 
   child.stdout.on('data', function(data) {
-    console.log(`${data}`);
+    console.log('stdout: ' + data);
+  });
+
+  child.stderr.on('data', function(data) {
+    console.log('stderr: ' + data);
   });
 
   child.on('exit', function(exitCode) {

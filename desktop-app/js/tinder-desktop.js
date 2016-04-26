@@ -20,8 +20,10 @@
         prefix: 'locales/',
         suffix: '.json'
       })
-      .registerAvailableLanguageKeys(['en'], {
-        'en-*': 'en'
+      .registerAvailableLanguageKeys(['en', 'fr', 'nl'], {
+        'en-*': 'en',
+        'fr-*': 'fr',
+        'nl-*': 'nl'
       })
       .useSanitizeValueStrategy('escape')
       .uniformLanguageTag('bcp47')
