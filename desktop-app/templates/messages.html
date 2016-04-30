@@ -67,11 +67,13 @@
         </div>
       </div>
 
-      <div style="order:4"><h1 ng-click="generateResponsesForLastMessage()">Generate Response </h1></div>
+      <div style="order:4"><h4 ng-click="generateResponsesForLastMessage()">Generate Responses </h4></div>
 
-      <div style="order:5"><h1 ng-click="sendResponse()">{{cleverbotResponse}} </h1></div>
+      <!--<div style="order:5"><h4 ng-click="sendResponse()">{{cleverbotResponse}} </h4></div>-->
 
-      <div style="order:5"><h1 ng-click="sendResponse()">{{cleverbotResponses}} </h1></div>
+      <div style="order:7" ng-repeat="response in cleverbotResponses">
+          <h4>{{response}}</h4>
+      </div>
 
 
       <div class="messages-textarea">
