@@ -2,10 +2,23 @@
   module = angular.module('tinder-desktop.messages', ['tinder-desktop.api', 'tinder-desktop.settings', 'tinder-desktop.common', 'ngSanitize']);
 
   module.controller('MessagesController', function($scope, API, Settings, Cleverbot) {
-    
+
+
+
     Cleverbot.getResponse('What\'s up?').then(function(response){
+      console.log(response);
       $scope.cleverbotResponse = response;
-    })
+    });
+
+    $scope.sendResponse = function(){
+      API.sendMessage($scope.conversation.matchId, $scope.cleverbotResponse);
+      // Show pending message
+      $scope.conversation.pending = $scope.conversation.pending || [];
+      $scope.conversation.pending.push($scope.cleverbotResponse);
+      // Reset
+      $scope.cleverbotResponse = '';
+    }
+
     // console.log(API.conversations)
     $scope.conversations = API.conversations;
     $scope.conversationCount = Object.keys($scope.conversations).length
