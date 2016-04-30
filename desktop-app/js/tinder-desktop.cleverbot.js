@@ -38,7 +38,7 @@
         });
       })
     }
-
+    
     getResponse('hello');
 
     return 'Fred';
