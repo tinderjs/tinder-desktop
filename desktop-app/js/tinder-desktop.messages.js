@@ -3,10 +3,7 @@
 
   module.controller('MessagesController', function($scope, API, Settings, Cleverbot) {
 
-
-
     Cleverbot.getResponse('What\'s up?').then(function(response){
-      console.log(response);
       $scope.cleverbotResponse = response;
     });
 
@@ -23,6 +20,7 @@
     $scope.conversations = API.conversations;
     $scope.conversationCount = Object.keys($scope.conversations).length
     $scope.showExtra = Settings.get('messageListExtraInfo') === 'yes';
+
     $scope.open = function(matchId) {
       $scope.currentMatch = matchId
       $scope.conversation = $scope.conversations[matchId];
@@ -42,6 +40,15 @@
         API.unmatch(conversation.matchId)
       });
     }
+
+    $scope.generateResponseForLastMessage = function(){
+      var lastMessageNumber = ($scope.conversation.messages.length - 1);
+      var lastMessage = $scope.conversation.messages[lastMessageNumber].text;
+
+      Cleverbot.getResponse('').then(function(response){
+        $scope.cleverbotResponse = response;
+      });
+    };
 
     $scope.lastMessageClass = function (match) {
       if (match.messages.length) {
