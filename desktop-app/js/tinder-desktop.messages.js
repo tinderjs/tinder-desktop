@@ -41,6 +41,8 @@
       });
     }
 
+
+
     $scope.generateResponseForLastMessage = function(){
       var lastMessageNumber = ($scope.conversation.messages.length - 1);
       var lastMessage = $scope.conversation.messages[lastMessageNumber].text;
@@ -48,6 +50,22 @@
       Cleverbot.getResponse(lastMessage).then(function(response){
         $scope.cleverbotResponse = response;
       });
+    };
+
+    $scope.generateResponsesForLastMessage = function(){
+      var lastMessageNumber = ($scope.conversation.messages.length - 1);
+      var lastMessage = $scope.conversation.messages[lastMessageNumber].text;
+
+      $scope.cleverbotResponses = [];
+
+      var amountOfResponses = 4;
+
+      // loop through and get the four responses;
+      for(var i = 0; i < amountOfResponses; i++){
+        Cleverbot.getResponse(lastMessage).then(function(response){
+          $scope.cleverbotResponses.push(response)
+        });
+      }
     };
 
     $scope.lastMessageClass = function (match) {
