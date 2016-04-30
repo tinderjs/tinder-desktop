@@ -3,18 +3,21 @@
 
   module.controller('MessagesController', function($scope, API, Settings, Cleverbot) {
 
-    Cleverbot.getResponse('What\'s up?').then(function(response){
-      $scope.cleverbotResponse = response;
-    });
+    // here's auto generate an opener for when you need it
+    // Cleverbot.getResponse('What\'s up?').then(function(response){
+    //   $scope.cleverbotResponse = response;
+    // });
 
-    $scope.sendResponse = function(){
-      API.sendMessage($scope.conversation.matchId, $scope.cleverbotResponse);
-      // Show pending message
-      $scope.conversation.pending = $scope.conversation.pending || [];
-      $scope.conversation.pending.push($scope.cleverbotResponse);
-      // Reset
-      $scope.cleverbotResponse = '';
-    }
+
+
+    // $scope.sendResponse = function(){
+    //   API.sendMessage($scope.conversation.matchId, $scope.cleverbotResponse);
+    //   // Show pending message
+    //   $scope.conversation.pending = $scope.conversation.pending || [];
+    //   $scope.conversation.pending.push($scope.cleverbotResponse);
+    //   // Reset
+    //   $scope.cleverbotResponse = '';
+    // }
 
     // console.log(API.conversations)
     $scope.conversations = API.conversations;
@@ -51,6 +54,13 @@
         $scope.cleverbotResponse = response;
       });
     };
+
+    $scope.sendResponse = function ($event) {
+      API.sendMessage($scope.conversation.matchId, $event.target.innerHTML);
+      // Show pending message
+      $scope.conversation.pending = $scope.conversation.pending || [];
+      $scope.conversation.pending.push($event.target.innerHTML);
+    }
 
     $scope.generateResponsesForLastMessage = function(){
       var lastMessageNumber = ($scope.conversation.messages.length - 1);

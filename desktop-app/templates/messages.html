@@ -71,10 +71,9 @@
 
       <!--<div style="order:5"><h4 ng-click="sendResponse()">{{cleverbotResponse}} </h4></div>-->
 
-      <div style="order:7" ng-repeat="response in cleverbotResponses">
-          <h4>{{response}}</h4>
+      <div style="order:7" ng-repeat="response in cleverbotResponses track by $index">
+          <h3 ng-click="sendResponse($event)">{{response}}</h3>
       </div>
-
 
       <div class="messages-textarea">
         <textarea ng-keypress="keypress($event)" ng-model="message" placeholder="{{'MESSAGES.MESSAGE_PLACEHOLDER' | translate}}">
