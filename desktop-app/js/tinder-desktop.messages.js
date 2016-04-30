@@ -1,7 +1,9 @@
 (function() {
   module = angular.module('tinder-desktop.messages', ['tinder-desktop.api', 'tinder-desktop.settings', 'tinder-desktop.common', 'ngSanitize']);
 
-  module.controller('MessagesController', function($scope, API, Settings) {
+  module.controller('MessagesController', function($scope, API, Settings, Cleverbot) {
+
+    console.log(Cleverbot)
     // console.log(API.conversations)
     $scope.conversations = API.conversations;
     $scope.conversationCount = Object.keys($scope.conversations).length
@@ -13,15 +15,15 @@
     var ENTER = 13;
 
     $scope.unmatch = function(conversation){
-      swal({   
-        title: "Unmatch with " + conversation.name + "?",   
-        text: "You will not be able to message this person",   // Unmatch with conversation.name 
-        type: "info",   
-        showCancelButton: true,   
-        confirmButtonColor: "#DD6B55",   
-        confirmButtonText: "Yes, unmatch",   
-        closeOnConfirm: true }, 
-      function(){   
+      swal({
+        title: "Unmatch with " + conversation.name + "?",
+        text: "You will not be able to message this person",   // Unmatch with conversation.name
+        type: "info",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, unmatch",
+        closeOnConfirm: true },
+      function(){
         API.unmatch(conversation.matchId)
       });
     }
@@ -70,7 +72,7 @@
       return filtered;
     };
   });
-  
+
   module.directive('shortTimeAgo', function($interval) {
     return {
       restrict: 'A',
