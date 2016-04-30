@@ -1,7 +1,7 @@
 (function() {
   var tinder = require('tinder');
   var client = new tinder.TinderClient();
-  var remote = require('remote'); 
+  var remote = require('remote');
 
   // if a token returned from tinder is in localstorage, set that token and skip auth
   if (localStorage.tinderToken) { client.setAuthToken(localStorage.tinderToken); }
@@ -21,7 +21,7 @@
           apiObj.login(localStorage.fbUserId, localStorage.fbToken);
         } else {
           // Facebook token expired. Get a new Facebook token.
-          $location.path('/login');
+          // $location.path('/login');
         }
       } else {
         // Something's gone horribly wrong. Log the user out.
@@ -141,7 +141,7 @@
     apiObj.getAccount = function() {
       return $q(function (resolve, reject) {
         client.getAccount(function(err, res, data) {
-          if (!!err) { 
+          if (!!err) {
             handleError(err, reject);
             return;
           }
@@ -294,7 +294,7 @@
         });
       });
     };
-    
+
     apiObj.updatePassport =  function(lat, lon){
       return $q(function (resolve, reject) {
         client.updatePassport(lat, lon, function(err, res, data) {
@@ -307,7 +307,7 @@
         });
       });
     }
-    
+
     apiObj.resetPassport =  function(){
       return $q(function (resolve, reject) {
         client.resetPassport(function(err, res, data) {
