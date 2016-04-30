@@ -11,6 +11,8 @@
 
   angular.module('tinder-desktop.cleverbot', []).factory('Cleverbot', function($q) {
     var handleError = function(err, callbackFn) {
+
+
       console.log('ERROR!!!!');
       console.log(err);
 
@@ -18,6 +20,8 @@
     };
 
     var cleverBot = new Cleverbot;
+
+    var CleverbotAPI = {};
 
     function cleverbotWriteAsync(message){
       return new Promise(function(resolve, reject){
@@ -38,7 +42,34 @@
         });
       })
     }
-    
+
+    CleverbotAPI.getResponse = function(message) {
+      return $q(function (resolve, reject) {
+        return cleverbotPrepareAsync().then(function () {
+          return cleverbotWriteAsync(message).then(function(response){
+            resolve(response.message);
+          });
+        })
+
+        // client.getAccount(function(err, res, data) {
+        //   if (!!err) {
+        //     handleError(err, reject);
+        //     return;
+        //   }
+        //   if (res === null) {
+        //     handleError('userInfo result is null', reject);
+        //     return;
+        //   }
+        //   // console.log(JSON.stringify(res));
+        //   resolve(res);
+        // });
+      });
+    };
+
+    return CleverbotAPI;
+
+
+
     getResponse('hello');
 
     return 'Fred';

@@ -2,8 +2,10 @@
   module = angular.module('tinder-desktop.messages', ['tinder-desktop.api', 'tinder-desktop.settings', 'tinder-desktop.common', 'ngSanitize']);
 
   module.controller('MessagesController', function($scope, API, Settings, Cleverbot) {
-
-    console.log(Cleverbot)
+    
+    Cleverbot.getResponse('What\'s up?').then(function(response){
+      $scope.cleverbotResponse = response;
+    })
     // console.log(API.conversations)
     $scope.conversations = API.conversations;
     $scope.conversationCount = Object.keys($scope.conversations).length
