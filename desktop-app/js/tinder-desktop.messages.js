@@ -45,7 +45,7 @@
       var lastMessageNumber = ($scope.conversation.messages.length - 1);
       var lastMessage = $scope.conversation.messages[lastMessageNumber].text;
 
-      Cleverbot.getResponse('').then(function(response){
+      Cleverbot.getResponse(lastMessage).then(function(response){
         $scope.cleverbotResponse = response;
       });
     };
