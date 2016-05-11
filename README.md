@@ -3,7 +3,7 @@ tinder-desktop
 
 #### Contribution ####
 
-tinder-desktop is a project that has a lot of potential if the power of the open-source community is harnessed. Come [join us on Slack](http://tinderjs.com) and view the [priorities list](https://github.com/tinderjs/tinder-desktop/wiki/Development-Priorities) to see how you can contribute, it is well appreciated!
+tinder-desktop is a project that has a lot of potential if the power of the open-source community is harnessed. Come [join us on Slack](http://tinderjs.herokuapp.com) and view the [priorities list](https://github.com/tinderjs/tinder-desktop/wiki/Development-Priorities) to see how you can contribute, it is well appreciated!
 
 #### Development ####
 
@@ -36,14 +36,14 @@ Limitations:
 - [@mfkp] (https://github.com/mfkp) ([http://www.kylepowers.com/](http://www.kylepowers.com/))
 - [@tomlandia](https://github.com/tomlandia) ([http://thomasschneider.com/](http://thomasschneider.com/))
 - [@wbyoko](https://github.com/wbyoko) ([http://wbyoko.co/](http://wbyoko.co/))
+- [@mrmayfield](https://github.com/mrmayfield) ([http://anthonymayfield.com/](http://anthonymayfield.com/))
+- [@run1t](https://github.com/run1t)
+- [@SaturnusDJ](https://github.com/SaturnusDJ)
+
 
 #### Acknowledgment ####
 
 This application was originally created by Github user [@mfkp] (https://github.com/mfkp) as [tinderplusplus](https://github.com/mfkp/tinderplusplus) and a big thank you is given to him for getting the project off the ground and running.
-
-#### Disclaimer ####
-
-This is not an official Tinder app and as such its usage may violate Tinder's TOS. As with any experimental technology you should use it with caution.
 
 ### ISC License ###
 
