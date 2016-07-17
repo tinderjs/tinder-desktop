@@ -1,0 +1,57 @@
+{
+  "DISCOVERY": {
+    "TITLE": "Kutatási beállítások",
+    "PASSPORT": "Útlevél",
+    "CHANGE_LOCATION": "Hely megváltoztatása",
+    "ACTUAL_LOCATION": "Jelenlegi hely",
+    "DISCOVERABLE": "Kutatható",
+    "YES": "Igen",
+    "NO": "Nem",
+    "SHOW_ME": "Megjelenítés",
+    "FEMALE": "Nő",
+    "MALE": "Férfi",
+    "BOTH": "Mindkettő",
+    "SEARCH_PROXIMITY": "Keresési távolság",
+    "DISPLAY_AGES": "Megjelenítés {{from_age}} éves kortól {{to_age}} éves korig"
+  },
+  "MESSAGES": {
+    "TITLE": "Üzenetek",
+    "MATCHES_COUNT": "Párok: {{count}}",
+    "UNKNOWN": "Ismeretlen",
+    "CHAT_WITH": "Csevegés vele:",
+    "UNMATCH": "Szétválás",
+    "NO_MESSAGES": "Nincs még üzenet. Írj valamit!",
+    "MESSAGE_PLACEHOLDER": "Írj valami szellemeset ide..."
+  },
+  "PROFILE": {
+    "TITLE": "Profil",
+    "AWAY": "távolságban",
+    "ACTIVE": "aktív",
+    "AT": "itt:"
+  },
+  "SETTINGS": {
+    "TITLE": "Beállítások",
+    "LOCATION": "Hely",
+    "SET_LOCATION": "Hely beállítása",
+    "CHANGE_LOCATION": "Hely megváltoztatása",
+    "LANDING_PAGE": "Nyitóoldal",
+    "SWIPE": "@:SWIPE.TITLE",
+    "MESSAGES": "@:MESSAGES.TITLE",
+    "EXTRA_INFO_ON": "Párok/beszélgetések összesítéseinek megjelenítése",
+    "EXTRA_INFO_OFF": "Párok/beszélgetések összesítéseinek elrejtése",
+    "DISTANCE_UNITS": "Távolság mértékegysége",
+    "MILES": "Mérföld",
+    "KILOMETRES": "Kilométer",
+    "LOGOUT": "Kijelentkezés",
+    "CLICK_TO_LOGOUT": "Kattints a kijelentkezéshez"
+  },
+  "SWIPE": {
+    "TITLE": "Húzás",
+    "UNDO": "Visszavonás",
+    "SUPERLIKES_REMAINING": "Hátralévő szuperkedvelések",
+    "LOADING": "Betöltés...",
+    "AWAY": "@:PROFILE.AWAY",
+    "ACTIVE": "@:PROFILE.ACTIVE",
+    "AT": "@:PROFILE.AT"
+  }
+}
