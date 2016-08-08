@@ -20,9 +20,10 @@
         prefix: 'locales/',
         suffix: '.json'
       })
-      .registerAvailableLanguageKeys(['en', 'fr', 'nl'], {
+      .registerAvailableLanguageKeys(['en', 'fr', 'hu', 'nl'], {
         'en-*': 'en',
         'fr-*': 'fr',
+        'hu-*': 'hu',
         'nl-*': 'nl'
       })
       .useSanitizeValueStrategy('escape')
