@@ -1,6 +1,12 @@
 tinder-desktop
 ========
 
+### Tinder-Desktop is an amazing app, but it currently doesn't work because Tinder updated it's OAuth method and its not working well with Electron.
+
+### I am very busy these days and this app will likely sit until someone from OS can chip in and help get the OAuth fixed. Please follow along here: https://github.com/tinderjs/tinder-desktop/issues/148 
+
+### Thanks! -- Anthony
+
 #### Contribution ####
 
 tinder-desktop is a project that has a lot of potential if the power of the open-source community is harnessed. Come [join us on Slack](http://tinderjs.herokuapp.com) and view the [priorities list](https://github.com/tinderjs/tinder-desktop/wiki/Development-Priorities) to see how you can contribute, it is well appreciated!
