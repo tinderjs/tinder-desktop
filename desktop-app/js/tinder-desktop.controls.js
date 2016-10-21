@@ -130,6 +130,7 @@
     function createConversation (match) {
       API.conversations[match._id] = {
         matchId: match._id,
+        birthDate : match.person.birth_date,
         userId: (match.person ? match.person._id : null),
         name: (match.person ? match.person.name : null),
         isSuperLike: match.is_super_like,
