@@ -13,7 +13,7 @@
           <img ng-src="{{match.thumbnail || 'img/anonymous.png'}}" class="thumbnail"/>
           <div class="info-container">
             <div class="name">
-              {{match.name || 'Unknown'}}
+              {{match.name || 'Unknown'}} ({{ match.birthDate | bdayToAge }})
               <i ng-show="match.isSuperLike" class="fa fa-star"></i>
             </div>
             <div class="info" ng-show="showExtra && match.infoUpdateTime">
