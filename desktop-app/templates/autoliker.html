@@ -2,13 +2,14 @@
     <div class="wrapper-menu" ng-include src="'partials/menu.html'"></div>
     <div class="wrapper-page">
         <div class="container">
-            <h1 ng-click="autoLikeGirls()">Start Swiping!</h1>
+            <h1 ng-click="autoLikeGirls()">Start Autoliking!</h1>
+
+            <h1 ng-click="stopAutoliking()">Stop Autoliking!</h1>
+
 
             <div ng-repeat="girl in likedGirls track by $index">
-                <div><p>We just liked {{girl.name}} who is {{ girl.age }} years old and lives {{ girl.distance }} away from you.</p></div>
+                <div><p>We just liked {{girl.name}} who is {{ girl.age }} years old and lives {{ girl.distance }} kms away from you with the userId of {{ girl.userId }}.</p></div>
             </div>
-
-            <h2>{{likedGirls}}</h2>
         </div>
     </div>
 </div>
