@@ -12,9 +12,9 @@
            translate="DISCOVERY.ACTUAL_LOCATION">
         </p>
         <div>
-          <input type="text" ng-autocomplete ng-model="autocomplete" 
-          options="autocompleteOptions" details="details" 
-          placeholder="{{'DISCOVERY.CHANGE_LOCATION' | translate}}" 
+          <input type="text" ng-autocomplete ng-model="autocomplete"
+          options="autocompleteOptions" details="details"
+          placeholder="{{'DISCOVERY.CHANGE_LOCATION' | translate}}"
           id="autocompleteLocation" />
         </div>
         <a ng-show="DiscoverySettings.is_traveling" href="" ng-click="resetPassport()" translate="DISCOVERY.ACTUAL_LOCATION"></a>
@@ -24,7 +24,7 @@
         <label for="Yes">
           <input type="radio" name="discoverable" id="discoverable_1" value="1" ng-model="DiscoverySettings.discoverable" />
           {{'DISCOVERY.YES' | translate}}
-        </label>  
+        </label>
         <label for="No">
           <input type="radio" name="discoverable" id="discoverable_2" value="0" ng-model="DiscoverySettings.discoverable" />
           {{'DISCOVERY.NO' | translate}}
@@ -53,8 +53,8 @@
         </label>
       </fieldset>
       <fieldset>
-        <legend translate="DISCOVERY.DISPLAY_AGES" 
-                translate-values="{ from_age: DiscoverySettings.age_filter.from, 
+        <legend translate="DISCOVERY.DISPLAY_AGES"
+                translate-values="{ from_age: DiscoverySettings.age_filter.from,
                                     to_age: DiscoverySettings.age_filter.to}">
         </legend>
         <label for="age">
@@ -62,6 +62,11 @@
         </label>
       </fieldset>
     </form>
+
+        <a href="#/autoliker">
+          <span class="fa fa-cog fa-lg"></span><span class="text">SETTINGS</span>
+        </a>
+
     </div>
   </div>
 </div>
