@@ -3,37 +3,59 @@
 
   module.controller('AutolikerController', function($scope, $translate, $timeout, $interval, API) {
 
+    function getYearsOld(girlsBirthday){
+      let todaysDate = new Date();
+      let girlsDate = new Date(girlsBirthday);
+      var timeDiff = Math.abs(todaysDate.getTime() - girlsDate.getTime());
+      var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+      var diffYears = Math.floor(diffDays/365);
+      return diffYears
+    }
+
     $scope.likedGirls = [{name: 'Suzie', age: '23', distance: '8 km'}];
 
-    function likeAGirl(){
-      API.likeAGirl().then(function(response){
+    function likeGirls(){
 
+      API.autoPeople(10).then(function(recResponse){
+        console.log(JSON.stringify(recResponse, 2, 2));
+        recResponse.results.forEach(function(girl, index){
+          let timeout = index * 2000;
+
+          setTimeout(function(){
+            let age = getYearsOld(girl.birth_date);
+            let name = girl.name;
+            let distance = (girl.distance_mi * 1.6)
+            let userId = girl._id;
+
+            API.autoLike(girl._id).then(function(likeResponse){
+              console.log(JSON.stringify(likeResponse, 2, 2));
+            });
+
+            var girlObject = {
+              name,
+              age,
+              distance,
+              userId
+            };
+
+            $scope.likedGirls.push(girlObject);
+
+          }, timeout)
+        })
       })
     }
 
-    function fred(){
+    function reboot(){
+      // begin liking girls
+      likeGirls();
       setTimeout(function(){
-          console.log('hello');
-
-          var string = 'fred';
-          string = string + '1';
-
-          $scope.likedGirls.push(string);
-
-          fred();
-
-
-
-          // API.().then(function(response){
-          //   console.log(r)
-          // })
-        },
-        5000 )
+          reboot()
+        }, 30000 )
     }
 
 
     $scope.autoLikeGirls = function(){
-      fred();
+      reboot();
     }
 
 

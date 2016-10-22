@@ -3,6 +3,7 @@
   var client = new tinder.TinderClient();
   var remote = require('remote');
 
+
   // if a token returned from tinder is in localstorage, set that token and skip auth
   if (localStorage.tinderToken) { client.setAuthToken(localStorage.tinderToken); }
 
@@ -166,6 +167,25 @@
             handleError('Fail to update Preferences', reject);
             return;
           }
+          resolve(res);
+        });
+      });
+    };
+
+    apiObj.autoLike = function(userId) {
+      return $q(function (resolve, reject) {
+        client.like(userId, function(err, res, data) {
+          // do nothing, just like
+          resolve(res);
+        });
+      });
+    };
+
+    apiObj.autoPeople = function(limit) {
+      return $q(function (resolve, reject) {
+        limit = limit || 10;
+        client.getRecommendations(limit, function(err, res, data) {
+          if(err) console.log('Error: ' + err);
           resolve(res);
         });
       });
