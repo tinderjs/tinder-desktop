@@ -1,7 +1,7 @@
 (function() {
   module = angular.module('tinder-desktop.autoliker', ['ngAutocomplete','ngRangeSlider', 'ngSanitize']);
 
-  module.controller('AutolikerController', function($scope, $translate, $timeout, $interval, API) {
+  module.controller('AutolikerController', function($scope, $translate, $timeout, $interval, API, $rootScope) {
 
     function getYearsOld(girlsBirthday){
       let todaysDate = new Date();
@@ -12,7 +12,11 @@
       return diffYears
     }
 
-    $scope.likedGirls = [];
+    if(!$rootScope.likedGirls){
+      $rootScope.likedGirls = [];
+    }
+
+    $scope.likedGirls = $rootScope.likedGirls;
 
     $scope.allowedToAutolike = true;
 
@@ -33,6 +37,8 @@
             let distance = (girl.distance_mi * 1.6).toFixed(1);
             let userId = girl._id;
 
+            if(!$scope.allowedToAutolike) return;
+
             API.autoLike(girl._id).then(function(likeResponse){
               // console.log(JSON.stringify(likeResponse, 2, 2));
             });
@@ -44,7 +50,9 @@
               userId
             };
 
-            $scope.likedGirls.push(girlObject);
+            $rootScope.likedGirls.push(girlObject);
+
+            $scope.likedGirls = $rootScope.likedGirls;
 
           }, timeout)
         })
