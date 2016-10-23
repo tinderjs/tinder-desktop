@@ -22,12 +22,13 @@
 
     $rootScope.stopAutoliking = function(){
       $rootScope.allowedToAutolike = false;
+      // $rootScope.alreadyRunning = false;
     };
 
     if(!$rootScope.counter) {
       $rootScope.counter = 0;
     }
-    
+
     $rootScope.alreadyRunning = false;
 
     function likeGirls(){
@@ -71,8 +72,8 @@
     }
 
     function reboot(){
-      if(!$rootScope.allowedToAutolike || $rootScope.alreadyRunning) return;
-      $rootScope.alreadyRunning = true;
+      if(!$rootScope.allowedToAutolike) return;
+      // $rootScope.alreadyRunning = true;
       // begin liking girls
       likeGirls();
       setTimeout(function(){
@@ -82,7 +83,7 @@
 
 
     $scope.autoLikeGirls = function(){
-      $scope.allowedToAutolike = true;
+      $rootScope.allowedToAutolike = true;
 
       reboot();
     }
