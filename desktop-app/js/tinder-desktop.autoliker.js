@@ -18,11 +18,17 @@
 
     $scope.likedGirls = $rootScope.likedGirls;
 
-    $scope.allowedToAutolike = true;
+    $rootScope.allowedToAutolike = true;
 
-    $scope.stopAutoliking = function(){
-      $scope.allowedToAutolike = false;
+    $rootScope.stopAutoliking = function(){
+      $rootScope.allowedToAutolike = false;
     };
+
+    if(!$rootScope.counter) {
+      $rootScope.counter = 0;
+    }
+    
+    $rootScope.alreadyRunning = false;
 
     function likeGirls(){
 
@@ -37,17 +43,22 @@
             let distance = (girl.distance_mi * 1.6).toFixed(1);
             let userId = girl._id;
 
-            if(!$scope.allowedToAutolike) return;
+            if(!$rootScope.allowedToAutolike) return;
 
             API.autoLike(girl._id).then(function(likeResponse){
               // console.log(JSON.stringify(likeResponse, 2, 2));
             });
 
+            $rootScope.counter++;
+
+            let counter = $rootScope.counter;
+
             var girlObject = {
               name,
               age,
               distance,
-              userId
+              userId,
+              counter
             };
 
             $rootScope.likedGirls.push(girlObject);
@@ -60,7 +71,8 @@
     }
 
     function reboot(){
-      if(!$scope.allowedToAutolike) return;
+      if(!$rootScope.allowedToAutolike || $rootScope.alreadyRunning) return;
+      $rootScope.alreadyRunning = true;
       // begin liking girls
       likeGirls();
       setTimeout(function(){
