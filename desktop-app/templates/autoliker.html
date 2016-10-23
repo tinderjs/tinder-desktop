@@ -6,10 +6,10 @@
 
             <h1 ng-click="stopAutoliking()">Stop Autoliking!</h1>
 
-
             <div ng-repeat="girl in likedGirls track by $index">
-                <div><p>We just liked {{girl.name}} who is {{ girl.age }} years old and lives {{ girl.distance }} kms away from you with the userId of {{ girl.userId }}.</p></div>
+                <div><p>We just liked {{girl.name}} who is {{ girl.age }} years old and lives {{ girl.distance }} kms away from you with the userId of {{ girl.userId }}. {{girl.counter}}</p></div>
             </div>
+
         </div>
     </div>
 </div>
