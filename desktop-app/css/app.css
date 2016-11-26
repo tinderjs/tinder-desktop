@@ -241,7 +241,6 @@ html, body, body > div.ng-scope {
 }
 
 .school, .work {
-    display: block;
     margin-top: 4px;
 }
 
