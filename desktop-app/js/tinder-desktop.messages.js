@@ -4,12 +4,18 @@
   module.controller('MessagesController', function($scope, API, Settings) {
     // console.log(API.conversations)
     $scope.conversations = API.conversations;
-    $scope.conversationCount = Object.keys($scope.conversations).length
+    $scope.conversationCount = Object.keys($scope.conversations).length;
     $scope.showExtra = Settings.get('messageListExtraInfo') === 'yes';
     $scope.open = function(matchId) {
-      $scope.currentMatch = matchId
+      $scope.currentMatch = matchId;
       $scope.conversation = $scope.conversations[matchId];
+      if (typeof $scope.messageArea != "undefined") {
+        setTimeout(function () {
+          angular.element($scope.messageArea)[0].focus();
+        });
+      }
     };
+
     var ENTER = 13;
 
     $scope.unmatch = function(conversation){
@@ -24,7 +30,7 @@
       function(){   
         API.unmatch(conversation.matchId)
       });
-    }
+    };
 
     $scope.lastMessageClass = function (match) {
       if (match.messages.length) {
@@ -120,4 +126,11 @@
       }
     };
   });
+
+  module.directive("messageArea", function () {
+    return function(scope, element, attrs) {
+      scope.messageArea = element;
+    };
+  })
+
 })();
