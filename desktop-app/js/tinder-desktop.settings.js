@@ -45,10 +45,10 @@
     }
   });
 
-  module.controller('SettingsController', function($scope, $timeout, $interval, Settings, API) {
+  module.controller('SettingsController', function($scope, $timeout, $interval, Settings, API, Cache) {
     $scope.settings = Settings.settings;
     $scope.syncSettings = Settings.sync;
-	$scope.showLocation = false;
+	  $scope.showLocation = false;
 
     $scope.logout = function() {
       API.logout();
@@ -58,7 +58,7 @@
       types: '(cities)'
     };
 
-	    $scope.watchAutocomplete = function () { return $scope.details; };
+	  $scope.watchAutocomplete = function () { return $scope.details; };
     $scope.$watch($scope.watchAutocomplete, function (details) {
       if (details) {
         localStorage.currentCity = details.name;
@@ -66,7 +66,7 @@
         var lng = (parseFloat(details.geometry.location.lng()) + fuzzAmount).toFixed(7);
         var lat = (parseFloat(details.geometry.location.lat()) + fuzzAmount).toFixed(7);
         API.updateLocation(lng.toString(), lat.toString()).then(function() {
-          getPeople();
+          Cache.put('locationUpdated',true);
         });
         $scope.showLocation = false;
       }

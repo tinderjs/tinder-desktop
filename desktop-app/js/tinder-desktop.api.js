@@ -6,7 +6,7 @@
   // if a token returned from tinder is in localstorage, set that token and skip auth
   if (localStorage.tinderToken) { client.setAuthToken(localStorage.tinderToken); }
 
-  angular.module('tinder-desktop.api', []).factory('API', function($q, $location) {
+  angular.module('tinder-desktop.api', []).factory('API', function($location, $q, Cache) {
     var likesRemaining = null;
     var apiObj = {};
 
@@ -149,7 +149,7 @@
             handleError('userInfo result is null', reject);
             return;
           }
-          // console.log(JSON.stringify(res));
+          Cache.put('account',res);
           resolve(res);
         });
       });
@@ -227,6 +227,7 @@
           if (res && typeof res.likes_remaining != 'undefined') {
             likesRemaining = res.likes_remaining;
           }
+          console.log(res);
           resolve(res);
         });
       });
@@ -239,7 +240,7 @@
             handleError(err, reject);
             return;
           }
-          // console.log(JSON.stringify(res));
+          //console.log(JSON.stringify(res));
           resolve(res);
         });
       });
@@ -252,7 +253,7 @@
             handleError(err, reject);
             return;
           }
-          console.log(JSON.stringify(res));
+          //console.log(JSON.stringify(res));
           resolve(res);
         });
       });
@@ -278,7 +279,7 @@
             handleError(err, reject);
             return;
           }
-          console.log(JSON.stringify(res));
+          //console.log(JSON.stringify(res));
           resolve(res);
         });
       });
@@ -292,7 +293,8 @@
             handleError(err, reject);
             return;
           }
-          // console.log(JSON.stringify(res));
+          console.log(res);
+          console.log(JSON.stringify(res));
           resolve(res);
         });
       });

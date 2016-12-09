@@ -1,6 +1,11 @@
 (function() {
   var app = angular.module('tinder-desktop', ['tinder-desktop.login', 'tinder-desktop.swipe', 'tinder-desktop.messages', 'tinder-desktop.profile','tinder-desktop.discovery', 'ngRoute', 'tinder-desktop.settings', 'tinder-desktop.controls', 'tinder-desktop.common', 'pascalprecht.translate']);
   var remote = require('remote');
+  app.factory('Cache', function($cacheFactory) {
+   var cache = $cacheFactory('Cache');
+   cache.put('locationUpdated',false);
+   return cache;
+  });
   
   app.config(function($routeProvider) {
     var capitalize = function (s) { return s[0].toUpperCase() + s.slice(1); };
