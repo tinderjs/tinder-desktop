@@ -7,7 +7,7 @@ tinder-desktop is a project that has a lot of potential if the power of the open
 
 #### Development ####
 
-Run `npm install` in the main directory, and ensure you have gulp installed (`npm install -g gulp-cli`).
+Run `npm install` in the main directory, and ensure you have gulp installed (`npm install -g gulp-cli`) and bower installed  (`npm install -g bower`) .
 
 ###### Running
 
