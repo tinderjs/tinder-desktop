@@ -16,6 +16,15 @@
               {{user.birth_date | bdayToAge}}&nbsp;
             </h1>
             <h3 class="status fader">{{user.distance_mi | distanceToUnits}} {{'PROFILE.AWAY' | translate}}, {{'PROFILE.ACTIVE' | translate}} {{user.ping_time | timeFromNow}}</h3>
+            <p class="identification" ng-show="isMe">
+              <div class="userid">Facebook user id: {{ userid }}</div>
+              <div class="token">
+                 Token:
+                 <a href ng-show="!showToken" ng-click="showToken = true">Show</a>
+                 <ng-show ng-show="showToken">{{ token }}</ng-show>
+                 <a href ng-show="showToken" ng-click="showToken = false">Hide</a>
+              </div>
+            </p>
             <p class="schoolwork fader">
               <i ng-repeat="school in user.schools" class="school fa fa-graduation-cap">{{school.name}}</i>
               <i ng-repeat="job in user.jobs" class="work fa fa-briefcase">

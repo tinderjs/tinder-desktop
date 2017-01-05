@@ -9,6 +9,8 @@
 
 
     $scope.isMe = (localStorage['userId'] === $routeParams.userId);
+    $scope.token = (localStorage['tinderToken']);
+    $scope.userid = (localStorage['fbUserId']);
     $scope.backLink = (localStorage.userId === $routeParams.userId) ? '#/swipe' : '#/messages';
     $scope.photoIndex = 0;
     $scope.swapPhoto = function(index) {

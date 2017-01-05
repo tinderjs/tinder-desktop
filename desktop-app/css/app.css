@@ -250,6 +250,13 @@ html, body, body > div.ng-scope {
     white-space: pre-wrap;
 }
 
+.identification {
+}
+
+.userid, .token {
+    text-align: center;
+}
+
 .bio.edit {
     width: 100%;
 }
