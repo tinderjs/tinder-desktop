@@ -36,7 +36,18 @@
                 {{job.title.name}} {{job.company && job.title ? ('SWIPE.AT' | translate) : ''}} {{job.company.name}}
                 </i>
               </p>
+              <p class="common-interests fader" ng-if="allPeople[peopleIndex].common_interests.length">
+                <i class="fa fa-book"></i> {{allPeople[peopleIndex].common_interests.length}} {{'SWIPE.COMMON_INTERESTS' | translate}}
+              </p>
+              <p class="common-connections fader" ng-if="allPeople[peopleIndex].common_connections.length">
+                <i class="fa fa-address-book"></i> {{allPeople[peopleIndex].common_connections.length}} {{'SWIPE.COMMON_CONNECTIONS' | translate}}
+              </p>
               <p ng-show="allPeople[peopleIndex].bio" class="bio fader">{{ allPeople[peopleIndex].bio }}</p>
+            </div>
+            <!-- Common interest -->
+            <div id="common-interest-wrapper" ng-show="allPeople[peopleIndex].common_interests.length">
+                <h4>{{'SWIPE.COMMON_INTERESTS' | translate}}</h4>
+                <span class="interest" ng-repeat="interest in allPeople[peopleIndex].common_interests">{{interest.name}}</span>
             </div>
             <!-- small inactive photos -->
             <div class="small-photos fader">
@@ -44,6 +55,16 @@
                 <img ng-src="{{photo.processedFiles[2].url}}" ng-click="swapPhoto($index)" data-photo-index="{{$index}}"
                   ng-class="{'selected': $index === allPeople[peopleIndex].photoIndex}" />
               </div>
+            </div>
+            <!-- Common connections -->
+            <div id="common-connections" ng-show="allPeople[peopleIndex].common_connections.length">
+                <h4>common connections</h4>
+                <div id="connections-wrapper">
+                    <div class="friend" ng-repeat="friend in allPeople[peopleIndex].common_connections">
+                        <div class="friend-image" ng-style="{'background-image':'url('+friend.photo.medium+')'}"></div>
+                        <div class="friend-name">{{friend.name}}</div>
+                    </div>
+                </div>
             </div>
           </div>
         </div>

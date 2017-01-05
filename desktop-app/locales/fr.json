@@ -52,6 +52,8 @@
     "LOADING": "Chargement...",
     "AWAY": "@:PROFILE.AWAY",
     "ACTIVE": "@:PROFILE.ACTIVE",
-    "AT": "@:PROFILE.AT"
+    "AT": "@:PROFILE.AT",
+    "COMMON_INTERESTS": "common interests",
+    "COMMON_CONNECTIONS": "common connections"
   }
 }
