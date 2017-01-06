@@ -30,6 +30,10 @@
       initCards();
     });
 
+    function resetInstagramMaxCount(){
+      $scope.instagramPhotosMaxCount = $scope.instagramPhotosAtOnce;
+    }
+
     var getPeople = function() {
       flushApiQueue();
       API.people().then(setPeople);
@@ -78,6 +82,7 @@
     };
 
     $scope.undo = function() {
+      resetInstagramMaxCount();
       $scope.apiQueue.pop();
       $scope.peopleIndex--;
       var cardEl = $scope.cards[$scope.cards.length - $scope.peopleIndex - 1];
@@ -106,6 +111,7 @@
       });
 
       window.stack.on('throwout', function (e) {
+        resetInstagramMaxCount();
         var user = $scope.allPeople[$scope.peopleIndex];
         var method;
         if(superLike === true){
@@ -327,4 +333,6 @@
     applyEl.css('opacity', confidence * (2 / 3));
     clearEl.css('opacity', 0);
   }
+
+
 })();
