@@ -54,6 +54,7 @@
     "ACTIVE": "@:PROFILE.ACTIVE",
     "AT": "@:PROFILE.AT",
     "COMMON_INTERESTS": "közös érdeklődés",
-    "COMMON_CONNECTIONS": "közös ismerős"
+    "COMMON_CONNECTIONS": "közös ismerős",
+    "INSTAGRAM_PHOTOS": "kép"
   }
 }

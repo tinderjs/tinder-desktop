@@ -54,6 +54,7 @@
     "ACTIVE": "@:PROFILE.ACTIVE",
     "AT": "@:PROFILE.AT",
     "COMMON_INTERESTS": "common interests",
-    "COMMON_CONNECTIONS": "common connections"
+    "COMMON_CONNECTIONS": "common connections",
+    "INSTAGRAM_PHOTOS": "photos"
   }
 }

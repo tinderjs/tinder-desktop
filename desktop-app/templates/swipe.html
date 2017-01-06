@@ -56,15 +56,42 @@
                   ng-class="{'selected': $index === allPeople[peopleIndex].photoIndex}" />
               </div>
             </div>
+            <!-- instagram photos -->
+            <div id="instagram-photos" ng-show="allPeople[peopleIndex].instagram">
+              <div class="column-wrapper">
+                  <div class="col">
+                    <h4>Instagram</h4>
+                  </div>
+                  <div class="col">
+                    <div class="profile-thumbnail-wrapper">
+                      <a ng-href="{{'https://www.instagram.com/'+allPeople[peopleIndex].instagram.username}}" class="profile-thumbnail" target="_blank">
+                        <div class="thumbnail-image" ng-style="{'background-image':'url('+allPeople[peopleIndex].instagram.profile_picture+')'}"></div>
+                        <div class="thumbnail-name">{{allPeople[peopleIndex].instagram.username}}</div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col text-right">
+                    <h4>{{allPeople[peopleIndex].instagram.photos.length}} {{'SWIPE.INSTAGRAM_PHOTOS' | translate}}</h4>
+                  </div>
+              </div>
+              <div class="small-photos fader">
+                  <div ng-repeat="photo in allPeople[peopleIndex].instagram.photos | limitTo:instagramPhotosMaxCount">
+                      <img ng-src="{{photo.thumbnail}}" data-photo-index="{{$index}}" />
+                  </div>
+                  <p ng-show="allPeople[peopleIndex].instagram.photos.length > instagramPhotosMaxCount" >
+                      <a class="pointer" ng-click="instagramPhotosMaxCount = instagramPhotosMaxCount + instagramPhotosAtOnce">Show more</a>
+                  </p>
+              </div>
+            </div>
             <!-- Common connections -->
             <div id="common-connections" ng-show="allPeople[peopleIndex].common_connections.length">
-                <h4>common connections</h4>
-                <div id="connections-wrapper">
-                    <div class="friend" ng-repeat="friend in allPeople[peopleIndex].common_connections">
-                        <div class="friend-image" ng-style="{'background-image':'url('+friend.photo.medium+')'}"></div>
-                        <div class="friend-name">{{friend.name}}</div>
-                    </div>
+              <h4>common connections</h4>
+              <div id="connections-wrapper" class="profile-thumbnail-wrapper">
+                <div class="profile-thumbnail" ng-repeat="friend in allPeople[peopleIndex].common_connections">
+                  <div class="thumbnail-image" ng-style="{'background-image':'url('+friend.photo.medium+')'}"></div>
+                  <div class="thumbnail-name">{{friend.name}}</div>
                 </div>
+              </div>
             </div>
           </div>
         </div>

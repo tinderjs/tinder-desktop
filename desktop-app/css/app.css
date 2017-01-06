@@ -161,12 +161,6 @@ html, body, body > div.ng-scope {
         width: 400px;
         margin: auto;
     }
-    #common-connections-wrapper .row .friend .friend-image.medium{
-        display: none;
-    }
-    #common-connections-wrapper .row .friend .friend-image.small{
-        display: block;
-    }
 }
 
 .main-photo-container {
@@ -346,27 +340,69 @@ html, body, body > div.ng-scope {
     color: #DB6151;
 }
 
-#connections-wrapper{
+/* Instagram photos */
+
+#instagram-photos{
+    margin: 10px 0;
+    padding: 10px 0;
+    border-top: solid thin #eeeeee;
+    border-bottom: solid thin #eeeeee;
+}
+
+#instagram-photos .small-photos{
+    margin: auto;
+}
+
+#instagram-photos h4{
+    display: block;
+    border-bottom: #DB6151;
+    margin-top: 0;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    color: #DB6151;
+}
+
+.column-wrapper{
+  display: table;
+  width: 100%;
+}
+
+.column-wrapper .col{
+  width: 30%;
+  display: table-cell;
+  vertical-align: top;
+}
+
+.text-right{
+  text-align: right;
+}
+
+/* Profile thumbnails */
+
+.profile-thumbnail-wrapper{
     display: flex;
     width: 100%;
 }
 
-#connections-wrapper .friend{
+.profile-thumbnail-wrapper .profile-thumbnail{
     display: inline-block;
     margin: 0 5px;
+    text-decoration: none;
+    color: inherit;
 }
 
-#connections-wrapper .friend .friend-image{
+.profile-thumbnail-wrapper .profile-thumbnail .thumbnail-image{
     border-radius: 50%;
     background-size: cover;
     width: 90px;
     height: 90px;
+    display: block;
 }
 
-#connections-wrapper .friend .friend-name{
+.profile-thumbnail-wrapper .profile-thumbnail .thumbnail-name{
     max-width: 90px;
     text-align: center;
-    font-size:
+    display: block;
 }
 
 /* Templates - login */
