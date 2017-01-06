@@ -85,11 +85,26 @@
             </div>
             <!-- Common connections -->
             <div id="common-connections" ng-show="allPeople[peopleIndex].common_connections.length">
-              <h4>common connections</h4>
+              <h4>{{'SWIPE.COMMON_CONNECTIONS' | translate}}</h4>
               <div id="connections-wrapper" class="profile-thumbnail-wrapper">
                 <div class="profile-thumbnail" ng-repeat="friend in allPeople[peopleIndex].common_connections">
                   <div class="thumbnail-image" ng-style="{'background-image':'url('+friend.photo.medium+')'}"></div>
                   <div class="thumbnail-name">{{friend.name}}</div>
+                </div>
+              </div>
+            </div>
+            <!-- Spotify -->
+            <div id="spotify-wrapper" ng-show="allPeople[peopleIndex].spotify_theme_track">
+              <h4>Spotify</h4>
+              <div id="spotify-theme-track">
+                <div class="track-cover">
+                  <img ng-src="{{allPeople[peopleIndex].spotify_theme_track.album.images[0].url}}" alt="" />
+                </div>
+                <div class="track-meta">
+                  <h3>{{allPeople[peopleIndex].spotify_theme_track.artists[0].name}} - {{allPeople[peopleIndex].spotify_theme_track.name}}</h3>
+                  <p>
+                    <a target="_blank" ng-href="{{allPeople[peopleIndex].spotify_theme_track.preview_url}}">{{'SWIPE.PREVIEW_SPOTIFY_TRACK' | translate}}</a>
+                  </p>
                 </div>
               </div>
             </div>

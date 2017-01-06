@@ -55,6 +55,7 @@
     "AT": "@:PROFILE.AT",
     "COMMON_INTERESTS": "common interests",
     "COMMON_CONNECTIONS": "common connections",
-    "INSTAGRAM_PHOTOS": "photos"
+    "INSTAGRAM_PHOTOS": "photos",
+    "PREVIEW_SPOTIFY_TRACK": "preview spotify track"
   }
 }

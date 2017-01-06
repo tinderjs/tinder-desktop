@@ -377,6 +377,37 @@ html, body, body > div.ng-scope {
   text-align: right;
 }
 
+/* Spotify */
+
+#spotify-wrapper h4{
+    display: block;
+    border-bottom: #DB6151;
+    margin-top: 0;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    color: #DB6151;
+}
+
+#spotify-wrapper #spotify-theme-track{
+  margin: auto;
+}
+
+#spotify-wrapper #spotify-theme-track .track-cover{
+  position: relative;
+  width: 200px;
+  float: left;
+}
+
+#spotify-wrapper #spotify-theme-track .track-meta{
+  width: 200px;
+  float: left;
+  padding-left: 10px;
+}
+
+#spotify-wrapper #spotify-theme-track img{
+  max-width: 100%;
+}
+
 /* Profile thumbnails */
 
 .profile-thumbnail-wrapper{
