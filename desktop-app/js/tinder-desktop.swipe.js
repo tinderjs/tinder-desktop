@@ -6,6 +6,8 @@
     $scope.allPeople = [];
     $scope.peopleIndex = 0;
     $scope.apiQueue = [];
+    $scope.instagramPhotosAtOnce = 10;
+    $scope.instagramPhotosMaxCount = $scope.instagramPhotosAtOnce;
     var queueTimer = null;
 
     API.getAccount().then(function(response){
@@ -27,6 +29,10 @@
     $scope.$on('cardsRendered', function() {
       initCards();
     });
+
+    function resetInstagramMaxCount(){
+      $scope.instagramPhotosMaxCount = $scope.instagramPhotosAtOnce;
+    }
 
     var getPeople = function() {
       flushApiQueue();
@@ -76,6 +82,7 @@
     };
 
     $scope.undo = function() {
+      resetInstagramMaxCount();
       $scope.apiQueue.pop();
       $scope.peopleIndex--;
       var cardEl = $scope.cards[$scope.cards.length - $scope.peopleIndex - 1];
@@ -104,6 +111,7 @@
       });
 
       window.stack.on('throwout', function (e) {
+        resetInstagramMaxCount();
         var user = $scope.allPeople[$scope.peopleIndex];
         var method;
         if(superLike === true){
@@ -202,7 +210,7 @@
       Mousetrap.bind('shift+right', function (evt) {
         var location = $location.path()
         if( location != '/swipe/' ) return
-        
+
         var user = $scope.allPeople[$scope.peopleIndex];
 
         if($scope.superLikesRemaining == '0'){
@@ -239,38 +247,38 @@
         var location = $location.path()
         if( location != '/swipe/' ) return
 
-        // someone has said to go to the next picture, 
+        // someone has said to go to the next picture,
         // accomplish by increasing the current length by 1
         var numberOfPhotos = $scope.allPeople[$scope.peopleIndex].photos.length
         var photoIndex = $scope.allPeople[$scope.peopleIndex].photoIndex
 
-        // they clicked it while on the last photo, send it to the top 
+        // they clicked it while on the last photo, send it to the top
         if(photoIndex == 0){
           $scope.allPeople[$scope.peopleIndex].photoIndex = numberOfPhotos - 1
         } else {
           $scope.allPeople[$scope.peopleIndex].photoIndex += -1
           return
         }
-      }); 
+      });
 
       Mousetrap.bind('down', function(evt) {
         evt.preventDefault();
         var location = $location.path()
         if( location != '/swipe/' ) return
 
-        // someone has said to go to the next picture, 
+        // someone has said to go to the next picture,
         // accomplish by increasing the current length by 1
         var numberOfPhotos = $scope.allPeople[$scope.peopleIndex].photos.length
         var photoIndex = $scope.allPeople[$scope.peopleIndex].photoIndex
 
-        // they clicked it while on the last photo, send it to the top 
+        // they clicked it while on the last photo, send it to the top
         if(photoIndex == numberOfPhotos - 1){
           $scope.allPeople[$scope.peopleIndex].photoIndex = 0
         } else {
           $scope.allPeople[$scope.peopleIndex].photoIndex += 1
           return
         }
-      }); 
+      });
 
       // randomize rotation
       $timeout(function() {
@@ -325,4 +333,6 @@
     applyEl.css('opacity', confidence * (2 / 3));
     clearEl.css('opacity', 0);
   }
+
+
 })();
