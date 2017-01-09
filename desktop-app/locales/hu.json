@@ -52,6 +52,10 @@
     "LOADING": "Betöltés...",
     "AWAY": "@:PROFILE.AWAY",
     "ACTIVE": "@:PROFILE.ACTIVE",
-    "AT": "@:PROFILE.AT"
+    "AT": "@:PROFILE.AT",
+    "COMMON_INTERESTS": "közös érdeklődés",
+    "COMMON_CONNECTIONS": "közös ismerős",
+    "INSTAGRAM_PHOTOS": "kép",
+    "PREVIEW_SPOTIFY_TRACK": "hallgass bele"
   }
 }

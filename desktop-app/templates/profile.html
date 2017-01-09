@@ -22,7 +22,12 @@
           	    {{job.title.name}} {{job.company && job.title ? ('PROFILE.AT' | translate) : ''}} {{job.company.name}}
               </i>
             </p>
-            <p ng-show="user.bio" class="bio fader" ng-bind-html="user.bio"></p>
+            <p ng-show="user.bio && !editBio" class="bio fader" ng-bind-html="user.bio"></p>
+            <textarea class="bio edit" rows="10" ng-show="editBio" ng-model='bioTextArea'></textarea>
+            <div class="editbutton">
+              <a href ng-show="isMe && !editBio" ng-click="editBio = true">Edit</a>
+              <a href ng-show="editBio" ng-click="saveBio()">Save</a>
+            </div>
           </div>
           <div class="small-photos fader">
             <div ng-repeat="photo in user.photos">

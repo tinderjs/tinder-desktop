@@ -191,6 +191,22 @@
       });
     };
 
+    apiObj.updateBio = function(bio) {
+      return $q(function (resolve, reject) {
+        client.updateBio(bio, function(err, res, data) {
+          if (!!err) {
+            handleError(err, reject);
+            return;
+          }
+          if (res === null) {
+            handleError('Fail to update Bio', reject);
+            return;
+          }
+          resolve(res);
+        });
+      });
+    };
+
     apiObj.like = function(userId) {
       return $q(function (resolve, reject) {
         client.like(userId, function(err, res, data) {
