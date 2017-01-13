@@ -61,6 +61,21 @@
     <br/>
 
     <fieldset>
+      <legend translate="SETTINGS.DISPLAY_FB_TOKEN"></legend>
+      <label for="fbToken_1">
+        <input type="radio" name="fbToken" id="fbToken_1" value="yes" ng-model="settings.show_fb_token" ng-change="syncSettings()"/>
+        {{'SETTINGS.FB_TOKEN_ON' | translate}}
+      </label>
+      <br/>
+      <label for="fbToken_2">
+        <input type="radio" name="fbToken" id="fbToken_2" value="no" ng-model="settings.show_fb_token" ng-change="syncSettings()"/>
+        {{'SETTINGS.FB_TOKEN_OFF' | translate}}
+      </label>
+    </fieldset>
+
+    <br/>
+
+    <fieldset>
       <legend translate="SETTINGS.LOGOUT"></legend>
       <a href="" ng-click="logout()" translate="SETTINGS.CLICK_TO_LOGOUT"></a>
     </fieldset>

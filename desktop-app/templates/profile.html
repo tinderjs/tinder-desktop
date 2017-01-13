@@ -16,7 +16,7 @@
               {{user.birth_date | bdayToAge}}&nbsp;
             </h1>
             <h3 class="status fader">{{user.distance_mi | distanceToUnits}} {{'PROFILE.AWAY' | translate}}, {{'PROFILE.ACTIVE' | translate}} {{user.ping_time | timeFromNow}}</h3>
-            <p class="identification" ng-show="isMe">
+            <div class="identification" ng-show="isMe && showFbInfo">
               <div class="userid">{{'PROFILE.FB_USER_ID' | translate}}: {{ userid }}</div>
               <div class="token">
                  {{'PROFILE.TOKEN' | translate}}:
@@ -24,7 +24,7 @@
                  <ng-show ng-show="showToken">{{ token }}</ng-show>
                  <a href ng-show="showToken" ng-click="showToken = false">{{'PROFILE.HIDE' | translate}}</a>
               </div>
-            </p>
+            </div>
             <p class="schoolwork fader">
               <i ng-repeat="school in user.schools" class="school fa fa-graduation-cap">{{school.name}}</i>
               <i ng-repeat="job in user.jobs" class="work fa fa-briefcase">

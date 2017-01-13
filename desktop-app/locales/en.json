@@ -27,7 +27,11 @@
     "TITLE": "Profile",
     "AWAY": "away",
     "ACTIVE": "active",
-    "AT": "at"
+    "AT": "at",
+    "SHOW": "Show",
+    "HIDE": "Hide",
+    "TOKEN": "Token",
+    "FB_USER_ID": "Facebook user id"
   },
   "SETTINGS": {
     "TITLE": "Settings",
@@ -42,6 +46,9 @@
     "DISTANCE_UNITS": "Distance Units",
     "MILES": "Miles",
     "KILOMETRES": "Kilometres",
+    "DISPLAY_FB_TOKEN": "Display Facebook token on my Profile",
+    "FB_TOKEN_ON": "Display Facebook user ID and token",
+    "FB_TOKEN_OFF": "Hide Facebook user ID and token",
     "LOGOUT": "Logout",
     "CLICK_TO_LOGOUT": "Click to Logout"
   },

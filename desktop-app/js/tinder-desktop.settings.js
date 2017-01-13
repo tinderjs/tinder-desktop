@@ -11,7 +11,8 @@
         // set defaults here
         landingPage : '/swipe',
         messageListExtraInfo : 'yes',
-        distanceUnits: 'mi'
+        distanceUnits: 'mi',
+        show_fb_token: "no"
       }
     };
 
