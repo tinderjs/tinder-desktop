@@ -25,12 +25,6 @@ var PATHS = {
     'bower_components/mousetrap/mousetrap.min.js',
     'bower_components/ngAutocomplete/src/ngAutocomplete.js',
     'bower_components/ng-range-slider/dist/ng-range-slider.min.js'
-  ],
-  stylesheets: [
-    'bower_components/font-awesome/css/font-awesome.min.css'
-  ],
-  fonts: [
-    'bower_components/font-awesome/fonts/*.{eot,svg,ttf,woff,woff2}'
   ]
 };
 
@@ -41,21 +35,8 @@ gulp.task('compile:scripts', function() {
     .pipe(gulp.dest('desktop-app/js/vendor'));
 });
 
-// Stylesheet assets handler
-gulp.task('compile:stylesheets', function() {
-  return gulp.src(PATHS.stylesheets)
-    .pipe(gulp.dest('desktop-app/css'));
-});
-
-// Fonts assets handler
-gulp.task('compile:fonts', function() {
-  return gulp.src(PATHS.fonts)
-    .pipe(gulp.dest('desktop-app/fonts'));
-});
-
 // Assets handler
-gulp.task('compile:all', ['compile:scripts', 'compile:stylesheets',
-          'compile:fonts']);
+gulp.task('compile:all', ['compile:scripts']);
 
 // Remove build output directories
 gulp.task('clean', function() {
