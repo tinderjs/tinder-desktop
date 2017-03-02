@@ -4,6 +4,17 @@
   "version": "0.1.0",
   "main": "main.js",
   "dependencies": {
+    "angular": "~1.4",
+    "angular-cookies": "~1.4",
+    "angular-route": "~1.4",
+    "angular-sanitize": "~1.4",
+    "angular-translate": "^2.11.0",
+    "angular-translate-loader-static-files": "^2.11.0",
+    "jquery": "^1.12.3",
+    "moment": "^2.12.0",
+    "mousetrap": "^1.4.10",
+    "ng-autocomplete": "^1.0.0",
+    "ng-range-slider": "^0.2.0",
     "os-locale": "~1.4.0",
     "tinder": "git://github.com/tinderjs/tinderjs"
   }
