@@ -11,52 +11,6 @@ var $ = require('gulp-load-plugins')();
 
 var buildDir = './build';
 
-// File paths to various assets are defined here.
-var PATHS = {
-  javascript: [
-    'bower_components/angular/angular.min.js',
-    'bower_components/angular-cookies/angular-cookies.min.js',
-    'bower_components/angular-route/angular-route.min.js',
-    'bower_components/angular-sanitize/angular-sanitize.min.js',
-    'bower_components/angular-translate/angular-translate.min.js',
-    'bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js',
-    'bower_components/jquery/dist/jquery.min.js',
-    'bower_components/moment/min/moment-with-locales.min.js',
-    'bower_components/mousetrap/mousetrap.min.js',
-    'bower_components/ngAutocomplete/src/ngAutocomplete.js',
-    'bower_components/ng-range-slider/dist/ng-range-slider.min.js'
-  ],
-  stylesheets: [
-    'bower_components/font-awesome/css/font-awesome.min.css'
-  ],
-  fonts: [
-    'bower_components/font-awesome/fonts/*.{eot,svg,ttf,woff,woff2}'
-  ]
-};
-
-// JavaScript assets handler
-gulp.task('compile:scripts', function() {
-  shelljs.rm('-rf', './desktop-app/js/vendor');
-  return gulp.src(PATHS.javascript)
-    .pipe(gulp.dest('desktop-app/js/vendor'));
-});
-
-// Stylesheet assets handler
-gulp.task('compile:stylesheets', function() {
-  return gulp.src(PATHS.stylesheets)
-    .pipe(gulp.dest('desktop-app/css'));
-});
-
-// Fonts assets handler
-gulp.task('compile:fonts', function() {
-  return gulp.src(PATHS.fonts)
-    .pipe(gulp.dest('desktop-app/fonts'));
-});
-
-// Assets handler
-gulp.task('compile:all', ['compile:scripts', 'compile:stylesheets',
-          'compile:fonts']);
-
 // Remove build output directories
 gulp.task('clean', function() {
   shelljs.rm('-rf', buildDir);
@@ -176,13 +130,13 @@ gulp.task('pack:win32:all', ['build:win32:all'], function(callback) {
 })
 
 // Build and package all platforms
-gulp.task('pack:all', ['compile:all'], function(callback) {
+gulp.task('pack:all', [], function(callback) {
   runSequence('pack:darwin:x64', 'pack:win32:all',
               'pack:linux:all', callback);
 });
 
 // Run Tinder Desktop in debug mode
-gulp.task('run', ['compile:all'], function(callback) {
+gulp.task('run', [], function(callback) {
   var child = proc.spawn(electron, ['--enable-logging', '--debug=5858', './desktop-app']);
 
   child.stdout.on('data', function(data) {

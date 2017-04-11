@@ -7,7 +7,7 @@ tinder-desktop is a project that has a lot of potential if the power of the open
 
 #### Development ####
 
-Run `npm install` in the main directory, and ensure you have gulp installed (`npm install -g gulp-cli`) and bower installed  (`npm install -g bower`) .
+Run `npm install` in the main directory, and ensure you have gulp installed (`npm install -g gulp-cli`).
 
 ###### Running
 
@@ -27,7 +27,7 @@ This starts the app, and listens on port 5858 to allow remote debugging of the m
 
 `gulp -T` lists all available tasks, including platform-specific ones.
 
-Limitations: 
+Limitations:
 - OS X can only be built and packaged on a Mac.
 - Packaging Linux builds requires [fpm](https://github.com/jordansissel/fpm).
 
