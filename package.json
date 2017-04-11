@@ -4,7 +4,7 @@
   "description": "A cross-platform desktop Tinder client",
   "main": "build.js",
   "scripts": {
-    "postinstall": "bower install && cd desktop-app && npm install"
+    "postinstall": "cd desktop-app && npm install"
   },
   "repository": {
     "type": "git",
