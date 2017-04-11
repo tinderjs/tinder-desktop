@@ -1,5 +1,5 @@
 (function() {
-  var remote = require('remote'); 
+  var remote = require('remote');
 
   module = angular.module('tinder-desktop.controls', ['tinder-desktop.api']);
 
@@ -11,7 +11,7 @@
 
     var infoQueue, pendingInfoRequests;
 
-    // Init / Decorate API 
+    // Init / Decorate API
 
     API.conversations = {};
 
@@ -44,7 +44,7 @@
       };
     })(API.userInfo);
 
-    // End - Init / Decorate API 
+    // End - Init / Decorate API
 
     return controls;
 
@@ -87,7 +87,7 @@
 
             notification.onshow = function () {
               setTimeout(function() {notification.close();}, 5000);
-            }  
+            }
 
             createConversation(match);
             if (match.person) {
@@ -98,7 +98,7 @@
                 confirmButtonText: 'Nice!',
                 imageUrl: user.photos[0].processedFiles[3].url
               });
-            } 
+            }
           }
 
           match.messages.forEach(addMessage);
@@ -167,7 +167,7 @@
         delete API.conversations[matchId];
         cleanUpInfoRequest(matchId);
       }
-      
+
       // piggybacking off conversation localstorage sync
     }
 
@@ -189,7 +189,6 @@
         if (conversation) {
           angular.extend(conversation, {
             userDistance: user.distance_mi,
-            userPingTime: user.ping_time,
             infoUpdateTime: calcUserUpdateTimeISOString(user)
           });
         }
@@ -211,9 +210,9 @@
 
     function calcUserUpdateTimeISOString(user) {
       var updateMinutes = user.distance_mi;
-      if (updateMinutes < 5) 
+      if (updateMinutes < 5)
         updateMinutes = Math.ceil((Math.random() * 5));
-      if (updateMinutes > 30) 
+      if (updateMinutes > 30)
         updateMinutes = Math.floor((Math.random() * 30) + 30);
       return moment().add(updateMinutes, 'minutes').toISOString();
     }

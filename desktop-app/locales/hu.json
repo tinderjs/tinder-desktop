@@ -26,7 +26,6 @@
   "PROFILE": {
     "TITLE": "Profil",
     "AWAY": "távolságban",
-    "ACTIVE": "aktív",
     "AT": "itt:"
   },
   "SETTINGS": {
@@ -51,7 +50,6 @@
     "SUPERLIKES_REMAINING": "Hátralévő szuperkedvelések",
     "LOADING": "Betöltés...",
     "AWAY": "@:PROFILE.AWAY",
-    "ACTIVE": "@:PROFILE.ACTIVE",
     "AT": "@:PROFILE.AT"
   }
 }

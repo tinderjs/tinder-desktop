@@ -26,7 +26,6 @@
   "PROFILE": {
     "TITLE": "Profiel",
     "AWAY": "hier vandaan",
-    "ACTIVE": "actief",
     "AT": "op"
   },
   "SETTINGS": {
@@ -51,7 +50,6 @@
     "SUPERLIKES_REMAINING": "Superlikes over",
     "LOADING": "Laden...",
     "AWAY": "@:PROFILE.AWAY",
-    "ACTIVE": "@:PROFILE.ACTIVE",
     "AT": "@:PROFILE.AT"
   }
 }
