@@ -36,13 +36,76 @@
                 {{job.title.name}} {{job.company && job.title ? ('SWIPE.AT' | translate) : ''}} {{job.company.name}}
                 </i>
               </p>
+              <p class="common-interests fader" ng-if="allPeople[peopleIndex].common_interests.length">
+                <i class="fa fa-book"></i> {{allPeople[peopleIndex].common_interests.length}} {{'SWIPE.COMMON_INTERESTS' | translate}}
+              </p>
+              <p class="common-connections fader" ng-if="allPeople[peopleIndex].common_connections.length">
+                <i class="fa fa-address-book"></i> {{allPeople[peopleIndex].common_connections.length}} {{'SWIPE.COMMON_CONNECTIONS' | translate}}
+              </p>
               <p ng-show="allPeople[peopleIndex].bio" class="bio fader">{{ allPeople[peopleIndex].bio }}</p>
+            </div>
+            <!-- Common interest -->
+            <div id="common-interest-wrapper" ng-show="allPeople[peopleIndex].common_interests.length">
+                <h4>{{'SWIPE.COMMON_INTERESTS' | translate}}</h4>
+                <span class="interest" ng-repeat="interest in allPeople[peopleIndex].common_interests">{{interest.name}}</span>
             </div>
             <!-- small inactive photos -->
             <div class="small-photos fader">
               <div ng-repeat="photo in allPeople[peopleIndex].photos">
                 <img ng-src="{{photo.processedFiles[2].url}}" ng-click="swapPhoto($index)" data-photo-index="{{$index}}"
                   ng-class="{'selected': $index === allPeople[peopleIndex].photoIndex}" />
+              </div>
+            </div>
+            <!-- instagram photos -->
+            <div id="instagram-photos" ng-show="allPeople[peopleIndex].instagram">
+              <div class="column-wrapper">
+                  <div class="col">
+                    <h4>Instagram</h4>
+                  </div>
+                  <div class="col">
+                    <div class="profile-thumbnail-wrapper">
+                      <a ng-href="{{'https://www.instagram.com/'+allPeople[peopleIndex].instagram.username}}" class="profile-thumbnail" target="_blank">
+                        <div class="thumbnail-image" ng-style="{'background-image':'url('+allPeople[peopleIndex].instagram.profile_picture+')'}"></div>
+                        <div class="thumbnail-name">{{allPeople[peopleIndex].instagram.username}}</div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col text-right">
+                    <h4>{{allPeople[peopleIndex].instagram.photos.length}} {{'SWIPE.INSTAGRAM_PHOTOS' | translate}}</h4>
+                  </div>
+              </div>
+              <div class="small-photos fader">
+                  <div ng-repeat="photo in allPeople[peopleIndex].instagram.photos | limitTo:instagramPhotosMaxCount">
+                      <img ng-src="{{photo.thumbnail}}" data-photo-index="{{$index}}" />
+                  </div>
+                  <p ng-show="allPeople[peopleIndex].instagram.photos.length > instagramPhotosMaxCount" >
+                      <a class="pointer" ng-click="instagramPhotosMaxCount = instagramPhotosMaxCount + instagramPhotosAtOnce">Show more</a>
+                  </p>
+              </div>
+            </div>
+            <!-- Common connections -->
+            <div id="common-connections" ng-show="allPeople[peopleIndex].common_connections.length">
+              <h4>{{'SWIPE.COMMON_CONNECTIONS' | translate}}</h4>
+              <div id="connections-wrapper" class="profile-thumbnail-wrapper">
+                <div class="profile-thumbnail" ng-repeat="friend in allPeople[peopleIndex].common_connections">
+                  <div class="thumbnail-image" ng-style="{'background-image':'url('+friend.photo.medium+')'}"></div>
+                  <div class="thumbnail-name">{{friend.name}}</div>
+                </div>
+              </div>
+            </div>
+            <!-- Spotify -->
+            <div id="spotify-wrapper" ng-show="allPeople[peopleIndex].spotify_theme_track">
+              <h4>Spotify</h4>
+              <div id="spotify-theme-track">
+                <div class="track-cover">
+                  <img ng-src="{{allPeople[peopleIndex].spotify_theme_track.album.images[0].url}}" alt="" />
+                </div>
+                <div class="track-meta">
+                  <h3>{{allPeople[peopleIndex].spotify_theme_track.artists[0].name}} - {{allPeople[peopleIndex].spotify_theme_track.name}}</h3>
+                  <p>
+                    <a target="_blank" ng-href="{{allPeople[peopleIndex].spotify_theme_track.preview_url}}">{{'SWIPE.PREVIEW_SPOTIFY_TRACK' | translate}}</a>
+                  </p>
+                </div>
               </div>
             </div>
           </div>

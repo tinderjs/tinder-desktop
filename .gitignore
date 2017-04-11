@@ -6,5 +6,7 @@ bower_components
 build
 cache
 desktop-app/js/vendor
+desktop-app/css/font-awesome.min.css
+desktop-app/fonts/*
 dist
 *.DS_Store

@@ -13,6 +13,10 @@ a {
     text-decoration: none;
 }
 
+.pointer{
+    cursor: pointer;
+}
+
 
 /* General layout */
 
@@ -152,6 +156,13 @@ html, body, body > div.ng-scope {
 
 }
 
+@media (max-width: 1034px){
+    #common-connections-wrapper{
+        width: 400px;
+        margin: auto;
+    }
+}
+
 .main-photo-container {
     flex: 0 0 640px;
     order: 1;
@@ -235,12 +246,12 @@ html, body, body > div.ng-scope {
     text-align: center;
 }
 
-.schoolwork {
+.schoolwork, .common-connections, .common-interests {
     display: block;
     text-align: center;
 }
 
-.school, .work {
+.school, .work, .common-connections, .common-interests{
     display: block;
     margin-top: 4px;
 }
@@ -292,6 +303,146 @@ html, body, body > div.ng-scope {
     border: 5px solid #DB6151;
 }
 
+/* Swipe Interests */
+
+#common-interest-wrapper{
+    border-top: solid #eeeeee thin;
+    border-bottom: solid #eeeeee thin;
+    padding: 10px 0;
+    margin: 10px 0;
+}
+
+#common-interest-wrapper h4{
+    display: block;
+    border-bottom: #DB6151;
+    margin-top: 0;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    color: #DB6151;
+}
+
+#common-interest-wrapper .interest{
+    border-radius: 5px;
+    background: #DB6151;
+    padding: 5px;
+    color: white;
+    margin: 2px;
+    display: inline-block;
+}
+
+/* Swipe common connections*/
+
+#common-connections{
+    margin: 10px 0;
+    padding: 10px 0;
+    border-top: solid thin #eeeeee;
+    border-bottom: solid thin #eeeeee;
+}
+
+#common-connections h4{
+    display: block;
+    border-bottom: #DB6151;
+    margin-top: 0;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    color: #DB6151;
+}
+
+/* Instagram photos */
+
+#instagram-photos{
+    margin: 10px 0;
+    padding: 10px 0;
+    border-top: solid thin #eeeeee;
+    border-bottom: solid thin #eeeeee;
+}
+
+#instagram-photos .small-photos{
+    margin: auto;
+}
+
+#instagram-photos h4{
+    display: block;
+    border-bottom: #DB6151;
+    margin-top: 0;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    color: #DB6151;
+}
+
+.column-wrapper{
+  display: table;
+  width: 100%;
+}
+
+.column-wrapper .col{
+  width: 30%;
+  display: table-cell;
+  vertical-align: top;
+}
+
+.text-right{
+  text-align: right;
+}
+
+/* Spotify */
+
+#spotify-wrapper h4{
+    display: block;
+    border-bottom: #DB6151;
+    margin-top: 0;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    color: #DB6151;
+}
+
+#spotify-wrapper #spotify-theme-track{
+  margin: auto;
+}
+
+#spotify-wrapper #spotify-theme-track .track-cover{
+  position: relative;
+  width: 200px;
+  float: left;
+}
+
+#spotify-wrapper #spotify-theme-track .track-meta{
+  width: 200px;
+  float: left;
+  padding-left: 10px;
+}
+
+#spotify-wrapper #spotify-theme-track img{
+  max-width: 100%;
+}
+
+/* Profile thumbnails */
+
+.profile-thumbnail-wrapper{
+    display: flex;
+    width: 100%;
+}
+
+.profile-thumbnail-wrapper .profile-thumbnail{
+    display: inline-block;
+    margin: 0 5px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.profile-thumbnail-wrapper .profile-thumbnail .thumbnail-image{
+    border-radius: 50%;
+    background-size: cover;
+    width: 90px;
+    height: 90px;
+    display: block;
+}
+
+.profile-thumbnail-wrapper .profile-thumbnail .thumbnail-name{
+    max-width: 90px;
+    text-align: center;
+    display: block;
+}
 
 /* Templates - login */
 
