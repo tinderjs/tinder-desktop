@@ -29,7 +29,7 @@
                 ({{allPeople[peopleIndex].instagram.username}})</a>,
                 {{allPeople[peopleIndex].birth_date | bdayToAge}}&nbsp;
               </h1>
-              <h3 class="status fader">{{allPeople[peopleIndex].distance_mi | distanceToUnits}} {{getCookie('currentCity') ? "from " + getCookie('currentCity') : ('SWIPE.AWAY' | translate)}}, {{'SWIPE.ACTIVE' | translate}} {{allPeople[peopleIndex].ping_time | timeFromNow}}</h3>
+              <h3 class="status fader">{{allPeople[peopleIndex].distance_mi | distanceToUnits}} {{getCookie('currentCity') ? "from " + getCookie('currentCity') : ('SWIPE.AWAY' | translate)}}</h3>
               <p class="schoolwork fader">
                 <i ng-repeat="school in allPeople[peopleIndex].schools" class="school fa fa-graduation-cap">{{school.name}}</i>
                 <i ng-repeat="job in allPeople[peopleIndex].jobs" class="work fa fa-briefcase">

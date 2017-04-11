@@ -26,7 +26,6 @@
   "PROFILE": {
     "TITLE": "Profile",
     "AWAY": "away",
-    "ACTIVE": "active",
     "AT": "at"
   },
   "SETTINGS": {
@@ -51,7 +50,6 @@
     "SUPERLIKES_REMAINING": "Superlikes remaining",
     "LOADING": "Loading...",
     "AWAY": "@:PROFILE.AWAY",
-    "ACTIVE": "@:PROFILE.ACTIVE",
     "AT": "@:PROFILE.AT"
   }
 }

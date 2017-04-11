@@ -419,12 +419,8 @@ html, body, body > div.ng-scope {
     color: #007A00;
 }
 
-.info .last-me-rest {
+.info .last-me {
     color: #0000CC;
-}
-
-.info .last-me-pass {
-    color: #CC00CC;
 }
 
 .match.more-info .name {

@@ -19,15 +19,15 @@
     var ENTER = 13;
 
     $scope.unmatch = function(conversation){
-      swal({   
-        title: "Unmatch with " + conversation.name + "?",   
-        text: "You will not be able to message this person",   // Unmatch with conversation.name 
-        type: "info",   
-        showCancelButton: true,   
-        confirmButtonColor: "#DD6B55",   
-        confirmButtonText: "Yes, unmatch",   
-        closeOnConfirm: true }, 
-      function(){   
+      swal({
+        title: "Unmatch with " + conversation.name + "?",
+        text: "You will not be able to message this person",   // Unmatch with conversation.name
+        type: "info",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, unmatch",
+        closeOnConfirm: true },
+      function(){
         API.unmatch(conversation.matchId)
       });
     };
@@ -36,11 +36,7 @@
       if (match.messages.length) {
         var lastMessage = match.messages[match.messages.length - 1];
         if (lastMessage.fromMe) {
-          if (moment(match.userPingTime).isAfter(lastMessage.sentDate)) {
-            return 'last-me-pass';
-          } else {
-            return 'last-me-rest';
-          }
+          return 'last-me';
         } else {
           return 'last-them';
         }
@@ -76,7 +72,7 @@
       return filtered;
     };
   });
-  
+
   module.directive('shortTimeAgo', function($interval) {
     return {
       restrict: 'A',
