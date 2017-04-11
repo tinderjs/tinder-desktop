@@ -52,6 +52,10 @@
     "LOADING": "Loading...",
     "AWAY": "@:PROFILE.AWAY",
     "ACTIVE": "@:PROFILE.ACTIVE",
-    "AT": "@:PROFILE.AT"
+    "AT": "@:PROFILE.AT",
+    "COMMON_INTERESTS": "common interests",
+    "COMMON_CONNECTIONS": "common connections",
+    "INSTAGRAM_PHOTOS": "photos",
+    "PREVIEW_SPOTIFY_TRACK": "preview spotify track"
   }
 }
