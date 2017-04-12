@@ -8,3 +8,5 @@ cache
 desktop-app/js/vendor
 dist
 *.DS_Store
+desktop-app/fonts
+desktop-app/css/font-awesome.min.css
