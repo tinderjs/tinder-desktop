@@ -21,9 +21,7 @@ This starts the app, and listens on port 5858 to allow remote debugging of the m
 
 ###### Building and packaging
 
-`gulp build:all` builds binaries for all platforms.
-
-`gulp pack:all` packages installers for all platforms.
+`gulp build:all` builds and packages for all platforms.
 
 `gulp -T` lists all available tasks, including platform-specific ones.
 
