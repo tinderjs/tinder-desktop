@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - "5"
+os:
+  - osx
+branches:
+  only:
+    - master
+before_install:
+  - brew update
+install:
+  - gem install fpm
+  - brew install wine
+before_script:
+  - npm install -g bower
+  - npm install -g gulp
+  - bower install
+  - cd desktop-app && npm install
+script:
+  - gulp clean
+  - gulp compile:all
+  - gulp build:darwin:x64
+  - gulp build:linux:all
